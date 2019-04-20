@@ -1,0 +1,292 @@
+---
+layout: default
+section_id: home
+slides:
+  - bg: images/pano4/panorama1.png
+    title:
+      text: Hank isn't human...
+      animation: bottom-to-top
+      class: large-9 large-offset-3 medium-11 medium-offset-1
+    buttons:
+      animation: bottom-to-top
+      class: large-9 large-offset-3 medium-11 medium-offset-1
+      items:
+        - text: He's an AI.  An AI that enables medical coders to do more.  More with less.  Less time.  Less effort.  Less hassle.  But more opportunity...
+          url: "&#35;workflow"
+          class: boxed
+  - bg: images/pano4/panorama2.png
+    title:
+      text: So you can be.
+      animation: bottom-to-top
+      class: large-8 medium-11
+    buttons:
+      animation: bottom-to-top
+      class: large-8 medium-11
+      items:
+        - text: Hank isn't human, but you are.  You are skilled.  You are unique.  And you deserve more.  More time to be human.  More recognition for your talent.  More security...
+          url: "&#35;bottomline"
+          class: boxed
+  - bg: images/pano4/panorama3.png
+    buttons:
+      animation: bottom-to-top slow
+      class: large-8 large-offset-4 medium-9 medium-offset-3
+      items:
+        - text: Learn More
+          url: FAQ.html
+          class: boxed
+        - text: Sign Up for BETA
+          url: signup.html
+    infos:
+      - text: "&nbsp;Increase productivity"
+        animation: bottom-to-top
+      - text: "&nbsp;Improve accuracy"
+        animation: bottom-to-top
+      - text: "&nbsp;Be a part of the future"
+        animation: bottom-to-top
+      - text: "&nbsp;Get your fair share"
+        animation: bottom-to-top
+boxes:
+  - icon_class: fa fa-bell
+    title: The Problem
+    text:
+      AI will be better than humans at repetive tasks that involve basic decision-making in the near future.
+  - icon_class: fa fa-compass
+    title: The Way Forward
+    text:
+      Let Hank help your workflow and when he gets it wrong, let him know why with a free text explanation.
+  - icon_class: fa fa-star-half-empty
+    title: The Future
+    text:
+      Hank will get better and better until he's just like you.  Making the right decision nearly every time.
+  - icon_class: fa fa-image
+    title: Your Fair Share
+    text:
+      At that point, Hank can be deployed to make decisions for you, and you'll make a portion of his profits.
+
+testimonials:
+  - text: "It’s likely that machines will be smarter than us before the end of the century [...] at just about everything, from mathematics and engineering to science and medicine."
+    author: Gary Marcus
+    position: Cognitive Science Pioneer
+  - text: "What all of us have to do is to make sure we are using AI in a way that is for the benefit of humanity, not to the detriment of humanity."
+    author: Tim Cook
+    position: Apple CEO
+  - text: "If we do [AI] right, we might actually be able to evolve a form of work that taps into our uniquely human capabilities and restores our humanity."
+    author: John Hagel
+    position: Legendary Silicon Valley Consultant
+
+---
+
+<div class='advanced mod modDefaultSlider'>
+  <div class='sequence' data-autostop='on' data-timeout='0'>
+    <a class='sequence-prev' href='javascript:void(0);'>
+      <span></span>
+    </a>
+    <a class='sequence-next' href='javascript:void(0);'>
+      <span></span>
+    </a>
+    <ul class='sequence-pagination'>
+      {% for slide in page.slides %}
+        {% if forloop.index == 1 %}
+          <li class='current'></li>
+        {% else %}
+          <li></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <ul class='sequence-canvas'>
+      {% for slide in page.slides %}
+        {% if forloop.index == 1 %}
+          {% assign class = "static" %}
+        {% else %}
+          {% assign class = '' %}
+        {% endif %}
+
+        <li class='frame {{class}}'>
+          <div class='bg' style='background-image: url({{slide.bg}});'></div>
+          {% if slide.infos %}
+            {% for info in slide.infos %}
+              <div class='info{{forloop.index}} {{info.animation}}' style=''>
+                <div class='row'>
+                  <div class='medium-2 large-4 columns'></div>
+                  <div class='medium-10 large-8 columns'>
+                    <p class='fa fa-check' style='color: #F9CE06;'>{{info.text}}</p>
+                    <div class='spacing'></div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class='title {{slide.title.animation}}' style='color: rgb(255, 255, 255);'>
+              <div class='row'>
+                <div class='{{slide.title.class}} columns'>
+                  <h2>{{slide.title.text}}</h2>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          <div class='buttons-wrapper {{slide.buttons.animation}}' style=''>
+            <div class='row'>
+              <div class='{{slide.buttons.class}} columns'>
+                <div class='two spacing'></div>
+                {% for button in slide.buttons.items %}
+                  <a class='button {{button.class}}' href='{{button.url}}'>{{button.text}}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class='full'>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <p class='centered-text'>
+        <i class='fa fa-quote-left' style='color: #F9CE06; font-size: 36px;'></i>
+      </p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <div class='mod modTestimonials'>
+        <div class='row'>
+          <div class='small-12 columns'>
+            <div class='items centered-text'>
+              {% for t in page.testimonials  %}
+                <div class='item'>
+                  <p class='quote'>{{t.text}}</p>
+                  <p class='author'>- {{t.author}}, {{t.position}}</p>
+                  <div class='two spacing'></div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class='spacing'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class='full'>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <h4 style='color: #999'>Our goal</h4>
+      <h2>Deliver responsible AI solutions for medical coders</h2>
+      <div class='spacing'></div>
+      <p></p>
+    </div>
+  </div>
+</div>
+
+<div class='full' style='background: #f5f5f5'>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <div class='mod modBoxedTextSlider'>
+        <div class='boxes'>
+          {% for box in page.boxes %}
+            <div class='box' style='min-height:250px;'>
+              <!--i class='{{box.icon_class}}'></i-->
+              <h1 style='color: #F9CE06;'>{{forloop.index}}</h1>
+              <h4>{{box.title}}</h4>
+              <p>{{box.text}}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id='workflow' class='four spacing'></div>
+</div>
+
+
+
+
+<div class='full'>
+  <div class='row'>
+    <div class='medium-6 columns'>
+      <img class="fadeinleft" width="500" height="340" alt="" src="images/workflowhank.png" />
+    </div>
+    <div class='medium-6 columns'>
+      <div class='spacing'></div>
+      <h4 style='color: #999'>Help Hank help...</h4>
+      <h2>Your workflow</h2>
+      <p>
+        Sometimes finding the information you need to assign all of the proper codes and modifiers to a case can be time consuming.
+      </p>
+      <p>
+        Let Hank help!  Send Hank the record, and he'll scan it for you and provide a list of the most likely codes and modifiers highlighting the text that contributed to his decision.
+      </p>
+      <p>
+        In return, you will help Hank by correcting him when he gets it wrong and explaining with free text why his selection was incorrect.  In this way, Hank will quickly learn from his mistakes over time.
+      </p>
+      <div class='spacing'></div>
+      <a class='button small' href='FAQ.html'>Learn more</a>
+    </div>
+  </div>
+  <div class='four spacing' id='bottomline'></div>
+  <div class='row'>
+    <div class='medium-6 columns'>
+      <div class='two spacing'></div>
+      <h4 style='color: #999'>Help Hank help...</h4>
+      <h2>Your bottom line</h2>
+      <p>
+        Hank's not hiding anything.  Eventually, he'll have gathered enough data from his users to get the codes correct as often as his human trainers. Oddly enough, that's what we should all be working toward.  Why?
+      </p>
+      <p>
+        Because when Hank profits, you, his trainers, profit as well.  For up to 7 years, you will be paid a portion of the profits generated by any model you helped to train.
+      </p>
+      <p>
+        Pursuing your dreams, or getting a head start on retirement?  That's something we should all be able to get behind.
+      </p>
+      <!--div class='spacing'></div>
+      <ul class='shortcode-list'>
+        <li>
+          <i class='fa fa-check'></i>
+          This is a check list item, htis is a check list item
+        </li>
+        <li>
+          <i class='fa fa-check'></i>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit ipsumf
+        </li>
+        <li>
+          <i class='fa fa-check'></i>
+          Sed diam nonummy nibh euismod tincidunt ut, lorem ipsum dolor sit amet
+        </li>
+        <li>
+          <i class='fa fa-check'></i>
+          Dolore magna aliquam erat volutpat consectetu amet magna adipiscing
+        </li>
+      </ul-->
+      <a class='button small' href='FAQ.html'>Learn more</a>
+    </div>
+    <div class='four spacing'></div>
+    <div class='medium-6 columns'>
+      <img class="fadeinright" width="500" height="400" alt="" src="images/evolvedhank.png" />
+    </div>
+  </div>
+  <div class='four spacing' id='social'></div>
+  <div class='row'>
+    <div class='medium-6 columns'>
+      <img class="fadeinleft" width="500" height="340" alt="" src="images/social.png" />
+    </div>
+    <div class='medium-6 columns'>
+      <div class='spacing'></div>
+      <h4 style='color: #999'>Help Hank help...</h4>
+      <h2>Your peers</h2>
+      <p>
+        You've already learned about Hank's profit sharing plan.  Work for Hank, and he'll work for you.  Well, there's one more way you can work for Hank beyond providing your feedback.
+      </p>
+      <p>
+        Recruit your peers to benefit from Hank's profit sharing model and you will be credited with a portion of the feedback that they provide.
+      </p>
+      <div class='spacing'></div>
+      <a class='button small' href='refer.html'>Sign Up for BETA</a>
+    </div>
+  </div>
+  <div class='four spacing'></div>
+</div>

@@ -712,7 +712,7 @@ body.screenshot {
 }
 .slick-vertical .slick-slide {
   display: block;
-  height: auto;
+  width: auto;
   border: 1px solid transparent;
 }
 
@@ -1232,6 +1232,23 @@ body.screenshot {
   line-height: 48px;
   margin-bottom: 30px;
 }
+.modBoxedTextSlider1 .box {
+  padding: 0px;
+  margin: 0px;
+  background: #fff;
+  text-align: center;
+}
+.modBoxedTextSlider1 .box h3 {
+  margin-bottom: 40px;
+}
+.modBoxedTextSlider1 .box i {
+  color: #F9CE06;
+  font-size: 36px;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  margin-bottom: 30px;
+}
 .modCallToAction p {
   font-size: 1.28571rem;
   letter-spacing: 1px;
@@ -1586,6 +1603,7 @@ body.screenshot {
   left: 0;
   opacity: 1;
 }
+
 .modDefaultSlider .sequence .animate-in .info1.left-to-right {
   -moz-transition-delay: 1s;
   -o-transition-delay: 1s;
@@ -3251,6 +3269,7 @@ body {
   .contain-to-grid.shadowless .top-bar-section li.active:not(.has-form) a:not(.button):hover {
     background: #f2f2f2;
   }
+
   .contain-to-grid.shadowless .top-bar-section ul li.has-dropdown .dropdown li a {
     color: #999;
   }
@@ -3325,6 +3344,12 @@ body {
     width: auto;
   }
 }
+
+.mytitle {
+  font-size: 3.85714rem;
+  line-height: 3.85714rem;
+}
+
 @media only screen and (max-width: 767px) {
   .modDefaultSlider .sequence .title h2 {
     font-size: 3.85714rem;

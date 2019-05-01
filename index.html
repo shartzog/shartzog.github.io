@@ -11,7 +11,7 @@ slides:
       animation: bottom-to-top slow
       class: medium-11 medium-offset-1
       items:
-        - text: Sign Up for BETA
+        - text: Get HANK!
           url: signup.html
     infos:
       - text: "&nbsp;Increase productivity"
@@ -27,22 +27,22 @@ boxes:
     title: Increase Productivity
     bgimage: images/growthfinger.jpg
     text:
-      Send Hank a medical record and he'll return a list of codes, highlighting the info that lead him to select each one.
+      Send Hank a medical record and he'll return a list of codes, highlighting the text that lead him to select each one.
   - icon_class: fa fa-compass
     title: Improve Accuracy
     bgimage: images/mechanicalbrain.jpg
     text:
-      Hank draws on the experience of all of his users to improve the accuracy of his predictions in real time.
+      Computer Assisted Coding systems like Hank are proven to increase accuracy as well as productivity.
   - icon_class: fa fa-star-half-empty
     title: Be a Part of The Future
     bgimage: images/cloudsmall.jpg
     text:
-      Hank will get better and better until he's like you, making the right decision nearly every time.
+      Be a contributor and your feedback will be used to improve Hank's decisions in real time.
   - icon_class: fa fa-image
     title: Get Your Fair Share
     bgimage: images/fairmoney.jpg
     text:
-      Then, Hank can make decisions for you, and you'll make a portion of the profits he gets for doing so.
+      Contributors can choose to earn cash now or a stake in Hank's future profits.
 
 ---
 
@@ -118,10 +118,59 @@ boxes:
 </div>
 
 <div class='full' style="background: #f5f5f5;">
-  <div class='row'>
-    <div class='small-12 columns'>
-  <img src='images/tiers.png' style="margin: auto;" />
-</div>
+  <div class='row' style='min-width: 500px;'>
+  <div class='small-0 medium-1 columns'><br></div>
+  <div class='small-4 medium-3 columns' style='padding: 0px;'>
+    <div class='box' style='min-height: 50px; width: 100%; background: #f5f5f5;'></div>
+    <div class='box' style='min-height: 50px; width: 100%; background: #000; text-align: center; color: #fff; padding-top: 17px; font-size: 21px;'>TRIAL</div>
+    <div class='box' style='min-height: 260px; width: 100%; background: #FFF; text-align: center; color: #000;'>
+      <p style='min-height: 46px; font-size: 30px; padding-top: 6px;'>FREE</p>
+      <div style='padding: 2px;'>
+        Installs in Seconds<br>
+        No setup needed<br>
+        Predicts ICD, CPT, HCPCS, and more<br>
+        Text highlighting<br><br>
+        <div style='font-size: 10px;'>Limited to 50 cases/month</div>
+        <a class="button" href="signup.html" style='padding: 6px; margin: 3px;'>Sign Up!</a>
+      </div>
+    </div>
+    <div class='box' style='min-height: 50px; width: 100%; background: #f5f5f5;'></div>
+  </div>
+  <div class='small-4 medium-4 columns' style='padding: 0px;'>
+    <div class='box' style='min-height: 50px; width: 100%; background: #321e70; text-align: center; color: #fff; padding-top: 17px; font-size: 21px;'>CONTRIBUTOR</div>
+    <div class='box' style='min-height: 360px; width: 100%; background: #d4c6ff; text-align: center; color: #000;'>
+      <p style='min-height: 46px; font-size: 30px; padding-top: 6px;'>FREE*</p>
+      <div style='padding: 2px;'>
+        All TRIAL features<br>
+        Unlimited cases<br>
+        Increase efficiency by over 20%<br>
+        Get paid for contributions<br>
+        Profit sharing options<br>
+        Referral rewards<br>
+        ICD and CPT lookup<br>
+        Text highlighting<br><br>
+        <div style='font-size: 10px;'>*See <a href='faq.html' style='color: #555;'>content contribution requirement</a></div>
+        <a class="button" href="signup.html" style='padding: 6px; margin: 3px;'>Sign Up!</a>
+      </div>
+    </div>
+  </div>
+  <div class='small-4 medium-3 columns' style='padding: 0px;'>
+    <div class='box' style='min-height: 50px; width: 100%; background: #f5f5f5;'></div>
+    <div class='box' style='min-height: 50px; width: 100%; background: #000; text-align: center; color: #fff; padding-top: 17px; font-size: 21px;'>USER ONLY</div>
+    <div class='box' style='min-height: 260px; width: 100%; background: #FFF; text-align: center; color: #000;'>
+      <p style='min-height: 46px; font-size: 30px; padding-top: 6px;'>$150/mo.</p>
+      <div style='padding: 2px;'>
+        All TRIAL features<br>
+        Unlimited cases<br>
+        Increase efficiency by over 20%<br>
+        ICD and CPT lookup<br><br>
+        <div style='font-size: 10px;'>No contribution requirement</div>
+        <a class="button" href="signup.html" style='padding: 6px; margin: 3px;'>Sign Up!</a>
+      </div>
+    </div>
+    <div class='box' style='min-height: 50px; width: 100%; background: #f5f5f5;'></div>
+  </div>
+  <div class='small-0 medium-1 columns'><br></div>
 </div>
   <div class='two spacing'></div>
 </div>
@@ -132,15 +181,15 @@ boxes:
   <div class='spacing'></div>
   <div class='row'>
     <div class='large-12 columns'>
-      <div class='advanced mod modBoxedTextSlider'>
+      <div class='mod modBoxedTextSlider'>
         <div class='boxes' >
           {% for box in page.boxes %}
-            <div class='box' style='min-height:250px; background: #f5f5f5;'>
+            <div class='box' style='min-height:450px; background: #f5f5f5;'>
               <!--i class='{{box.icon_class}}'></i-->
               <img src="{{box.bgimage}}" style='height:150px; padding-bottom: 10px; margin:auto;' />
               <h4 style='color: #5b3bba;'>{{box.title}}</h4>
-              <p>{{box.text}}</p>
-              <a class="button" href="signup.html">Sign Up!</a>
+              <p style='min-height: 100px;'>{{box.text}}</p>
+              <a class="button" href="signup.html" style='padding: 6px; margin: 3px;'>Sign Up!</a><a class='button boxed small' href='faq.html' style='padding: 9px; margin: 2px; border: 0px; color: #333;'>Learn More</a>
             </div>
           {% endfor %}
         </div>
@@ -237,11 +286,39 @@ boxes:
         Recruit your peers to benefit from Hank's profit sharing model, and your share in Hank's profits will grow in accordance to the quality and quantity of their feedback.
       </p>
       <div class='spacing'></div>
-      <a class='button small' href='refer.html'>Sign Up for BETA</a>
+      <a class='button small' href='signup.html'>Sign Up for BETA</a>
     </div>
     <div class='medium-6 columns'>
       <img class="fadeinright" width="500" height="340" alt="" src="images/social.png" />
     </div>
+  </div>
+</div>
+
+<img src='images/whitewedgeleft.png' style="position: absolute; width: 100%; height: 74px; overflow: hidden; padding-top: -50px;" />
+
+<div class='full' id='platform' style="background: #f5f5f5;">
+  <div class='row'>
+    <div class='medium-1 columns'><p></div>
+    <div class='medium-10 columns'>
+      <div class='spacing'></div>
+      <div class="box" style="text-align: center; width: 100%; ">
+        <h2 style='color: #999;'>The Hank Platform</h2>
+      </div>
+      <img src="images/platform.png" style='width:100%; padding-bottom: 10px; margin:auto;' />
+
+      <p style='text-align: center;'>
+        You've already learned about Hank's profit sharing plan.  Work for Hank, and he'll work for you.  Well, there's one more way you can work for Hank beyond providing your feedback.
+      </p>
+      <p style='text-align: center;'>
+        Recruit your peers to benefit from Hank's profit sharing model, and your share in Hank's profits will grow in accordance to the quality and quantity of their feedback.
+      </p>
+      <div class='spacing'></div>
+      <div class="box" style="text-align: center; width: 100%; ">
+
+        <a class='button small' href='refer.html'>Sign Up for BETA</a>
+      </div>
+    </div>
+    <div class='medium-1 columns'><p></div>
   </div>
   <div class='four spacing'></div>
 

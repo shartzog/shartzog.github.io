@@ -752,6 +752,10 @@ body.screenshot {
   opacity: 0.25;
 }
 
+.droid {
+  font-family: "DroidSans";
+}
+
 .slick-prev:before, .slick-next:before {
   font-family: "DroidSans";
   font-size: 20px;

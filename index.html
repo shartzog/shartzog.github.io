@@ -2,9 +2,10 @@
 layout: default
 section_id: home
 slides:
-  - bg: images/laptopwoman.jpg
+  - bg: images/header.jpg
+    class: animate-in
     title:
-      text: Hank helps medical coders
+      text: Hank helps<br>medical coders
       animation: bottom-to-top
       class: medium-7 medium-offset-1
     buttons:
@@ -14,14 +15,7 @@ slides:
         - text: Get HANK!
           url: signup.html
     infos:
-      - text: "&nbsp;Increase productivity"
-        animation: bottom-to-top
-      - text: "&nbsp;Improve accuracy"
-        animation: bottom-to-top
-      - text: "&nbsp;Be a part of the future"
-        animation: bottom-to-top
-      - text: "&nbsp;Get your fair share..."
-        animation: bottom-to-top
+      - text: "With Hank you'll code faster and more accurately, saving time and making more money."
 boxes:
   - icon_class: fa fa-bell
     title: Increase Productivity
@@ -46,52 +40,28 @@ boxes:
 
 ---
 
-<div class='advanced mod modDefaultSlider'>
+
+
+
+<div class='advanced mod modDefaultSlider' >
   <div class='sequence' data-autostop='on' data-timeout='0'>
-    <!--a class='sequence-prev' href='javascript:void(0);'>
-      <span></span>
-    </a>
-    <a class='sequence-next' href='javascript:void(0);'>
-      <span></span>
-    </a>
-    <ul class='sequence-pagination'>
-      {% for slide in page.slides %}
-        {% if forloop.index == 1 %}
-          <li class='current'></li>
-        {% else %}
-          <li></li>
-        {% endif %}
-      {% endfor %}
-    </ul-->
     <ul class='sequence-canvas'>
       {% for slide in page.slides %}
-        {% if forloop.index == 1 %}
-          {% assign class = "static" %}
-        {% else %}
-          {% assign class = '' %}
-        {% endif %}
 
-        <li class='frame {{class}}'>
-          <div class='bg' style='background-image: url({{slide.bg}});'></div>
+        <li class='frame {{class}}' >
+          <div class='bg' style='background-image: url({{slide.bg}});background-position: top right;background-size: cover;'></div>
           {% if slide.infos %}
             <div class='title {{slide.title.animation}}' style='color: rgb(255, 255, 255);'>
               <div class='row'>
                 <div class='{{slide.title.class}} columns'>
                   <div class='mytitle'>{{slide.title.text}}</div>
                   <div class='spacing'></div>
+                  {% for info in slide.infos %}
+                  <p class="header-text">{{info.text}}</p>
+                  {% endfor %}
                 </div>
               </div>
             </div>
-            {% for info in slide.infos %}
-              <div class='info{{forloop.index}} {{info.animation}}' style=' '>
-                <div class='row'>
-                  <div class='medium-1 columns'></div>
-                  <div class='medium-11 columns'>
-                    <p class='fa fa-check' style='color: #5b3bba;'>{{info.text}}</p>
-                  </div>
-                </div>
-              </div>
-            {% endfor %}
           {% else %}
             <div class='title {{slide.title.animation}}' style='color: rgb(255, 255, 255);'>
               <div class='row'>
@@ -117,30 +87,30 @@ boxes:
   </div>
 </div>
 
-<div class='full' style="background: #f5f5f5;">
-  <div class='row' style='min-width: 360px;'>
-  <div class='small-0 medium-1 columns'><br></div>
-  <div class='small-4 medium-3 columns' style='padding: 0px;'>
-    <div class='box' style='min-height: 50px; width: 100%; background: #f5f5f5;'></div>
-    <div class='box' style='min-height: 50px; width: 100%; background: #000; text-align: center; color: #fff; padding-top: 17px; font-size: 16px;'>TRIAL</div>
-    <div class='box' style='min-height: 260px; width: 100%; background: #FFF; text-align: center; color: #000;'>
-      <p style='min-height: 46px; font-size: 20px; padding-top: 6px;'>FREE</p>
-      <div style='padding: 2px;'>
+<div class="full">
+  <div class="row" style="min-width: 360px;">
+  <div class="small-0 medium-1 columns"><br></div>
+  <div class="small-4 medium-3 columns" style="padding: 0px;">
+    <div class="box" style="min-height: 50px; width: 100%;"></div>
+    <div class="box-gray box-title" style="min-height: 50px; width: 100%; background: #000; text-align: center; color: #fff; padding-top: 17px; font-size: 16px;">TRIAL</div>
+    <div class="box-inner-border box-gray" style="min-height: 300px; width: 100%; background: #FFF; text-align: center; color: #000;">
+      <p style="min-height: 46px; font-size: 20px; padding-top: 6px;">FREE</p>
+      <div style="padding: 2px;">
         Installs in Seconds<br>
         No setup needed<br>
         Predicts ICD, CPT, HCPCS, and more<br>
         Text highlighting<br><br>
-        <div style='font-size: 10px;'>Limited to 50 cases/month</div>
-        <a class="button" href="signup.html" style='padding: 6px; margin: 3px;'>Sign Up!</a>
+        <div style="font-size: 10px;">Limited to 50 cases/month</div>
+        <a class="button" href="https://shartzog.github.io/signup.html" style="padding: 6px; margin: 3px;">Sign Up!</a>
       </div>
     </div>
-    <div class='box' style='min-height: 50px; width: 100%; background: #f5f5f5;'></div>
+    <div class="box" style="min-height: 50px; width: 100%;"></div>
   </div>
-  <div class='small-4 medium-4 columns' style='padding: 0px;'>
-    <div class='box' style='min-height: 50px; width: 100%; background: #321e70; text-align: center; color: #fff; padding-top: 17px; font-size: 16px;'>CONTRIBUTOR</div>
-    <div class='box' style='min-height: 360px; width: 100%; background: #d4c6ff; text-align: center; color: #000;'>
-      <p style='min-height: 46px; font-size: 20px; padding-top: 6px;'>FREE*</p>
-      <div style='padding: 2px;'>
+  <div class="small-4 medium-4 columns" style="padding: 0px;">
+    <div class="box-blue box-title" style="min-height: 50px; width: 100%; background: #321e70; text-align: center; color: #fff; padding-top: 17px; font-size: 16px;">CONTRIBUTOR</div>
+    <div class="box-inner-border box-blue" style="min-height: 400px; width: 100%; background: #d4c6ff; text-align: center; color: #000;">
+      <p style="min-height: 46px; font-size: 20px; padding-top: 6px;">FREE*</p>
+      <div style="padding: 2px;">
         All TRIAL features<br>
         Unlimited cases<br>
         Increase efficiency by over 20%<br>
@@ -148,35 +118,129 @@ boxes:
         Profit sharing options<br>
         Referral rewards<br>
         ICD and CPT lookup<br><br>
-        <div style='font-size: 10px;'>*See <a href='FAQ.html' style='color: #555;'>content contribution requirement</a></div>
-        <a class="button" href="signup.html" style='padding: 6px; margin: 3px;'>Sign Up!</a>
+        <div style="font-size: 10px;">*See <a href="FAQ.html#contribute" style="color: #555;">content contribution requirement</a>; Limited time offer</div>
+        <a class="button" href="https://shartzog.github.io/signup.html" style="padding: 6px; margin: 3px;">Sign Up!</a>
       </div>
     </div>
   </div>
-  <div class='small-4 medium-3 columns' style='padding: 0px;'>
-    <div class='box' style='min-height: 50px; width: 100%; background: #f5f5f5;'></div>
-    <div class='box' style='min-height: 50px; width: 100%; background: #000; text-align: center; color: #fff; padding-top: 17px; font-size: 16px;'>USER ONLY</div>
-    <div class='box' style='min-height: 260px; width: 100%; background: #FFF; text-align: center; color: #000;'>
-      <p style='min-height: 46px; font-size: 20px; padding-top: 6px;'>$150/mo.</p>
-      <div style='padding: 2px;'>
+  <div class="small-4 medium-3 columns" style="padding: 0px;">
+    <div class="box" style="min-height: 50px; width: 100%;"></div>
+    <div class="box-gray box-title" style="min-height: 50px; width: 100%; background: #000; text-align: center; color: #fff; padding-top: 17px; font-size: 16px;">USER ONLY</div>
+    <div class="box-inner-border box-gray" style="min-height: 300px; width: 100%; background: #FFF; text-align: center; color: #000;">
+      <p style="min-height: 46px; font-size: 20px; padding-top: 6px;">$150/mo.</p>
+      <div style="padding: 2px;">
         All TRIAL features<br>
         Unlimited cases<br>
         Increase efficiency by over 20%<br>
-        ICD and CPT lookup<br><br>
-        <div style='font-size: 10px;'>No contribution requirement</div>
-        <a class="button" href="signup.html" style='padding: 6px; margin: 3px;'>Sign Up!</a>
+        ICD and CPT lookup<br><br><br>
+        <div style="font-size: 10px;">No contribution requirement</div>
+        <a class="button" href="https://shartzog.github.io/signup.html" style="padding: 6px; margin: 3px;">Sign Up!</a>
       </div>
     </div>
-    <div class='box' style='min-height: 50px; width: 100%; background: #f5f5f5;'></div>
+    <div class="box" style="min-height: 50px; width: 100%;"></div>
   </div>
-  <div class='small-0 medium-1 columns'><br></div>
+  <div class="small-0 medium-1 columns"><br></div>
 </div>
-  <div class='two spacing'></div>
+  <div class="two spacing"></div>
 </div>
 
-<img src='images/greywedgeright.png' style="position: absolute; width: 100%; height: 74px; overflow: hidden;" />
 
-<div class='full' >
+
+<div class="bg" style="background-image: url('images/cloud-bottom.png');background-position: bottom center;background-size: cover;height:190px;"></div>
+<div class="full alternate-row" id="productivity">
+  <div class="row max-width-1000px">
+    <div class="medium-6 columns">
+      <div class="spacing"></div>
+ <h1 class="main-title"><span style="color:#595ad4;">Increase</span> Your Productivity</h1>
+
+      <p class="main-text">
+        Code faster and get more done with Hank.</p>
+      <div class="spacing"></div>
+
+    </div>
+    <div class="medium-6 columns">
+      <div class="box" style="width: 500px; text-align: center;">
+        <img class="fadeinright" src="images/purplse-laptop.png" style="height: 100%; margin: auto;">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg" style="background-image: url('images/curve-bottom.png');background-position: top center;background-size: cover;height:140px;"></div>
+
+<div class="full"  id="accuracy" style='overflow: hidden;'>
+  <div class="row max-width-1000px">
+    <div class="medium-6 columns">
+      <div class="box" style="width: 500px; text-align: center;">
+        <img class="fadeinleft" src="images/computer-accuracy.png" style="height: 100%; margin: auto;">
+      </div>
+    </div>
+    <div class="medium-6 columns">
+      <div class="two spacing"></div>
+     <h1 class="main-title"><span style="color:#00cc6f;">Improve</span> Your Accuracy</h1>
+
+      <p class="main-text">
+        Code more accurately with Hank.</p>
+    </div>
+    <div class="four spacing"></div>
+  </div>
+
+</div>
+
+<div class="bg" style="background-image: url('images/curve-bottom2.png');background-position: top center;background-size: cover;height:140px;"></div>
+
+
+
+
+<div class="full alternate-row" id="bottomline">
+  <div class="row max-width-1000px">
+    <div class="medium-6 columns">
+      <div class="spacing"></div>
+ <h1 class="main-title"><span style="color:#d8124b;">Make</span> More Money</h1>
+
+      <p class="main-text">
+        Make More Money Today & Tomorrow With Hank.</p>
+      <div class="spacing"></div>
+
+    </div>
+    <div class="medium-6 columns">
+      <div class="box" style="width: 500px; text-align: center;">
+        <img class="fadeinright" src="images/money-graph.png" style="height: 100%; margin: auto; overflow: hidden;">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg" style="background-image: url('images/cloud-bottom3.png');background-position: bottom center;background-size: cover;height:190px;"></div>
+
+<div class="full" id="fairshare" style="background-image: url('images/rocket.jpg');background-position: bottom left;background-size: cover;min-height:800px; overflow: hidden;">
+  <div class="box" style='width: 100%; min-height: 10px; background: #18cbfb; margin-top: -100px'><br></div>
+  <div class="row max-width-1000px">
+    <div class="medium-1 columns"><p></p></div>
+    <div class="medium-10 columns">
+      <div class="spacing"></div>
+      <div class="box" style="text-align: center; width: 100%; ">
+       <h1 class="main-title"><span style="color:#fff;">Get Your Fair Share</span></h1>
+
+      <p class="main-text" style="color:#fff !important;">
+        Hank Helps Medical Coders.</p>
+
+      <p class="main-text" style="color:#fff !important;">
+        Let Hank help you.</p>
+
+      <div class="spacing"></div>
+      <div class="box" style="text-align: center; width: 100%; ">
+
+        <a class="button" href="https://shartzog.github.io/signup.html">Get Hank!</a>
+      </div>
+      </div>
+    <div class="medium-1 columns"><p></p></div>
+    </div>
+  <div class="four spacing"></div>
+
+  </div>
+
+</div>
+
+<!--div class='full' >
   <div class='spacing'></div>
   <div class='row'>
     <div class='large-12 columns'>
@@ -184,7 +248,6 @@ boxes:
         <div class='boxes' >
           {% for box in page.boxes %}
             <div class='box' style='min-height:450px; background: #f5f5f5;'>
-              <!--i class='{{box.icon_class}}'></i-->
               <img src="{{box.bgimage}}" style='height:150px; padding-bottom: 10px; margin:auto;' />
               <h4 style='color: #5b3bba;'>{{box.title}}</h4>
               <p style='min-height: 100px;'>{{box.text}}</p>
@@ -218,7 +281,7 @@ boxes:
       <p>
         If you choose to be a contributor, you will help Hank in return by correcting him when he gets it wrong and explaining with free text why his selection was incorrect allowing Hank to learn from his mistakes in near real time.
       </p>
-      <a class="button" href="signup.html">Sign Up!</a><a class='button boxed small' href='FAQ.html' style='border: 0px; color: #333;'>Learn More</a>
+      <a class="button" href="signup.html">Sign Up!</a><a class='button boxed' href='FAQ.html' style='border: 0px; color: #333;'>Learn More</a>
     </div>
   </div>
   <div class='spacing'></div>
@@ -238,7 +301,7 @@ boxes:
         Let Hank help!  Hank will draw on the experience of hundreds of other medical coders to supplement your decision-making.  Even if Hank doesn't get it exactly right, he'll provide a second opinion that could make you look at a case differently and allow you to get it right the first time.
       </p>
       <div class='spacing'></div>
-      <a class="button" href="signup.html">Sign Up!</a><a class='button boxed small' href='FAQ.html' style='border: 0px; color: #333;'>Learn More</a>
+      <a class="button" href="signup.html">Sign Up!</a><a class='button boxed' href='FAQ.html' style='border: 0px; color: #333;'>Learn More</a>
     </div>
     <div class='medium-6 columns'>
       <div class='box' style='width: 500px; height: 340px; text-align: center;'>
@@ -252,7 +315,7 @@ boxes:
   <div class='row'>
     <div class='medium-6 columns'>
       <div class='box' style='width: 500px; height: 340px; text-align: center;'>
-        <img class="fadeinright" src="images/bottomline.png" style='height: 100%; margin: auto;'/>
+        <img class="fadeinleft" src="images/bottomline.png" style='height: 100%; margin: auto;'/>
       </div>
     </div>
     <div class='medium-6 columns'>
@@ -268,7 +331,7 @@ boxes:
       <p>
         Pursuing your dreams, or getting a head start on retirement?  That's something we should all be able to get behind.
       </p>
-      <a class="button" href="signup.html">Sign Up!</a><a class='button boxed small' href='FAQ.html' style='border: 0px; color: #333;'>Learn More</a>
+      <a class="button" href="signup.html">Sign Up!</a><a class='button boxed' href='FAQ.html' style='border: 0px; color: #333;'>Learn More</a>
     </div>
     <div class='four spacing'></div>
   </div>
@@ -289,7 +352,7 @@ boxes:
         Recruit your peers to benefit from Hank's profit sharing model, and your share in Hank's profits will grow in accordance to the quality and quantity of their feedback.
       </p>
       <div class='spacing'></div>
-      <a class='button small' href='signup.html'>Sign Up</a>
+      <a class="button" href="signup.html">Sign Up!</a><a class='button boxed' href='FAQ.html' style='border: 0px; color: #333;'>Learn More</a>
     </div>
     <div class='medium-6 columns'>
       <img class="fadeinright" width="500" height="340" alt="" src="images/social.png" />
@@ -318,11 +381,11 @@ boxes:
       <div class='spacing'></div>
       <div class="box" style="text-align: center; width: 100%; ">
 
-        <a class="button" href="signup.html">Sign Up!</a><a class='button boxed small' href='FAQ.html' style='border: 0px; color: #333;'>Learn More</a>
+        <a class="button" href="signup.html">Sign Up!</a><a class='button boxed' href='FAQ.html' style='border: 2px; color: #333;'>Learn More</a>
       </div>
     </div>
     <div class='medium-1 columns'><p></div>
   </div>
   <div class='four spacing'></div>
 
-</div>
+</div-->

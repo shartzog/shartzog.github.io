@@ -40,6 +40,70 @@
   <link rel="canonical" href="http://localhost:4000/signup.html">
   <link rel="alternate" type="application/rss+xml" title="Hank.AI" href="http://localhost:4000/feed.xml" />
 </head>
+<style>
+.mytitle,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+ font-family: "sofia-pro","Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 600;
+ color:#000 !important;
+
+ line-height: 1.1 !important;
+}
+
+.header-text {
+color: #454545 !important;
+font-weight: 500 !important;
+line-height: 1.44444444;
+letter-spacing: -.2px !important;
+font-size: 17pt !important;
+max-width: 400px;
+}
+
+.main-title, .main-text {text-align: center;}
+.main-title {font-size: 50px !important; font-weight: 600; line-height:1.0!important; }.main-text {font-size: 15pt !important; font-weight: 400;}
+
+
+.header-bg {"background-image: url('header.jpg');background-position: top right;background-size: cover;"}
+
+.alternate-row {background-color:#f0f0f0 !important; overflow: hidden !important;}
+
+.button {
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #454545;
+    background: #F9CE06;
+    border: 2px solid #F9CE06;
+    font-weight: 600;
+    margin-bottom: 20px !important;
+
+}
+
+.box-inner-border {
+    border: 1px solid #ddd !important;
+}
+
+.box-blue {background-color: #2547fe !important;}
+.box-gray {background: #2f2d2d !important;}
+
+.box-inner-border.box-blue {background-color: #c7d8fb !important;}
+.box-inner-border.box-gray {background-color: #e7e9ec !important;}
+
+.box-title {font-weight: 600; font-size: 18px !important; padding-bottom: 12px}
+
+body, p {color: #454545 !important; font-size: 17px !important; line-height: 1.42 !important; font-weight: 500 !important;}
+
+/* Added to Title Rows */
+.max-width-1000px {max-width:1000px; padding-bottom: 70px;}
+
+
+
+</style>
 
 
   <body>
@@ -147,31 +211,28 @@
 
     </div>
 
-    <div id='footer'>
-  <div class='three spacing'></div>
+    <div id='footer' class='full' style='background-image: url("images/hills.png"); overflow: hidden; margin-top: -50px;'>
+  <div class="box" style='width: 100%; min-height: 10px; background: #FFF; margin-top: -100px'><br></div>
   <div class='row'>
     <div class='large-3 medium-3 columns'>
       <h1>
         <a href='index.html'>
-          <img alt="" src="images/logo-purple.png" />
+          <img alt="" src="images/logo-bordered.png" />
         </a>
       </h1>
-      <p>©2019 Hank.AI. All rights reserved.</p>
+      <div style='font-size: 10px; margin-top: -10px;'>©2019 Hank.AI. All rights reserved.</div>
       <div class='spacing'></div>
       <div class='spacing'></div>
     </div>
-    <div class='large-3 medium-3 columns'>
+    <div class='large-6 medium-6 columns'>
       <div class='spacing'></div>
       <div class='links'>
         <h4>Site Map</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">Meet Our Team</a></li>
-          <li><a href="FAQ.html">FAQ</a></li>
-          <li><a href="signup.html">Sign Up</a></li>
-        </ul>
+        <a class='button boxed small' style='padding: 9px; margin: 2px; border: 0px; color: #F9CE06;' href="index.html">Home</a>
+        <a class='button boxed small' style='padding: 9px; margin: 2px; border: 0px; color: #F9CE06;' href="about.html">Meet Our Team</a>
+        <a class='button boxed small' style='padding: 9px; margin: 2px; border: 0px; color: #F9CE06;' href='FAQ.html'>FAQ</a>
+        <a class='button boxed small' style='padding: 9px; margin: 2px; border: 0px; color: #F9CE06;' href="signup.html">Sign Up</a>
       </div>
-      <div class='spacing'></div>
     </div>
     <div class='large-3 medium-3 columns'>
       <div class='spacing'></div>
@@ -180,13 +241,12 @@
         <li>Email: <a href="mailto:info@hank.ai">info@hank.ai</a></li>
         <li>Phone: +1 (828) 490-1203</li>
       </ul>
-      <div class='spacing'></div>
-      <div class='spacing'></div>
     </div>
   </div>
-  <div class='two spacing'></div>
+  <div class='four spacing'></div>
+  <div class='four spacing'></div>
+  <div class='spacing'></div>
 </div>
-
 <script src="/javascripts/jquery.countTo.js" type="text/javascript"></script>
 <script src="/javascripts/jquery.appear.js" type="text/javascript"></script>
 <script src="/javascripts/jquery.validate.js" type="text/javascript"></script>

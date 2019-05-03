@@ -540,8 +540,7 @@ form input.error, form textarea.error {
 
 /*Footer */
 #footer {
-  background: #23103a;
-  color: #F9CE06;
+  color: #111;
 }
 #footer h1 {
   margin-bottom: 25px;
@@ -557,7 +556,7 @@ form input.error, form textarea.error {
   line-height: 1.875rem;
 }
 #footer ul a {
-  color: #999;
+  color: #F9CE06;
 }
 #footer ul a:hover {
   color: #eee;

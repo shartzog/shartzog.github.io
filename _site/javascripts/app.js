@@ -34,7 +34,6 @@ jQuery(document).ready(function() {
 
 jQuery(document).foundation();
 
-
 (function($) {
   "use strict";
   $(document).ready(function() {
@@ -68,6 +67,33 @@ jQuery(document).foundation();
       }
 
     });
+
+    $(window).resize(function() {
+      if ( window.innerWidth > 1300 ) {
+        $(".mainseq").css("min-height","900px");
+      } else {
+        var hgt = ((1200/2350)*window.innerWidth);
+        var thgt = (hgt/10);
+        if (thgt > 50) { thgt = 50 }
+        $(".mytitle").css("font-size",thgt + "px");
+        var theadhgt = thgt - 9
+        if (theadhgt > 17) {theadhgt = 17}
+        $(".header-text").css("font-size",theadhgt + "px");
+        $(".header-text").css("max-width","46%");
+        //$(".mytitle").css("margin-top","-10%");
+        var margadj = 0;
+        if (window.innerWidth < 800) {
+          margadj = (hgt/1.6)
+          console.log(margadj)
+          $(".mybtn").css("margin","2px !important");
+        };
+        $(".mytitle").css("margin-top",(0 - margadj) + "px");
+        $(".mainseq").css("height",hgt + "px");
+        $(".mainslide").css("width", window.innerWidth + "px");
+        $(".mainslide").css("background-size", window.innerWidth + "px " + hgt + "px");
+      }
+    });
+
 
     $('form#contact_form').validate({
       messages: { },
@@ -217,32 +243,6 @@ jQuery(document).foundation();
   })
 })(Tc.$);
 (function($) {
-  Tc.Module.BlogPost = Tc.Module.extend({
-    init: function($ctx, sandbox, modId) {
-      this._super($ctx, sandbox, modId);
-    },
-    dependencies: function() {
-      // this.require('slick.min.js', 'plugin', 'onBinding');
-    },
-    onBinding: function() {
-      var $ctx = this.$ctx;
-
-      if($ctx.find('img, .images').length == 0) {
-        $ctx.addClass('no-media');
-      }
-
-      $('.images', $ctx).slick({
-        autoplay: true,
-        pauseOnHover: false,
-        dots: true,
-        speed: 1500,
-        arrows: false
-      });
-
-    }
-  })
-})(Tc.$);
-(function($) {
   Tc.Module.BoxedSlider = Tc.Module.extend({
     init: function($ctx, sandbox, modId) {
       this._super($ctx, sandbox, modId);
@@ -360,13 +360,35 @@ jQuery(document).foundation();
   Tc.Module.DefaultSlider = Tc.Module.extend({
     init: function($ctx, sandbox, modId) {
       this._super($ctx, sandbox, modId);
+      if ( window.innerWidth > 1300 ) {
+        $(".mainseq").css("min-height","900px");
+      } else {
+        var hgt = ((1200/2350)*window.innerWidth);
+        var thgt = (hgt/10);
+        if (thgt > 50) { thgt = 50 }
+        $(".mytitle").css("font-size",thgt + "px");
+        var theadhgt = thgt - 9
+        if (theadhgt > 17) {theadhgt = 17}
+        $(".header-text").css("font-size",theadhgt + "px");
+        $(".header-text").css("max-width","46%");
+        //$(".mytitle").css("margin-top","-10%");
+        var margadj = 0;
+        if (window.innerWidth < 800) {
+          margadj = (hgt/1.6)
+          console.log(margadj)
+          $(".mybtn").css("margin","2px !important");
+        };
+        $(".mytitle").css("margin-top",(0 - margadj) + "px");
+        $(".mainseq").css("height",hgt + "px");
+        $(".mainslide").css("width", window.innerWidth + "px");
+        $(".mainslide").css("background-size", window.innerWidth + "px " + hgt + "px");
+      }
     },
     dependencies: function() {
       // this.require('jquery.sequence-min.js', 'plugin', 'onBinding');
     },
     onBinding: function() {
       var $ctx = this.$ctx;
-
       var options = {
         nextButton: true,
         prevButton: true,
@@ -376,7 +398,6 @@ jQuery(document).foundation();
         cycle: true,
         // preloader: true,
         animateStartingFrameIn: true,
-        pagination: true,
         reverseAnimationsWhenNavigatingBackwards: true,
         preventDelayWhenReversingAnimations: true,
         fadeFrameWhenSkipped: false,
@@ -403,6 +424,8 @@ jQuery(document).foundation();
         options.autoStop = false;
       }
 
+
+
       // console.log(options);
 
       var sequence = $(".sequence", $ctx).sequence(options).data("sequence");
@@ -425,90 +448,6 @@ jQuery(document).foundation();
 
       }
 
-
-    }
-  })
-})(Tc.$);
-(function($) {
-  Tc.Module.FullscreenSlider = Tc.Module.extend({
-    init: function($ctx, sandbox, modId) {
-      this._super($ctx, sandbox, modId);
-    },
-    dependencies: function() {
-      // this.require('jquery.ui.core.js', 'plugin', 'onBinding');
-    },
-    onBinding: function() {
-      var $ctx = this.$ctx;
-
-      var fullscreen_slide = function() {
-        $('.fullscreen_slideshow', $ctx).width($(window).width());
-        if( $ctx.hasClass('force')) {
-          $('.fullscreen_slideshow', $ctx).height($(window).height());
-        } else {
-          $('.fullscreen_slideshow', $ctx).height($(window).height() - $('.top-bar').height());
-        }
-      }
-
-      fullscreen_slide();
-
-      $(window).on('resize', fullscreen_slide);
-
-      var options = {
-        nextButton: true,
-        prevButton: true,
-        autoPlay: false,
-        autoStop: true,
-        autoPlayDelay: 3000,
-        pauseButton: true,
-        cycle: true,
-        // preloader: true,
-        animateStartingFrameIn: true,
-        pagination: true,
-        reverseAnimationsWhenNavigatingBackwards: true,
-        preventDelayWhenReversingAnimations: true,
-        fadeFrameWhenSkipped: false,
-        swipeEvents: {
-          left: "next",
-          right: "prev"
-        },
-        pauseOnHover: false
-      }
-
-      var autostop = jQuery('.fullscreen_slideshow', $ctx).data('autostop') == 'on' ? true : false;
-      var timeout = jQuery('.fullscreen_slideshow', $ctx).data('timeout');
-
-      if ( timeout == '0' || !timeout ) {
-        options.autoPlay = false;
-      } else {
-        options.autoPlay = true;
-        options.autoPlayDelay = parseInt(timeout);
-      }
-
-
-      if ( autostop ) {
-        options.autoStop = true;
-      } else {
-        options.autoStop = false;
-      }
-
-      var fullscreen = jQuery(".fullscreen_slideshow", $ctx).sequence(options).data("sequence");
-
-      fullscreen.beforeCurrentFrameAnimatesOut = function() {
-        var sequence = this;
-        var removeStatic = function() {
-          jQuery(".frame.static").removeClass('static');
-
-          if ( !window.fullSequenceAutoStarted && sequence.settings.autoPlay ) {
-            sequence.startAutoPlay(sequence.settings.autoPlayDelay);
-            window.fullSequenceAutoStarted = true;
-          }
-        }
-        setTimeout(removeStatic, 1000);
-        // when the next frame is the last one
-        if ( sequence.nextFrameID == sequence.frames.length && options.autoStop ) {
-          sequence.stopAutoPlay();
-        }
-      }
 
     }
   })

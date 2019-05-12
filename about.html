@@ -28,6 +28,7 @@ members:
     socials:
       - icon_class: fa fa-linkedin-square
         url: https://linkedin.com/in/jackneil
+members2:
   - name: Sam Hartzog
     position: COS
     desc:
@@ -39,7 +40,7 @@ members:
   - name: Kenneth Ellington, MD
     position: Board Member
     desc:
-      32 years of leadership experience in healthcare. Currently, Founder and President of MedStream, constituting over 400 anesthesia providers covering over 50 hospitals throughout the United States.
+      32 years of leadership experience in healthcare. Currently, Founder and President of MedStream, serving over 400 anesthesia providers covering over 50 hospitals throughout the US.
     avatar: images/kenordoug.jpg
     socials:
       - icon_class: fa fa-link
@@ -120,7 +121,29 @@ clients:
           <h3>{{member.name}}</h3>
           <p class='position'>{{member.position}}</p>
           <p>{{member.desc}}</p>
-          <div class='two spacing'></div>
+        </div>
+      </div>
+    {% endfor %}
+    {% for member in page.members2 %}
+      <div class='small-6 medium-3 large-3 columns'>
+        <div class='mod modTeamMember style-2' >
+          <div class='member'>
+            <img class="avatar" alt="" src="{{site.url}}/{{member.avatar}}" />
+            <div class='overlay'>
+              <ul class='socials'>
+                {% for social in member.socials %}
+                  <li>
+                    <a href='{{social.url}}'>
+                      <i class='{{social.icon_class}}'></i>
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <h3>{{member.name}}</h3>
+          <p class='position'>{{member.position}}</p>
+          <p>{{member.desc}}</p>
         </div>
       </div>
     {% endfor %}
@@ -134,7 +157,7 @@ clients:
   </div>
 </div>
 
-<div class='full parallax' style='background-image: url(../images/key.jpg); color: #fff;'>
+<div class='full parallax' style='background-image: url(../images/key.jpg); color: #fff; overflow: hidden;'>
   <div class='row'>
     <div class='large-12 columns'>
       <div class='mod modClients' data-slides_to_show='3'>
@@ -163,5 +186,3 @@ clients:
     </div>
   </div>
 </div>
-<div class='four spacing'></div>
-<div class='four spacing'></div>

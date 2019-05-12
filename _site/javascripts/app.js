@@ -62,7 +62,7 @@ jQuery.extend({
       jQuery("#btnspacing2").addClass("spacing");
       jQuery("#btnspacing1").addClass("spacing");
       jQuery("#btnspacing").addClass("spacing");
-      jQuery("#footer").css("height","400px");
+      jQuery("#footer").css("height","500px");
     } else if (width > 1300) {
       jQuery(".header-text").css("max-width","60%");
       jQuery(".mybtn").removeAttr("style");

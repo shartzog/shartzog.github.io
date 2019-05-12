@@ -38,6 +38,7 @@ jQuery.extend({
       jQuery("#btnspacing").removeClass("spacing");
       jQuery("#btnspacing1").removeClass("spacing");
       jQuery("#btnspacing2").removeClass("spacing");
+      jQuery("#footer").css("height","500px");
     } else if (width < 520) {
       margadj = (hgt/1.8)
       jQuery(".header-text").css("max-width","46%");
@@ -45,6 +46,7 @@ jQuery.extend({
       jQuery("#btnspacing2").removeClass("spacing");
       jQuery("#btnspacing1").addClass("spacing");
       jQuery("#btnspacing").addClass("spacing");
+      jQuery("#footer").css("height","500px");
     } else if (width < 630) {
       margadj = (hgt/2.1)
       jQuery(".header-text").css("max-width","46%");
@@ -52,6 +54,7 @@ jQuery.extend({
       jQuery("#btnspacing2").addClass("spacing");
       jQuery("#btnspacing1").addClass("spacing");
       jQuery("#btnspacing").addClass("spacing");
+      jQuery("#footer").css("height","500px");
     } else if (width < 800) {
       margadj = (hgt/2.6)
       jQuery(".header-text").css("max-width","46%");
@@ -59,12 +62,21 @@ jQuery.extend({
       jQuery("#btnspacing2").addClass("spacing");
       jQuery("#btnspacing1").addClass("spacing");
       jQuery("#btnspacing").addClass("spacing");
+      jQuery("#footer").css("height","400px");
+    } else if (width > 1300) {
+      jQuery(".header-text").css("max-width","60%");
+      jQuery(".mybtn").removeAttr("style");
+      jQuery("#btnspacing2").addClass("spacing");
+      jQuery("#btnspacing1").addClass("spacing");
+      jQuery("#btnspacing").addClass("spacing");
+      jQuery("#footer").css("height","500px");
     } else {
       jQuery(".header-text").css("max-width","60%");
       jQuery(".mybtn").removeAttr("style");
       jQuery("#btnspacing2").addClass("spacing");
       jQuery("#btnspacing1").addClass("spacing");
       jQuery("#btnspacing").addClass("spacing");
+      jQuery("#footer").css("height","400px");
     };
     jQuery(".mytitle").css("margin-top",(0 - margadj) + "px");
     jQuery(".mainseq").css("height",hgt + "px");
@@ -98,6 +110,7 @@ jQuery.extend({
 
 jQuery(document).ready(function() {
   jQuery('html').removeClass('no-js');
+  jQuery.responsiveresize();
 });
 
 jQuery(document).foundation();
@@ -409,7 +422,6 @@ jQuery(document).foundation();
   Tc.Module.DefaultSlider = Tc.Module.extend({
     init: function($ctx, sandbox, modId) {
       this._super($ctx, sandbox, modId);
-      jQuery.responsiveresize();
     },
     dependencies: function() {
       // this.require('jquery.sequence-min.js', 'plugin', 'onBinding');

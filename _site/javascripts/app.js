@@ -6,82 +6,91 @@ jQuery.extend({
 });
 jQuery.extend({
   responsiveresize: function() {
+    var $ = jQuery;
     var width = document.body.clientWidth - 1;
     if (width < 350) {width = 350};
     var hgt = ((1200/2350)*width);
     var thgt = (hgt/10);
     var dhgt = ((274/2901)*width);
     var fairhgt = ((960/1920)*width);
+    var wfwidth = width - 5;
+    if (wfwidth > 1000) {wfwidth = 1000}
+    var wfhgt = ((787/2350)*wfwidth);
     if (thgt > 50) { thgt = 50 }
-    jQuery(".divider").css("height",dhgt + "px");
-    jQuery(".divider").css("width",width + "px");
-    jQuery("#footer").css("background-size",width + "px");
-    jQuery("#fairshare").css("background-size",width + "px " + fairhgt + "px");
-    jQuery("#fairshare").css("width",width + "px");
-    jQuery("#fairshare").css("height",fairhgt + "px");
-    jQuery(".secpic").css("width",((width/2) - 10) + "px");
-    jQuery(".mytitle").css("font-size",thgt + "px");
-    jQuery(".main-title").css("font-size",thgt + "px");
+    $(".divider").css("height",dhgt + "px");
+    $(".divider").css("width",width + "px");
+    $("#footer").css("background-size",width + "px");
+    $("#fairshare").css("background-size",width + "px " + fairhgt + "px");
+    $("#fairshare").css("width",width + "px");
+    $("#fairshare").css("height",fairhgt + "px");
+    $(".secpic").css("width",((width/2) - 10) + "px");
+    $(".mytitle").css("font-size",thgt + "px");
+    $(".main-title").css("font-size",thgt + "px");
     var theadhgt = thgt - 9
     if (theadhgt > 17) {theadhgt = 17}
-    jQuery(".header-text").css("font-size",theadhgt + "px");
-    jQuery(".main-text").css("font-size",theadhgt + "px");
+    $(".header-text").css("font-size",theadhgt + "px");
+    $(".main-text").css("font-size",theadhgt + "px");
+    var twfhgt = thgt
+    if (twfhgt > 30) {twfhgt = 30}
+    $(".wftitle").css("font-size",twfhgt + "px");
+    $(".wfpic").css("width",wfwidth + "px");
+    $(".wfpic").css("height",wfhgt + "px");
     //$(".mytitle").css("margin-top","-10%");
     var margadj = 0;
     if (width < 480) {
       margadj = (hgt/1.6)
       //$(".mybtn").css("max-height","12px");
-      jQuery(".header-text").css("max-width","46%");
-      jQuery(".mybtn").css("margin-top","5px");
-      jQuery(".mybtn").css("padding","5px");
-      jQuery(".mybtn").css("font-size",theadhgt + "px");
-      jQuery("#btnspacing").removeClass("spacing");
-      jQuery("#btnspacing1").removeClass("spacing");
-      jQuery("#btnspacing2").removeClass("spacing");
-      jQuery("#footer").css("height","500px");
+      $(".header-text").css("max-width","46%");
+      $(".mybtn").css("margin-top","5px");
+      $(".mybtn").css("padding","5px");
+      $(".mybtn").css("font-size",theadhgt + "px");
+      $("#btnspacing").removeClass("spacing");
+      $("#btnspacing1").removeClass("spacing");
+      $("#btnspacing2").removeClass("spacing");
+      $("#footer").css("height","500px");
     } else if (width < 520) {
       margadj = (hgt/1.8)
-      jQuery(".header-text").css("max-width","46%");
-      jQuery(".mybtn").removeAttr("style");
-      jQuery("#btnspacing2").removeClass("spacing");
-      jQuery("#btnspacing1").addClass("spacing");
-      jQuery("#btnspacing").addClass("spacing");
-      jQuery("#footer").css("height","500px");
+      $(".header-text").css("max-width","46%");
+      $(".mybtn").removeAttr("style");
+      $("#btnspacing2").removeClass("spacing");
+      $("#btnspacing1").addClass("spacing");
+      $("#btnspacing").addClass("spacing");
+      $("#footer").css("height","500px");
     } else if (width < 630) {
       margadj = (hgt/2.1)
-      jQuery(".header-text").css("max-width","46%");
-      jQuery(".mybtn").removeAttr("style");
-      jQuery("#btnspacing2").addClass("spacing");
-      jQuery("#btnspacing1").addClass("spacing");
-      jQuery("#btnspacing").addClass("spacing");
-      jQuery("#footer").css("height","500px");
+      $(".header-text").css("max-width","46%");
+      $(".mybtn").removeAttr("style");
+      $("#btnspacing2").addClass("spacing");
+      $("#btnspacing1").addClass("spacing");
+      $("#btnspacing").addClass("spacing");
+      $("#footer").css("height","500px");
     } else if (width < 800) {
       margadj = (hgt/2.6)
-      jQuery(".header-text").css("max-width","46%");
-      jQuery(".mybtn").removeAttr("style");
-      jQuery("#btnspacing2").addClass("spacing");
-      jQuery("#btnspacing1").addClass("spacing");
-      jQuery("#btnspacing").addClass("spacing");
-      jQuery("#footer").css("height","500px");
+      $(".header-text").css("max-width","46%");
+      $(".mybtn").removeAttr("style");
+      $("#btnspacing2").addClass("spacing");
+      $("#btnspacing1").addClass("spacing");
+      $("#btnspacing").addClass("spacing");
+      $("#footer").css("height","500px");
     } else if (width > 1300) {
-      jQuery(".header-text").css("max-width","60%");
-      jQuery(".mybtn").removeAttr("style");
-      jQuery("#btnspacing2").addClass("spacing");
-      jQuery("#btnspacing1").addClass("spacing");
-      jQuery("#btnspacing").addClass("spacing");
-      jQuery("#footer").css("height","500px");
+      $(".header-text").css("max-width","60%");
+      $(".mybtn").removeAttr("style");
+      $("#btnspacing2").addClass("spacing");
+      $("#btnspacing1").addClass("spacing");
+      $("#btnspacing").addClass("spacing");
+      $("#footer").css("height","500px");
     } else {
-      jQuery(".header-text").css("max-width","60%");
-      jQuery(".mybtn").removeAttr("style");
-      jQuery("#btnspacing2").addClass("spacing");
-      jQuery("#btnspacing1").addClass("spacing");
-      jQuery("#btnspacing").addClass("spacing");
-      jQuery("#footer").css("height","400px");
+      $(".header-text").css("max-width","60%");
+      $(".mybtn").removeAttr("style");
+      $("#btnspacing2").addClass("spacing");
+      $("#btnspacing1").addClass("spacing");
+      $("#btnspacing").addClass("spacing");
+      $("#footer").css("height","400px");
     };
-    jQuery(".mytitle").css("margin-top",(0 - margadj) + "px");
-    jQuery(".mainseq").css("height",hgt + "px");
-    jQuery(".mainslide").css("width", width + "px");
-    jQuery(".mainslide").css("background-size", width + "px " + hgt + "px");
+    $(".mytitle").css("margin-top",(0 - margadj) + "px");
+    $(".mainseq").css("height",hgt + "px");
+    $(".mainslide").css("width", width + "px");
+    $(".mainslide").css("background-size", width + "px " + hgt + "px");
   }
 });
 

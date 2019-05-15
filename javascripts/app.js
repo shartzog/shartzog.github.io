@@ -18,7 +18,8 @@ jQuery.extend({
     var wfhgt = ((787/2350)*wfwidth);
     if (thgt > 50) { thgt = 50 }
     var ciwdt = 0.3437*width;
-    if (ciwdt < 350) {ciwdt = 350};
+    if (ciwdt < 330) {ciwdt = 330};
+    if (ciwdt > 500) {ciwdt = 500};
     $(".colint").css("max-width",(ciwdt) + "px");
     $(".divider").css("height",dhgt + "px");
     $(".divider").css("width",width + "px");

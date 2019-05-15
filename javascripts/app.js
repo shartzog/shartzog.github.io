@@ -17,7 +17,9 @@ jQuery.extend({
     if (wfwidth > 1000) {wfwidth = 1000}
     var wfhgt = ((787/2350)*wfwidth);
     if (thgt > 50) { thgt = 50 }
-    $(".colint").css("max-width",(0.3437*width) + "px");
+    var ciwdt = 0.3437*width;
+    if (ciwdt < 350) {ciwdt = 350};
+    $(".colint").css("max-width",(ciwdt) + "px");
     $(".divider").css("height",dhgt + "px");
     $(".divider").css("width",width + "px");
     $("#footer").css("background-size",width + "px");

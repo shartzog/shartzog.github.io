@@ -17,6 +17,7 @@ jQuery.extend({
     if (wfwidth > 1000) {wfwidth = 1000}
     var wfhgt = ((787/2350)*wfwidth);
     if (thgt > 50) { thgt = 50 }
+    $(".colint").css("max-width",(0.3437*width) + "px");
     $(".divider").css("height",dhgt + "px");
     $(".divider").css("width",width + "px");
     $("#footer").css("background-size",width + "px");
@@ -48,6 +49,8 @@ jQuery.extend({
       $("#btnspacing1").removeClass("spacing");
       $("#btnspacing2").removeClass("spacing");
       $("#footer").css("height","500px");
+      $(".memberdesc").css("min-height","225px");
+      $(".membername").css("min-height","30px");
     } else if (width < 520) {
       margadj = (hgt/1.8)
       $(".header-text").css("max-width","46%");
@@ -56,6 +59,8 @@ jQuery.extend({
       $("#btnspacing1").addClass("spacing");
       $("#btnspacing").addClass("spacing");
       $("#footer").css("height","500px");
+      $(".memberdesc").css("min-height","175px");
+      $(".membername").css("min-height","0px");
     } else if (width < 630) {
       margadj = (hgt/2.1)
       $(".header-text").css("max-width","46%");
@@ -64,6 +69,8 @@ jQuery.extend({
       $("#btnspacing1").addClass("spacing");
       $("#btnspacing").addClass("spacing");
       $("#footer").css("height","500px");
+      $(".memberdesc").css("min-height","150px");
+      $(".membername").css("min-height","0px");
     } else if (width < 800) {
       margadj = (hgt/2.6)
       $(".header-text").css("max-width","46%");
@@ -72,13 +79,17 @@ jQuery.extend({
       $("#btnspacing1").addClass("spacing");
       $("#btnspacing").addClass("spacing");
       $("#footer").css("height","500px");
-    } else if (width > 1300) {
+      $(".memberdesc").css("min-height","100px");
+      $(".membername").css("min-height","0px");
       $(".header-text").css("max-width","60%");
+    } else if (width > 1300) {
       $(".mybtn").removeAttr("style");
       $("#btnspacing2").addClass("spacing");
       $("#btnspacing1").addClass("spacing");
       $("#btnspacing").addClass("spacing");
       $("#footer").css("height","500px");
+      $(".memberdesc").css("min-height","0px");
+      $(".membername").css("min-height","0px");
     } else {
       $(".header-text").css("max-width","60%");
       $(".mybtn").removeAttr("style");
@@ -86,6 +97,8 @@ jQuery.extend({
       $("#btnspacing1").addClass("spacing");
       $("#btnspacing").addClass("spacing");
       $("#footer").css("height","400px");
+      $(".memberdesc").css("min-height","0px");
+      $(".membername").css("min-height","0px");
     };
     $(".mytitle").css("margin-top",(0 - margadj) + "px");
     $(".mainseq").css("height",hgt + "px");

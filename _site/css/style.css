@@ -119,10 +119,10 @@ ul.shortcode-list i {
 /*smart appear */
 .fadein {
   opacity: 0;
-  -moz-transition: all 0.8s linear;
-  -o-transition: all 0.8s linear;
-  -webkit-transition: all 0.8s linear;
-  transition: all 0.8s linear;
+  -moz-transition: all 1.5s linear;
+  -o-transition: all 1.5s linear;
+  -webkit-transition: all 1.5s linear;
+  transition: all 1.5s linear;
 }
 
 .fadein.appear {
@@ -556,10 +556,11 @@ form input.error, form textarea.error {
   line-height: 1.875rem;
 }
 #footer ul a {
-  color: #F9CE06;
+  color: #f9b052;
+  font-weight: 600;
 }
 #footer ul a:hover {
-  color: #eee;
+  color: #F9CE06;
 }
 #footer ul.socials li {
   display: inline-block;
@@ -583,7 +584,7 @@ form input.error, form textarea.error {
   -o-transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
-  background: #F9CE06;
+  background: #f9b052;
 }
 #footer input.email-address {
   padding: 5px 15px;

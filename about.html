@@ -28,7 +28,6 @@ members:
     socials:
       - icon_class: fa fa-linkedin-square
         url: https://linkedin.com/in/jackneil
-members2:
   - name: Sam Hartzog
     position: COS
     desc:
@@ -38,9 +37,9 @@ members2:
       - icon_class: fa fa-linkedin-square
         url: https://linkedin.com/in/samuelhartzog
   - name: Kenneth Ellington, MD
-    position: Board Member
+    position:
     desc:
-      32 years of leadership experience in healthcare. Currently, Founder and President of MedStream, serving over 400 anesthesia providers covering over 50 hospitals throughout the US.
+      Boasting 32 years of leadership experience in healthcare, Ken is currently Founder and President of MedStream, an anesthesia billing company serving over 400 providers in over 50 hospitals throughout the US.
     avatar: images/kenordoug.jpg
     socials:
       - icon_class: fa fa-link
@@ -72,11 +71,11 @@ clients:
 
 <div class='full'>
   <div class='row'>
-    <div class='large-6 columns'>
+    <div class='medium-6 large-6 columns'>
       <h4 style='color: #999'>We are proud of...</h4>
       <h2>Our team</h2>
       <div class='spacing'></div>
-      <p>Our nine-person founding team constitutes over 50 years of machine learning experience and over 40 years of medical billing experience. We are currently in the development phase of production and are on track to deliver a functional MVP for the anesthesia medical coding industry this summer. </p>
+      <p>Our core team constitutes over 50 years of machine learning experience and over 40 years of medical billing experience. With two licensed physicians, a professor of AI and Entrepreneurial Engineering, an experienced manufacturing systems engineer, and proven developers with domain expertise ranging from end user experience to hardcore back end data science, Hank is truly set for success for the long term. </p>
     </div>
     <div class='spacing two'></div>
     {% for milestone in page.milestones %}
@@ -118,32 +117,9 @@ clients:
               </ul>
             </div>
           </div>
-          <h3>{{member.name}}</h3>
+          <h3 class='membername'>{{member.name}}</h3>
           <p class='position'>{{member.position}}</p>
-          <p>{{member.desc}}</p>
-        </div>
-      </div>
-    {% endfor %}
-    {% for member in page.members2 %}
-      <div class='small-6 medium-3 large-3 columns'>
-        <div class='mod modTeamMember style-2' >
-          <div class='member'>
-            <img class="avatar" alt="" src="{{site.url}}/{{member.avatar}}" />
-            <div class='overlay'>
-              <ul class='socials'>
-                {% for social in member.socials %}
-                  <li>
-                    <a href='{{social.url}}'>
-                      <i class='{{social.icon_class}}'></i>
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-          <h3>{{member.name}}</h3>
-          <p class='position'>{{member.position}}</p>
-          <p>{{member.desc}}</p>
+          <p class='memberdesc' style='min-height:200px'>{{member.desc}}</p>
         </div>
       </div>
     {% endfor %}

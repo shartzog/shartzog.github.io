@@ -14,9 +14,9 @@ jQuery.extend({
     var dhgt = ((274/2901)*width);
     var fairhgt = ((960/1920)*width);
     var wfwidth = width - 5;
-    if (wfwidth > 1000) {wfwidth = 1000}
+    if (wfwidth > 1000) {wfwidth = 1000};
     var wfhgt = ((787/2350)*wfwidth);
-    if (thgt > 50) { thgt = 50 }
+    if (thgt > 50) { thgt = 50 };
     var ciwdt = 0.3437*width;
     if (ciwdt < 330) {ciwdt = 330};
     if (ciwdt > 500) {ciwdt = 500};
@@ -168,8 +168,10 @@ jQuery(document).foundation();
 
       if ( scroll >= 40 ) {
         $('body').addClass('shrink');
+        $('#titbarhank').addClass('titbarshrink')
       } else {
         $('body').removeClass('shrink');
+        $('#titbarhank').removeClass('titbarshrink')
       }
 
     });

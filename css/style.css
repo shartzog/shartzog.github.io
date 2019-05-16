@@ -310,6 +310,19 @@ ul.shortcode-list i {
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
+
+.titbarshrink {
+  height: 38px;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
 .contain-to-grid .title-area img, .contain-to-grid .title-area li img, .contain-to-grid .title-area a img {
   width: 100%;
   -moz-transition-property: all;

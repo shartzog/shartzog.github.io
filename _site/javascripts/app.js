@@ -148,6 +148,41 @@ jQuery(document).foundation();
       this.muted = true;
     });
 
+    $('.signupbtn').click(function() {
+      $('#myModal').css("display","block")
+    });
+
+    $('.closebtn').click(function() {
+      $('#myModal').css("display","none")
+      $('#thanksModal').css("display","none")
+      $('#badModal').css("display","none")
+    });
+
+    $('.againbtn').click(function() {
+      $('#myModal').css("display","block")
+      $('#thanksModal').css("display","none")
+      $('#badModal').css("display","none")
+    });
+
+    $('.close').click(function() {
+      $('#myModal').css("display","none")
+      $('#thanksModal').css("display","none")
+      $('#badModal').css("display","none")
+    });
+
+    $('.submitbtn').click(function() {
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($('#signupemail').val())) {
+        dataLayer.push({'event' : 'logemail' , 'userEmail' : $('#signupemail').val()})
+        $('#signupemail').val('')
+        $('#thanksModal').css("display","block")
+        $('#badModal').css("display","none")
+      } else {
+        $('#thanksModal').css("display","none")
+        $('#badModal').css("display","block")
+      }
+      $('#myModal').css("display","none")
+    });
+
     $('.fadeinleft, .fadeinright, .fadein, .popin').appear(function() {
       var delay = $(this).data('delay');
       var that = this;
@@ -158,11 +193,14 @@ jQuery(document).foundation();
 
     });
 
+
+
     // $('.popin').each(function() {
     //   $(this).addClass('appear');
     // });
 
     $(window).scroll(function() {
+      $('#myModal').css("display","none")
 
       var scroll = $(window).scrollTop();
 

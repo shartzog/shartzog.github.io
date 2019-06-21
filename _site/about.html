@@ -2,6 +2,19 @@
 <html>
 
   <head>
+  <script>
+    dataLayer = [{
+      'event': 'blank',
+      'userEmail': 'blank'
+    }];
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KKG5GLV');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -109,6 +122,10 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
 
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KKG5GLV"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <a href="" id="top"></a>
 <div class='contain-to-grid sticky'>
@@ -162,14 +179,6 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
           
             <li class="">
               <a href="http://localhost:4000/pricing.html">Pricing</a>
-            </li>
-          
-        
-          
-
-          
-            <li class="">
-              <a href="http://localhost:4000/signup.html">Sign Up</a>
             </li>
           
         
@@ -281,7 +290,7 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
             </div>
           </div>
           <h3 class='membername'>Sam Hartzog</h3>
-          <p class='position'>COS</p>
+          <p class='position'>COO</p>
           <p class='memberdesc' style='min-height:200px'>A senior process control systems engineer with a Bachelor’s in Chemical Engineering, Sam is the enterprise expert for industrial machine learning at one of the largest brewers in the US.</p>
         </div>
       </div>
@@ -302,7 +311,7 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
               </ul>
             </div>
           </div>
-          <h3 class='membername'>Kenneth Ellington, MD</h3>
+          <h3 class='membername'>Dr. Kenneth Ellington, MD</h3>
           <p class='position'></p>
           <p class='memberdesc' style='min-height:200px'>Boasting 32 years of leadership experience in healthcare, Ken is currently Founder and President of MedStream, an anesthesia billing company serving over 400 providers in over 50 hospitals throughout the US.</p>
         </div>
@@ -421,7 +430,7 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
         <a class='button boxed small' style='padding: 6px; margin: 2px; border: 0px; color: #f9b052;' href="about.html">About</a>
         <a class='button boxed small' style='padding: 6px; margin: 2px; border: 0px; color: #f9b052;' href='FAQ.html'>FAQ</a>
         <a class='button boxed small' style='padding: 6px; margin: 2px; border: 0px; color: #f9b052;' href="pricing.html">Pricing</a>
-        <a class='button boxed small' style='padding: 6px; margin: 2px; border: 0px; color: #f9b052;' href="signup.html">Sign Up</a>
+        <a class='button boxed small signupbtn' style='padding: 6px; margin: 2px; border: 0px; color: #f9b052;'>Download</a>
       </div>
     </div>
     <div class='large-3 medium-3 columns'>
@@ -443,6 +452,49 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
 <script src="/javascripts/app.js" type="text/javascript"></script>
 
 
+    <div id="myModal" class="modal popin">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="box" style="text-align: center; width: 100%; ">
+          <i class='fa fa-cogs fa-4x'></i>
+        </div>
+        <p style='width:95%; padding-top:10px;'>Oops! Hank's not quite ready for public download.  Enter your email below to sign up to be a beta tester!</p>
+        <input type="text" id='signupemail' name='email' />
+        <div class="box" style="text-align: center; width: 100%; ">
+          <a class='button mybtn submitbtn'>SUBMIT!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="badModal" class="modal popin">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="box" style="text-align: center; width: 100%; ">
+          <i class='fa fa-exclamation-circle fa-4x'></i>
+        </div>
+        <p style='width:95%; padding-top:10px;'>Hey...  What's the big idea?  That wasn't a valid email address!</p>
+        <div class="box" style="text-align: center; width: 100%; ">
+          <a class='button mybtn againbtn'>TRY AGAIN</a>
+          <a class='button mybtn closebtn'>FORGET IT</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="thanksModal" class="modal popin">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="box" style="text-align: center; width: 100%; ">
+          <i class='fa fa-thumbs-o-up fa-4x'></i>
+        </div>
+        <p style='width:95%; padding-top:10px;'>Thank you for your interest!  A member of the Hank team will be in touch!</p>
+        <div class="box" style="text-align: center; width: 100%; ">
+          <a class='button mybtn closebtn'>OK</a>
+        </div>
+      </div>
+    </div>
   </body>
 
 </html>

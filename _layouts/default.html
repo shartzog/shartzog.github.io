@@ -4,6 +4,10 @@
   {% include head.html %}
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KKG5GLV"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     {% include header.html %}
 
@@ -13,6 +17,49 @@
 
     {% include footer.html %}
 
+    <div id="myModal" class="modal popin">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="box" style="text-align: center; width: 100%; ">
+          <i class='fa fa-cogs fa-4x'></i>
+        </div>
+        <p style='width:95%; padding-top:10px;'>Oops! Hank's not quite ready for public download.  Enter your email below to sign up to be a beta tester!</p>
+        <input type="text" id='signupemail' name='email' />
+        <div class="box" style="text-align: center; width: 100%; ">
+          <a class='button mybtn submitbtn'>SUBMIT!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="badModal" class="modal popin">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="box" style="text-align: center; width: 100%; ">
+          <i class='fa fa-exclamation-circle fa-4x'></i>
+        </div>
+        <p style='width:95%; padding-top:10px;'>Hey...  What's the big idea?  That wasn't a valid email address!</p>
+        <div class="box" style="text-align: center; width: 100%; ">
+          <a class='button mybtn againbtn'>TRY AGAIN</a>
+          <a class='button mybtn closebtn'>FORGET IT</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="thanksModal" class="modal popin">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="box" style="text-align: center; width: 100%; ">
+          <i class='fa fa-thumbs-o-up fa-4x'></i>
+        </div>
+        <p style='width:95%; padding-top:10px;'>Thank you for your interest!  A member of the Hank team will be in touch!</p>
+        <div class="box" style="text-align: center; width: 100%; ">
+          <a class='button mybtn closebtn'>OK</a>
+        </div>
+      </div>
+    </div>
   </body>
 
 </html>

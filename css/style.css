@@ -59,6 +59,17 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 600px; /* Could be more or less, depending on screen size */
 }
 
+.popbox {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  background-color: #fefefe;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 95%; /* Could be more or less, depending on screen size */
+  max-width: 200px; /* Could be more or less, depending on screen size */
+}
+
 /* The Close Button */
 .close {
   color: #aaa;

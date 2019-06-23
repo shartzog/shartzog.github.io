@@ -168,11 +168,15 @@ jQuery(document).foundation();
       srcemail = '#signupemail'
     });
 
+    $('.codedispbtn').click(function(e) {
+      $('#codepop').css("top",(e.pageY - $(document).scrollTop()) + "px")
+      $('#codepop').css("left",(e.pageX - 100) + "px")
+      $('#codepop').css("display","block")
+    });
+
     $('.closebtn').click(function() {
-      $('#myModal').css("display","none")
-      $('#signModal').css("display","none")
-      $('#thanksModal').css("display","none")
-      $('#badModal').css("display","none")
+      $('.modal').css("display","none")
+      $('.popbox').css("display","none")
     });
 
     $('.againbtn').click(function() {
@@ -182,10 +186,8 @@ jQuery(document).foundation();
     });
 
     $('.close').click(function() {
-      $('#myModal').css("display","none")
-      $('#signModal').css("display","none")
-      $('#thanksModal').css("display","none")
-      $('#badModal').css("display","none")
+      $('.modal').css("display","none")
+      $('.popbox').css("display","none")
     });
 
     $('.submitbtn').click(function() {
@@ -220,10 +222,8 @@ jQuery(document).foundation();
     // });
 
     $(window).scroll(function() {
-      $('#myModal').css("display","none")
-      $('#signModal').css("display","none")
-      $('#thanksModal').css("display","none")
-      $('#badModal').css("display","none")
+      $('.modal').css("display","none")
+      $('.popbox').css("display","none")
 
       var scroll = $(window).scrollTop();
 

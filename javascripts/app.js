@@ -33,6 +33,13 @@ jQuery.extend({
     var theadhgt = thgt - 9
     if (theadhgt > 17) {theadhgt = 17}
     $(".header-text").css("font-size",theadhgt + "px");
+    if (theadhgt < 12) {
+      $(".pricing-text").css("font-size","12px");
+    } else if (theadhgt > 15){
+      $(".pricing-text").css("font-size","15px");
+    } else {
+      $(".pricing-text").css("font-size",theadhgt + "px");
+    }
     $(".main-text").css("font-size",theadhgt + "px");
     var twfhgt = thgt
     if (twfhgt > 30) {twfhgt = 30}
@@ -147,33 +154,45 @@ jQuery(document).foundation();
     $('video').each(function() {
       this.muted = true;
     });
-
+    var srcform = '#myModal'
+    var srcemail = '#signupemail'
     $('.signupbtn').click(function() {
       $('#myModal').css("display","block")
+      srcform = '#myModal'
+      srcemail = '#downloademail'
+    });
+
+    $('#signuppaid').click(function() {
+      $('#signModal').css("display","block")
+      srcform = '#signModal'
+      srcemail = '#signupemail'
     });
 
     $('.closebtn').click(function() {
       $('#myModal').css("display","none")
+      $('#signModal').css("display","none")
       $('#thanksModal').css("display","none")
       $('#badModal').css("display","none")
     });
 
     $('.againbtn').click(function() {
-      $('#myModal').css("display","block")
+      $(srcform).css("display","block")
       $('#thanksModal').css("display","none")
       $('#badModal').css("display","none")
     });
 
     $('.close').click(function() {
       $('#myModal').css("display","none")
+      $('#signModal').css("display","none")
       $('#thanksModal').css("display","none")
       $('#badModal').css("display","none")
     });
 
     $('.submitbtn').click(function() {
-      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($('#signupemail').val())) {
-        dataLayer.push({'event' : 'logemail' , 'userEmail' : $('#signupemail').val()})
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($(srcemail).val())) {
+        dataLayer.push({'event' : 'logemail' , 'userEmail' : $(srcemail).val(), 'signupType' : srcemail})
         $('#signupemail').val('')
+        $('#signupemail1').val('')
         $('#thanksModal').css("display","block")
         $('#badModal').css("display","none")
       } else {
@@ -181,6 +200,7 @@ jQuery(document).foundation();
         $('#badModal').css("display","block")
       }
       $('#myModal').css("display","none")
+      $('#signModal').css("display","none")
     });
 
     $('.fadeinleft, .fadeinright, .fadein, .popin').appear(function() {
@@ -201,6 +221,9 @@ jQuery(document).foundation();
 
     $(window).scroll(function() {
       $('#myModal').css("display","none")
+      $('#signModal').css("display","none")
+      $('#thanksModal').css("display","none")
+      $('#badModal').css("display","none")
 
       var scroll = $(window).scrollTop();
 

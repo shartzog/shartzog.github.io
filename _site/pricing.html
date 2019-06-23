@@ -5,7 +5,8 @@
   <script>
     dataLayer = [{
       'event': 'blank',
-      'userEmail': 'blank'
+      'userEmail': 'blank',
+      'signupType': 'blank'
     }];
   </script>
   <!-- Google Tag Manager -->
@@ -128,8 +129,8 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
     <!-- End Google Tag Manager (noscript) -->
 
     <a href="" id="top"></a>
-<div class='contain-to-grid sticky'>
-  <nav class='top-bar' data-options='sticky_on: all' data-topbar=''>
+<div class='contain-to-grid sticky' style='background-color:#fff;'>
+  <nav class='top-bar' data-options='sticky_on: all' data-topbar='' >
     <ul class='title-area'>
       <li class='name'>
         <h1>
@@ -194,34 +195,34 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
   <div class="small-0 medium-1 columns"><br></div>
   <div class="small-4 medium-3 columns" style="padding: 0px;">
     <div class="box" style="min-height: 50px; width: 100%;"></div>
-    <div class="box-gray box-title" style="min-height: 50px; width: 100%; background: #000; text-align: center; color: #fff; padding-top: 17px; font-size: 16px;">TRIAL</div>
+    <div class="box-gray box-title" style="min-height: 50px; width: 100%; background: #000; text-align: center; color: #fff; padding-top: 17px; font-size: 16px;">BASIC</div>
     <div class="box-inner-border box-gray" style="min-height: 300px; width: 100%; background: #FFF; text-align: center; color: #000;">
       <p style="min-height: 46px; font-size: 24px; padding-top: 6px;">FREE</p>
-      <div style="padding: 2px;">
+      <div style="padding: 2px;" class='pricing-text'>
         Installs in Seconds<br>
         No setup needed<br>
-        Predicts ICD, CPT, HCPCS, and more<br>
-        Text highlighting<br><br>
-        <div style="font-size: 10px;">Limited to 50 cases/month</div>
-        <a id="signuptrial" class="button signupbtn" style="padding: 6px; margin: 3px;">Download</a>
+        Look up ICD, CPT, and <a class='codedispbtn' style='color:#555'>more</a><br><br>
+        <div style="font-size: 10px;">Limited time offer</div>
+        <a id="signuptrial" class="button signupbtn" style="padding: 6px; margin: 3px;">Install</a>
       </div>
     </div>
     <div class="box" style="min-height: 50px; width: 100%;"></div>
   </div>
   <div class="small-4 medium-4 columns" style="padding: 0px;">
-    <div class="box-blue box-title" style="min-height: 50px; width: 100%; background: #321e70; text-align: center; color: #fff; padding-top: 17px; font-size: 16px;">CONTRIBUTOR</div>
+    <div class="box-blue box-title" style="min-height: 50px; width: 100%; background: #321e70; text-align: center; color: #fff; padding-top: 17px; font-size: 16px;">TRAINER</div>
     <div class="box-inner-border box-blue" style="min-height: 400px; width: 100%; background: #d4c6ff; text-align: center; color: #000;">
       <p style="min-height: 46px; font-size: 24px; padding-top: 6px;">FREE*</p>
-      <div style="padding: 2px;">
-        All TRIAL features<br>
-        Unlimited cases<br>
-        Increase efficiency by over 20%<br>
+      <div style="padding: 2px;" class='pricing-text'>
+        All BASIC features<br>
+        Processes full records<br>
+        Identifies keywords<br>
+        Translates keywords into <a class='codedispbtn' style='color:#555'>codes</a><br>
         Get paid for contributions<br>
         Profit sharing options<br>
         Referral rewards<br>
-        ICD and CPT lookup<br><br>
+        ASA Crosswalk included<br><br>
         <div style="font-size: 10px;">*See <a href="FAQ.html#contribute" style="color: #555;">content contribution requirement</a>; Limited time offer</div>
-        <a id="signupcontributor" class="button signupbtn" style="padding: 6px; margin: 3px;">Download</a>
+        <a id="inviteonly" class="button inviteolnybtn" style="padding: 6px; margin: 3px;background:#ccc;border-color:#ccc;">INVITE ONLY</a>
       </div>
     </div>
   </div>
@@ -229,14 +230,15 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
     <div class="box" style="min-height: 50px; width: 100%;"></div>
     <div class="box-gray box-title" style="min-height: 50px; width: 100%; background: #000; text-align: center; color: #fff; padding-top: 17px; font-size: 16px;">PAID TIER</div>
     <div class="box-inner-border box-gray" style="min-height: 300px; width: 100%; background: #FFF; text-align: center; color: #000;">
-      <p style="min-height: 46px; font-size: 24px; padding-top: 6px;">$150/mo.</p>
-      <div style="padding: 2px;">
-        All TRIAL features<br>
-        Unlimited cases<br>
-        Increase efficiency by over 20%<br>
-        ICD and CPT lookup<br><br>
+      <p style="min-height: 46px; font-size: 24px; padding-top: 6px;">$100/mo.</p>
+      <div style="padding: 2px;" class='pricing-text'>
+        All BASIC features<br>
+        Processes full records<br>
+        Identifies keywords<br>
+        Translates keywords into <a class='codedispbtn' style='color:#555'>codes</a><br>
+        ASA Crosswalk included<br><br>
         <div style="font-size: 10px;">No contribution requirement</div>
-        <a id="signuppaid" class="button signupbtn" style="padding: 6px; margin: 3px;">Download</a>
+        <a id="signuppaid" class="button" style="padding: 6px; margin: 3px;">SIGN UP</a>
       </div>
     </div>
     <div class="box" style="min-height: 50px; width: 100%;"></div>
@@ -295,9 +297,24 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
       <div class="modal-content">
         <span class="close">&times;</span>
         <div class="box" style="text-align: center; width: 100%; ">
-          <i class='fa fa-cogs fa-4x'></i>
+          <img src='images/hank.png' style='width:60px;height:60px;'/>
         </div>
         <p style='width:95%; padding-top:10px;'>Oops! Hank's not quite ready for public download.  Enter your email below to sign up to be a beta tester!</p>
+        <input type="text" id='downloademail' name='email' />
+        <div class="box" style="text-align: center; width: 100%; ">
+          <a class='button mybtn submitbtn'>SUBMIT!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="signModal" class="modal popin">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="box" style="text-align: center; width: 100%; ">
+          <img src='images/hank.png' style='width:60px;height:60px;'/>
+        </div>
+        <p style='width:95%; padding-top:10px;'>Thank you for your interest!  Enter your email below and a member of the Hank sales team will be in touch.</p>
         <input type="text" id='signupemail' name='email' />
         <div class="box" style="text-align: center; width: 100%; ">
           <a class='button mybtn submitbtn'>SUBMIT!</a>
@@ -327,7 +344,7 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
         <div class="box" style="text-align: center; width: 100%; ">
           <i class='fa fa-thumbs-o-up fa-4x'></i>
         </div>
-        <p style='width:95%; padding-top:10px;'>Thank you for your interest!  A member of the Hank team will be in touch!</p>
+        <p style='width:95%; padding-top:10px;'>Thanks for signing up!  We'll be in touch with details on how to get started.</p>
         <div class="box" style="text-align: center; width: 100%; ">
           <a class='button mybtn closebtn'>OK</a>
         </div>

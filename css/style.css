@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 105px auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   border-radius: 25px;

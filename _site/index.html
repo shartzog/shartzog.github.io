@@ -5,7 +5,8 @@
   <script>
     dataLayer = [{
       'event': 'blank',
-      'userEmail': 'blank'
+      'userEmail': 'blank',
+      'signupType': 'blank'
     }];
   </script>
   <!-- Google Tag Manager -->
@@ -128,8 +129,8 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
     <!-- End Google Tag Manager (noscript) -->
 
     <a href="" id="top"></a>
-<div class='contain-to-grid sticky'>
-  <nav class='top-bar' data-options='sticky_on: all' data-topbar=''>
+<div class='contain-to-grid sticky' style='background-color:#fff;'>
+  <nav class='top-bar' data-options='sticky_on: all' data-topbar='' >
     <ul class='title-area'>
       <li class='name'>
         <h1>
@@ -402,9 +403,24 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
       <div class="modal-content">
         <span class="close">&times;</span>
         <div class="box" style="text-align: center; width: 100%; ">
-          <i class='fa fa-cogs fa-4x'></i>
+          <img src='images/hank.png' style='width:60px;height:60px;'/>
         </div>
         <p style='width:95%; padding-top:10px;'>Oops! Hank's not quite ready for public download.  Enter your email below to sign up to be a beta tester!</p>
+        <input type="text" id='downloademail' name='email' />
+        <div class="box" style="text-align: center; width: 100%; ">
+          <a class='button mybtn submitbtn'>SUBMIT!</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="signModal" class="modal popin">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="box" style="text-align: center; width: 100%; ">
+          <img src='images/hank.png' style='width:60px;height:60px;'/>
+        </div>
+        <p style='width:95%; padding-top:10px;'>Thank you for your interest!  Enter your email below and a member of the Hank sales team will be in touch.</p>
         <input type="text" id='signupemail' name='email' />
         <div class="box" style="text-align: center; width: 100%; ">
           <a class='button mybtn submitbtn'>SUBMIT!</a>
@@ -434,7 +450,7 @@ body, p {color: #454545 !important; line-height: 1.42 !important; font-weight: 5
         <div class="box" style="text-align: center; width: 100%; ">
           <i class='fa fa-thumbs-o-up fa-4x'></i>
         </div>
-        <p style='width:95%; padding-top:10px;'>Thank you for your interest!  A member of the Hank team will be in touch!</p>
+        <p style='width:95%; padding-top:10px;'>Thanks for signing up!  We'll be in touch with details on how to get started.</p>
         <div class="box" style="text-align: center; width: 100%; ">
           <a class='button mybtn closebtn'>OK</a>
         </div>

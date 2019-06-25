@@ -174,6 +174,12 @@ jQuery(document).foundation();
       $('#codepop').css("display","block")
     });
 
+    $('.phidispbtn').click(function(e) {
+      $('#phipop').css("top",(e.pageY - $(document).scrollTop()) + "px")
+      $('#phipop').css("left",(e.pageX - 100) + "px")
+      $('#phipop').css("display","block")
+    });
+
     $('.closebtn').click(function() {
       $('.modal').css("display","none")
       $('.popbox').css("display","none")

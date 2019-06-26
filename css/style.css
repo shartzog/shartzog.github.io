@@ -57,6 +57,10 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 25px;
   width: 95%; /* Could be more or less, depending on screen size */
   max-width: 600px; /* Could be more or less, depending on screen size */
+  background-image: url('../images/hills.png');
+  background-position: bottom center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .dispbtn {

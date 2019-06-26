@@ -221,14 +221,11 @@ jQuery(document).foundation();
 
     });
 
-
-
     // $('.popin').each(function() {
     //   $(this).addClass('appear');
     // });
 
     $(window).scroll(function() {
-      $('.modal').css("display","none")
       $('.popbox').css("display","none")
 
       var scroll = $(window).scrollTop();

@@ -265,7 +265,7 @@ jQuery(document).foundation();
               "message": {
                   "from": "Hank <signup@we.are.hank.ai>",
                   "to": $(srcemail).val(),
-                  "body": "<img src='https://" + getUrl.host + "/images/hank.png' style='width:60px;height:60px;'/>" +
+                  "body": "<div style='text-align: center; width: 100%;'><img src='https://" + getUrl.host + "/images/hank.png' style='width:60px;height:60px;margin:auto;'/></div>" +
                         "<br>Thanks for your interest!  We'll be in contact with details on how to get started...<br><br>Cheers!<br>The Hank Team",
                   "subject": "Thanks from Hank!"
               },

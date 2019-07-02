@@ -223,13 +223,13 @@ jQuery(document).foundation();
           },
             "async":true
         };
-        $('#signupemail').val('')
-        $('#signupemail1').val('')
         $('.loading').show();
         waitingForTimeout = true;
         myTimeout = setTimeout(function () {
           $('.loading').hide()
           $('#errModal').css("display","block")
+          $('#downloademail').val('')
+          $('#signupemail').val('')
           waitingForTimeout = false;
         },15000)
         jQuery.ajax({
@@ -243,6 +243,8 @@ jQuery(document).foundation();
             clearTimeout(myTimeout);
             $('.loading').hide();
             if (waitingForTimeout) {$('#errModal').css("display","block")}
+            $('#downloademail').val('')
+            $('#signupemail').val('')
             waitingForTimeout = false;
           },
           success: function(d){
@@ -251,6 +253,39 @@ jQuery(document).foundation();
             $('.loading').hide();
             if (waitingForTimeout) {$('#thanksModal').css("display","block")}
             waitingForTimeout = false;
+            var getUrl = window.location;
+            var data = {
+              "auth": {
+                "server": 'smtp.mailgun.org',
+                "username": "signup@we.are.hank.ai",
+                "password": "password111",
+                "port": "25",
+                'tls': true
+              },
+              "message": {
+                  "from": "Hank <signup@we.are.hank.ai>",
+                  "to": $(srcemail).val(),
+                  "body": "<img src='https://" + getUrl.host + "/images/hank.png' style='width:60px;height:60px;'/>" +
+                        "<br>Thanks for your interest!  We'll be in contact with details on how to get started...<br><br>Cheers!<br>The Hank Team",
+                  "subject": "Thanks from Hank!"
+              },
+                "async":true
+            };
+            $('#downloademail').val('')
+            $('#signupemail').val('')
+            jQuery.ajax({
+              type: "GET",
+              url: "https://www.jackmd.com/apis/mail.php",
+              jsonp: "callback",
+              dataType: "jsonp",
+              data: data,
+              error: function(d) {
+                console.log('ERROR: ', d);
+              },
+              success: function(d){
+                console.log('AJAX Query Complete. Response: ', d);
+              }
+            })
           },
         })
 

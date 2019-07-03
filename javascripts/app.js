@@ -249,10 +249,6 @@ jQuery(document).foundation();
           },
           success: function(d){
             console.log('AJAX Query Complete. Response: ', d);
-            clearTimeout(myTimeout);
-            $('.loading').hide();
-            if (waitingForTimeout) {$('#thanksModal').css("display","block")}
-            waitingForTimeout = false;
             var getUrl = window.location;
             var data = {
               "auth": {
@@ -265,14 +261,13 @@ jQuery(document).foundation();
               "message": {
                   "from": "Hank <signup@we.are.hank.ai>",
                   "to": $(srcemail).val(),
-                  "body": "<div style='text-align: center; width: 100%;'><img src='https://" + getUrl.host + "/images/hank.png' style='width:60px;height:60px;margin:auto;'/>" +
-                        "<br>Thanks for your interest!  We'll be in contact with details on how to get started...<br><br>Cheers!<br>The Hank Team</div>",
+                  "body": "<div style='text-align: center; width: 100%;'><a href='https://hank.ai'><img src='https://" + getUrl.host + "/images/hank.png' style='width:60px;height:60px;margin:auto;'/></a>" +
+                        "<br>Welcome to the team!  I'll be in contact with details on how to get started...<br><br>Cheers!<br>Hank" +
+                        "<br><br><br>P.S. - If you have a minute, please take my <a href='https://form.responster.com/wVWg9e?email=" + $(srcemail).val() + "'>survey</a> to allow me get to know you better.</div>",
                   "subject": "Welcome from Hank!"
               },
                 "async":true
             };
-            $('#downloademail').val('')
-            $('#signupemail').val('')
             jQuery.ajax({
               type: "GET",
               url: "https://www.jackmd.com/apis/mail.php",
@@ -281,9 +276,22 @@ jQuery(document).foundation();
               data: data,
               error: function(d) {
                 console.log('ERROR: ', d);
+                clearTimeout(myTimeout);
+                $('.loading').hide();
+                if (waitingForTimeout) {$('#errModal').css("display","block")}
+                $('#downloademail').val('')
+                $('#signupemail').val('')
+                waitingForTimeout = false;
               },
               success: function(d){
                 console.log('AJAX Query Complete. Response: ', d);
+                clearTimeout(myTimeout);
+                $('.loading').hide();
+                $('#thanksemailtxt').text('Thanks for signing up!  A welcome email has been sent to ' + $(srcemail).val() + '.  We will be in touch with details on how to get started.')
+                if (waitingForTimeout) {$('#thanksModal').css("display","block")}
+                waitingForTimeout = false;
+                $('#downloademail').val('')
+                $('#signupemail').val('')
               }
             })
           },

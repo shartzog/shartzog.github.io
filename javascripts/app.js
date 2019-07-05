@@ -47,7 +47,7 @@ jQuery.extend({
     $(".wfpic").css("width",wfwidth + "px");
     $(".wfpic").css("height",wfhgt + "px");
     //$(".mytitle").css("margin-top","-10%");
-    var margadj = 0;
+    var margadj = 50;
     if (width < 480) {
       margadj = (hgt/1.6)
       //$(".mybtn").css("max-height","12px");
@@ -55,19 +55,15 @@ jQuery.extend({
       $(".mybtn").css("margin-top","5px");
       $(".mybtn").css("padding","5px");
       $(".mybtn").css("font-size",theadhgt + "px");
-      $("#btnspacing").removeClass("spacing");
-      $("#btnspacing1").removeClass("spacing");
-      $("#btnspacing2").removeClass("spacing");
       $("#footer").css("height","510px");
       $(".memberdesc").css("min-height","225px");
       $(".membername").css("min-height","30px");
-    } else if (width < 520) {
+      $(".btnspacing").removeClass("spacing");
+    } else if (width < 540) {
       margadj = (hgt/1.8)
       $(".header-text").css("max-width","46%");
       $(".mybtn").removeAttr("style");
-      $("#btnspacing2").removeClass("spacing");
-      $("#btnspacing1").addClass("spacing");
-      $("#btnspacing").addClass("spacing");
+      $(".btnspacing").removeClass("spacing");
       $("#footer").css("height","510px");
       $(".memberdesc").css("min-height","175px");
       $(".membername").css("min-height","0px");
@@ -75,9 +71,7 @@ jQuery.extend({
       margadj = (hgt/2.1)
       $(".header-text").css("max-width","46%");
       $(".mybtn").removeAttr("style");
-      $("#btnspacing2").addClass("spacing");
-      $("#btnspacing1").addClass("spacing");
-      $("#btnspacing").addClass("spacing");
+      $(".btnspacing").addClass("spacing");
       $("#footer").css("height","510px");
       $(".memberdesc").css("min-height","150px");
       $(".membername").css("min-height","0px");
@@ -85,27 +79,20 @@ jQuery.extend({
       margadj = (hgt/2.6)
       $(".header-text").css("max-width","46%");
       $(".mybtn").removeAttr("style");
-      $("#btnspacing2").addClass("spacing");
-      $("#btnspacing1").addClass("spacing");
-      $("#btnspacing").addClass("spacing");
+      $(".btnspacing").addClass("spacing");
       $("#footer").css("height","510px");
       $(".memberdesc").css("min-height","100px");
       $(".membername").css("min-height","0px");
-      $(".header-text").css("max-width","60%");
     } else if (width > 1300) {
       $(".mybtn").removeAttr("style");
-      $("#btnspacing2").addClass("spacing");
-      $("#btnspacing1").addClass("spacing");
-      $("#btnspacing").addClass("spacing");
+      $(".btnspacing").addClass("spacing");
       $("#footer").css("height","510px");
       $(".memberdesc").css("min-height","0px");
       $(".membername").css("min-height","0px");
     } else {
       $(".header-text").css("max-width","60%");
       $(".mybtn").removeAttr("style");
-      $("#btnspacing2").addClass("spacing");
-      $("#btnspacing1").addClass("spacing");
-      $("#btnspacing").addClass("spacing");
+      $(".btnspacing").addClass("spacing");
       $("#footer").css("height","400px");
       $(".memberdesc").css("min-height","0px");
       $(".membername").css("min-height","0px");
@@ -248,7 +235,7 @@ jQuery(document).foundation();
             waitingForTimeout = false;
           },
           success: function(d){
-            console.log('AJAX Query Complete. Response: ', d);
+            //console.log('AJAX Query Complete. Response: ', d);
             var getUrl = window.location;
             var data = {
               "auth": {
@@ -284,7 +271,7 @@ jQuery(document).foundation();
                 waitingForTimeout = false;
               },
               success: function(d){
-                console.log('AJAX Query Complete. Response: ', d);
+                //console.log('AJAX Query Complete. Response: ', d);
                 clearTimeout(myTimeout);
                 $('.loading').hide();
                 $('#thanksemailtxt').text('Thanks for signing up!  A welcome email has been sent to ' + $(srcemail).val() + '.  We will be in touch with details on how to get started.')

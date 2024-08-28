@@ -1,0 +1,7 @@
+include:
+ - specs/_types
+ - specs/_types/_client.html
+ - specs/_types/_match.html
+ - specs/_types/_section.html
+ - specs/_types/_summary.html
+ - specs/_types/_table.html

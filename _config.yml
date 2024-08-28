@@ -17,3 +17,8 @@ include:
  - _types/_section.html
  - _types/_summary.html
  - _types/_table.html
+ - _client.html
+ - _match.html
+ - _section.html
+ - _summary.html
+ - _table.html

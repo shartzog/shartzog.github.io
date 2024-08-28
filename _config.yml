@@ -5,3 +5,15 @@ include:
  - specs/_types/_section.html
  - specs/_types/_summary.html
  - specs/_types/_table.html
+ - ./specs/_types
+ - ./specs/_types/_client.html
+ - ./specs/_types/_match.html
+ - ./specs/_types/_section.html
+ - ./specs/_types/_summary.html
+ - ./specs/_types/_table.html
+ - _types
+ - _types/_client.html
+ - _types/_match.html
+ - _types/_section.html
+ - _types/_summary.html
+ - _types/_table.html

@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>rollup_cascade.column API documentation</title>
+<meta name="description" content="define CascadeColumn (base) and RollupColumn (derived) column classes">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>rollup_cascade.column</code></h1>
+</header>
+<section id="section-intro">
+<p>define CascadeColumn (base) and RollupColumn (derived) column classes</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="rollup_cascade.column.CascadeColumn"><code class="flex name class">
+<span>class <span class="ident">CascadeColumn</span></span>
+<span>(</span><span>*, column: str, when_not_empty: collections.abc.Sequence[str] = (), default_value: str = '', strict: bool = False, custom_trigger: collections.abc.Callable[[numpy.ndarray, numpy.ndarray, collections.abc.Iterable[str]], bool] | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Specify a column whose value should be cascaded to subsequent rows
+when one or more reference columns has a value.</p>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>column</code></strong> :&ensp;<code>str</code></dt>
+<dd>the column whose value should be cascaded</dd>
+<dt><strong><code>when_not_empty</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>the columns that trigger the cascade
+when not empty. if this setting itself is empty, the cascade is
+triggered for ALL rows. Default is ().</dd>
+<dt><strong><code>default_value</code></strong> :&ensp;<code>str</code></dt>
+<dd>the value to cascade when no value has been
+captured for the cascade column. Default is "".</dd>
+<dt><strong><code>strict</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, ALL when_not_empty columns must be populated
+to trigger a cascade. Default is False.</dd>
+<dt><strong><code>custom_trigger</code></strong> :&ensp;<code>Callable | None</code></dt>
+<dd>a callable accepting the current
+row value set, the next row value set, and an iterable of all
+column names</dd>
+</dl></div>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="rollup_cascade.column.RollupColumn" href="#rollup_cascade.column.RollupColumn">RollupColumn</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="rollup_cascade.column.CascadeColumn.column"><code class="name">var <span class="ident">column</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="rollup_cascade.column.CascadeColumn.custom_trigger"><code class="name">var <span class="ident">custom_trigger</span> : collections.abc.Callable[[numpy.ndarray, numpy.ndarray, collections.abc.Iterable[str]], bool] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="rollup_cascade.column.CascadeColumn.default_value"><code class="name">var <span class="ident">default_value</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="rollup_cascade.column.CascadeColumn.strict"><code class="name">var <span class="ident">strict</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="rollup_cascade.column.CascadeColumn.when_not_empty"><code class="name">var <span class="ident">when_not_empty</span> : collections.abc.Sequence[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="rollup_cascade.column.CascadeColumn.check_when_not_empty"><code class="name">prop <span class="ident">check_when_not_empty</span> : collections.abc.Callable[[numpy.ndarray], bool]</code></dt>
+<dd>
+<div class="desc"><p>Retuns the callable for testing whether or not a row meets the
+when_not_empty constraint.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="rollup_cascade.column.CascadeColumn.cascade"><code class="name flex">
+<span>def <span class="ident">cascade</span></span>(<span>self, table: dict[str, list[str]]) ‑> dict[str, list[str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Cascade values in the table for self.column per defined custom_trigger
+or when_not_empty column status.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table</code></strong></dt>
+<dd>dict of lists of strings representing table rows</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, list[str]]</code></dt>
+<dd>table after cascading self.column.</dd>
+</dl></div>
+</dd>
+<dt id="rollup_cascade.column.CascadeColumn.cascade_it"><code class="name flex">
+<span>def <span class="ident">cascade_it</span></span>(<span>self, row_a: numpy.ndarray, row_b: numpy.ndarray, table: dict[str, list[str]]) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns True if value from row_a should be cascaded to row_b.</p>
+<p>If self.custom_trigger is defined, call it with the supplied parameters
+and return the result. Otherwise, return self.set_it(row_b, table).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>row_a</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>the last row with a good value.</dd>
+<dt><strong><code>row_b</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>the target of the cascade, if triggered</dd>
+<dt><strong><code>table</code></strong></dt>
+<dd>dict of lists of strings representing table rows</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the last good value should be cascaded to the next row</dd>
+</dl></div>
+</dd>
+<dt id="rollup_cascade.column.CascadeColumn.column_value"><code class="name flex">
+<span>def <span class="ident">column_value</span></span>(<span>self, row: numpy.ndarray, table: dict[str, list[str]]) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retrieves the value of self.column from the supplied row.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>row</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>the row to check</dd>
+<dt><strong><code>table</code></strong></dt>
+<dd>dict of lists of strings representing table rows</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>the value of self.column in the supplied row.</dd>
+</dl></div>
+</dd>
+<dt id="rollup_cascade.column.CascadeColumn.header_check"><code class="name flex">
+<span>def <span class="ident">header_check</span></span>(<span>self, table: dict[str, list[str]]) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check the columns in self (column + when_not_empty) against those in
+the header of a real table to determine if this operation is relevant
+given the columns available.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table</code></strong></dt>
+<dd>dict of lists of strings representing table rows</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>indicating whether this Cascade/RollupColumn is applicable
+given the columns available in the table instance.</dd>
+</dl></div>
+</dd>
+<dt id="rollup_cascade.column.CascadeColumn.meets_when_not_empty"><code class="name flex">
+<span>def <span class="ident">meets_when_not_empty</span></span>(<span>self, row: numpy.ndarray, table: dict[str, list[str]]) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Tests the when_not_empty constraint on this row of values.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>row</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>the row to check</dd>
+<dt><strong><code>table</code></strong></dt>
+<dd>dict of lists of strings representing table rows</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if when_not_empty isn't defined, strict==False and a
+value is found at the position of any when_not_empty column,
+or strict is True and a value is present at the positions of
+ALL when_not_empty columns.</dd>
+</dl></div>
+</dd>
+<dt id="rollup_cascade.column.CascadeColumn.set_column"><code class="name flex">
+<span>def <span class="ident">set_column</span></span>(<span>self, value: str, row: numpy.ndarray, table: dict[str, list[str]]) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the value of self.column in the supplied row to the supplied value.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>value</code></strong> :&ensp;<code>str</code></dt>
+<dd>the new value for self.column</dd>
+<dt><strong><code>row</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>the row to check</dd>
+<dt><strong><code>table</code></strong></dt>
+<dd>dict of lists of strings representing table rows</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>the updated row</dd>
+</dl></div>
+</dd>
+<dt id="rollup_cascade.column.CascadeColumn.set_it"><code class="name flex">
+<span>def <span class="ident">set_it</span></span>(<span>self, row: numpy.ndarray, table: dict[str, list[str]]) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns True if column is empty but the when_not_empty check is True.
+Used for defaulting and cascading.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>row</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>the row to check</dd>
+<dt><strong><code>table</code></strong></dt>
+<dd>dict of lists of strings representing table rows</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if this row's value should be set to the default.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="rollup_cascade.column.RollupColumn"><code class="flex name class">
+<span>class <span class="ident">RollupColumn</span></span>
+<span>(</span><span>*, column: str, when_not_empty: collections.abc.Sequence[str] = (), default_value: str = '', strict: bool = False, custom_trigger: collections.abc.Callable[[numpy.ndarray, numpy.ndarray, collections.abc.Iterable[str]], bool] | None = None, pre_cascade: bool = True, post_cascade: bool = True, join_function: collections.abc.Callable[[tuple[str, str]], str] = &lt;built-in method join of str object&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Specify a column whose values should be rolled up into the first row
+in which one or more reference columns is not empty.</p>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>column</code></strong> :&ensp;<code>str</code></dt>
+<dd>the column whose value should be rolled up</dd>
+<dt><strong><code>when_not_empty</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>the columns that trigger the rollup
+when not empty.</dd>
+<dt><strong><code>default_value</code></strong> :&ensp;<code>str</code></dt>
+<dd>the value to use when no value is present in
+the rollup column. Default is "".</dd>
+<dt><strong><code>strict</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, ALL when_not_empty columns must be populated
+to trigger a rollup. Default is False.</dd>
+<dt><strong><code>pre_cascade</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, the rollup is performed before column
+values have been cascaded. Default is True.</dd>
+<dt><strong><code>post_cascade</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, the rollup is performed after column
+values have been cascaded. Default is True.</dd>
+<dt><strong><code>join_function</code></strong> :&ensp;<code>Callable[[tuple[str, str]], str]</code></dt>
+<dd>method to use to
+join the values when a rollup is triggered. Defaults to " ".join.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="rollup_cascade.column.CascadeColumn" href="#rollup_cascade.column.CascadeColumn">CascadeColumn</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="rollup_cascade.column.RollupColumn.post_cascade"><code class="name">var <span class="ident">post_cascade</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="rollup_cascade.column.RollupColumn.pre_cascade"><code class="name">var <span class="ident">pre_cascade</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="rollup_cascade.column.RollupColumn.join_function"><code class="name flex">
+<span>def <span class="ident">join_function</span></span>(<span>iterable, /) ‑> collections.abc.Callable[[tuple[str, str]], str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Concatenate any number of strings.</p>
+<p>The string whose method is called is inserted in between each given string.
+The result is returned as a new string.</p>
+<p>Example: '.'.join(['ab', 'pq', 'rs']) -&gt; 'ab.pq.rs'</p></div>
+</dd>
+<dt id="rollup_cascade.column.RollupColumn.roll_it"><code class="name flex">
+<span>def <span class="ident">roll_it</span></span>(<span>self, row_a: numpy.ndarray, row_b: numpy.ndarray, table: dict[str, list[str]]) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check two subsequent table rows to see if row_b should be rolled into row_a.</p>
+<p>Triggers rolling behavior when:
+- row_a meets our when_not_empty constraint, and
+- row_b does NOT meet our when_not_empty constraint, and
+- row_a has a value in the target column, and
+- row_b has a value in the target column, ** OR **
+- only the target column is populated in both this and next row</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>row_a</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>the first row to check</dd>
+<dt><strong><code>row_b</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>the second row to check</dd>
+<dt><strong><code>table</code></strong></dt>
+<dd>dict of lists of strings representing table rows</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if row_b should be rolled into row_a</dd>
+</dl></div>
+</dd>
+<dt id="rollup_cascade.column.RollupColumn.rollup"><code class="name flex">
+<span>def <span class="ident">rollup</span></span>(<span>self, table: dict[str, list[str]]) ‑> dict[str, list[str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Roll up values in the table for self.column per defined custom_trigger
+or when_not_empty column status.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table</code></strong></dt>
+<dd>dict of lists of strings representing table rows</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, list[str]]</code></dt>
+<dd>table after rolling up self.column.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="rollup_cascade.column.CascadeColumn" href="#rollup_cascade.column.CascadeColumn">CascadeColumn</a></b></code>:
+<ul class="hlist">
+<li><code><a title="rollup_cascade.column.CascadeColumn.cascade" href="#rollup_cascade.column.CascadeColumn.cascade">cascade</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.cascade_it" href="#rollup_cascade.column.CascadeColumn.cascade_it">cascade_it</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.check_when_not_empty" href="#rollup_cascade.column.CascadeColumn.check_when_not_empty">check_when_not_empty</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.column_value" href="#rollup_cascade.column.CascadeColumn.column_value">column_value</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.header_check" href="#rollup_cascade.column.CascadeColumn.header_check">header_check</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.meets_when_not_empty" href="#rollup_cascade.column.CascadeColumn.meets_when_not_empty">meets_when_not_empty</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.set_column" href="#rollup_cascade.column.CascadeColumn.set_column">set_column</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.set_it" href="#rollup_cascade.column.CascadeColumn.set_it">set_it</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="rollup_cascade" href="index.html">rollup_cascade</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="rollup_cascade.column.CascadeColumn" href="#rollup_cascade.column.CascadeColumn">CascadeColumn</a></code></h4>
+<ul class="">
+<li><code><a title="rollup_cascade.column.CascadeColumn.cascade" href="#rollup_cascade.column.CascadeColumn.cascade">cascade</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.cascade_it" href="#rollup_cascade.column.CascadeColumn.cascade_it">cascade_it</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.check_when_not_empty" href="#rollup_cascade.column.CascadeColumn.check_when_not_empty">check_when_not_empty</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.column" href="#rollup_cascade.column.CascadeColumn.column">column</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.column_value" href="#rollup_cascade.column.CascadeColumn.column_value">column_value</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.custom_trigger" href="#rollup_cascade.column.CascadeColumn.custom_trigger">custom_trigger</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.default_value" href="#rollup_cascade.column.CascadeColumn.default_value">default_value</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.header_check" href="#rollup_cascade.column.CascadeColumn.header_check">header_check</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.meets_when_not_empty" href="#rollup_cascade.column.CascadeColumn.meets_when_not_empty">meets_when_not_empty</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.set_column" href="#rollup_cascade.column.CascadeColumn.set_column">set_column</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.set_it" href="#rollup_cascade.column.CascadeColumn.set_it">set_it</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.strict" href="#rollup_cascade.column.CascadeColumn.strict">strict</a></code></li>
+<li><code><a title="rollup_cascade.column.CascadeColumn.when_not_empty" href="#rollup_cascade.column.CascadeColumn.when_not_empty">when_not_empty</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="rollup_cascade.column.RollupColumn" href="#rollup_cascade.column.RollupColumn">RollupColumn</a></code></h4>
+<ul class="">
+<li><code><a title="rollup_cascade.column.RollupColumn.join_function" href="#rollup_cascade.column.RollupColumn.join_function">join_function</a></code></li>
+<li><code><a title="rollup_cascade.column.RollupColumn.post_cascade" href="#rollup_cascade.column.RollupColumn.post_cascade">post_cascade</a></code></li>
+<li><code><a title="rollup_cascade.column.RollupColumn.pre_cascade" href="#rollup_cascade.column.RollupColumn.pre_cascade">pre_cascade</a></code></li>
+<li><code><a title="rollup_cascade.column.RollupColumn.roll_it" href="#rollup_cascade.column.RollupColumn.roll_it">roll_it</a></code></li>
+<li><code><a title="rollup_cascade.column.RollupColumn.rollup" href="#rollup_cascade.column.RollupColumn.rollup">rollup</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

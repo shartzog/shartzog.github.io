@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>section_extractor API documentation</title>
+<meta name="description" content="Usage:
+from section_extractor import section_extractor_factory, SectionExtractor
+Function:
+process text extracted from a pdf patient record …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>section_extractor</code></h1>
+</header>
+<section id="section-intro">
+<h2 id="usage">Usage</h2>
+<p>from section_extractor import section_extractor_factory, SectionExtractor</p>
+<h2 id="function">Function</h2>
+<p>process text extracted from a pdf patient record and segment
+into logical sections as they appear in the PDF.
+Instantiate
+a TableExtractor for each extracted section to segment into
+tables and extract contextualized data.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="section_extractor.section_extractor_factory"><code class="name flex">
+<span>def <span class="ident">section_extractor_factory</span></span>(<span>files_dict: dict[str, utils.FileContentsEntry], section_spec: sp.SectionSpec, table_spec_getter: Callable[[str], sp.TableSpec], **kwargs) ‑> dict[str, <a title="utilities.section_utils.SectExtBase" href="utilities/section_utils.html#utilities.section_utils.SectExtBase">SectExtBase</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a dictionary of SectionExtractor instances for each file in the provided
+files_dict.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>files_dict</code></strong> :&ensp;<code>dict[str, utils.FileContentsEntry]</code></dt>
+<dd>A dictionary where keys are file
+identifiers and values are FileContentsEntry objects containing the contents of
+the files.</dd>
+<dt><strong><code>section_spec</code></strong> :&ensp;<code>sp.SectionSpec</code></dt>
+<dd>The SectionSpec object defining the sections to be
+extracted.</dd>
+<dt><strong><code>table_spec_getter</code></strong> :&ensp;<code>Callable[[str], sp.TableSpec]</code></dt>
+<dd>A callable that takes a section
+name and returns the corresponding TableSpec object.</dd>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>Additional keyword arguments to pass to the SectionExtractor constructor.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, SectExtBase]</code></dt>
+<dd>A dictionary where keys are file identifiers and values are
+SectionExtractor instances.</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="section_extractor.SectionExtractor"><code class="flex name class">
+<span>class <span class="ident">SectionExtractor</span></span>
+<span>(</span><span>file_data: str | utils.FileContentsEntry, section_spec: sp.SectionSpec, table_spec_getter: Callable[[str], sp.TableSpec], **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="usage">Usage</h2>
+<p>Intended for internal use by section_extractor_factory.
+sect = SectionExtractor(data, 'Epic')
+where:
+data is either:
+1) a directory location containing "OCR.txt" files as
+created by pdf_extractor.extract_directory(), OR
+2) a dictionary as outputted by either
+pdf_extractor.extract_multi_patient_pdfs() OR
+pdf_extractor.extract_directory.
+facility_type is a valid key in section_specs.sect_specs
+out_dir is a valid directory location where json files
+can be saved (optional).</p>
+<h2 id="function">Function</h2>
+<p>Using the settings defined in sect_specs[facility_type],
+segment the text extracted from the PDF into logical sections.
+Once extracted, instantiate a TableExtractor object to
+further segment each section into logical tables and then
+field/value data.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="utilities.section_utils.SectExtBase" href="utilities/section_utils.html#utilities.section_utils.SectExtBase">SectExtBase</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="section_extractor.SectionExtractor.apply_strippers"><code class="name flex">
+<span>def <span class="ident">apply_strippers</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply DocumentStripper classes assigned in section_specs.py</p></div>
+</dd>
+<dt id="section_extractor.SectionExtractor.create_anesthesia_record"><code class="name flex">
+<span>def <span class="ident">create_anesthesia_record</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>if any lines remain after section extraction, create an 'Anesthesia Record'
+section and attribute any unassigned source documents as its source.</p></div>
+</dd>
+<dt id="section_extractor.SectionExtractor.create_table_dictionary"><code class="name flex">
+<span>def <span class="ident">create_table_dictionary</span></span>(<span>self, sep='.', include_residuals=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert raw self.tables into a format that can be ingested by
+TableTransformer</p></div>
+</dd>
+<dt id="section_extractor.SectionExtractor.extract_sections"><code class="name flex">
+<span>def <span class="ident">extract_sections</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>process lines from PDF into logical sections based on specs
+from specs/section_specs.py</p></div>
+</dd>
+<dt id="section_extractor.SectionExtractor.extract_tables"><code class="name flex">
+<span>def <span class="ident">extract_tables</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Call TableExtractor to identify and extract values from tables
+for each section</p></div>
+</dd>
+<dt id="section_extractor.SectionExtractor.line_roll_check"><code class="name flex">
+<span>def <span class="ident">line_roll_check</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find all lines in section that start with specified text.
+If all lines starting with specified text are equal, check
+subsequent lines for equivalence.
+Append text from subsequent
+lines that also match for all occurrences to the startswith line.</p></div>
+</dd>
+<dt id="section_extractor.SectionExtractor.strip_attributions"><code class="name flex">
+<span>def <span class="ident">strip_attributions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove inline attributions from extracted text to ensure they don't
+appear in table values later.</p></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="utilities.section_utils.SectExtBase" href="utilities/section_utils.html#utilities.section_utils.SectExtBase">SectExtBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="utilities.section_utils.SectExtBase.new_from_table_dict" href="utilities/section_utils.html#utilities.section_utils.SectExtBase.new_from_table_dict">new_from_table_dict</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="section_extractor.section_extractor_factory" href="#section_extractor.section_extractor_factory">section_extractor_factory</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="section_extractor.SectionExtractor" href="#section_extractor.SectionExtractor">SectionExtractor</a></code></h4>
+<ul class="">
+<li><code><a title="section_extractor.SectionExtractor.apply_strippers" href="#section_extractor.SectionExtractor.apply_strippers">apply_strippers</a></code></li>
+<li><code><a title="section_extractor.SectionExtractor.create_anesthesia_record" href="#section_extractor.SectionExtractor.create_anesthesia_record">create_anesthesia_record</a></code></li>
+<li><code><a title="section_extractor.SectionExtractor.create_table_dictionary" href="#section_extractor.SectionExtractor.create_table_dictionary">create_table_dictionary</a></code></li>
+<li><code><a title="section_extractor.SectionExtractor.extract_sections" href="#section_extractor.SectionExtractor.extract_sections">extract_sections</a></code></li>
+<li><code><a title="section_extractor.SectionExtractor.extract_tables" href="#section_extractor.SectionExtractor.extract_tables">extract_tables</a></code></li>
+<li><code><a title="section_extractor.SectionExtractor.line_roll_check" href="#section_extractor.SectionExtractor.line_roll_check">line_roll_check</a></code></li>
+<li><code><a title="section_extractor.SectionExtractor.strip_attributions" href="#section_extractor.SectionExtractor.strip_attributions">strip_attributions</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

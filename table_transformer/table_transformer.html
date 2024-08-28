@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>table_transformer API documentation</title>
+<meta name="description" content="Usage:
+from table_transformer import TableTransformer
+Function:
+Restructures data from a directory of json files or dict of
+…">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>table_transformer</code></h1>
+</header>
+<section id="section-intro">
+<h2 id="usage">Usage</h2>
+<p>from table_transformer import TableTransformer</p>
+<h2 id="function">Function</h2>
+<p>Restructures data from a directory of json files or dict of
+SectionExtractor objects to group the data by section and
+table title.
+Provides a query by key interface for use in
+data analysis and data summarization.
+See TableTransformer
+class documentation for additional info.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="table_transformer.Section"><code class="flex name class">
+<span>class <span class="ident">Section</span></span>
+<span>(</span><span>section_name: str, section_transforms: sp.SectionTransformSpec)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="usage">Usage</h2>
+<p>Internal to table_transformer.
+See TableTransformer docstring for additional information.</p></div>
+<h3>Methods</h3>
+<dl>
+<dt id="table_transformer.Section.add_key"><code class="name flex">
+<span>def <span class="ident">add_key</span></span>(<span>self, table_name: str, key_name: str, check_key_name: str, value_map: dict[str, list[str]])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a new key (aka column) to a table based on values found
+in an existing column.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>table name</dd>
+<dt><strong><code>key_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of new key</dd>
+<dt><strong><code>check_key_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of existing key to check</dd>
+<dt><strong><code>value_map</code></strong> :&ensp;<code>dict[str, list[str]]</code></dt>
+<dd>Keys correspond to new</dd>
+</dl>
+<p>column value if check_key_name column contains any string
+in value list</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>message indicating success or failure for logging</dd>
+</dl></div>
+</dd>
+<dt id="table_transformer.Section.add_raw_table"><code class="name flex">
+<span>def <span class="ident">add_raw_table</span></span>(<span>self, source_file: str, table_name: str, rows: list[dict[str, str]])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>add new Table from source_file to tables[table_name] list</p></div>
+</dd>
+<dt id="table_transformer.Section.add_table"><code class="name flex">
+<span>def <span class="ident">add_table</span></span>(<span>self, table: <a title="table_transformer.Table" href="#table_transformer.Table">Table</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>append existing Table to tables[table.title]; used by transform
+funcs when moving a table</p></div>
+</dd>
+<dt id="table_transformer.Section.add_table_name"><code class="name flex">
+<span>def <span class="ident">add_table_name</span></span>(<span>self, table_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>add tables entry for supplied name if not already present</p></div>
+</dd>
+<dt id="table_transformer.Section.add_to_section_summary"><code class="name flex">
+<span>def <span class="ident">add_to_section_summary</span></span>(<span>self, table_name: str, as_dict=False, use_section_name=False, suffix='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>add table to section summary and drop</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>table name</dd>
+<dt><strong><code>as_dict</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If true, add all table contents</dd>
+<dt>to a single column in summary. Defaults to False.</dt>
+<dt><strong><code>use_section_name</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. Use section name as new</dd>
+<dt>column name. Defaults to False.</dt>
+<dt><strong><code>suffix</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. Appended to column name. Defaults to "".</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>message indicating success or failure for logging</dd>
+</dl></div>
+</dd>
+<dt id="table_transformer.Section.apply_transforms"><code class="name flex">
+<span>def <span class="ident">apply_transforms</span></span>(<span>self, table_names='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See TableTransformer.apply_transforms</p></div>
+</dd>
+<dt id="table_transformer.Section.combine_columns"><code class="name flex">
+<span>def <span class="ident">combine_columns</span></span>(<span>self, table_name: str, columns_to_combine: Sequence[str], separator: str = ' ', new_column_name: str | None = None, strict: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Combine two or more columns into a single column, removing
+the original columns.
+Typically used to combine separate "Date"
+and "Time" columns into a single DateTime column.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>table name</dd>
+<dt><strong><code>columns_to_combine</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>Sequence containing list of
+columns to be combined</dd>
+<dt><strong><code>separator</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. Used with "join" to concatenate
+list of all old column values into new value. Defaults to " ".</dd>
+<dt><strong><code>new_column_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. If supplied, used as the name for
+the newly created column. Otherwise, the new column name is
+calculated as separator.join(columns_to_combine). Defaults to
+None.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>message indicating success or failure for logging</dd>
+</dl></div>
+</dd>
+<dt id="table_transformer.Section.combine_table_by_source"><code class="name flex">
+<span>def <span class="ident">combine_table_by_source</span></span>(<span>self, table_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Combine all rows for all table instances into the first table instance,
+for each source and drop all but the first table.</p>
+<h2 id="usage">Usage</h2>
+<p>ensures there's only one output in pdf_presummary per summary spec query.
+see 'QCDR' in transform_specs. if two postprocedure notes are included in the
+pdf, two QCDR tables are added for that source causing issues with duplicate
+case note lines / custom field entries.</p></div>
+</dd>
+<dt id="table_transformer.Section.condense_tables"><code class="name flex">
+<span>def <span class="ident">condense_tables</span></span>(<span>self, table_name, condense_spec: sp.CondenseSpec, suffix='', debug=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Transform function for condensing an overly verbose table
+into a terse version containing only values of interest.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>table name</dd>
+<dt><strong><code>condense_spec</code></strong> :&ensp;<code>sp.CondenseSpec</code></dt>
+<dd>dictionary containing specifications
+for converting existing fields into desired output</dd>
+<dt><strong><code>suffix</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. Appended to all keys in output dict.
+Defaults to "".</dd>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. Log debug data. Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>message indicating success or failure for logging</dd>
+</dl></div>
+</dd>
+<dt id="table_transformer.Section.convert_to_bool"><code class="name flex">
+<span>def <span class="ident">convert_to_bool</span></span>(<span>self, table_name: str, convert_key: str, check_key: str, convert_func: Callable[[str, str], bool] = &lt;built-in function eq&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>convert a key's value to a boolean value (formatted as a string)
+by comparing its value with the value of another key</p></div>
+</dd>
+<dt id="table_transformer.Section.drop_keys"><code class="name flex">
+<span>def <span class="ident">drop_keys</span></span>(<span>self, table_name: str, keys: list[str], sep='.')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Drop all keys (aka columns) contained in <code>keys</code> from a table.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>table name</dd>
+<dt><strong><code>keys</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of columns/keys to drop</dd>
+<dt><strong><code>sep</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. Used for chaining column names. Defaults to ".".</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>message indicating success or failure for logging</dd>
+</dl></div>
+</dd>
+<dt id="table_transformer.Section.drop_rows"><code class="name flex">
+<span>def <span class="ident">drop_rows</span></span>(<span>self, table_name: str, row_checks: list[Callable[[dict[str, str]], bool]], drop_when: bool = True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>drop all rows where row_check(row) == drop_when for the specified
+table and row_checks.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>table name</dd>
+<dt><strong><code>row_checks</code></strong> :&ensp;<code>list[Callable[[dict[str, str]], bool]]</code></dt>
+<dd>List of row_check
+functions. if any row_check(row) == drop_when, row is eliminated</dd>
+<dt><strong><code>drop_when</code></strong> :&ensp;<code>bool</code></dt>
+<dd>defaults to True</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>message indicating success or failure for logging</dd>
+</dl></div>
+</dd>
+<dt id="table_transformer.Section.drop_table"><code class="name flex">
+<span>def <span class="ident">drop_table</span></span>(<span>self, table_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Self explanatory</p></div>
+</dd>
+<dt id="table_transformer.Section.split_key"><code class="name flex">
+<span>def <span class="ident">split_key</span></span>(<span>self, table_name: str, check_key: str, new_keys: list[str], split_func: Callable[..., NamedTuple | SimpleNamespace], combine=False, debug=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>split_func should return an object with attributes that match
+the values in new_keys, typically a namedtuple.
+E.g. for:
+new_keys = ['street1', 'street2', 'city', 'state', 'zip']
+split_func returns a namedtuple AddressTuple with field
+names corresponding to all values in new_keys</p></div>
+</dd>
+<dt id="table_transformer.Section.standardize_columns"><code class="name flex">
+<span>def <span class="ident">standardize_columns</span></span>(<span>self, table_name: str, default: str = '--', debug=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>standardize the columns in all table instances by source</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>table name</dd>
+</dl>
+<p>default (str, ""): value to use when adding a missing key</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>message indicating success or failure for logging</dd>
+</dl></div>
+</dd>
+<dt id="table_transformer.Section.table_for_source"><code class="name flex">
+<span>def <span class="ident">table_for_source</span></span>(<span>self, tab_name: str, source: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>manual use.
+get Table tab_name for source</p></div>
+</dd>
+<dt id="table_transformer.Section.tables_for_source"><code class="name flex">
+<span>def <span class="ident">tables_for_source</span></span>(<span>self, source: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>returns a list of all tables for supplied source.
+used during
+summary operations.</p></div>
+</dd>
+<dt id="table_transformer.Section.update_keys"><code class="name flex">
+<span>def <span class="ident">update_keys</span></span>(<span>self, table_name: str, key_tuples: list[tu.KeyTuple])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Renames keys based on a list of tuples corresponding to
+(old key, new key)</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>table name</dd>
+<dt><strong><code>key_tuples</code></strong> :&ensp;<code>list[tuple[str, str]]</code></dt>
+<dd>list of tuples of string</dd>
+</dl>
+<p>of form (old key name, new key name)</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>message indicating success or failure for logging</dd>
+</dl></div>
+</dd>
+<dt id="table_transformer.Section.value_pivot"><code class="name flex">
+<span>def <span class="ident">value_pivot</span></span>(<span>self, table_name: str, key_column: str, pivot_columns: Sequence[str], key_column_split: str | None = None, overflow_column: str = 'overflow', sep: str = '.')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Classic spreadsheet "pivot" function for transposing table values
+into columns.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>table name</dd>
+<dt><strong><code>key_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>name of column containing values to convert</dd>
+<dt><strong><code>key_column_split</code></strong> :&ensp;<code>str</code></dt>
+<dd>character at which value should be split
+to produce new column name.
+Typically set to newline.</dd>
+<dt><strong><code>overflow_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>New or existing column to house data
+ocurring after first instance of key_column_split.</dd>
+<dt><strong><code>pivot_columns</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>Columns which will become new
+values in pivoted table.</dd>
+<dt><strong><code>sep</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. Separator for chaining column names. Defaults
+to ".".</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>message indicating success or failure for logging</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="table_transformer.Table"><code class="flex name class">
+<span>class <span class="ident">Table</span></span>
+<span>(</span><span>source_file: str, section_name: str, table_name: str, rows: list[dict[str, str | vStr]])</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="usage">Usage</h2>
+<p>Internal to table_transformer.
+See TableTransformer docstring for additional information.</p></div>
+<h3>Methods</h3>
+<dl>
+<dt id="table_transformer.Table.cnt"><code class="name flex">
+<span>def <span class="ident">cnt</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>return len(self.rows)</p></div>
+</dd>
+<dt id="table_transformer.Table.query_by_key"><code class="name flex">
+<span>def <span class="ident">query_by_key</span></span>(<span>self, key_query: str, drop_keys_like: Sequence[str] | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>given regex string "key_query" return a nested list of values from all
+matched columns</p></div>
+</dd>
+<dt id="table_transformer.Table.select_column"><code class="name flex">
+<span>def <span class="ident">select_column</span></span>(<span>self, column: str) ‑> list[str | <a title="utilities.v_str.vStr" href="utilities/v_str.html#utilities.v_str.vStr">vStr</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>returns a list of values for a column</p></div>
+</dd>
+<dt id="table_transformer.Table.update_names"><code class="name flex">
+<span>def <span class="ident">update_names</span></span>(<span>self, section_name: str, table_name: str, sep='.')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>update names in Table object</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>section_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>new section name</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>new table name</dd>
+<dt><strong><code>sep</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. for column name chaining. Defaults to ".".</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="table_transformer.TableTransformer"><code class="flex name class">
+<span>class <span class="ident">TableTransformer</span></span>
+<span>(</span><span>extracted_data, transform_spec: sp.TransformSpec, summary_spec: sp.SummarySpec, auto=True, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="usage">Usage</h2>
+<p>tab_transformer = TableTransformer('./mydir/*.json', 'Epic')
+OR
+tab_transformer = TableTransformer(section_dict, 'Epic')
+where section_dict is of the form returned by
+section_extractor.section_extractor_factory().</p>
+<p>Init Args:
+extracted_data:
+dict or directory containing json files
+summary_spec:
+defines the output of the final call to the summarize_section
+transform function.
+obtain from specs.get_summary_spec().
+transform_spec:
+defines the transforms to be applied to the data.
+obtain from
+specs.get_transform_spec().
+auto:
+If true, perform all section and table transformations defined
+in the transform_specs and generate a summary df during
+TableTransformer <strong>init</strong>.
+True is the default as the typical
+use case is to process and transform the data without additional
+user intervention.
+If false, exit the <strong>init</strong> routine after loading the data but
+before any transformations are applied.
+Allows the user to
+manually apply transforms, examine data at multiple stages of
+the transformation process, analyze data to inform the creation
+of new transform specs, and troubleshoot problems.</p>
+<h2 id="function">Function</h2>
+<p>read section and table data and group by section and table titles
+for further processing.
+E.g. incoming data:
+{
+'Patient1': {
+'Section1.Table1': [
+{'field1': 'value1', &hellip;}, &hellip;
+],
+'Section1.Table2': [
+{'field1': 'value1', &hellip;}, &hellip;
+],
+'Section2.Table1': [
+{'field1': 'value1', &hellip;}, &hellip;
+],
+},
+'Patient2': {
+'Section1.Table1': [
+{'field1': 'value1', &hellip;}, &hellip;
+],
+'Section1.Table2': [
+{'field1': 'value1', &hellip;}, &hellip;
+],
+'Section2.Table1': [
+{'field1': 'value1', &hellip;}, &hellip;
+],
+}, &hellip;
+}
+will be restructured into:
+TableTransformer.sections = {
+'Section1':
+Section(
+|
+&mdash;&gt;.tables = {
+'Table1': [
+Table(
+|
+&mdash;&gt;.rows = [{'field1': 'value1', &hellip;}, &hellip;]
+&mdash;&gt;.source = 'Patient1'),
+Table(
+|
+&mdash;&gt;.rows = [{'field1': 'value1', &hellip;}, &hellip;]
+&mdash;&gt;.source = 'Patient2'), &hellip;
+],
+'Table2': [
+Table(
+|
+&mdash;&gt;.rows = [{'field1': 'value1', &hellip;}, &hellip;]
+&mdash;&gt;.source = 'Patient1'),
+Table(
+|
+&mdash;&gt;.rows = [{'field1': 'value1', &hellip;}, &hellip;]
+&mdash;&gt;.source = 'Patient2'), &hellip;
+], &hellip;
+}
+),
+'Section2':
+Section(
+|
+&mdash;&gt;.tables = {
+'Table1': [
+Table(
+|
+&mdash;&gt;.rows = [{'field1': 'value1', &hellip;}, &hellip;]
+&mdash;&gt;.source = 'Patient1'),
+Table(
+|
+&mdash;&gt;.rows = [{'field1': 'value1', &hellip;}, &hellip;]
+&mdash;&gt;.source = 'Patient2'), &hellip;
+], &hellip;
+}
+),
+}
+where Section and Table are instances of the classes defined below.
+Note that this restructuring is considered <em>pre-processing</em> and will
+occur during <strong>init</strong> regardless of the value passed to the auto param.</p>
+<p>read in all .json files in source directory or consume output of
+section_extractor.section_extractor_factory().</p></div>
+<h3>Methods</h3>
+<dl>
+<dt id="table_transformer.TableTransformer.add_section"><code class="name flex">
+<span>def <span class="ident">add_section</span></span>(<span>self, section_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a new instance of the Section class and adds it to
+self.sections dict.</p></div>
+</dd>
+<dt id="table_transformer.TableTransformer.apply_transforms"><code class="name flex">
+<span>def <span class="ident">apply_transforms</span></span>(<span>self, section_names=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="usage">Usage</h2>
+<p>Internal if auto=True is passed to TableTransformer constructor
+OR
+table_xformer.apply_transforms(Optional list of sections)</p>
+<h2 id="function">Function</h2>
+<p>Generates an ordered list of function calls according to
+self.transform_spec and uses getattr to find and call
+the correct function reference. Three distinct "transform"
+operations are performed:
+"pre" section transforms:
+Transforms applied at the section level prior to
+applying transforms at the table level. specified by
+transform_specs['Section Name']['section_transforms']['pre'].
+transforms defined in the "pre" section of
+transform_specs['default_specs']['section_transforms']['pre']
+will also be called for ALL sections.
+table transforms:
+Transfroms applied at the table level by the
+"apply_transforms" function of the Section class.
+"post" section transforms:
+Transforms applied at the section level after
+applying transforms at the table level. specified
+in the same way as the 'pre' transforms but by
+a 'post' key rather than 'pre', default_specs
+included.</p></div>
+</dd>
+<dt id="table_transformer.TableTransformer.as_nested_dict"><code class="name flex">
+<span>def <span class="ident">as_nested_dict</span></span>(<span>self, **kwargs) ‑> dict[str, dict[str, typing.Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert self._deduped_summary into a nested object such that jmespath
+queries for keys in self._deduped_summary return the original value from
+self._dedupled_summary.</p>
+<h2 id="usage">Usage</h2>
+<p>assign "as_nested_dict" to the "summary_func" key in a summary_spec</p>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>dedup_lists</code></strong> :&ensp;<code>bool</code></dt>
+<dd>an exception to the NOTE above. managed internally.</dd>
+<dt><strong><code>explode_specs</code></strong> :&ensp;<code>list[ExplodeSpec]</code></dt>
+<dd>list of ExplodeSpec. converts nested
+objects into arrays. each item in the nest is converted to an object
+of form {"key": "original_item_key", "value": "original_item_value"}</dd>
+</dl>
+<p>NOTE: all kwargs should be passed via entries in the "summary_args" key of a summary_spec</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, dict[str, Any]]</code></dt>
+<dd>nested dictionary of the form
+{patient_designator: {nested_object}, &hellip;}</dd>
+</dl></div>
+</dd>
+<dt id="table_transformer.TableTransformer.as_summary_dict"><code class="name flex">
+<span>def <span class="ident">as_summary_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>used by default_summary_spec to return summary_dict as output</p></div>
+</dd>
+<dt id="table_transformer.TableTransformer.copy_keys"><code class="name flex">
+<span>def <span class="ident">copy_keys</span></span>(<span>self, section_name: str, dest_sect_name: str, src_tab_name: str, dest_tab_name: str, key_tuples: list[tu.KeyTuple], **kwargs) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="usage">Usage</h2>
+<p>Internal
+kwargs:
+concat, multi_row, create_dest_tab, create_dest_sect (all bool)
+Additional Info:
+transform function applied at the section level via
+TableTransformer.apply_transforms() function.
+Calls
+are driven via entries in
+transform_specs['Section Name']['section_transforms']</p>
+<h2 id="function">Function</h2>
+<p>copy a key value pair from the first row of a table in one section
+to all rows of a table in a different section</p></div>
+</dd>
+<dt id="table_transformer.TableTransformer.dedup_pdf_summary"><code class="name flex">
+<span>def <span class="ident">dedup_pdf_summary</span></span>(<span>self, list_sep: str = '|') ‑> dict[str, dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>dedup entries in self.summary_dict</p></div>
+</dd>
+<dt id="table_transformer.TableTransformer.drop_tables"><code class="name flex">
+<span>def <span class="ident">drop_tables</span></span>(<span>self, section_name, table_names, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="usage">Usage</h2>
+<p>Internal
+Additional Info:
+transform function applied at the section level via
+TableTransformer.apply_transforms() function.
+Calls
+are driven via entries in
+transform_specs['Section Name']['section_transforms']</p>
+<h2 id="function">Function</h2>
+<p>Drop (delete) all instances of a Table class from a
+Section.</p></div>
+</dd>
+<dt id="table_transformer.TableTransformer.flattened_dump"><code class="name flex">
+<span>def <span class="ident">flattened_dump</span></span>(<span>self, sep='|')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A flattened dict of all key/value pairs from all tables for each source</p></div>
+</dd>
+<dt id="table_transformer.TableTransformer.generate_tables_by_source"><code class="name flex">
+<span>def <span class="ident">generate_tables_by_source</span></span>(<span>self) ‑> collections.abc.Iterator[tuple[str, list[<a title="table_transformer.Table" href="#table_transformer.Table">Table</a>]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Iterator for producing tuples of form (source, list of tables)</p>
+<h2 id="yields">Yields</h2>
+<dl>
+<dt><code>tuple[str, list[<a title="table_transformer.Table" href="#table_transformer.Table">Table</a>]]</code></dt>
+<dd>Each yielded value represents the
+comprehensive list of tables extracted for source.</dd>
+</dl></div>
+</dd>
+<dt id="table_transformer.TableTransformer.merge_with_output"><code class="name flex">
+<span>def <span class="ident">merge_with_output</span></span>(<span>self, flat_data: dict[str, dict[str, Any]] | None = None, nested_data: dict[str, dict[str, Any]] | None = None) ‑> dict[str, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>merge data from schedule/demo csv (flat_data) with data from database
+(nested_data) and data extracted from PDFs (self.output).</p>
+<p>merges utilize the case_matcher class defined in matchops.standard_matchers.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>flat_data</code></strong> :&ensp;<code>dict[str, dict[str, Any]]</code></dt>
+<dd>data from schedule</dd>
+<dt><strong><code>nested_data</code></strong> :&ensp;<code>dict[str, dict[str, Any]]</code></dt>
+<dd>data from database</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, bool]</code></dt>
+<dd>dict of case_designator: send_result pairs</dd>
+</dl></div>
+</dd>
+<dt id="table_transformer.TableTransformer.move_tables"><code class="name flex">
+<span>def <span class="ident">move_tables</span></span>(<span>self, section_name: str, dest_sect_name: str, src_tab_name: str, dest_tab_name: str, **kwargs) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="usage">Usage</h2>
+<p>Internal
+Additional Info:
+transform function applied at the section level via
+TableTransformer.apply_transforms() function.
+Calls
+are driven via entries in
+transform_specs['Section Name']['section_transforms']</p>
+<h2 id="function">Function</h2>
+<p>Move a Table class from one Section to another (renaming
+the class if desired), or rename a Table class in place</p></div>
+</dd>
+<dt id="table_transformer.TableTransformer.section_table_split"><code class="name flex">
+<span>def <span class="ident">section_table_split</span></span>(<span>self, sect_and_tab: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Keys are expected to have form "Section Name.Table Name[.#]" where
+[.#] is an optional instance id to avoid duplicate keys. Log error
+if number of remaining fields != 2 after removing numerics.</p></div>
+</dd>
+<dt id="table_transformer.TableTransformer.strip_prefix"><code class="name flex">
+<span>def <span class="ident">strip_prefix</span></span>(<span>self, section_name, table_names, sep='.')</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="usage">Usage</h2>
+<p>Internal
+Additional Info:
+transform function applied at the section level via
+TableTransformer.apply_transforms() function.
+Calls
+are driven via entries in
+transform_specs['Section Name']['section_transforms']</p>
+<h2 id="function">Function</h2>
+<p>Removes prefixes from all keys in a Table class, e.g.
+"Pre Evaluation.BP" &ndash;&gt; "BP"</p></div>
+</dd>
+<dt id="table_transformer.TableTransformer.summarize_section"><code class="name flex">
+<span>def <span class="ident">summarize_section</span></span>(<span>self, section_name: str, summary_spec: sp.SummarySpec = None, sep='|', debug=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="usage">Usage</h2>
+<p>Internal
+Additional Info:
+transform function applied at the section level via
+TableTransformer.apply_transforms() function.
+Calls
+are driven via entries in
+transform_specs['Section Name']['section_transforms']</p>
+<h2 id="function">Function</h2>
+<p>Applied after all section and table transforms have
+been executed to generate self.summary_dict, which
+contains summary information by patient and is used
+to generate primary output.</p></div>
+</dd>
+<dt id="table_transformer.TableTransformer.summary_func_to_output"><code class="name flex">
+<span>def <span class="ident">summary_func_to_output</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create output by calling "summary_func" defined in summary_specs</p></div>
+</dd>
+<dt id="table_transformer.TableTransformer.trans_specs_for_sect"><code class="name flex">
+<span>def <span class="ident">trans_specs_for_sect</span></span>(<span>self, section_name: str) ‑> dict[str, dict[str, dict[str, typing.Any]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>gets section specific transform specs to be applied to tables
+within a section.
+Passed to the Section constructor.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="table_transformer.Section" href="#table_transformer.Section">Section</a></code></h4>
+<ul class="">
+<li><code><a title="table_transformer.Section.add_key" href="#table_transformer.Section.add_key">add_key</a></code></li>
+<li><code><a title="table_transformer.Section.add_raw_table" href="#table_transformer.Section.add_raw_table">add_raw_table</a></code></li>
+<li><code><a title="table_transformer.Section.add_table" href="#table_transformer.Section.add_table">add_table</a></code></li>
+<li><code><a title="table_transformer.Section.add_table_name" href="#table_transformer.Section.add_table_name">add_table_name</a></code></li>
+<li><code><a title="table_transformer.Section.add_to_section_summary" href="#table_transformer.Section.add_to_section_summary">add_to_section_summary</a></code></li>
+<li><code><a title="table_transformer.Section.apply_transforms" href="#table_transformer.Section.apply_transforms">apply_transforms</a></code></li>
+<li><code><a title="table_transformer.Section.combine_columns" href="#table_transformer.Section.combine_columns">combine_columns</a></code></li>
+<li><code><a title="table_transformer.Section.combine_table_by_source" href="#table_transformer.Section.combine_table_by_source">combine_table_by_source</a></code></li>
+<li><code><a title="table_transformer.Section.condense_tables" href="#table_transformer.Section.condense_tables">condense_tables</a></code></li>
+<li><code><a title="table_transformer.Section.convert_to_bool" href="#table_transformer.Section.convert_to_bool">convert_to_bool</a></code></li>
+<li><code><a title="table_transformer.Section.drop_keys" href="#table_transformer.Section.drop_keys">drop_keys</a></code></li>
+<li><code><a title="table_transformer.Section.drop_rows" href="#table_transformer.Section.drop_rows">drop_rows</a></code></li>
+<li><code><a title="table_transformer.Section.drop_table" href="#table_transformer.Section.drop_table">drop_table</a></code></li>
+<li><code><a title="table_transformer.Section.split_key" href="#table_transformer.Section.split_key">split_key</a></code></li>
+<li><code><a title="table_transformer.Section.standardize_columns" href="#table_transformer.Section.standardize_columns">standardize_columns</a></code></li>
+<li><code><a title="table_transformer.Section.table_for_source" href="#table_transformer.Section.table_for_source">table_for_source</a></code></li>
+<li><code><a title="table_transformer.Section.tables_for_source" href="#table_transformer.Section.tables_for_source">tables_for_source</a></code></li>
+<li><code><a title="table_transformer.Section.update_keys" href="#table_transformer.Section.update_keys">update_keys</a></code></li>
+<li><code><a title="table_transformer.Section.value_pivot" href="#table_transformer.Section.value_pivot">value_pivot</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="table_transformer.Table" href="#table_transformer.Table">Table</a></code></h4>
+<ul class="">
+<li><code><a title="table_transformer.Table.cnt" href="#table_transformer.Table.cnt">cnt</a></code></li>
+<li><code><a title="table_transformer.Table.query_by_key" href="#table_transformer.Table.query_by_key">query_by_key</a></code></li>
+<li><code><a title="table_transformer.Table.select_column" href="#table_transformer.Table.select_column">select_column</a></code></li>
+<li><code><a title="table_transformer.Table.update_names" href="#table_transformer.Table.update_names">update_names</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="table_transformer.TableTransformer" href="#table_transformer.TableTransformer">TableTransformer</a></code></h4>
+<ul class="">
+<li><code><a title="table_transformer.TableTransformer.add_section" href="#table_transformer.TableTransformer.add_section">add_section</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.apply_transforms" href="#table_transformer.TableTransformer.apply_transforms">apply_transforms</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.as_nested_dict" href="#table_transformer.TableTransformer.as_nested_dict">as_nested_dict</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.as_summary_dict" href="#table_transformer.TableTransformer.as_summary_dict">as_summary_dict</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.copy_keys" href="#table_transformer.TableTransformer.copy_keys">copy_keys</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.dedup_pdf_summary" href="#table_transformer.TableTransformer.dedup_pdf_summary">dedup_pdf_summary</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.drop_tables" href="#table_transformer.TableTransformer.drop_tables">drop_tables</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.flattened_dump" href="#table_transformer.TableTransformer.flattened_dump">flattened_dump</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.generate_tables_by_source" href="#table_transformer.TableTransformer.generate_tables_by_source">generate_tables_by_source</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.merge_with_output" href="#table_transformer.TableTransformer.merge_with_output">merge_with_output</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.move_tables" href="#table_transformer.TableTransformer.move_tables">move_tables</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.section_table_split" href="#table_transformer.TableTransformer.section_table_split">section_table_split</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.strip_prefix" href="#table_transformer.TableTransformer.strip_prefix">strip_prefix</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.summarize_section" href="#table_transformer.TableTransformer.summarize_section">summarize_section</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.summary_func_to_output" href="#table_transformer.TableTransformer.summary_func_to_output">summary_func_to_output</a></code></li>
+<li><code><a title="table_transformer.TableTransformer.trans_specs_for_sect" href="#table_transformer.TableTransformer.trans_specs_for_sect">trans_specs_for_sect</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

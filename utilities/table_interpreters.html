@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>utilities.table_interpreters API documentation</title>
+<meta name="description" content="library of &#34;interpreter&#34; functions called during table extraction
+that covert free text lines into a raw table format">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>utilities.table_interpreters</code></h1>
+</header>
+<section id="section-intro">
+<p>library of "interpreter" functions called during table extraction
+that covert free text lines into a raw table format</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="utilities.table_interpreters.bullet_interpreter"><code class="name flex">
+<span>def <span class="ident">bullet_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extracts rows corresponding to the first column value from a bulleted list.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines in the table.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table being interpreted.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>min_split_spaces</code></strong> :&ensp;<code>int</code></dt>
+<dd>Minimum number of spaces to split. Default is 2.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>List of dictionaries where each dictionary represents
+a row in the table.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     'Column1                               Column2',
+...     '  •   ValueRow1                       IrrelevantRow1',
+...     '  •   ValueRow2',
+...     '  •   ValueRow3                       IrrelevantRow3',
+... ]
+&gt;&gt;&gt; bullet_interpreter(lines, 'example_table')
+[{'Column1': 'ValueRow1'},
+ {'Column1': 'ValueRow2'},
+ {'Column1': 'ValueRow3'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.cerner_events_interpreter"><code class="name flex">
+<span>def <span class="ident">cerner_events_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Process OCR results from a Cerner Intraop Actions table.</p>
+<p>This function processes a list of lines from OCR results, specifically for
+a Cerner Intraop Actions table. It currently supports only two columns of
+event data, separated by at least seven spaces and is limited to collecting
+Anesthesia Start and Stop times. Future improvements should use
+<code>utils.columns</code> and provide support for an arbitrary number of data columns
+and data for additional events.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>The input list of lines from OCR results.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name of the table being processed.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, logs debug information. Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>A list of dictionaries representing the processed data.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     &quot;12/1/2024                             12/1/2024&quot;,
+...     &quot; 12:01Patient In Room                  15:34Anesthesia Stop&quot;,
+...     &quot;       Anesthesia Start&quot;
+... ]
+&gt;&gt;&gt; cerner_events_interpreter(lines, &quot;Intraop Actions&quot;)
+[{'Date': '1924-12-01', 'Time': '12:01', 'Event': 'Anesthesia Start'},
+{'Date': '1924-12-01', 'Time': '15:34', 'Event': 'Anesthesia Stop'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.complex_roll_helper"><code class="name flex">
+<span>def <span class="ident">complex_roll_helper</span></span>(<span>lines: list[str], r_keys: Sequence[str], **kwargs) ‑> dict[str, str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Helper function for <code><a title="utilities.table_interpreters.fields_interpreter" href="#utilities.table_interpreters.fields_interpreter">fields_interpreter()</a></code> to handle tables with a complicated
+multi-column, multiline value structure.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines in the table.</dd>
+<dt><strong><code>r_keys</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>Sequence of rollover keys for the fields.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>value_append_separator</code></strong> :&ensp;<code>str</code></dt>
+<dd>Separator to append values. Default is " ".</dd>
+<dt><strong><code>force_save_keys</code></strong> :&ensp;<code>tuple[str, &hellip;]</code></dt>
+<dd>Tuple of keys to force save. Default is ().</dd>
+<dt><strong><code>min_split_spaces</code></strong> :&ensp;<code>int</code></dt>
+<dd>Minimum number of spaces to split. Default is 2.</dd>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to enable debug mode. Default is False.</dd>
+<dt><strong><code>min_val_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>Minimum length of values. Default is 0.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, str]</code></dt>
+<dd>Dictionary where each key is a field and each value is the</dd>
+</dl>
+<p>corresponding concatenated value.</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     &quot;Field1: start of val1   Field2: start of val2   Field3: start of val3&quot;,
+...     &quot;   end of val1             end of val2             end of val3&quot;
+... ]
+&gt;&gt;&gt; r_keys = [&quot;Field1&quot;, &quot;Field2&quot;, &quot;Field3&quot;]
+&gt;&gt;&gt; complex_roll_helper(lines, r_keys)
+{'Field1': 'start of val1 end of val1',
+ 'Field2': 'start of val2 end of val2',
+ 'Field3': 'start of val3 end of val3'}
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.date_pivot_interpreter"><code class="name flex">
+<span>def <span class="ident">date_pivot_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>With field names in the left column and a table of values for multiple
+date/time headings.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines in the table.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table being interpreted.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>min_rows</code></strong> :&ensp;<code>int</code></dt>
+<dd>Minimum number of rows. Default is 2.</dd>
+<dt><strong><code>min_split_spaces</code></strong> :&ensp;<code>int</code></dt>
+<dd>Minimum number of spaces to split. Default is 2.</dd>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to enable debug mode. Default is False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>List of dictionaries where each dictionary represents
+a row in the table.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     &quot;                    01/01/22        01/02/22        01/03/22&quot;,
+...     &quot;                    08:00           09:00           10:00&quot;,
+...     &quot;Field name A:       --              2nd A           3rd A&quot;,
+...     &quot;Wrapped field       1st B           2nd B           --&quot;,
+...     &quot;name B:             1st B (cont'd)&quot;,
+...     &quot;                    01/04/22        01/05/22        01/06/22&quot;,
+...     &quot;                    11:00           12:00           13:00&quot;,
+...     &quot;Field name A:       4th A           5th A           6th A&quot;,
+...     &quot;                    4th A (cont'd)                  6th A (cont'd)&quot;,
+...     &quot;                       01/04/22        01/05/22       01/06/22&quot;,
+...     &quot;                       11:00           12:00          13:00&quot;,
+...     &quot;Wrapped field          4th B                          6th B&quot;,
+...     &quot;name B:                4th B (cont'd)  --&quot;,
+...     &quot;                       01/07/22&quot;,
+...     &quot;                       14:00&quot;,
+...     &quot;Field name A:          7th A&quot;,
+...     &quot;Wrapped field&quot;,
+...     &quot;name B:                7th B&quot;,
+... ]
+&gt;&gt;&gt; date_pivot_interpreter(lines, 'example_table')
+[{'Date': '01/01/22 08:00',
+'Field name A': '--',
+'Wrapped field name B': &quot;1st B 1st B (cont'd)&quot;},
+{'Date': '01/02/22 09:00',
+'Field name A': '2nd A',
+'Wrapped field name B': '2nd B'},
+{'Date': '01/03/22 10:00',
+'Field name A': '3rd A',
+'Wrapped field name B': '--'},
+{'Date': '01/04/22 11:00',
+'Field name A': &quot;4th A 4th A (cont'd)&quot;,
+'Wrapped field name B': &quot;4th B 4th B (cont'd)&quot;},
+{'Date': '01/05/22 12:00',
+'Field name A': '5th A',
+'Wrapped field name B': '--'},
+{'Date': '01/06/22 13:00',
+'Field name A': &quot;6th A 6th A (cont'd)&quot;,
+'Wrapped field name B': '6th B'},
+{'Date': '01/07/22 14:00',
+'Field name A': '7th A',
+'Wrapped field name B': '7th B'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.dual_pivot_interpreter"><code class="name flex">
+<span>def <span class="ident">dual_pivot_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Similar to pivot_interpreter except there are 4 total columns, two of which
+contain keys, two of which contain values.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines in the table.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table being interpreted.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to enable debug mode. Default is False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>List of dictionaries where each dictionary represents
+a row in the table.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     '                  Entry 1',
+...     'Left Key 1        Left Value 1       Right Key 1     Right Value 1',
+...     'Left Key 2        Left Value 2       Right Key 2     Right Value 2',
+...     'Left Key 3        Left Value 3       Right Key 3     Right Value 3',
+... ]
+&gt;&gt;&gt; dual_pivot_interpreter(lines, &quot;example_table&quot;)
+[{'Left Key 1': 'Left Value 1',
+ 'Left Key 2': 'Left Value 2',
+ 'Left Key 3': 'Left Value 3',
+ 'Right Key 1': 'Right Value 1',
+ 'Right Key 2': 'Right Value 2',
+ 'Right Key 3': 'Right Value 3'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.extended_header_lines"><code class="name flex">
+<span>def <span class="ident">extended_header_lines</span></span>(<span>all_lines: Sequence[str], window: tuple[int, int], first_header='', extended_header='Details', true_line_check: collections.abc.Callable[[str], bool] = &lt;function &lt;lambda&gt;&gt;, headers_in_window=False) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Prepends the last header line found prior to the window as the header row.
+<code>first_header</code> is prepended and <code>extended_header</code> is appended to the captured
+header row while maintaining spacing.</p>
+<p>Lines in the window are classified as true lines or addenda lines. Addenda
+lines are rolled up onto corresponding true lines to serve as the values for
+<code>extended_header</code>. Useful for tables that are interrupted periodically with
+"column" values spanning the entire page.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>all_lines</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>All lines for all subtables.</dd>
+<dt><strong><code>window</code></strong> :&ensp;<code>tuple[int, int]</code></dt>
+<dd>Start and end indices of this subtable.</dd>
+<dt><strong><code>first_header</code></strong> :&ensp;<code>str</code></dt>
+<dd>Prepended to the header row. Defaults to '', i.e. the
+first header was already present in the data.</dd>
+<dt><strong><code>extended_header</code></strong> :&ensp;<code>str</code></dt>
+<dd>Appended to the header row. Defaults to 'Details'.</dd>
+<dt><strong><code>true_line_check</code></strong> :&ensp;<code>Callable[[str], bool]</code></dt>
+<dd>Determines if a line is a true line.
+Defaults to <code>lambda line: not utils.lindent(line)</code>.</dd>
+<dt><strong><code>headers_in_window</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag if headers are in the window. Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[str]</code></dt>
+<dd>List of lines with the extended header and rolled-up addenda lines.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; all_lines = [
+...     &quot;Header1    Header2&quot;,
+...     &quot;Value1     Value2&quot;,
+...     &quot; Addenda1&quot;,
+...     &quot;Value3     Value4&quot;,
+...     &quot; Addenda2&quot;,
+... ]
+&gt;&gt;&gt; window = (1, 3)
+&gt;&gt;&gt; extended_header_lines(all_lines, window)
+['Header1    Header2     Details',
+'Value1     Value2       Addenda1']
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.fields_interpreter"><code class="name flex">
+<span>def <span class="ident">fields_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Interprets a table with fields and values, handling various formatting issues and
+rollovers for multiline fields.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines in the table.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table being interpreted.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to enable debug mode. Default is False.</dd>
+<dt><strong><code>force_save_keys</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of keys to force save. Default is [].</dd>
+<dt><strong><code>roll_keys</code></strong> :&ensp;<code>list[tuple[str, &hellip;]]</code></dt>
+<dd>List of keys for complex roll. Default is [].</dd>
+<dt><strong><code>roll_on_ending_colon</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to roll on ending colon. Default is True.</dd>
+<dt><strong><code>roll_on_titles</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to roll on title case lines. Default is True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>List of dictionaries where each dictionary represents a row in
+the table.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     &quot;Field1: Value1&quot;,
+...     &quot;Field2: Value2&quot;,
+...     &quot;Field3: Value3&quot;,
+...     &quot;Field4: Value4&quot;,
+... ]
+&gt;&gt;&gt; fields_interpreter(lines, &quot;example_table&quot;)
+[{'Field1': 'Value1', 'Field2': 'Value2', 'Field3': 'Value3', 'Field4': 'Value4'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.flex_interpreter"><code class="name flex">
+<span>def <span class="ident">flex_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Interprets a flexible table layout from a list of lines.</p>
+<p>This function is designed to handle various tabular layouts, including those with
+'field: value' pairs and mixed layouts. It was developed for the Epic Anesthesia Record
+but supports many other tabular formats.</p>
+<p>The function processes the input lines to identify columns and values, supporting cases
+where columns wrap to new lines. It can handle tables where columns are right-aligned
+and tables with fields that span multiple lines.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of strings representing the lines of the table.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table being interpreted.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>List of dictionaries where each dictionary represents a row
+in the table.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.table_interpreters.interpreter_check"><code class="name flex">
+<span>def <span class="ident">interpreter_check</span></span>(<span>interpreter: collections.abc.Callable[[list[str], str], ~T_INT_RESULT]) ‑> collections.abc.Callable[[list[str], str], ~T_INT_RESULT]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Decorator for interpreter functions to check table name and call an alternate
+interpreter as defined by table_specs. Prints the initial line for debugging if
+the table is in the debug_table list in table_specs.</p>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; @interpreter_check
+... def your_interpreter(lines, table_name, **kwargs):
+...     pass
+</code></pre>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>interpreter</code></strong> :&ensp;<code>Callable[[list[str], str], tu.T_INT_RESULT]</code></dt>
+<dd>The interpreter function
+to be decorated.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Callable[[list[str], str], tu.T_INT_RESULT]</code></dt>
+<dd>The wrapped interpreter function.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.table_interpreters.multicol_no_field_interpreter"><code class="name flex">
+<span>def <span class="ident">multicol_no_field_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Interprets a table with multiple columns and no field names, handling rollovers for any
+combination of columns.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines in the table.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table being interpreted.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to enable debug mode. Default is False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>Single item list of dictionary where each key is
+the column index and each value is the corresponding cell value.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     'Value                  Value 2',
+...     '1',
+...     'Value 3                Value',
+...     '                       4',
+...     'Value 5                Value 6',
+... ]
+&gt;&gt;&gt; multicol_no_field_interpreter(lines, &quot;example_table&quot;)
+[{'0': 'Value 1',
+ '1': 'Value 2',
+ '2': 'Value 3',
+ '3': 'Value 4',
+ '4': 'Value 5',
+ '5': 'Value 6'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.null_interpreter"><code class="name flex">
+<span>def <span class="ident">null_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Prevents extraction of supplied table. Used as an alt_interpreter for unextractable
+or irrelevant tables.</p>
+<h2 id="returns">Returns</h2>
+<p>A list with a single dict having key 'null' and value '' regardless of input</p></div>
+</dd>
+<dt id="utilities.table_interpreters.pivot_interpreter"><code class="name flex">
+<span>def <span class="ident">pivot_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Interprets and converts poorly formatted tables into a structured format.</p>
+<p>This function was created to support Cerner's poorly formatted tables. It processes
+the input lines to extract a columnar representation, rotates the table, and removes
+unnecessary rows and columns. The function then concatenates split values and returns
+a list of dictionaries representing the table rows.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of strings representing the lines of the table.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table being interpreted.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>List of dictionaries where each dictionary represents
+a row in the table.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     '                         Entry 1                        Entry 2',
+...     'Case Attendee            Asgharian, MD, Behnam          Richardson CRNA,',
+...     '                                                        Rebecca B',
+...     'Role Performed           Surgeon - Primary              Anesthesia Provider of',
+...     '                                                        Record',
+...     'Time In                  09/16/22 08:52:00              09/16/22 08:45:00',
+...     'Time Out                 09/16/22 09:09:00              09/16/22 09:12:00',
+...     'Procedure                Esophagogastroduodenosco       Esophagogastroduodenosco',
+...     '                         py(Upper)                      py(Upper)',
+...     'Vendor Rep',
+...     'Last Modified By:        Brookhart, Todd A              Brookhart, Todd A',
+...     '                         09/16/22 09:16:14              09/16/22 09:16:14',
+... ]
+&gt;&gt;&gt; pivot_interpreter(lines, &quot;example_table&quot;)
+[{'Case Attendee': 'Asgharian, MD, Behnam',
+'Role Performed': 'Surgeon - Primary',
+'Time In': '09/16/22 08:52:00',
+'Time Out': '09/16/22 09:09:00',
+'Procedure': 'Esophagogastroduodenosco py(Upper)',
+'Last Modified By': 'Brookhart, Todd A 09/16/22 09:16:14'},
+{'Case Attendee': 'Richardson CRNA, Rebecca B',
+'Role Performed': 'Anesthesia Provider of Record',
+'Time In': '09/16/22 08:45:00',
+'Time Out': '09/16/22 09:12:00',
+'Procedure': 'Esophagogastroduodenosco py(Upper)',
+'Last Modified By': 'Brookhart, Todd A 09/16/22 09:16:14'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.prepended_title_column_lines"><code class="name flex">
+<span>def <span class="ident">prepended_title_column_lines</span></span>(<span>all_lines: Sequence[str], table_window: tuple[int, int], is_header: collections.abc.Callable[[str], bool], is_value: collections.abc.Callable[[str], bool], title_column_name: str = 'Title', title_column_padding: int = 5) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Prepends the first line of each subtable window as a new column value in all
+remaining lines.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>all_lines</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>All lines for all subtables.</dd>
+<dt><strong><code>table_window</code></strong> :&ensp;<code>tuple[int, int]</code></dt>
+<dd>Start and end indices of this subtable.</dd>
+<dt><strong><code>is_header</code></strong> :&ensp;<code>Callable[[str], bool]</code></dt>
+<dd>Prepends the column name if True is returned.</dd>
+<dt><strong><code>is_value</code></strong> :&ensp;<code>Callable[[str], bool]</code></dt>
+<dd>Prepends the new value if True is returned.</dd>
+<dt><strong><code>title_column_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the new column. Defaults to "Title".</dd>
+<dt><strong><code>title_column_padding</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of spaces to pad the new column. Defaults to 5.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[str]</code></dt>
+<dd>List of lines with the new column prepended.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; prepended_title_column_lines(
+...     all_lines=[
+...         'propofol injx (mg)',  # title line
+...         '  Date/Time          Admin User',  # header line
+...         '       1700          Matthew Krumholz,',  # value line
+...         '                     CRNA',  # wrapped value line
+...         'fentanyl (mcg)',  # title line
+...         '  Date/Time          Admin User',  # header line
+...         '       1700          Matthew Krumholz,',  # value line
+...         '                     CRNA',  # wrapped value line
+...     ],
+...     table_window=(0, 4),
+...     is_header=lambda line: line.strip().startswith('Date/Time'),
+...     is_value=lambda line: utils.lindent(line) &lt; 30 and line.strip()[0].isnumeric(),
+...     title_column_name='Medication',
+...     title_column_padding=5,
+... )
+['Medication               Date/Time          Admin User',
+ 'propofol injx (mg)            1700          Matthew Krumholz,',
+ '                                            CRNA']
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.regex_interpreter"><code class="name flex">
+<span>def <span class="ident">regex_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Given a regex expression for a full row match with named groups corresponding
+to key/value pairs, return the list of matched groupdicts.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines in the table.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table being interpreted.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>regex_expr</code></strong> :&ensp;<code>re.Pattern</code></dt>
+<dd>Compiled regex expression to match lines.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>List of dictionaries where each dictionary represents
+a row in the table.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = ['line 1', 'line 2', 'bad line', 'line 3']
+&gt;&gt;&gt; regex_expr = re.compile('^(?P&lt;label&gt;line) (?P&lt;idx&gt;\d)$', re.MULTILINE)
+&gt;&gt;&gt; regex_interpreter(lines, 'example_table', regex_expr=regex_expr)
+[{'label': 'line', 'idx': '1'},
+ {'label': 'line', 'idx': '2'},
+ {'label': 'line', 'idx': '3'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.simple_roll_helper"><code class="name flex">
+<span>def <span class="ident">simple_roll_helper</span></span>(<span>lines: list[str], **kwargs) ‑> tuple[str, str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Helper function for <code><a title="utilities.table_interpreters.fields_interpreter" href="#utilities.table_interpreters.fields_interpreter">fields_interpreter()</a></code> to handle tables with a multiline value
+structure.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines in the table.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>force_save_keys</code></strong> :&ensp;<code>tuple[str, &hellip;]</code></dt>
+<dd>Tuple of keys to force save. Default is ().</dd>
+<dt><strong><code>value_append_separator</code></strong> :&ensp;<code>str</code></dt>
+<dd>Separator to append values. Default is " ".</dd>
+<dt><strong><code>min_val_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>Minimum length of values. Default is 0.</dd>
+<dt><strong><code>min_split_spaces</code></strong> :&ensp;<code>int</code></dt>
+<dd>Minimum number of spaces to split. Default is 2.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[str, str]</code></dt>
+<dd>A tuple where the first element is the field key and the second
+element is the concatenated value.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     &quot;Field1:&quot;,
+...     &quot;    First line of field1 value&quot;,
+...     &quot;    Second line of field1 value&quot;,
+... ]
+&gt;&gt;&gt; simple_roll_helper(lines)
+('Field1', 'First line of field1 value Second line of field1 value')
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.single_value_interpreter"><code class="name flex">
+<span>def <span class="ident">single_value_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Interprets a table with a single value under a heading.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines in the table.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table being interpreted.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to enable debug mode. Default is False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>List containing a single dictionary where the key is the</dd>
+</dl>
+<p>table heading and the value is the corresponding single value.</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [&quot;   Anesthesia type: General&quot;]
+&gt;&gt;&gt; single_value_interpreter(lines, &quot;Final Anesthesia Type&quot;)
+[{'Final Anesthesia Type': 'General'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.split_fields_interpreter"><code class="name flex">
+<span>def <span class="ident">split_fields_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An extension of <code><a title="utilities.table_interpreters.fields_interpreter" href="#utilities.table_interpreters.fields_interpreter">fields_interpreter()</a></code> that vertically segments reliably
+spaced columns of key/value pairs and stacks them prior to calling
+it's unextended namesake.</p>
+<p>Supports proper "rolling value" data collection as shown in the Example
+for columns '1st Col Key 1' and '2nd Col Key 2' which should both contain
+value 'Value\nContinued Value'. The presence of a 2nd key inline with
+a value continuation (e.g. <code>"...Continued Value
+2nd Col Key 2: Value"</code>)
+prevents the standard fields_interpreter from picking up the 2nd value
+lines.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>raw text, always comes in a form of 2 columns</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>not used name of the table, always Events</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, log the input and output lines</dd>
+<dt><strong><code>min_split_spaces</code></strong> :&ensp;<code>int</code></dt>
+<dd>minimum number of spaces for triggering splits</dd>
+<dt><strong><code>force_page_breaks</code></strong> :&ensp;<code>list[Callable[[str], bool]]</code></dt>
+<dd>list of functions that
+lines will be passed to. If any function returns True, a page break
+will be forced at that line. Serves as an arg to <code>utils.columns()</code>
+when vertically partitioning lines into columns.</dd>
+<dt><strong><code>force_save_keys</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of keys to force save. Default is [].</dd>
+<dt><strong><code>roll_keys</code></strong> :&ensp;<code>list[tuple[str, &hellip;]]</code></dt>
+<dd>List of keys for complex roll. Default is [].</dd>
+<dt><strong><code>roll_on_ending_colon</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to roll on ending colon. Default is True.</dd>
+<dt><strong><code>roll_on_titles</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to roll on title case lines. Default is True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>List of dictionaries where each dictionary represents a row in
+the table.</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; unsplit = [
+...    &quot;1st Col Key 1: Value                   2nd Col Key 1: Value&quot;,
+...    &quot;               Continued Value         2nd Col Key 2: Value&quot;,
+...    &quot;1st Col Key 2: Value                                  Continued Value&quot;,
+... ]
+&gt;&gt;&gt; split = [
+...     &quot;1st Col Key 1: Value&quot;,
+...     &quot;               Continued Value&quot;,
+...     &quot;1st Col Key 2: Value&quot;,
+...     &quot;2nd Col Key 1: Value&quot;,
+...     &quot;2nd Col Key 2: Value&quot;,
+...     &quot;               Continued Value&quot;,
+... ]
+&gt;&gt;&gt; roll_keys = [(&quot;1st Col Key 1&quot;,), (&quot;2nd Col Key 2&quot;,)]
+&gt;&gt;&gt; split_fields_output = split_fields_interpreter(unsplit, &quot;&quot;, roll_keys=roll_keys)
+&gt;&gt;&gt; split_fields_output
+[{'1st Col Key 1': 'Value Continued Value', '1st Col Key 2': 'Value', '2nd Col Key 1': 'Value', '2nd Col Key 2': 'Value Continued Value'}]
+&gt;&gt;&gt; fields_output = fields_interpreter(split, &quot;&quot;, roll_keys=roll_keys)
+&gt;&gt;&gt; split_fields_output == fields_output
+True
+&gt;&gt;&gt; fields_output_unsplit = fields_interpreter(unsplit, &quot;&quot;, roll_keys=roll_keys)
+&gt;&gt;&gt; fields_output_unsplit
+[{'1st Col Key 1': 'Value Continued Value', '2nd Col Key 2': 'Value', '1st Col Key 2': 'Value'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.subtable_interpreter"><code class="name flex">
+<span>def <span class="ident">subtable_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> <a title="utilities.table_utils.SubtableParser" href="table_utils.html#utilities.table_utils.SubtableParser">SubtableParser</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Processes tables with subtables as table entries.</p>
+<p>See <code><a title="utilities.table_utils.SubtableParser" href="table_utils.html#utilities.table_utils.SubtableParser">SubtableParser</a></code> for more information.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines in the table.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table being interpreted.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to enable debug mode. Default is False.</dd>
+<dt><strong><code>subtable_parser</code></strong> :&ensp;<code>Callable</code></dt>
+<dd>SubtableParser instance to parse subtables.
+Default is <code>tu.SubtableParser(<a title="utilities.table_interpreters.table_interpreter" href="#utilities.table_interpreters.table_interpreter">table_interpreter()</a>)</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tu.SubtableParser</code></dt>
+<dd>Parsed subtables.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.table_interpreters.table_interpreter"><code class="name flex">
+<span>def <span class="ident">table_interpreter</span></span>(<span>lines: list[str], table_name: str, **kwargs) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Standard table interpreter that processes table lines and returns a list of dictionaries
+representing the table rows.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines in the table.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table being interpreted.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to enable debug mode. Default is False.</dd>
+<dt><strong><code>split_table_columns</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of columns to split. Default is [].</dd>
+<dt><strong><code>min_split_spaces</code></strong> :&ensp;<code>int</code></dt>
+<dd>Minimum number of spaces to split. Default is 1.</dd>
+<dt><strong><code>min_val_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>Minimum length of values. Default is 5.</dd>
+<dt><strong><code>force_page_breaks</code></strong> :&ensp;<code>list[Callable[[str], bool]]</code></dt>
+<dd>List of functions to force page
+breaks. Default is [].</dd>
+<dt><strong><code>min_rows</code></strong> :&ensp;<code>int</code></dt>
+<dd>Minimum number of rows. Default is 2.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>List of dictionaries where each dictionary represents a row in
+the table.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     &quot;Header1    Header2    Header3&quot;,
+...     &quot;Value1     Value2     Value3&quot;,
+...     &quot;Value4     Value5     Value6&quot;,
+... ]
+&gt;&gt;&gt; table_interpreter(lines, &quot;example_table&quot;)
+[{'Header1': 'Value1', 'Header2': 'Value2', 'Header3': 'Value3'}, {'Header1': 'Value4', 'Header2': 'Value5', 'Header3': 'Value6'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.table_interpreters.validation_failed_msg"><code class="name flex">
+<span>def <span class="ident">validation_failed_msg</span></span>(<span>origin: str, msg_type: str, lines: list[str], result: Optional[~T_INT_RESULT] = None, ex: Exception | None = None) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compile a message containing all relevant information for troubleshooting
+in the event of an interpreter failure.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>origin</code></strong> :&ensp;<code>str</code></dt>
+<dd>The origin of the message.</dd>
+<dt><strong><code>msg_type</code></strong> :&ensp;<code>str</code></dt>
+<dd>The type of the message.</dd>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines related to the failure.</dd>
+<dt><strong><code>result</code></strong> :&ensp;<code>tu.T_INT_RESULT | None</code></dt>
+<dd>The result of the interpreter, if any.
+Defaults to None.</dd>
+<dt><strong><code>ex</code></strong> :&ensp;<code>Exception | None</code></dt>
+<dd>The exception that was raised, if any. Defaults to None.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>A compiled message containing all relevant information for troubleshooting.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [&quot;line1&quot;, &quot;line2&quot;]
+&gt;&gt;&gt; result = [{&quot;key1&quot;: &quot;value1&quot;}, {&quot;key2&quot;: &quot;value2&quot;}]
+&gt;&gt;&gt; ex = ValueError(&quot;An error occurred&quot;)
+&gt;&gt;&gt; validation_failed_msg(&quot;origin&quot;, &quot;msg_type&quot;, lines, result, ex).splitlines()
+['origin: msg_type',
+ '****** EXCEPTION ******:',
+ '  An error occurred',
+ 'Traceback:',
+ '****** RESULT ******:',
+ '  Row [0]:',
+ '    key1 : value1,',
+ '  Row [1]:',
+ '    key2 : value2,',
+ '****** LINES *******:',
+ 'line1',
+ 'line2']
+</code></pre></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="utilities" href="index.html">utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="utilities.table_interpreters.bullet_interpreter" href="#utilities.table_interpreters.bullet_interpreter">bullet_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.cerner_events_interpreter" href="#utilities.table_interpreters.cerner_events_interpreter">cerner_events_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.complex_roll_helper" href="#utilities.table_interpreters.complex_roll_helper">complex_roll_helper</a></code></li>
+<li><code><a title="utilities.table_interpreters.date_pivot_interpreter" href="#utilities.table_interpreters.date_pivot_interpreter">date_pivot_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.dual_pivot_interpreter" href="#utilities.table_interpreters.dual_pivot_interpreter">dual_pivot_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.extended_header_lines" href="#utilities.table_interpreters.extended_header_lines">extended_header_lines</a></code></li>
+<li><code><a title="utilities.table_interpreters.fields_interpreter" href="#utilities.table_interpreters.fields_interpreter">fields_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.flex_interpreter" href="#utilities.table_interpreters.flex_interpreter">flex_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.interpreter_check" href="#utilities.table_interpreters.interpreter_check">interpreter_check</a></code></li>
+<li><code><a title="utilities.table_interpreters.multicol_no_field_interpreter" href="#utilities.table_interpreters.multicol_no_field_interpreter">multicol_no_field_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.null_interpreter" href="#utilities.table_interpreters.null_interpreter">null_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.pivot_interpreter" href="#utilities.table_interpreters.pivot_interpreter">pivot_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.prepended_title_column_lines" href="#utilities.table_interpreters.prepended_title_column_lines">prepended_title_column_lines</a></code></li>
+<li><code><a title="utilities.table_interpreters.regex_interpreter" href="#utilities.table_interpreters.regex_interpreter">regex_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.simple_roll_helper" href="#utilities.table_interpreters.simple_roll_helper">simple_roll_helper</a></code></li>
+<li><code><a title="utilities.table_interpreters.single_value_interpreter" href="#utilities.table_interpreters.single_value_interpreter">single_value_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.split_fields_interpreter" href="#utilities.table_interpreters.split_fields_interpreter">split_fields_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.subtable_interpreter" href="#utilities.table_interpreters.subtable_interpreter">subtable_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.table_interpreter" href="#utilities.table_interpreters.table_interpreter">table_interpreter</a></code></li>
+<li><code><a title="utilities.table_interpreters.validation_failed_msg" href="#utilities.table_interpreters.validation_failed_msg">validation_failed_msg</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

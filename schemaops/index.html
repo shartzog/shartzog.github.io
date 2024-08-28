@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>schemaops API documentation</title>
+<meta name="description" content="initialize schemas and validator classes using jsonschema">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Package <code>schemaops</code></h1>
+</header>
+<section id="section-intro">
+<p>initialize schemas and validator classes using jsonschema</p>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="schemaops.templates" href="templates.html">schemaops.templates</a></code></dt>
+<dd>
+<div class="desc"><p>templates.py
+classes and methods for creating blank datastructures based on schemas</p></div>
+</dd>
+<dt><code class="name"><a title="schemaops.validators" href="validators.html">schemaops.validators</a></code></dt>
+<dd>
+<div class="desc"><p>apply defaults supplied in schema when absent</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="schemaops.empty_entity"><code class="name flex">
+<span>def <span class="ident">empty_entity</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>get an empty object fit for inclusion in input-&gt;'entities'</p></div>
+</dd>
+<dt id="schemaops.empty_job"><code class="name flex">
+<span>def <span class="ident">empty_job</span></span>(<span>date_of_service: str, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>convenience method to instance and return asdict() for JobTemplate</p></div>
+</dd>
+<dt id="schemaops.path_fragments"><code class="name flex">
+<span>def <span class="ident">path_fragments</span></span>(<span>path: str) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>get list of object keys represented by the path. splits at all
+instances of <code>.</code> that do NOT appear between double quotes.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="schemaops.DefaultingValidatorGroup"><code class="flex name class">
+<span>class <span class="ident">DefaultingValidatorGroup</span></span>
+<span>(</span><span>parent_dir: str = 'c:/Users/samha/pdf-extractor/app', source_stem: str = '/schemaops/', base=jsonschema.validators.Draft202012Validator)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Loads and creates validators for all json schemas defined at
+the spcified path.
+The validators are defined such that missing
+required fields will be added and set to their default values at
+validation time.
+schema filenames must end with .model.json
+to be loaded automatically.
+additional schemas can be added via
+the add_schema function.
+Once loaded, arbitrary dicts can be
+validated by calling the instance.
+If a top level key in the dict
+matches a key in the loaded/added schema validators of the instance,
+its contents will be validated using that validator and associated
+schema. The 'level' parameter can also be used to check lower level
+keys in a series of nested dictionaries as shown in the example.</p>
+<h2 id="example">Example</h2>
+<p>from schemaops import DefaultingValidatorGroup
+validator = DefaultingValidatorGroup()
+validator.add_schema(
+version="validate_me",
+schema={
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"type": "object",
+"default": {},
+"required": [
+"inner_array"
+],
+"properties": {
+"inner_array": {
+"type": "array",
+"default": [{}],
+"items": {
+"anyOf": [
+{
+"type": "object",
+"default": {},
+"required": [
+"required1",
+"required2",
+],
+"properties": {
+"required1": {
+"type": "string",
+"default": "I exist, hooray!"
+},
+"required2": {
+"type": "string",
+"default": "I exist, hooray!"
+},
+}
+}
+]
+}
+}
+}
+},
+)</p>
+<p>test_dict = {
+"first0": {
+"second": {
+"third": {
+"validate_me": {},
+}
+}
+},
+"first1": {
+"second": {
+"third": {
+"validate_me": {},
+}
+}
+},
+}</p>
+<p>test_dict_with_defaults = validator(test_dict, level=3, inplace=False)</p>
+<p>Example Output (test_dict will remain unchanged):
+test_dict_with_defaults = {
+"first0": {
+"second": {
+"third": {
+"validate_me": {
+"inner_array": [
+{
+"required1": "I exist, hooray!",
+"required2": "I exist, hooray!"
+}
+]
+}
+}
+}
+},
+"first1": {
+"second": {
+"third": {
+"validate_me": {
+"inner_array": [
+{
+"required1": "I exist, hooray!",
+"required2": "I exist, hooray!"
+}
+]
+}
+}
+}
+}
+}</p></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="schemaops.DefaultingValidatorGroup.path_fragments"><code class="name flex">
+<span>def <span class="ident">path_fragments</span></span>(<span>path: str) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>get list of object keys represented by the path. splits at all
+instances of <code>.</code> that do NOT appear between double quotes.</p></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="schemaops.DefaultingValidatorGroup.note_type_title_map"><code class="name">prop <span class="ident">note_type_title_map</span> : dict[str, str]</code></dt>
+<dd>
+<div class="desc"><p>a mapping from document type (noteType) to displayed text
+(noteHeader) extracted from the input.model.json schema</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="schemaops.DefaultingValidatorGroup.add_schema"><code class="name flex">
+<span>def <span class="ident">add_schema</span></span>(<span>self, schema: dict[str, typing.Any], version: str, overwrite: bool = True, strict: bool = True) ‑> jsonschema.validators.Draft202012Validator</span>
+</code></dt>
+<dd>
+<div class="desc"><p>add a schema to self._validators.
+'version' is used to specify the
+'version' field of the created validator as well as the top level key
+to search for in the dict being validated.
+if overwrite=False, a
+ValueError will be raised if 'version' is in self._validators.</p></div>
+</dd>
+<dt id="schemaops.DefaultingValidatorGroup.inst_for_obj_path"><code class="name flex">
+<span>def <span class="ident">inst_for_obj_path</span></span>(<span>self, path: str, table: str = '') ‑> dict[str, typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>given a jmespath search pattern targeting a path of an instance
+object, return a default instance of a valid object appearing at
+that level of the instance</p></div>
+</dd>
+<dt id="schemaops.DefaultingValidatorGroup.subschema"><code class="name flex">
+<span>def <span class="ident">subschema</span></span>(<span>self, version: str, path: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>returns the result of a jmespath search for path against the target
+schema version</p></div>
+</dd>
+<dt id="schemaops.DefaultingValidatorGroup.update_schema_array_prefix_items"><code class="name flex">
+<span>def <span class="ident">update_schema_array_prefix_items</span></span>(<span>self, version: str, prefix_items: list[dict[str, typing.Any]], new_items: bool | dict[str, typing.Any] | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a 'prefixItems' array to the target schema version and update
+the 'items' key to the supplied 'new_items' value. If 'new_items'
+is None, leave the existing 'items' value in place to serve in the
+legacy 'additionalItems' capacity.</p></div>
+</dd>
+<dt id="schemaops.DefaultingValidatorGroup.update_schema_from_base"><code class="name flex">
+<span>def <span class="ident">update_schema_from_base</span></span>(<span>self, version: str, extend_all: dict[str, dict[str, str]], extend_for_title: dict[str, dict[str, dict[str, str]]], extend_with_format: dict[str, dict[str, str]])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>build a new schema from <code>-base</code> for specfied version. props in
+extend_all are added to all entries.
+extend_for_title contains
+additional extensions to be applied if base entry title matches
+top level key.
+extend_for_props applies new subkeys to specific
+props.</p></div>
+</dd>
+<dt id="schemaops.DefaultingValidatorGroup.update_schema_object_by_key"><code class="name flex">
+<span>def <span class="ident">update_schema_object_by_key</span></span>(<span>self, version: str, key_reference: list[dict[str, typing.Any]] | dict[str, dict[str, typing.Any]], target_elements: collections.abc.Sequence[str] = ('properties',))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>inspect the object contained in the target_element of the specified
+schema version and merge the object elements from any matching keys in
+key_reference.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="schemaops.templates" href="templates.html">schemaops.templates</a></code></li>
+<li><code><a title="schemaops.validators" href="validators.html">schemaops.validators</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="schemaops.empty_entity" href="#schemaops.empty_entity">empty_entity</a></code></li>
+<li><code><a title="schemaops.empty_job" href="#schemaops.empty_job">empty_job</a></code></li>
+<li><code><a title="schemaops.path_fragments" href="#schemaops.path_fragments">path_fragments</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="schemaops.DefaultingValidatorGroup" href="#schemaops.DefaultingValidatorGroup">DefaultingValidatorGroup</a></code></h4>
+<ul class="">
+<li><code><a title="schemaops.DefaultingValidatorGroup.add_schema" href="#schemaops.DefaultingValidatorGroup.add_schema">add_schema</a></code></li>
+<li><code><a title="schemaops.DefaultingValidatorGroup.inst_for_obj_path" href="#schemaops.DefaultingValidatorGroup.inst_for_obj_path">inst_for_obj_path</a></code></li>
+<li><code><a title="schemaops.DefaultingValidatorGroup.note_type_title_map" href="#schemaops.DefaultingValidatorGroup.note_type_title_map">note_type_title_map</a></code></li>
+<li><code><a title="schemaops.DefaultingValidatorGroup.path_fragments" href="#schemaops.DefaultingValidatorGroup.path_fragments">path_fragments</a></code></li>
+<li><code><a title="schemaops.DefaultingValidatorGroup.subschema" href="#schemaops.DefaultingValidatorGroup.subschema">subschema</a></code></li>
+<li><code><a title="schemaops.DefaultingValidatorGroup.update_schema_array_prefix_items" href="#schemaops.DefaultingValidatorGroup.update_schema_array_prefix_items">update_schema_array_prefix_items</a></code></li>
+<li><code><a title="schemaops.DefaultingValidatorGroup.update_schema_from_base" href="#schemaops.DefaultingValidatorGroup.update_schema_from_base">update_schema_from_base</a></code></li>
+<li><code><a title="schemaops.DefaultingValidatorGroup.update_schema_object_by_key" href="#schemaops.DefaultingValidatorGroup.update_schema_object_by_key">update_schema_object_by_key</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

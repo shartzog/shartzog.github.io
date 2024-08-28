@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>utilities.pdf_utils API documentation</title>
+<meta name="description" content="Utility functions for raw pdf, CSV, and other delimited file processing.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>utilities.pdf_utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Utility functions for raw pdf, CSV, and other delimited file processing.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="utilities.pdf_utils.as_pdf_reader"><code class="name flex">
+<span>def <span class="ident">as_pdf_reader</span></span>(<span>pdf: PDFType) ‑> pypdf._reader.PdfReader</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a PdfReader if supplied bytes, io.BytesIO, or a PdfReader.</p></div>
+</dd>
+<dt id="utilities.pdf_utils.concat_bytes"><code class="name flex">
+<span>def <span class="ident">concat_bytes</span></span>(<span>bodies: Sequence[bytes], strip_headers: bool = True) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Concatenate a series of bytes objects, typically from the body property of
+a csv or text file PDFLibProto object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>bodies</code></strong> :&ensp;<code>Sequence[bytes]</code></dt>
+<dd>list of bytes objects collected from a sequence of
+lu.PDFLibProto objects from a csv or other text document</dd>
+<dt><strong><code>strip_headers</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. Strip headers from all but the first
+lu.PDFLibEntry object. Defaults to True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bytes</code></dt>
+<dd>the concatenated bytes</dd>
+</dl></div>
+</dd>
+<dt id="utilities.pdf_utils.csv_column_values"><code class="name flex">
+<span>def <span class="ident">csv_column_values</span></span>(<span>csv_bytes: bytes, column: int | str, val_sep_override: str | None = None) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract a list of values from a column in a delimited file.</p>
+<p>This function processes the bytes of a CSV or other delimited file and
+extracts the values from the specified column. The column can be specified
+either by its index or by its name. An optional value separator can be
+provided to override the default separator ",".</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>csv_bytes</code></strong> :&ensp;<code>bytes</code></dt>
+<dd>Bytes from a CSV or other delimited file.</dd>
+<dt><strong><code>column</code></strong> :&ensp;<code>int | str</code></dt>
+<dd>The column to extract values from. Can be specified
+as an index or a string representing the column name.</dd>
+<dt><strong><code>val_sep_override</code></strong> :&ensp;<code>str | None</code>, optional</dt>
+<dd>Override the default value
+separator for CSV files. Defaults to None.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[str]</code></dt>
+<dd>The list of values for the specified column.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; csv_bytes = b&quot;Name,Age,Location\nJohn,30,USA\nJane,25,UK&quot;
+&gt;&gt;&gt; csv_column_values(csv_bytes, 1)
+['30', '25']
+&gt;&gt;&gt; csv_column_values(csv_bytes, &quot;Location&quot;)
+['USA', 'UK']
+</code></pre></div>
+</dd>
+<dt id="utilities.pdf_utils.csv_rows"><code class="name flex">
+<span>def <span class="ident">csv_rows</span></span>(<span>csv_bytes: bytes, val_sep_override: str | None = None, has_header_row: bool = True) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split bytes from CSVs and other delimited files into rows.</p>
+<p>This function processes the bytes from a CSV or other delimited file and
+splits them into rows. Each row is represented as a dictionary with column
+headers as keys and corresponding cell values as values. It handles various
+delimiters and can optionally override the default value separator ",".</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>csv_bytes</code></strong> :&ensp;<code>bytes</code></dt>
+<dd>Bytes from a CSV file.</dd>
+<dt><strong><code>val_sep_override</code></strong> :&ensp;<code>str | None</code>, optional</dt>
+<dd>Override the default value
+separator for CSV files. Defaults to None.</dd>
+<dt><strong><code>has_header_row</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. Indicates if the source document includes
+a header row. Defaults to True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>A list of dictionaries representing the rows of the
+CSV file.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; csv_bytes = b&quot;Name,Age,Location\nJohn,30,USA\nJane,25,UK&quot;
+&gt;&gt;&gt; csv_rows(csv_bytes)
+[{'name': 'John', 'age': '30', 'location': 'USA'}, {'name': 'Jane', 'age': '25', 'location': 'UK'}]
+&gt;&gt;&gt; csv_bytes = b&quot;Name|Age|Location\nJohn|30|USA\nJane|25|UK&quot;
+&gt;&gt;&gt; csv_rows(csv_bytes, val_sep_override=&quot;|&quot;)
+[{'name': 'John', 'age': '30', 'location': 'USA'}, {'name': 'Jane', 'age': '25', 'location': 'UK'}]
+&gt;&gt;&gt; csv_bytes = b&quot;John,30,USA\nJane,25,UK&quot;
+&gt;&gt;&gt; csv_rows(csv_bytes, has_header_row=False)
+[{'Column1': 'John', 'Column2': '30', 'Column3': 'USA'}, {'Column1': 'Jane', 'Column2': '25', 'Column3': 'UK'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.pdf_utils.csv_value_to_dos"><code class="name flex">
+<span>def <span class="ident">csv_value_to_dos</span></span>(<span>date_source: lu.PDFLibProto, **kwargs) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert data from filebytes into proper date of service</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>date_source</code></strong> :&ensp;<code>lu.PDFLibProto</code></dt>
+<dd>lu.PDFLibProto object with a csv body</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>column</code></strong> :&ensp;<code>int | str</code></dt>
+<dd>The column to extract values from. Can be
+specified as an index or a string representing the column name.
+Defaults to "Date".</dd>
+<dt><strong><code>day_offset</code></strong> :&ensp;<code>int</code></dt>
+<dd>number of days to add to the discovered date. Defaults to -1.</dd>
+<dt><strong><code>val_sep_override</code></strong> :&ensp;<code>str | None</code>, optional</dt>
+<dd>Override the default value
+separator for csv files. Defaults to None.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>date of service</dd>
+</dl></div>
+</dd>
+<dt id="utilities.pdf_utils.designator_from_anesthesia_summary"><code class="name flex">
+<span>def <span class="ident">designator_from_anesthesia_summary</span></span>(<span>lines: list[str]) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the anesthesia summary table and create a designator from the
+patient name, MRN, and, if present, the date of service.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>lines from the first page of a case</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>if the anesthesia summary table is not found</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>designator for the case</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     &quot;Some other line&quot;,
+...     &quot;Anesthesia Summary - John N Doe [123456]&quot;,
+...     &quot; Current as of 2020-12-31 23:59&quot;
+... ]
+&gt;&gt;&gt; designator_from_anesthesia_summary(lines)
+'DOE, JOHN N_123456_2020-12-31'
+</code></pre></div>
+</dd>
+<dt id="utilities.pdf_utils.designator_from_demographics"><code class="name flex">
+<span>def <span class="ident">designator_from_demographics</span></span>(<span>lines: list[str]) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the demographics table and create a designator from the patient
+name, MRN, phone number, and DOB.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>Lines from the first page of a case.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the demographics table is not found.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Designator for the case.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     &quot;Some other line&quot;,
+...     &quot;Patient Demographics&quot;,
+...     &quot;  Name           MRN       Legal Sex    DOB         SSN            Phone&quot;,
+...     &quot;  Doe, John      123456    Male         1/1/1980    XXX-XX-1234    1(800)213-2131&quot;,
+...     &quot;   Michael&quot;,
+... ]
+&gt;&gt;&gt; designator_from_demographics(lines)
+'DOE, JOHN MICHAEL_1980-01-01_123456_18002132131'
+</code></pre></div>
+</dd>
+<dt id="utilities.pdf_utils.dos_from_pdf_page"><code class="name flex">
+<span>def <span class="ident">dos_from_pdf_page</span></span>(<span>date_source: lu.PDFLibProto, page_indices: Sequence[int] = (0,), date_pattern: re.Pattern = re.compile(&#x27;Summary\\n\\s+Date: (?P&lt;dos&gt;[\\d/\\-]+)&#x27;)) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extracts the text from one or more PDF pages and searches for the
+date of service via regular expression.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>date_source</code></strong></dt>
+<dd>a pdf library entry <em>with a PDF bytes body</em></dd>
+<dt><strong><code>page_indices</code></strong></dt>
+<dd>the indices of the pages to search</dd>
+<dt><strong><code>date_pattern</code></strong></dt>
+<dd>precompiled regex used to search for the date of service.
+the expression MUST have a named group with label "dos"</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>the extracted dos value OR the last modified date of the source
+object - 1 day if no value is found.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.pdf_utils.find_junk_lines"><code class="name flex">
+<span>def <span class="ident">find_junk_lines</span></span>(<span>page_candidates: dict[<a title="utilities.pdf_utils.DocIndexTuple" href="#utilities.pdf_utils.DocIndexTuple">DocIndexTuple</a>, str], **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Identifies lines that repeat at the top and bottom of all candidate pages.</p>
+<p>NOTE: This does NOT handle use cases where 2 or more pages have
+header/footer set "A" and 2 or more other pages have header/
+footer set "B". In such instances, page sets "A" and "B" must
+be assigned to different doc_idxs. This occurs implicitly for
+sites with multiple PDFs per patient, but it's up to the caller
+when extracting multi-patient PDFs (see <code>increment_document_idx</code>).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>page_candidates</code></strong> :&ensp;<code>dict[<a title="utilities.pdf_utils.DocIndexTuple" href="#utilities.pdf_utils.DocIndexTuple">DocIndexTuple</a>, str]</code></dt>
+<dd>Dictionary with
+(page index, document index) tuples as keys and extracted
+PDF page text as values.</dd>
+</dl>
+<h2 id="kwargs">Kwargs</h2>
+<p>min_page_match_ratio (float): Optional. Minimum match ratio across all
+pages to consider a line a header or footer. Defaults to 0.6.
+max_header_lines (int): Optional. Maximum number of header lines. Defaults to 10.
+max_footer_lines (int): Optional. Maximum number of footer lines. Defaults to 10.
+debug (bool): Optional. Enable debug logging. Defaults to False.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[int, dict[int, str]]</code></dt>
+<dd>A nested dictionary containing document
+indexes as top-level keys and header/footer line indexes as
+second-level keys. The values are the header/footer lines.
+Footer lines are keyed as negative integers.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; page_candidates = {
+...     (0, 0): &quot;Header1\nAn arbitrary non header line\nPage 1 of 3&quot;,
+...     (1, 0): &quot;Header1\nSome other text that is not a footer\nPage 2 of 3&quot;,
+...     (2, 0): &quot;Header1\nThis one is neither a footer nor a header\nPage 3 of 3&quot;
+... }
+&gt;&gt;&gt; find_junk_lines(page_candidates, max_header_lines=1, max_footer_lines=1)
+{0: {0: 'Header1', -1: 'Page 2 of 3'}}
+</code></pre></div>
+</dd>
+<dt id="utilities.pdf_utils.header_footer_test_lines"><code class="name flex">
+<span>def <span class="ident">header_footer_test_lines</span></span>(<span>pages_by_doc_idx_tuple: dict[<a title="utilities.pdf_utils.DocIndexTuple" href="#utilities.pdf_utils.DocIndexTuple">DocIndexTuple</a>, str], max_header_lines: int = 10, max_footer_lines: int = 10) ‑> dict[int, list[list[str]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Collect lists of formatted lines of text for each page of each document.</p>
+<p>This function processes a dictionary of pages indexed by document and page
+numbers. It extracts the header and footer lines from each page, formats
+them, and returns a dictionary with document indexes as keys and lists of
+formatted lines for each page as values.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pages_by_doc_idx_tuple</code></strong> :&ensp;<code>dict[<a title="utilities.pdf_utils.DocIndexTuple" href="#utilities.pdf_utils.DocIndexTuple">DocIndexTuple</a>, str]</code></dt>
+<dd>A dictionary of the form
+{(page_index, document_index): [multiline string for one PDF page]}.</dd>
+<dt><strong><code>max_header_lines</code></strong> :&ensp;<code>int</code></dt>
+<dd>Optional. Maximum number of header lines. Defaults to 10.</dd>
+<dt><strong><code>max_footer_lines</code></strong> :&ensp;<code>int</code></dt>
+<dd>Optional. Maximum number of footer lines. Defaults to 10.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[int, list[list[str]]]</code></dt>
+<dd>A dictionary with document indexes as keys.
+The values are lists, one list per page in the source PDF. Each inner
+list contains the lines of text on each page, formatted to always have
+a length of max_header_lines + max_footer_lines by inserting empty
+string values between the header and footer lines.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; pages_by_doc_idx_tuple = {
+...     (0, 0): &quot;Header1\nAn arbitrary non header line\nPage 1 of 3&quot;,
+...     (1, 0): &quot;Header1\nSome other\ntext but\nnot a footer\nPage 2 of 3&quot;,
+...     (2, 0): &quot;Header1\nPage 3 of 3&quot;
+... }
+&gt;&gt;&gt; result = header_footer_test_lines(
+...     pages_by_doc_idx_tuple, max_header_lines=1, max_footer_lines=3
+... )
+&gt;&gt;&gt; result == {
+...     0: [
+...         ['Header1', 'Header1', 'An arbitrary non header line', 'Page 1 of 3'],
+...         ['Header1', 'text but', 'not a footer', 'Page 2 of 3'],
+...         ['Header1', '', 'Header1', 'Page 3 of 3']
+...     ]
+... }
+True
+</code></pre></div>
+</dd>
+<dt id="utilities.pdf_utils.match_by_pdf_reference_designator"><code class="name flex">
+<span>def <span class="ident">match_by_pdf_reference_designator</span></span>(<span>pdf_library: dict[str, lu.PDFLibProto] | list[str], match_func: Callable[[str, bytes, str, bytes], bool]) ‑> collections.abc.Iterator[tuple[list[str], list[str]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check each PDFLibEntry instance in pdf_library for a matching PDFLibReference.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_library</code></strong> :&ensp;<code>dict[str, lu.PDFLibProto] | list[str]</code></dt>
+<dd>dict of form
+{filename: lu.PDFLibProto} or list of filenames.</dd>
+<dt><strong><code>match_func</code></strong> :&ensp;<code>Callable[[str, bytes, str, bytes], bool]</code></dt>
+<dd>function to compare
+lu.PDFLibEntry and lu.PDFLibReference. Must return True if match is found.</dd>
+</dl>
+<h2 id="yields">Yields</h2>
+<dl>
+<dt><code>Iterator[tuple[list[str], list[str]]]</code></dt>
+<dd>matched files, empty list in place of dropped files</dd>
+</dl></div>
+</dd>
+<dt id="utilities.pdf_utils.match_n_filename_fields"><code class="name flex">
+<span>def <span class="ident">match_n_filename_fields</span></span>(<span>pdf_library: dict[str, lu.PDFLibProto], n: int = 3, re_split_expr: str = '[^ 0-9a-zA-Z]', alt_match_funcs: list[tuple[list[int], Callable[[list[str], list[str]], bool]]] | None = None, **kwargs) ‑> collections.abc.Iterator[tuple[list[str], list[str]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Match pdf filenames by n fields from the list of elements generated by
+a regex split with re_split_expr.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_library</code></strong> :&ensp;<code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>The set of pdfs to be matched and extracted.</dd>
+<dt><strong><code>n</code></strong> :&ensp;<code>int</code></dt>
+<dd>Optional. number of fields that must match. Default is 3.</dd>
+<dt><strong><code>re_split_expr</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. regex for splitting filename.
+Default is <code>r"[^ 0-9a-zA-Z]"</code>.</dd>
+<dt><strong><code>alt_match_funcs</code></strong> :&ensp;<code>list[tuple[list[int], Callable[[list[str], list[str]], bool]]] | None</code></dt>
+<dd>
+<pre><code>    list of tuples of form (field_idxs, match_func) where field_idxs is a list of field             indexes to whose values will be passed to match_func and must return True for a             successful match. Defaults to None.
+</code></pre>
+</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>enable debug logging. Defaults to False.</dd>
+<dt><strong><code>disable_sort</code></strong> :&ensp;<code>bool</code></dt>
+<dd>disable sorting of matched files. Defaults to False.</dd>
+<dt><strong><code>custom_sort_key</code></strong> :&ensp;<code>Callable[[str], Any]</code></dt>
+<dd>custom sort key function.
+Defaults to None.</dd>
+<dt><strong><code>desc</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Sort descending. Defaults to False.</dd>
+<dt><strong><code>keep_top</code></strong> :&ensp;<code>int</code></dt>
+<dd>Keep top n files after sorting. Defaults to None.</dd>
+</dl>
+<h2 id="yields">Yields</h2>
+<dl>
+<dt><code>Iterator[tuple[list[str], list[str]]]</code></dt>
+<dd>matched files, dropped files</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; pdf_library = {
+...     &quot;file_20210101_facesheet.pdf&quot;: None,
+...     &quot;file_20210101.pdf&quot;: None,
+...     &quot;file_20210102.pdf&quot;: None
+... }
+&gt;&gt;&gt; list(match_n_filename_fields(pdf_library, n=2))
+[(['file_20210101.pdf', 'file_20210101_facesheet.pdf'], []), (['file_20210102.pdf'], [])]
+</code></pre></div>
+</dd>
+<dt id="utilities.pdf_utils.matched_filename_sort"><code class="name flex">
+<span>def <span class="ident">matched_filename_sort</span></span>(<span>filename: str, check_str: str, str_xform: Callable[[str], str] = builtins.str, str_comp: Callable[[str, str], Any] = &lt;built-in function contains&gt;, val_true: Any = 1, val_false: Any = 0) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Custom sort function for use with match_n_filename_fields.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>filename</code></strong> :&ensp;<code>str</code></dt>
+<dd>filename</dd>
+<dt><strong><code>check_str</code></strong> :&ensp;<code>str</code></dt>
+<dd>String to test against filename</dd>
+<dt><strong><code>str_xform</code></strong> :&ensp;<code>Callable[[str], str]</code></dt>
+<dd>Optional. Transform to apply to strings
+prior to comparison, e.g., <code>str.lower</code>. Defaults to <code>str</code>.</dd>
+<dt><strong><code>str_comp</code></strong> :&ensp;<code>Callable[[str, str], Any]</code></dt>
+<dd>Optional. String comparison function
+where first arg is filename and second is check_str. Defaults to <code>contains</code>.</dd>
+<dt><strong><code>val_true</code></strong> :&ensp;<code>Any</code></dt>
+<dd>Optional. Value supplied as the primary sort key if
+<code>str_comp</code> returns True. Defaults to 1.</dd>
+<dt><strong><code>val_false</code></strong> :&ensp;<code>Any</code></dt>
+<dd>Optional. Value supplied as the primary sort key if
+<code>str_comp</code> returns False. Defaults to 0.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>Sort key for list.sort function</dd>
+</dl></div>
+</dd>
+<dt id="utilities.pdf_utils.no_match"><code class="name flex">
+<span>def <span class="ident">no_match</span></span>(<span>pdf_library: dict[str, lu.PDFLibProto]) ‑> collections.abc.Iterator[tuple[list[str], list[str]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Used with pdf_extractor.extract_single_patient_pdfs() when the desired distinct cases
+match 1-to-1 with the source PDFs.</p>
+<p>Simply yeilds the filename of each source PDF in turn.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_library</code></strong> :&ensp;<code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>dict of lu.PDFLibProto objects</dd>
+</dl>
+<h2 id="yields">Yields</h2>
+<dl>
+<dt><code>Iterator[tuple[list[str], list[str]]]</code></dt>
+<dd>a tuple of (list of source PDFs, empty list)</dd>
+</dl></div>
+</dd>
+<dt id="utilities.pdf_utils.numerics_to_dos"><code class="name flex">
+<span>def <span class="ident">numerics_to_dos</span></span>(<span>date_source: str | lu.PDFLibProto, **kwargs) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert data from a filename into a proper date of service. returned
+value will be extracted datetime - 1 day by default.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>date_source</code></strong> :&ensp;<code>str | lu.PDFLibProto</code></dt>
+<dd>If str, process supplied value
+directly to produce candidate datetime w/ gvars.TODAY as fallback.
+If lu.PDFLibProto, process lu.PDFLibProto.filename to produce candidate
+datetime with lu.PDFLibProto.last_modified (casted to datetime) as
+fallback.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>numerics_format</code></strong> :&ensp;<code>str</code></dt>
+<dd>date format string. Defaults to "%Y%m%d".</dd>
+<dt><strong><code>day_offset</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of days to add to the discovered date. Defaults to -1.</dd>
+<dt><strong><code>numerics_xform</code></strong> :&ensp;<code>Callable[[list[str]], str]</code></dt>
+<dd>Given the list of
+contiguous numerical strings extracted from the filename, return
+a single string representing the date of service. Defaults to
+lambda x: "".join(x).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>date of service</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; date_source = &quot;report_20230101.pdf&quot;
+&gt;&gt;&gt; numerics_to_dos(date_source)
+'2022-12-31'
+</code></pre></div>
+</dd>
+<dt id="utilities.pdf_utils.pdf_text_pages"><code class="name flex">
+<span>def <span class="ident">pdf_text_pages</span></span>(<span>pdf_binary: PDFType, min_lines_ocr_trigger: int = 6, debug_path: Path | None = None, page_indices: list[int] | None = None, pbar: bool = False) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract text from PDF pages and return as a list of multiline strings.</p>
+<p>Uses PDF code-behind by default. If Azure OCR is enabled and the number of
+lines of text on a page is less than min_lines_ocr_trigger, uses Azure OCR
+to extract text from images as well.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_binary</code></strong> :&ensp;<code>PDFType</code></dt>
+<dd>PDF to extract text from</dd>
+<dt><strong><code>min_lines_ocr_trigger</code></strong> :&ensp;<code>int</code></dt>
+<dd>Optional. Trigger Azure OCR if enabled
+and the line count of the text extracted from the codebehind is
+less than this value. Defaults to 6.</dd>
+<dt><strong><code>debug_path</code></strong> :&ensp;<code>Path | None</code>, optional</dt>
+<dd>Path to write debug files to.
+Defaults to None.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.pdf_utils.recursive_pdf_split"><code class="name flex">
+<span>def <span class="ident">recursive_pdf_split</span></span>(<span>splits: SplitGroups, source_pdf: lu.PDFLibProto | bytes) ‑> collections.abc.Iterator[tuple[str, bytes]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split a mutlipatient pdf into 1 pdf per patient (pt).</p>
+<p>Reduces file sizes by stripping unrendered images embedded in global
+resource objects (XObjects). Uses recursive binary search to split the
+pdf into halves until each half contains only 1 patient. Critical for
+avoiding extremely long execution times for excessively long PDFs.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>splits</code></strong> :&ensp;<code>SplitGroups</code></dt>
+<dd>dict of form {case identifier: (start_page, end_page)}</dd>
+<dt><strong><code>source_pdf</code></strong> :&ensp;<code>lu.PDFLibProto | bytes</code></dt>
+<dd>the pdf to split as PDFLibProto or bytes.</dd>
+</dl>
+<h2 id="yields">Yields</h2>
+<dl>
+<dt><code>Iterator[tuple[str, bytes]]</code></dt>
+<dd>a tuple of (case identifier, bytes)</dd>
+</dl></div>
+</dd>
+<dt id="utilities.pdf_utils.split_by_outline"><code class="name flex">
+<span>def <span class="ident">split_by_outline</span></span>(<span>pdf_entry: lu.PDFLibProto, split_check: Callable[[OutlineItemType], bool] = &lt;function &lt;lambda&gt;&gt;, lines_to_designator: Callable[[list[str]], str] | None = None, increment_document_idx: Callable[[list[str]], bool] = &lt;function &lt;lambda&gt;&gt;) ‑> collections.abc.Iterator[tuple[str, dict[<a title="utilities.pdf_utils.DocIndexTuple" href="#utilities.pdf_utils.DocIndexTuple">DocIndexTuple</a>, str]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split a pdf according to entries in its navigation pane.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_entry</code></strong> :&ensp;<code>lu.PDFLibProto</code></dt>
+<dd>a library entry representing a PDF file</dd>
+<dt><strong><code>split_check</code></strong> :&ensp;<code>Callable[[OutlineItemType], bool]</code></dt>
+<dd>If the specified
+function returns True when passed an outline item, the page
+containing that item is considered the first page of a new
+case.</dd>
+<dt><strong><code>lines_to_designator</code></strong> :&ensp;<code>Callable[[list[str]], str]</code></dt>
+<dd>A function that
+returns a designator for a case when passed the list of lines
+from the first page of the case.</dd>
+<dt><strong><code>increment_document_idx</code></strong> :&ensp;<code>Callable[[list[str]], bool]</code></dt>
+<dd>If the
+specified function returns True when passed a list of lines
+from a page, the document index for the current case is
+incremented. Primarily used to account for use cases where
+the header and footer structure is inconsistent to ensure
+proper stripping behavior.</dd>
+</dl>
+<h2 id="yields">Yields</h2>
+<dl>
+<dt><code>Iterator[RawPDFDataTuple]</code></dt>
+<dd>generates tuples of elements expected by
+pdf_extractor.extract_multi_patient_pdfs for each case, namely:
+- a case identifier for use in downstream operations (str)
+- the text extracted for each page assigned to the case keyed
+by both page and document index (dict[DocIndexTuple, str])</dd>
+</dl></div>
+</dd>
+<dt id="utilities.pdf_utils.split_by_single_space_header"><code class="name flex">
+<span>def <span class="ident">split_by_single_space_header</span></span>(<span>pdf_entry: lu.PDFLibProto, line_num: int = 0, min_match_ratio: float = 0.8, match_to_designator_converter: Callable[[str], str] = &lt;function &lt;lambda&gt;&gt;, **kwargs) ‑> collections.abc.Iterator[tuple[str, dict[<a title="utilities.pdf_utils.DocIndexTuple" href="#utilities.pdf_utils.DocIndexTuple">DocIndexTuple</a>, str]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split a multipatient PDF into individual cases based on a fuzzy
+match of the first line of each page to the first line of the first
+page of the current case.</p>
+<p>Header lines are reduced to a single space between words prior to matching.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_entry</code></strong> :&ensp;<code>lu.PDFLibProto</code></dt>
+<dd>a library entry representing a PDF file</dd>
+<dt><strong><code>line_num</code></strong> :&ensp;<code>int</code></dt>
+<dd>line number to use for matching</dd>
+<dt><strong><code>min_match_ratio</code></strong> :&ensp;<code>float</code></dt>
+<dd>minimum match ratio to consider a match</dd>
+<dt><strong><code>match_to_designator_converter</code></strong> :&ensp;<code>Callable[[str], str]</code></dt>
+<dd>function to
+convert the test string captured from the first page of the
+case to its identifier for use in downstream operations.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>signature</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. regex to use for matching. Defaults to
+<code>"^ *(?:\S+ ){2,}.*Page \d{1,4} of \d{1,4}$"</code>, i.e. a few
+identifying bits of info plus 'Page X of Y'</dd>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. enable debug logging. Defaults to False.</dd>
+</dl>
+<h2 id="yields">Yields</h2>
+<dl>
+<dt><code>Iterator[RawPDFDataTuple]</code></dt>
+<dd>generates tuples of elements expected by
+pdf_extractor.extract_multi_patient_pdfs for each case, namely:
+- a case identifier for use in downstream operations (str)
+- the text extracted for each page assigned to the case keyed
+by both page and document index (dict[DocIndexTuple, str])</dd>
+</dl></div>
+</dd>
+<dt id="utilities.pdf_utils.split_by_static_lines_check"><code class="name flex">
+<span>def <span class="ident">split_by_static_lines_check</span></span>(<span>pdf_entry: lu.PDFLibProto, split_check: Callable[[list[str]], bool] | None = None, lines_to_designator: Callable[[list[str]], str] | None = None, increment_document_idx: Callable[[list[str]], bool] = &lt;function &lt;lambda&gt;&gt;) ‑> collections.abc.Iterator[tuple[str, dict[<a title="utilities.pdf_utils.DocIndexTuple" href="#utilities.pdf_utils.DocIndexTuple">DocIndexTuple</a>, str]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Splits the text extracted from a multipatient PDF into individual
+cases based on a static "split_check" function.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_entry</code></strong> :&ensp;<code>lu.PDFLibProto</code></dt>
+<dd>a library entry representing a PDF file</dd>
+<dt><strong><code>split_check</code></strong> :&ensp;<code>Callable[[list[str]], bool]</code></dt>
+<dd>If the specified
+function returns True when passed the lines from a page,
+this page represents the beginning of a new case. Defaults
+to a function that checks the first line of each page for
+the text 'Billing and Compliance Report' (a common Epic PDF
+case header) if not supplied.</dd>
+<dt><strong><code>lines_to_designator</code></strong> :&ensp;<code>Callable[[list[str]], str]</code></dt>
+<dd>A function that
+returns a designator for a case when passed the list of lines
+from the first page of the case. Defaults to
+designator_from_demographics if not supplied.</dd>
+<dt><strong><code>increment_document_idx</code></strong> :&ensp;<code>Callable[[list[str]], bool]</code></dt>
+<dd>If the
+specified function returns True when passed a list of lines
+from a page, the document index for the current case is
+incremented. Primarily used to account for use cases where
+the header and footer structure is inconsistent to ensure
+proper stripping behavior.</dd>
+</dl>
+<h2 id="yields">Yields</h2>
+<dl>
+<dt><code>Iterator[RawPDFDataTuple]</code></dt>
+<dd>generates tuples of elements expected by
+pdf_extractor.extract_multi_patient_pdfs for each case, namely:
+- a case identifier for use in downstream operations (str)
+- the text extracted for each page assigned to the case keyed
+by both page and document index (dict[DocIndexTuple, str])</dd>
+</dl></div>
+</dd>
+<dt id="utilities.pdf_utils.strip_filename"><code class="name flex">
+<span>def <span class="ident">strip_filename</span></span>(<span>filename: str, strip_extension: bool = True) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Strips the path and (optionally) the extention from a file path.</p></div>
+</dd>
+<dt id="utilities.pdf_utils.strip_junk"><code class="name flex">
+<span>def <span class="ident">strip_junk</span></span>(<span>page_text: str, header_footer_lines: dict[int, str], min_match_ratio=0.95) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove header and footer lines from a page of text.</p>
+<p>This function processes the text from a single page of a PDF and removes
+any lines that match the provided header or footer lines based on a
+specified minimum match ratio.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>page_text</code></strong> :&ensp;<code>str</code></dt>
+<dd>Text from a single page of a PDF.</dd>
+<dt><strong><code>header_footer_lines</code></strong> :&ensp;<code>dict[int, str]</code></dt>
+<dd>Dictionary of header/footer lines
+to remove from page_text. Integer keys correspond to line indices.</dd>
+<dt><strong><code>min_match_ratio</code></strong> :&ensp;<code>float</code></dt>
+<dd>Optional. Minimum match ratio to consider a line
+a header or footer. Defaults to 0.95.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[str]</code></dt>
+<dd>The lines of text from page_text with header and footer lines removed.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; page_text = &quot;Header1\nLine1\nFooter1&quot;
+&gt;&gt;&gt; header_footer_lines = {0: &quot;Header1&quot;, -1: &quot;Footer1&quot;}
+&gt;&gt;&gt; strip_junk(page_text, header_footer_lines)
+['Line1']
+</code></pre></div>
+</dd>
+<dt id="utilities.pdf_utils.write_pdf_from_pages"><code class="name flex">
+<span>def <span class="ident">write_pdf_from_pages</span></span>(<span>*, pdf: PDFType, pages: list[int] | list[PageObject], filename: str = '', metadata: dict[str, Any] | None = None) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Clip specific pages from a source pdf into a new pdf document.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf</code></strong> :&ensp;<code>PDFType</code></dt>
+<dd>The source PDF.</dd>
+<dt><strong><code>pages</code></strong> :&ensp;<code>list[int | PageObject]</code></dt>
+<dd>The pages to include in the output.</dd>
+<dt><strong><code>filename</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. An optional filename to write the extracted
+PDF to disk for inspection. Defaults to "".</dd>
+<dt><strong><code>metadata</code></strong> :&ensp;<code>dict[str, Any] | None</code></dt>
+<dd>An optional set of metadata to add
+to the output pdf. Defaults to None.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bytes</code></dt>
+<dd>the new pdf</dd>
+</dl></div>
+</dd>
+<dt id="utilities.pdf_utils.write_pdf_from_readers"><code class="name flex">
+<span>def <span class="ident">write_pdf_from_readers</span></span>(<span>pdf_readers: Sequence[PDFType], filename: str = '', metadata: dict[str, Any] | None = None) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Combine multiple PDFs into a single document.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_readers</code></strong> :&ensp;<code>Sequence[PDFType]</code></dt>
+<dd>The PDFs to combine.</dd>
+<dt><strong><code>filename</code></strong> :&ensp;<code>str | None</code>, optional</dt>
+<dd>An optional filename to write the
+combined PDF to disk for inspection. Defaults to "".</dd>
+<dt><strong><code>metadata</code></strong> :&ensp;<code>dict[str, Any] | None</code></dt>
+<dd>optional metadata to embed in the
+output PDF. Defaults to None.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bytes</code></dt>
+<dd>The combined PDF bytes.</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="utilities.pdf_utils.DocIndexTuple"><code class="flex name class">
+<span>class <span class="ident">DocIndexTuple</span></span>
+<span>(</span><span>page_idx: ForwardRef('int'), doc_idx: ForwardRef('int'))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Associates both a page index and a document index with a PDF object.</p>
+<p>Used as a dict key in references containing the raw text extracted from
+each page of a PDF. doc_idx is used to segregate header/footer processing
+when multiple documents are associated with a single patient or multiple
+header/footer styles are detected for a single PDF.</p>
+<h2 id="attributes">Attributes</h2>
+<p>page_idx, int: page index
+doc_idx, int: document index</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.pdf_utils.DocIndexTuple.doc_idx"><code class="name">var <span class="ident">doc_idx</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="utilities.pdf_utils.DocIndexTuple.page_idx"><code class="name">var <span class="ident">page_idx</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="utilities" href="index.html">utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="utilities.pdf_utils.as_pdf_reader" href="#utilities.pdf_utils.as_pdf_reader">as_pdf_reader</a></code></li>
+<li><code><a title="utilities.pdf_utils.concat_bytes" href="#utilities.pdf_utils.concat_bytes">concat_bytes</a></code></li>
+<li><code><a title="utilities.pdf_utils.csv_column_values" href="#utilities.pdf_utils.csv_column_values">csv_column_values</a></code></li>
+<li><code><a title="utilities.pdf_utils.csv_rows" href="#utilities.pdf_utils.csv_rows">csv_rows</a></code></li>
+<li><code><a title="utilities.pdf_utils.csv_value_to_dos" href="#utilities.pdf_utils.csv_value_to_dos">csv_value_to_dos</a></code></li>
+<li><code><a title="utilities.pdf_utils.designator_from_anesthesia_summary" href="#utilities.pdf_utils.designator_from_anesthesia_summary">designator_from_anesthesia_summary</a></code></li>
+<li><code><a title="utilities.pdf_utils.designator_from_demographics" href="#utilities.pdf_utils.designator_from_demographics">designator_from_demographics</a></code></li>
+<li><code><a title="utilities.pdf_utils.dos_from_pdf_page" href="#utilities.pdf_utils.dos_from_pdf_page">dos_from_pdf_page</a></code></li>
+<li><code><a title="utilities.pdf_utils.find_junk_lines" href="#utilities.pdf_utils.find_junk_lines">find_junk_lines</a></code></li>
+<li><code><a title="utilities.pdf_utils.header_footer_test_lines" href="#utilities.pdf_utils.header_footer_test_lines">header_footer_test_lines</a></code></li>
+<li><code><a title="utilities.pdf_utils.match_by_pdf_reference_designator" href="#utilities.pdf_utils.match_by_pdf_reference_designator">match_by_pdf_reference_designator</a></code></li>
+<li><code><a title="utilities.pdf_utils.match_n_filename_fields" href="#utilities.pdf_utils.match_n_filename_fields">match_n_filename_fields</a></code></li>
+<li><code><a title="utilities.pdf_utils.matched_filename_sort" href="#utilities.pdf_utils.matched_filename_sort">matched_filename_sort</a></code></li>
+<li><code><a title="utilities.pdf_utils.no_match" href="#utilities.pdf_utils.no_match">no_match</a></code></li>
+<li><code><a title="utilities.pdf_utils.numerics_to_dos" href="#utilities.pdf_utils.numerics_to_dos">numerics_to_dos</a></code></li>
+<li><code><a title="utilities.pdf_utils.pdf_text_pages" href="#utilities.pdf_utils.pdf_text_pages">pdf_text_pages</a></code></li>
+<li><code><a title="utilities.pdf_utils.recursive_pdf_split" href="#utilities.pdf_utils.recursive_pdf_split">recursive_pdf_split</a></code></li>
+<li><code><a title="utilities.pdf_utils.split_by_outline" href="#utilities.pdf_utils.split_by_outline">split_by_outline</a></code></li>
+<li><code><a title="utilities.pdf_utils.split_by_single_space_header" href="#utilities.pdf_utils.split_by_single_space_header">split_by_single_space_header</a></code></li>
+<li><code><a title="utilities.pdf_utils.split_by_static_lines_check" href="#utilities.pdf_utils.split_by_static_lines_check">split_by_static_lines_check</a></code></li>
+<li><code><a title="utilities.pdf_utils.strip_filename" href="#utilities.pdf_utils.strip_filename">strip_filename</a></code></li>
+<li><code><a title="utilities.pdf_utils.strip_junk" href="#utilities.pdf_utils.strip_junk">strip_junk</a></code></li>
+<li><code><a title="utilities.pdf_utils.write_pdf_from_pages" href="#utilities.pdf_utils.write_pdf_from_pages">write_pdf_from_pages</a></code></li>
+<li><code><a title="utilities.pdf_utils.write_pdf_from_readers" href="#utilities.pdf_utils.write_pdf_from_readers">write_pdf_from_readers</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="utilities.pdf_utils.DocIndexTuple" href="#utilities.pdf_utils.DocIndexTuple">DocIndexTuple</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.pdf_utils.DocIndexTuple.doc_idx" href="#utilities.pdf_utils.DocIndexTuple.doc_idx">doc_idx</a></code></li>
+<li><code><a title="utilities.pdf_utils.DocIndexTuple.page_idx" href="#utilities.pdf_utils.DocIndexTuple.page_idx">page_idx</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

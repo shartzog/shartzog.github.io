@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>matchops.constructor_tools API documentation</title>
+<meta name="description" content="generic specs and func defs for data matching operations">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>matchops.constructor_tools</code></h1>
+</header>
+<section id="section-intro">
+<p>generic specs and func defs for data matching operations</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="matchops.constructor_tools.add_column_range"><code class="name flex">
+<span>def <span class="ident">add_column_range</span></span>(<span>new_column_template: str, source_columns_template: list[str], apply_function: collections.abc.Callable[[str, pandas.core.series.Series], str], rng: range) ‑> list[<a title="matchops.constructor.AddColumn" href="constructor.html#matchops.constructor.AddColumn">AddColumn</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>add an AddColumn definition for a range of array keys</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>new_column_template</code></strong> :&ensp;<code>str</code></dt>
+<dd>string formattable with array index</dd>
+<dt><strong><code>source_columns_template</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of strings as above</dd>
+<dt><strong><code>apply_function</code></strong> :&ensp;<code>Callable[[str, pd.Series], str]</code></dt>
+<dd>first arg is</dd>
+<dt>array index. 2nd is standard row (aka series) of source columns.</dt>
+<dt><strong><code>rng</code></strong> :&ensp;<code>range</code></dt>
+<dd>range object containing indexes to build columns for</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[AddColumn]</code></dt>
+<dd>AddColumn list for all indexes in rng</dd>
+</dl></div>
+</dd>
+<dt id="matchops.constructor_tools.anes_staff_w_npi_columns"><code class="name flex">
+<span>def <span class="ident">anes_staff_w_npi_columns</span></span>(<span>md_name_column: str, md_npi_column: str, staff_column: str) ‑> list[<a title="matchops.constructor.AddColumn" href="constructor.html#matchops.constructor.AddColumn">AddColumn</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>generate columns for populating anesthesiaStaff rows from data in csv/tsv e.g.
+using "Anesthesiologist", "MDA NPI", and "Anesthesia Staff" columns from msa_bmd</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>md_name_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>column containing the anesthesiologist name</dd>
+<dt><strong><code>md_npi_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>column containing the anesthesiologist NPI</dd>
+<dt><strong><code>staff_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>column containing multiline text representation of</dd>
+</dl>
+<p>all provider times</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[AddColumn]</code></dt>
+<dd>list of new columns to fully populate</dd>
+</dl>
+<p>schedule.anesthesiaStaff. column names will map directly to standard
+flat output keys (e.g. schedule.anesthesiaStaff[0].provider), so
+mappings.py entries are not required.</p></div>
+</dd>
+<dt id="matchops.constructor_tools.full_name_column"><code class="name flex">
+<span>def <span class="ident">full_name_column</span></span>(<span>first_column: str, middle_column: str, last_column: str, new_column_name: str, suffix_column: str = None) ‑> <a title="matchops.constructor.AddColumn" href="constructor.html#matchops.constructor.AddColumn">AddColumn</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>given the names of columns for first, middle, and last name,
+return properly formatted full name</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>first_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>column name that contains first name</dd>
+<dt><strong><code>last_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>column name that contains last name</dd>
+<dt><strong><code>middle_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>column name that contains middle name</dd>
+<dt><strong><code>new_column_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>name of the column to be added</dd>
+<dt><strong><code>suffix_column</code></strong> :&ensp;<code>str | None</code></dt>
+<dd>optional column containing suffix</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>AddColumn</code></dt>
+<dd>AddColumn object to create full name</dd>
+</dl></div>
+</dd>
+<dt id="matchops.constructor_tools.graphium_composite_columns"><code class="name flex">
+<span>def <span class="ident">graphium_composite_columns</span></span>(<span>hank_key_template_map: str, source_column: str, repeat_count: int) ‑> list[<a title="matchops.constructor.AddColumn" href="constructor.html#matchops.constructor.AddColumn">AddColumn</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a series of add columns for a graphium repeating composite field.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>hank_key_template_map</code></strong> :&ensp;<code>str</code></dt>
+<dd>a string containing a series of Hank keys</dd>
+<dt>separated by "^" that map to the composite field's subfields. Each key</dt>
+<dt>should contain a pair of curly braces to be formatted with the repeat</dt>
+<dt>index (e.g. "schedule.anesthesiaStaff[{}].provider").</dt>
+<dt><strong><code>source_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>the column containing the composite field data.</dd>
+<dt><strong><code>repeat_count</code></strong> :&ensp;<code>int</code></dt>
+<dd>the number of times the composite field repeats.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<p>When unpacked in a DataFrameConstructor's add_columns parameter, the
+output from the following implementation:
+<code>graphium_composite_columns(
+hank_key_template_map=(
+"schedule.anesthesiaStaff[{}].provider"
+"^schedule.anesthesiaStaff[{}].provider"
+"^schedule.anesthesiaStaff[{}].providerNPI"
+"^"
+"^schedule.anesthesiaStaff[{}].role"
+"^schedule.anesthesiaStaff[{}].startTime"
+"^schedule.anesthesiaStaff[{}].startTime"
+"^schedule.anesthesiaStaff[{}].endTime"
+"^schedule.anesthesiaStaff[{}].endTime"
+),
+source_column="AnesthesiaStaff",
+repeat_count=2,
+)</code>
+will add the provider, providerNPI, role, startTime, and endTime
+columns for schedule.anesthesiaStaff[0] and schedule.anesthesiaStaff[1].
+Increase <code>repeat_count</code> to add an arbitrary number of such columns.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[AddColumn]</code></dt>
+<dd>as described above.</dd>
+</dl></div>
+</dd>
+<dt id="matchops.constructor_tools.hl7_joins_for_schedule_columns"><code class="name flex">
+<span>def <span class="ident">hl7_joins_for_schedule_columns</span></span>(<span>patient_name: str, dos: str, mrn: str, dob: str, accn: str) ‑> list[<a title="matchops.matcher.JoinSpec" href="matcher.html#matchops.matcher.JoinSpec">JoinSpec</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>get standard joins for hl7 demographic merge using supplied schedule
+column names for dos (date of service), mrn (medical record number), dob
+(date of birth) and accn (hospital account number)</p></div>
+</dd>
+<dt id="matchops.constructor_tools.split_address_columns"><code class="name flex">
+<span>def <span class="ident">split_address_columns</span></span>(<span>source_column: str, prefix='') ‑> list[<a title="matchops.constructor.AddColumn" href="constructor.html#matchops.constructor.AddColumn">AddColumn</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>returns a list of add columns for all address subfields from a source
+column containing a full address.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>source_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>column name containing full address</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. prefix to add to new column names. Defaults to "".
+Set to a valid "address" prefix (e.g. "patient_info.patient.address.")
+to return columns with valid summary_spec keys.</dd>
+</dl>
+<p>See transform_utils.address_split for details.</p></div>
+</dd>
+<dt id="matchops.constructor_tools.split_name_columns"><code class="name flex">
+<span>def <span class="ident">split_name_columns</span></span>(<span>source_column: str, jmespath_keys=False) ‑> list[<a title="matchops.constructor.AddColumn" href="constructor.html#matchops.constructor.AddColumn">AddColumn</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>returns a list of AddColumns representing the first, last, and
+middle name elements extracted from the value contained in source_column.
+new columns will be of form f'{source_column} {[element]}' where element
+is one of ["First", "Middle", "Last"], e.g. "Patient Name First".</p></div>
+</dd>
+<dt id="matchops.constructor_tools.split_phone_columns"><code class="name flex">
+<span>def <span class="ident">split_phone_columns</span></span>(<span>source_column: str, class_dict=None, prefix='') ‑> list[<a title="matchops.constructor.AddColumn" href="constructor.html#matchops.constructor.AddColumn">AddColumn</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>returns a list of add columns for homePhone, workPhone, and mobilePhone
+based on the value of a consolidated source_column.</p>
+<pre><code>Example:
+    given consolidated source_column value:
+        'H: 222-222-2222
+</code></pre>
+<p>W: 888-888-8888
+M: 555-555-5555'
+returns new columns equivalent to:
+{
+"homePhone": "+1 222-222-2222",
+"workPhone": "+1 888-888-8888",
+"mobilePhone": "+1 555-555-5555",
+}</p>
+<pre><code>Args:
+    source_column (str): column name containing consolidated phone numbers
+    class_dict (dict[str, str]): Optional. dictionary mapping phone class
+        to format string. Defaults to None.
+    prefix (str): Optional. prefix to add to new column names. Defaults to "".
+        Set to a valid "person" prefix (e.g. "patient_info.patient.") to
+        return columns with valid summary_spec keys.
+
+See transform_utils.phone_split for details.
+</code></pre></div>
+</dd>
+<dt id="matchops.constructor_tools.standard_demographics_constructor"><code class="name flex">
+<span>def <span class="ident">standard_demographics_constructor</span></span>(<span>split_name_column_list: list[str], split_phone_column_list: list[str], add_columns: list[<a title="matchops.constructor.AddColumn" href="constructor.html#matchops.constructor.AddColumn">AddColumn</a>], post_process: collections.abc.Callable[[pandas.core.frame.DataFrame], pandas.core.frame.DataFrame]) ‑> <a title="matchops.constructor.DataFrameConstructor" href="constructor.html#matchops.constructor.DataFrameConstructor">DataFrameConstructor</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>used for source CSVs following the Hank AI CSV field standard</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>split_name_column_list</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of *.fullName columns to split</dd>
+<dt><strong><code>split_phone_column_list</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of *.homePhone columns to split</dd>
+<dt><strong><code>add_columns</code></strong> :&ensp;<code>list[AddColumn]</code></dt>
+<dd>additional implementation specific AddColumns</dd>
+<dt><strong><code>post_process</code></strong> :&ensp;<code>Callable[[pd.DataFrame], pd.DataFrame]</code></dt>
+<dd>standard post_process</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DataFrameConstructor</code></dt>
+<dd>demographics dataframe constructor</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="matchops" href="index.html">matchops</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="matchops.constructor_tools.add_column_range" href="#matchops.constructor_tools.add_column_range">add_column_range</a></code></li>
+<li><code><a title="matchops.constructor_tools.anes_staff_w_npi_columns" href="#matchops.constructor_tools.anes_staff_w_npi_columns">anes_staff_w_npi_columns</a></code></li>
+<li><code><a title="matchops.constructor_tools.full_name_column" href="#matchops.constructor_tools.full_name_column">full_name_column</a></code></li>
+<li><code><a title="matchops.constructor_tools.graphium_composite_columns" href="#matchops.constructor_tools.graphium_composite_columns">graphium_composite_columns</a></code></li>
+<li><code><a title="matchops.constructor_tools.hl7_joins_for_schedule_columns" href="#matchops.constructor_tools.hl7_joins_for_schedule_columns">hl7_joins_for_schedule_columns</a></code></li>
+<li><code><a title="matchops.constructor_tools.split_address_columns" href="#matchops.constructor_tools.split_address_columns">split_address_columns</a></code></li>
+<li><code><a title="matchops.constructor_tools.split_name_columns" href="#matchops.constructor_tools.split_name_columns">split_name_columns</a></code></li>
+<li><code><a title="matchops.constructor_tools.split_phone_columns" href="#matchops.constructor_tools.split_phone_columns">split_phone_columns</a></code></li>
+<li><code><a title="matchops.constructor_tools.standard_demographics_constructor" href="#matchops.constructor_tools.standard_demographics_constructor">standard_demographics_constructor</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

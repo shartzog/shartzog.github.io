@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>utilities.library_utils API documentation</title>
+<meta name="description" content="Tools for constructing and managing &#39;pdf_library&#39; objects">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>utilities.library_utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Tools for constructing and managing 'pdf_library' objects</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="utilities.library_utils.DateVersIsEmptyTuple"><code class="flex name class">
+<span>class <span class="ident">DateVersIsEmptyTuple</span></span>
+<span>(</span><span>last_modified: ForwardRef('datetime'), version_id: ForwardRef('str'), is_empty: ForwardRef('bool'))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Last modified date, version id, and status for an s3 object.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.library_utils.DateVersIsEmptyTuple.is_empty"><code class="name">var <span class="ident">is_empty</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+<dt id="utilities.library_utils.DateVersIsEmptyTuple.last_modified"><code class="name">var <span class="ident">last_modified</span> : datetime.datetime</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+<dt id="utilities.library_utils.DateVersIsEmptyTuple.version_id"><code class="name">var <span class="ident">version_id</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.library_utils.KeyVersionTuple"><code class="flex name class">
+<span>class <span class="ident">KeyVersionTuple</span></span>
+<span>(</span><span>key: ForwardRef('str'), version: ForwardRef('str'), check_results: ForwardRef('bool') = False, reject_reason: ForwardRef('str') = '')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Data elements required to copy and fully delete an object in a versioned S3 bucket.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>key</code></strong> :&ensp;<code>str</code></dt>
+<dd>The S3 key for the object.</dd>
+<dt><strong><code>version</code></strong> :&ensp;<code>str</code></dt>
+<dd>The S3 Version ID of the object.</dd>
+<dt><strong><code>check_results</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Default False. Set to True to move the object
+generate an email alert and move to 'failed/' if its
+<code>aws_s3_batch.S3Batch.send_results</code> entry is absent or False.</dd>
+<dt><strong><code>reject_reason</code></strong> :&ensp;<code>str</code></dt>
+<dd>Default is "". If set, reject the target object
+prior to <code>aws_s3_batch</code> processing.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.library_utils.KeyVersionTuple.check_results"><code class="name">var <span class="ident">check_results</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+<dt id="utilities.library_utils.KeyVersionTuple.key"><code class="name">var <span class="ident">key</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+<dt id="utilities.library_utils.KeyVersionTuple.reject_reason"><code class="name">var <span class="ident">reject_reason</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 3</p></div>
+</dd>
+<dt id="utilities.library_utils.KeyVersionTuple.version"><code class="name">var <span class="ident">version</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.library_utils.PDFLibEntry"><code class="flex name class">
+<span>class <span class="ident">PDFLibEntry</span></span>
+<span>(</span><span>*, body: bytes, meta: dict[str, str] = &lt;factory&gt;, document_id: str = '', file_type: <a title="utilities.library_utils.S3FileType" href="#utilities.library_utils.S3FileType">S3FileType</a> = pdf)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines an entry in an S3Batch pdf_library.</p>
+<p>All PDFLibEntry objects are required to link directly to an entry in an
+S3Batch send_result in order to be considered considered successfully
+extracted. If no send_result entry exists or the send_result entry is
+False for a PDFLibEntry object, an error will be logged and an email
+notification sent (ClaimMaker facilities only).</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>body</code></strong></dt>
+<dd>bytes from a pdf file</dd>
+<dt><strong><code>meta</code></strong></dt>
+<dd>dict[str, str] of pdf file metadata</dd>
+<dt><strong><code>document_id</code></strong></dt>
+<dd>s3 key where pdf file is or will be stored</dd>
+<dt><strong><code>file_type</code></strong></dt>
+<dd>S3FileType to indicate how the entry should be processed</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="utilities.library_utils.PDFLibProto" href="#utilities.library_utils.PDFLibProto">PDFLibProto</a></li>
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="utilities.library_utils.RecordsLibEntry" href="#utilities.library_utils.RecordsLibEntry">RecordsLibEntry</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.library_utils.PDFLibEntry.body"><code class="name">var <span class="ident">body</span> : bytes</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.PDFLibEntry.document_id"><code class="name">var <span class="ident">document_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.PDFLibEntry.file_type"><code class="name">var <span class="ident">file_type</span> : <a title="utilities.library_utils.S3FileType" href="#utilities.library_utils.S3FileType">S3FileType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.PDFLibEntry.meta"><code class="name">var <span class="ident">meta</span> : dict[str, str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.library_utils.PDFLibEntry.as_entry"><code class="name flex">
+<span>def <span class="ident">as_entry</span></span>(<span>self) ‑> <a title="utilities.library_utils.PDFLibEntry" href="#utilities.library_utils.PDFLibEntry">PDFLibEntry</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Dummy function returning self for compatibility with PDFLibProto.</p></div>
+</dd>
+<dt id="utilities.library_utils.PDFLibEntry.push_to_s3"><code class="name flex">
+<span>def <span class="ident">push_to_s3</span></span>(<span>self, s3_key: str, force=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Push self.body to S3 with the specified key. Also saves to disk if
+<code>gvars.CURRENT_SPEC</code> contains a valid "output_dir" entry.</p>
+<p>NOTE: AWS credentials MUST stored in the standard AWS environment variables
+or an exception will result.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>s3_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>S3 key to push to</dd>
+<dt><strong><code>force</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. Force push even if NO_DB or PDF_EXT_RUN_MODE
+is set to 2. Defaults to False.</dd>
+</dl></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="utilities.library_utils.PDFLibProto" href="#utilities.library_utils.PDFLibProto">PDFLibProto</a></b></code>:
+<ul class="hlist">
+<li><code><a title="utilities.library_utils.PDFLibProto.filename" href="#utilities.library_utils.PDFLibProto.filename">filename</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibProto.last_modified" href="#utilities.library_utils.PDFLibProto.last_modified">last_modified</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibProto.pdf_reader" href="#utilities.library_utils.PDFLibProto.pdf_reader">pdf_reader</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="utilities.library_utils.PDFLibProto"><code class="flex name class">
+<span>class <span class="ident">PDFLibProto</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Protocol for entries in an S3Batch pdf_library.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>body</code></strong></dt>
+<dd>bytes from a pdf file</dd>
+<dt><strong><code>meta</code></strong></dt>
+<dd>dict[str, str] of pdf file metadata</dd>
+<dt><strong><code>document_id</code></strong></dt>
+<dd>s3 key where pdf file is or will be stored</dd>
+<dt><strong><code>file_type</code></strong></dt>
+<dd>S3FileType to indicate how the entry should be processed</dd>
+<dt><strong><code>filename</code></strong></dt>
+<dd>the filename portion of the key of origin</dd>
+<dt><strong><code>last_modified</code></strong></dt>
+<dd>the filename portion of the key of origin</dd>
+<dt><strong><code>as_entry</code></strong></dt>
+<dd>method to convert a PDFLibReference to a PDFLibEntry</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="utilities.library_utils.PDFLibEntry" href="#utilities.library_utils.PDFLibEntry">PDFLibEntry</a></li>
+<li><a title="utilities.library_utils.PDFLibReference" href="#utilities.library_utils.PDFLibReference">PDFLibReference</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.library_utils.PDFLibProto.body"><code class="name">var <span class="ident">body</span> : bytes</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.PDFLibProto.document_id"><code class="name">var <span class="ident">document_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.PDFLibProto.file_type"><code class="name">var <span class="ident">file_type</span> : <a title="utilities.library_utils.S3FileType" href="#utilities.library_utils.S3FileType">S3FileType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.PDFLibProto.meta"><code class="name">var <span class="ident">meta</span> : dict[str, str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.library_utils.PDFLibProto.filename"><code class="name">prop <span class="ident">filename</span> : str</code></dt>
+<dd>
+<div class="desc"><p>the filename portion of the s3 key of origin</p></div>
+</dd>
+<dt id="utilities.library_utils.PDFLibProto.last_modified"><code class="name">prop <span class="ident">last_modified</span> : str</code></dt>
+<dd>
+<div class="desc"><p>the last modified timestamp of the s3 key of origin (str)</p></div>
+</dd>
+<dt id="utilities.library_utils.PDFLibProto.pdf_reader"><code class="name">var <span class="ident">pdf_reader</span></code></dt>
+<dd>
+<div class="desc"><p>A PdfReader object. Raises TypeError if the file is not a PDF.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.library_utils.PDFLibProto.as_entry"><code class="name flex">
+<span>def <span class="ident">as_entry</span></span>(<span>self) ‑> <a title="utilities.library_utils.PDFLibEntry" href="#utilities.library_utils.PDFLibEntry">PDFLibEntry</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts a PDFLibReference to a PDFLibEntry instance.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.library_utils.PDFLibReference"><code class="flex name class">
+<span>class <span class="ident">PDFLibReference</span></span>
+<span>(</span><span>*, document_id: str, body: bytes | None = None, meta: dict[str, str] | None = None, file_type: <a title="utilities.library_utils.S3FileType" href="#utilities.library_utils.S3FileType">S3FileType</a> = pdf, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines a reference to an S3 file object without actually downloading it.</p>
+<p>If the <code>body</code> property is empty, the reference is downloaded from S3 when
+the <code>body</code> property is requested. NOTE: Valid AWS credentials MUST stored in
+the standard AWS environment variables or an exception will result.
+PDFLibReferences are distinct from PDFLibEntries in that they are not
+required to link directly to an entry in an S3Batch send_result in order
+to be considered considered successfully extracted. This is useful for
+posting "information only" documents (e.g. PDF schedules) to placeholder
+cases and handling facilities (e.g. ms_chaph) that require two PDFs
+per patient but never send both PDFs in the same feed.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>document_id</code></strong></dt>
+<dd>s3 key where pdf file is or will be stored</dd>
+<dt><strong><code>file_type</code></strong></dt>
+<dd>S3FileType to indicate how the entry should be processed</dd>
+<dt><strong><code>body</code></strong></dt>
+<dd>bytes from a pdf file</dd>
+<dt><strong><code>meta</code></strong></dt>
+<dd>dict[str, str] of pdf file metadata</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="utilities.library_utils.PDFLibProto" href="#utilities.library_utils.PDFLibProto">PDFLibProto</a></li>
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.library_utils.PDFLibReference.body"><code class="name">prop <span class="ident">body</span> : bytes</code></dt>
+<dd>
+<div class="desc"><p>The bytes of the referenced object.</p>
+<p>If the "body" property is empty, the reference is downloaded from S3
+and cached upon first access. If <code>gvars.CURRENT_SPEC</code> contains a valid
+"output_dir" entry, a local copy is saved in the specified folder.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.library_utils.PDFLibReference.as_entry"><code class="name flex">
+<span>def <span class="ident">as_entry</span></span>(<span>self) ‑> <a title="utilities.library_utils.PDFLibEntry" href="#utilities.library_utils.PDFLibEntry">PDFLibEntry</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts this PDFLibReference to a PDFLibEntry instance.</p></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="utilities.library_utils.PDFLibProto" href="#utilities.library_utils.PDFLibProto">PDFLibProto</a></b></code>:
+<ul class="hlist">
+<li><code><a title="utilities.library_utils.PDFLibProto.filename" href="#utilities.library_utils.PDFLibProto.filename">filename</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibProto.last_modified" href="#utilities.library_utils.PDFLibProto.last_modified">last_modified</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibProto.pdf_reader" href="#utilities.library_utils.PDFLibProto.pdf_reader">pdf_reader</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="utilities.library_utils.RecordsLibEntry"><code class="flex name class">
+<span>class <span class="ident">RecordsLibEntry</span></span>
+<span>(</span><span>*, body: bytes = b'', meta: dict[str, str] = &lt;factory&gt;, document_id: str = '', file_type: <a title="utilities.library_utils.S3FileType" href="#utilities.library_utils.S3FileType">S3FileType</a> = pdf, static_columns: dict[str, str | Sequence[str]] = &lt;factory&gt;, source_s3_keys: list[str] = &lt;factory&gt;, extracted_data: Any = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A dataclass to hold tabular data and metadata.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="utilities.library_utils.PDFLibEntry" href="#utilities.library_utils.PDFLibEntry">PDFLibEntry</a></li>
+<li><a title="utilities.library_utils.PDFLibProto" href="#utilities.library_utils.PDFLibProto">PDFLibProto</a></li>
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.library_utils.RecordsLibEntry.body"><code class="name">var <span class="ident">body</span> : bytes</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.RecordsLibEntry.extracted_data"><code class="name">var <span class="ident">extracted_data</span> : Any</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.RecordsLibEntry.source_s3_keys"><code class="name">var <span class="ident">source_s3_keys</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.RecordsLibEntry.static_columns"><code class="name">var <span class="ident">static_columns</span> : dict[str, typing.Union[str, typing.Sequence[str]]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.library_utils.RecordsLibEntry.records"><code class="name">prop <span class="ident">records</span> : bytes | Any</code></dt>
+<dd>
+<div class="desc"><p>returns self.extracted_data if populated. otherwise, returns self.body.</p></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="utilities.library_utils.PDFLibEntry" href="#utilities.library_utils.PDFLibEntry">PDFLibEntry</a></b></code>:
+<ul class="hlist">
+<li><code><a title="utilities.library_utils.PDFLibEntry.as_entry" href="#utilities.library_utils.PDFLibEntry.as_entry">as_entry</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibEntry.filename" href="#utilities.library_utils.PDFLibProto.filename">filename</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibEntry.last_modified" href="#utilities.library_utils.PDFLibProto.last_modified">last_modified</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibEntry.pdf_reader" href="#utilities.library_utils.PDFLibProto.pdf_reader">pdf_reader</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibEntry.push_to_s3" href="#utilities.library_utils.PDFLibEntry.push_to_s3">push_to_s3</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="utilities.library_utils.S3FileType"><code class="flex name class">
+<span>class <span class="ident">S3FileType</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Mark a PDFLibProto object for processing as a schedule, a discrete
+demographics reference, a secondary discrete reference (other_csv),
+a parsable pdf, an image based (docuvision) pdf, or a "display only"
+pdf (placeholder document).</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>SCHDL</code></strong></dt>
+<dd>schedule. Handled by <code>S3Batch.match_schedule_to_demographics()</code>.</dd>
+<dt><strong><code>DEMOS</code></strong></dt>
+<dd>demographics. Handled by <code>S3Batch.match_schedule_to_demographics()</code>.</dd>
+<dt><strong><code>OTHCSV</code></strong></dt>
+<dd>other_csv. Handled by <code>S3Batch.match_schedule_to_demographics()</code>.</dd>
+<dt><strong><code>PDF</code></strong></dt>
+<dd>parsed pdf. Handled by pdf_extractor.py.</dd>
+<dt><strong><code>DOCVIS</code></strong></dt>
+<dd>docuvision pdf. Handled by a DocuVisionIntegrator instance.</dd>
+<dt><strong><code>MANUAL</code></strong></dt>
+<dd>manual. Handled by <code>S3Batch.add_placeholders()</code>.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.str</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.library_utils.S3FileType.DEMOS"><code class="name">var <span class="ident">DEMOS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.S3FileType.DOCVIS"><code class="name">var <span class="ident">DOCVIS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.S3FileType.MANUAL"><code class="name">var <span class="ident">MANUAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.S3FileType.OTHCSV"><code class="name">var <span class="ident">OTHCSV</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.S3FileType.PDF"><code class="name">var <span class="ident">PDF</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.library_utils.S3FileType.SCHDL"><code class="name">var <span class="ident">SCHDL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="utilities" href="index.html">utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="utilities.library_utils.DateVersIsEmptyTuple" href="#utilities.library_utils.DateVersIsEmptyTuple">DateVersIsEmptyTuple</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.library_utils.DateVersIsEmptyTuple.is_empty" href="#utilities.library_utils.DateVersIsEmptyTuple.is_empty">is_empty</a></code></li>
+<li><code><a title="utilities.library_utils.DateVersIsEmptyTuple.last_modified" href="#utilities.library_utils.DateVersIsEmptyTuple.last_modified">last_modified</a></code></li>
+<li><code><a title="utilities.library_utils.DateVersIsEmptyTuple.version_id" href="#utilities.library_utils.DateVersIsEmptyTuple.version_id">version_id</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.library_utils.KeyVersionTuple" href="#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.library_utils.KeyVersionTuple.check_results" href="#utilities.library_utils.KeyVersionTuple.check_results">check_results</a></code></li>
+<li><code><a title="utilities.library_utils.KeyVersionTuple.key" href="#utilities.library_utils.KeyVersionTuple.key">key</a></code></li>
+<li><code><a title="utilities.library_utils.KeyVersionTuple.reject_reason" href="#utilities.library_utils.KeyVersionTuple.reject_reason">reject_reason</a></code></li>
+<li><code><a title="utilities.library_utils.KeyVersionTuple.version" href="#utilities.library_utils.KeyVersionTuple.version">version</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.library_utils.PDFLibEntry" href="#utilities.library_utils.PDFLibEntry">PDFLibEntry</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.library_utils.PDFLibEntry.as_entry" href="#utilities.library_utils.PDFLibEntry.as_entry">as_entry</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibEntry.body" href="#utilities.library_utils.PDFLibEntry.body">body</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibEntry.document_id" href="#utilities.library_utils.PDFLibEntry.document_id">document_id</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibEntry.file_type" href="#utilities.library_utils.PDFLibEntry.file_type">file_type</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibEntry.meta" href="#utilities.library_utils.PDFLibEntry.meta">meta</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibEntry.push_to_s3" href="#utilities.library_utils.PDFLibEntry.push_to_s3">push_to_s3</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.library_utils.PDFLibProto" href="#utilities.library_utils.PDFLibProto">PDFLibProto</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.library_utils.PDFLibProto.as_entry" href="#utilities.library_utils.PDFLibProto.as_entry">as_entry</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibProto.body" href="#utilities.library_utils.PDFLibProto.body">body</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibProto.document_id" href="#utilities.library_utils.PDFLibProto.document_id">document_id</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibProto.file_type" href="#utilities.library_utils.PDFLibProto.file_type">file_type</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibProto.filename" href="#utilities.library_utils.PDFLibProto.filename">filename</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibProto.last_modified" href="#utilities.library_utils.PDFLibProto.last_modified">last_modified</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibProto.meta" href="#utilities.library_utils.PDFLibProto.meta">meta</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibProto.pdf_reader" href="#utilities.library_utils.PDFLibProto.pdf_reader">pdf_reader</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.library_utils.PDFLibReference" href="#utilities.library_utils.PDFLibReference">PDFLibReference</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.library_utils.PDFLibReference.as_entry" href="#utilities.library_utils.PDFLibReference.as_entry">as_entry</a></code></li>
+<li><code><a title="utilities.library_utils.PDFLibReference.body" href="#utilities.library_utils.PDFLibReference.body">body</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.library_utils.RecordsLibEntry" href="#utilities.library_utils.RecordsLibEntry">RecordsLibEntry</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.library_utils.RecordsLibEntry.body" href="#utilities.library_utils.RecordsLibEntry.body">body</a></code></li>
+<li><code><a title="utilities.library_utils.RecordsLibEntry.extracted_data" href="#utilities.library_utils.RecordsLibEntry.extracted_data">extracted_data</a></code></li>
+<li><code><a title="utilities.library_utils.RecordsLibEntry.records" href="#utilities.library_utils.RecordsLibEntry.records">records</a></code></li>
+<li><code><a title="utilities.library_utils.RecordsLibEntry.source_s3_keys" href="#utilities.library_utils.RecordsLibEntry.source_s3_keys">source_s3_keys</a></code></li>
+<li><code><a title="utilities.library_utils.RecordsLibEntry.static_columns" href="#utilities.library_utils.RecordsLibEntry.static_columns">static_columns</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.library_utils.S3FileType" href="#utilities.library_utils.S3FileType">S3FileType</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.library_utils.S3FileType.DEMOS" href="#utilities.library_utils.S3FileType.DEMOS">DEMOS</a></code></li>
+<li><code><a title="utilities.library_utils.S3FileType.DOCVIS" href="#utilities.library_utils.S3FileType.DOCVIS">DOCVIS</a></code></li>
+<li><code><a title="utilities.library_utils.S3FileType.MANUAL" href="#utilities.library_utils.S3FileType.MANUAL">MANUAL</a></code></li>
+<li><code><a title="utilities.library_utils.S3FileType.OTHCSV" href="#utilities.library_utils.S3FileType.OTHCSV">OTHCSV</a></code></li>
+<li><code><a title="utilities.library_utils.S3FileType.PDF" href="#utilities.library_utils.S3FileType.PDF">PDF</a></code></li>
+<li><code><a title="utilities.library_utils.S3FileType.SCHDL" href="#utilities.library_utils.S3FileType.SCHDL">SCHDL</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

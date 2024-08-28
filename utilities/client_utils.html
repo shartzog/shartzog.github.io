@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>utilities.client_utils API documentation</title>
+<meta name="description" content="Container for send functions called via client_specs
+and client_specs_dev">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>utilities.client_utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Container for send functions called via client_specs
+and client_specs_dev</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="utilities.client_utils.csv_demo_group_preprocess"><code class="name flex">
+<span>def <span class="ident">csv_demo_group_preprocess</span></span>(<span>demos: dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>], val_sep_override: str = ',', date_column: str = 'date', has_header_row: bool = True) ‑> dict[str, <a title="utilities.library_utils.RecordsLibEntry" href="library_utils.html#utilities.library_utils.RecordsLibEntry">RecordsLibEntry</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Concatenate the bytes from all demo bodies and extract a list of
+static DOSs to associate with each demo record.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>demos</code></strong> :&ensp;<code>Mapping[str, PDFLibProto]</code></dt>
+<dd>PDFLibEntry objects to concatenate</dd>
+<dt><strong><code>val_sep_override</code></strong> :&ensp;<code>str</code></dt>
+<dd>Default is None. If not supplied, the separator
+is assigned as "," or "|" depending on which of the two results in
+greatest length output from splitting the first line in the source.</dd>
+<dt><strong><code>date_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. The column to use for DOS extraction.
+Defaults to "date_admit".</dd>
+<dt><strong><code>has_header_row</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Default is True. Set to false if source docs do
+not include header rows.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>a new library containing a single entry with
+concatenated bytes from all inputs with at least one value row.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.csv_schedule_group_preprocess"><code class="name flex">
+<span>def <span class="ident">csv_schedule_group_preprocess</span></span>(<span>schedules: dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>], val_sep_override: str = ',', file_type_override: None | <a title="utilities.library_utils.S3FileType" href="library_utils.html#utilities.library_utils.S3FileType">S3FileType</a> = None, date_column: str = 'date', has_header_row: bool = True) ‑> dict[str, <a title="utilities.library_utils.RecordsLibEntry" href="library_utils.html#utilities.library_utils.RecordsLibEntry">RecordsLibEntry</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Concatenate the bytes from all schedule bodies and extract a list of
+static DOSs and s3 destination keys to associate with each schedule
+record.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>schedules</code></strong> :&ensp;<code>dict[str, PDFLibProto]</code></dt>
+<dd>PDFLibEntry objects to concatenate</dd>
+<dt><strong><code>val_sep_override</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. Override the default value separator
+for csv files. Defaults to ",".</dd>
+<dt><strong><code>file_type_override</code></strong> :&ensp;<code>lu.S3FileType</code></dt>
+<dd>Optional. Supply an alternate value
+to override the default SCHDL file_type (e.g. for OTHCSV inputs)</dd>
+<dt><strong><code>date_column</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. The column to use for DOS extraction.
+Defaults to "date".</dd>
+<dt><strong><code>has_header_row</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Default is True. Set to false if source docs do
+not include header rows.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>a new library containing a single entry with
+concatenated bytes from all inputs with at least one value row.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.db_push_dict"><code class="name flex">
+<span>def <span class="ident">db_push_dict</span></span>(<span>*, extracted_dict: dict[str, typing.Any], client_path: str, provider_facility: str, first_dos: str, **kwargs) ‑> dict[str, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Send extracted data to Claim Maker DB. All kwargs are supplied by S3Batch.send().</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>extracted_dict</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>extracted data for all patients.</dd>
+<dt><strong><code>client_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>s3 client folder/claim maker DB 'provider_name'.</dd>
+<dt><strong><code>provider_facility</code></strong> :&ensp;<code>str</code></dt>
+<dd>facility_name in ClaimMaker DB.</dd>
+<dt><strong><code>first_dos</code></strong> :&ensp;<code>str</code></dt>
+<dd>earliest date of service allowed to post to ClaimMaker DB.
+Must be in "YYYY-MM-DD" format.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, bool]</code></dt>
+<dd>dict of form {filename: True, &hellip;} to indicate successful
+extraction for all keys in extracted_dict.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.dict_to_disk"><code class="name flex">
+<span>def <span class="ident">dict_to_disk</span></span>(<span>*, extracted_dict: dict[str, typing.Any], client_path: str, provider_facility: str, claimmaker_support: bool, file_name_path: str, **kwargs) ‑> dict[str, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save extracted json data to a local file.</p>
+<p>This function must be supplied as a partial to define kwarg <code>file_name_path</code>,
+e.g. <code>send_func=partial(s3_push_dict, file_name_path="./output/extract.json")</code>,
+when used in a facility_spec.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>extracted_dict</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>all extracted data. supplied by S3Batch.send()</dd>
+<dt><strong><code>client_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>s3 client folder/claim maker DB 'provider_name'. supplied by
+S3Batch.send().</dd>
+<dt><strong><code>provider_facility</code></strong> :&ensp;<code>str</code></dt>
+<dd>facility_name in ClaimMaker DB. supplied by S3Batch.send()</dd>
+<dt><strong><code>claimmaker_support</code></strong> :&ensp;<code>bool</code></dt>
+<dd>mock create_batches if True. supplied by S3Batch.send()</dd>
+<dt><strong><code>file_name_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>Local file path where output is written. MUST be set by partial.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, bool]</code></dt>
+<dd>dict of form {filename: False, &hellip;} to prevent keys from moving in S3
+for locally dumped output.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.docvis_group_preprocess"><code class="name flex">
+<span>def <span class="ident">docvis_group_preprocess</span></span>(<span>pdf_library: dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]) ‑> dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Post PDFs to the docuvision API. No change to pdf_library.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_library</code></strong></dt>
+<dd>the library as collected from the unprocessed folder</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>the original library.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.docvis_group_preprocess_precombined"><code class="name flex">
+<span>def <span class="ident">docvis_group_preprocess_precombined</span></span>(<span>pdf_library: dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]) ‑> dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Post PDFs to the docuvision API. No change to pdf_library.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_library</code></strong></dt>
+<dd>the library as collected from the unprocessed folder</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>the original library.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.dummy_send"><code class="name flex">
+<span>def <span class="ident">dummy_send</span></span>(<span>extracted_dict: dict[str, typing.Any], **kwargs) ‑> dict[str, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>no db send for json_to_s3 execution.
+create dummy dict of form
+{source key 1: True, source key 2: True, &hellip;} to leverage copy/delete
+functions in S3Batch.send()</p></div>
+</dd>
+<dt id="utilities.client_utils.file_preprocess_split_by_first_line"><code class="name flex">
+<span>def <span class="ident">file_preprocess_split_by_first_line</span></span>(<span>pdf_ref: <a title="utilities.library_utils.PDFLibReference" href="library_utils.html#utilities.library_utils.PDFLibReference">PDFLibReference</a>, as_references: bool = True, name_mrn_regex: re.Pattern = re.compile('^Patient: (.*) \\(MRN: (.*)\\) - Printed by .*')) ‑> dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Splits the PDF when name_mrn_regex matches the first line of a page.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_ref</code></strong></dt>
+<dd>a reference to the source PDF to split</dd>
+<dt><strong><code>as_references</code></strong></dt>
+<dd>Set to false to convert children to lu.PDFLibEntry.
+Defaults to True.</dd>
+<dt><strong><code>name_mrn_regex</code></strong></dt>
+<dd>regex pattern for first line. group 1 is pt, 2 is mrn.
+Defaults to r"^Patient: (.<em>) (MRN: (.</em>)) - Printed by .*".</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>entries for pdf_library</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.file_preprocess_split_by_outline"><code class="name flex">
+<span>def <span class="ident">file_preprocess_split_by_outline</span></span>(<span>pdf_ref: <a title="utilities.library_utils.PDFLibReference" href="library_utils.html#utilities.library_utils.PDFLibReference">PDFLibReference</a>, split_check: collections.abc.Callable[[<a title="utilities.library_utils.PDFLibReference" href="library_utils.html#utilities.library_utils.PDFLibReference">PDFLibReference</a>], bool] = &lt;function &lt;lambda&gt;&gt;, designator_func: collections.abc.Callable[[list[str]], str] = &lt;function designator_from_demographics&gt;, outline_item_check: collections.abc.Callable[[pypdf.generic._data_structures.Destination | list[pypdf.generic._data_structures.Destination | list[pypdf.generic._data_structures.Destination]]], bool] = &lt;function &lt;lambda&gt;&gt;, as_references: bool = True) ‑> dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split a pdf according to entries in its navigation pane.</p>
+<p>Initially implemented to handle lump op note exports from Epic.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_ref</code></strong></dt>
+<dd>a reference to the source PDF to split</dd>
+<dt><strong><code>split_check</code></strong></dt>
+<dd>a test to determine if this PDF is eligible for splitting.
+if False is returned, the pdf_ref is cast to an entry and returned
+unmodified for downstream handling.</dd>
+<dt><strong><code>designator_func</code></strong></dt>
+<dd>given the lines extracted from the first page of a
+child pdf, return a string to serve as the child's filename.</dd>
+<dt><strong><code>outline_item_check</code></strong></dt>
+<dd>PDFs are split at every top level outline entry
+by default. if more than one top level entry exists for each
+patient, supply a custom function to select which entry should
+trigger the split. E.g. a custom outline item check can be used
+to split at only the "Demographics Patient #" outline items given an
+outline having "Demographics Patient 1", "Anesthesia Summary Patient 1",
+"Demographics Patient 2", "Anesthesia Summary Patient 2", etc.</dd>
+<dt><strong><code>as_references</code></strong></dt>
+<dd>If true, children are returned as PDFLibReferences rather
+than PDFLibEntries.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>entries for pdf_library</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.pdf_schedule_group_preprocess"><code class="name flex">
+<span>def <span class="ident">pdf_schedule_group_preprocess</span></span>(<span>pdf_library: dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>], column_split_line_regex: re.Pattern, first_value_line_regex: re.Pattern, column_to_value_regexes: list[re.Pattern], final_value_line_regex: re.Pattern | None = None, **kwargs) ‑> dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract and compile pdf schedule data into a single <code>RecordsLibEntry</code>.</p>
+<p>Given a dict of PDFLibProto objects, extract rows from the PDF using
+regular expressions to identify rows and columns and extract values and
+append a RecordsLibEntry with the extracted_data. Converts all source
+PDFs to type MANUAL to have them post on placeholder cases.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_library</code></strong> :&ensp;<code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>dict of file_id, PDFLibProto
+containing the entires for all schedule PDFs</dd>
+<dt><strong><code>column_split_line_regex</code></strong> :&ensp;<code>re.Pattern</code></dt>
+<dd>regex pattern of the line that
+will be used to set the column spans.</dd>
+<dt><strong><code>first_value_line_regex</code></strong> :&ensp;<code>re.Pattern</code></dt>
+<dd>regex pattern to match first
+line of a row</dd>
+<dt><strong><code>column_to_value_regexes</code></strong> :&ensp;<code>list[re.Pattern]</code></dt>
+<dd>list of regex patterns
+to extract values from columns.</dd>
+<dt><strong><code>final_value_line_regex</code></strong> :&ensp;<code>re.Pattern | None</code></dt>
+<dd>optional regex pattern to
+match the final line of a row. if <code>None</code> (default), the current
+row ends when the <em>next</em> line matches first_value_line_regex. if
+supplied, the current row ends when the <em>current</em> line matches
+final_value_line_regex and the current line is included.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>join_func</code></strong> :&ensp;<code>Callable[[Iterable[str], str]]</code></dt>
+<dd>method for joining the
+string segments collected for a given column into a single string.
+The default method trims all leading and trailing spaces and then
+joins the segments using a single space as a separator UNLESS the
+first segment ends or the second segment begins with "/" or "-" in
+which case the segments are joined without a separator. This
+allows for proper date interpretations by avoiding representations
+like "04/20/ 2024" when a date is wrapped onto the next line.</dd>
+<dt><strong><code>debug_path</code></strong> :&ensp;<code>Path</code></dt>
+<dd>path to write text extraction debug info from pypdf</dd>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>write internal debug data to log (also triggered when
+debug_path is supplied)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>the extended / updated pdf_library</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.s3_push_dict"><code class="name flex">
+<span>def <span class="ident">s3_push_dict</span></span>(<span>*, extracted_dict: dict[str, typing.Any], s3_bucket: str, client_path: str, facility_path: str, extracts_path: str, json_dumps_kwargs: dict[str, typing.Any] | None = None, **kwargs) ‑> dict[str, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Send extracted data to s3 in json format.</p>
+<p>This function must be supplied as a partial to define kwarg <code>extracts_path</code>,
+e.g. <code>send_func=partial(s3_push_dict, extracts_path="extracts")</code>, when used
+in a facility_spec.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>extracted_dict</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>all extracted data. supplied by S3Batch.send()</dd>
+<dt><strong><code>s3_bucket</code></strong> :&ensp;<code>str</code></dt>
+<dd>s3 bucket name. supplied by S3Batch.send()</dd>
+<dt><strong><code>client_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>s3 client folder. supplied by S3Batch.send()</dd>
+<dt><strong><code>facility_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>s3 facility subfolder. supplied by S3Batch.send()</dd>
+<dt><strong><code>extracts_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>s3 extracts subfolder. MUST be set by partial.</dd>
+<dt><strong><code>json_dumps_kwargs</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>optional kwargs for json.dumps. Defaults
+to <code>{"indent": 2}</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, bool]</code></dt>
+<dd>dict of form {filename: True, &hellip;} to indicate successful
+extraction for all keys in extracted_dict.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.unmatched_pdfs_group_preprocess"><code class="name flex">
+<span>def <span class="ident">unmatched_pdfs_group_preprocess</span></span>(<span>pdf_library: dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]) ‑> dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extend raw library with unmatched PDFs previously posted to a claimmaker DB.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_library</code></strong></dt>
+<dd>the library as collected from the unprocessed folder</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>the library extended with file references
+for unmatched files previously posted to the claimmaker DB.</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="utilities.client_utils.S3FileGroup"><code class="flex name class">
+<span>class <span class="ident">S3FileGroup</span></span>
+<span>(</span><span>file_type: <a title="utilities.library_utils.S3FileType" href="library_utils.html#utilities.library_utils.S3FileType">S3FileType</a>, filename_test_expr: re.Pattern = re.compile(&#x27;^(?P&lt;fileId&gt;.*)\\.(?i:pdf)$&#x27;), groupdict_xforms: dict[str, collections.abc.Callable[[str], str]] = &lt;factory&gt;, file_preprocess: collections.abc.Callable[[<a title="utilities.library_utils.PDFLibReference" href="library_utils.html#utilities.library_utils.PDFLibReference">PDFLibReference</a>], collections.abc.Mapping[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]] = &lt;function _default_file_preprocess&gt;, group_preprocess: collections.abc.Callable[[dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]], collections.abc.Mapping[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]] = &lt;function _default_group_preprocess&gt;, retain_for_reprocess_days: int = 0, check_results: bool | None = None, fallback_dos: collections.abc.Callable[[<a title="utilities.library_utils.PDFLibReference" href="library_utils.html#utilities.library_utils.PDFLibReference">PDFLibReference</a>], str] = &lt;function _default_fallback_dos&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Collects and preprocesses <code>library_utils.PDFLibProto</code> objects with filenames matching
+a predefined regular expression.</p>
+<p>Defines both 'file' and 'group' preprocessing functions. Individual file
+preprocessing occurs in <code>add_entries</code> as each file is collected. Group
+preprocessing occurs in <code>finalize</code> and operates on the set of all files collected.
+See <code>specs.builtin_client_specs</code> for example instances. See <code>facility_pdf_library</code>
+in aws_extractor.py for usage.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>file_type</code></strong> :&ensp;<code>S3FileType</code></dt>
+<dd>Filetype being assigned to a file that matched this regex</dd>
+<dt><strong><code>filename_test_expr</code></strong> :&ensp;<code>re.Pattern</code></dt>
+<dd>most important thing! regex that selects the files</dd>
+<dt><strong><code>groupdict_xforms</code></strong> :&ensp;<code>dict[str, Callable[[str], str]]</code></dt>
+<dd>defines transformations to apply
+to named groups in the re.Match object produced by filename_test_expr (if any)</dd>
+<dt><strong><code>file_preprocess</code></strong> :&ensp;<code>Callable[[PDFLibReference], Mapping[str, PDFLibProto]]</code></dt>
+<dd>method called
+for preprocessing each file's data (i.e. split operations)</dd>
+<dt><strong><code>group_preprocess</code></strong> :&ensp;<code>Callable[[dict[str, PDFLibProto]], Mapping[str, PDFLibProto]]</code></dt>
+<dd>method
+called for preprocessing all files collected for the group (i.e. combine operations)
+must be used for schedule/demo/other csv type inputs to produce a single
+lu.RecordsLibEntry object. Defaults to a S3FileType based selector for common
+algorithms. For example, a group assigned file_type SCHDL will call the
+<code><a title="utilities.client_utils.csv_schedule_group_preprocess" href="#utilities.client_utils.csv_schedule_group_preprocess">csv_schedule_group_preprocess()</a></code> function by default.</dd>
+<dt><strong><code>retain_for_reprocess_days</code></strong> :&ensp;<code>int</code></dt>
+<dd>number of days to keep an entry in 'unprocessed'.
+most commonly used to retain schedules for matching with late posting demographics
+records.</dd>
+<dt><strong><code>check_results</code></strong> :&ensp;<code>bool | None</code></dt>
+<dd>indicates whether entries in this group must be correlated
+with an analysis_jobs record to be considered successfully processed and moved in S3.
+If None (default), groups having S3FileType.PDF will default to True and all other
+file types will default to False.</dd>
+<dt><strong><code>fallback_dos</code></strong> :&ensp;<code>Callable[[str, PDFLibProto, datetime], str]</code></dt>
+<dd>method for determining DoS in
+case it was not found in the filename. uses <code>lu.numerics_to_dos</code> by default if 'dos'
+is not already present in meta.</dd>
+<dt><strong><code>keys_versions</code></strong> :&ensp;<code>list</code></dt>
+<dd>list of KeyVersionTuples for collected files. Used to manage
+s3 transfers from the unprocessed/ s3 folder to processed/ or failed/.</dd>
+<dt><strong><code>library</code></strong> :&ensp;<code>dict[str, PDFLibProto]</code></dt>
+<dd>dict of files in the group, don't have to be PDF</dd>
+</dl></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.client_utils.S3FileGroup.check_results"><code class="name">var <span class="ident">check_results</span> : bool | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.client_utils.S3FileGroup.file_type"><code class="name">var <span class="ident">file_type</span> : <a title="utilities.library_utils.S3FileType" href="library_utils.html#utilities.library_utils.S3FileType">S3FileType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.client_utils.S3FileGroup.filename_test_expr"><code class="name">var <span class="ident">filename_test_expr</span> : re.Pattern</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.client_utils.S3FileGroup.groupdict_xforms"><code class="name">var <span class="ident">groupdict_xforms</span> : dict[str, collections.abc.Callable[[str], str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.client_utils.S3FileGroup.keys_versions"><code class="name">var <span class="ident">keys_versions</span> : list[<a title="utilities.library_utils.KeyVersionTuple" href="library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.client_utils.S3FileGroup.library"><code class="name">var <span class="ident">library</span> : dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.client_utils.S3FileGroup.retain_for_reprocess_days"><code class="name">var <span class="ident">retain_for_reprocess_days</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.client_utils.S3FileGroup.add_entries"><code class="name flex">
+<span>def <span class="ident">add_entries</span></span>(<span>self, s3_key: str, version_list: list[<a title="utilities.library_utils.DateVersIsEmptyTuple" href="library_utils.html#utilities.library_utils.DateVersIsEmptyTuple">DateVersIsEmptyTuple</a>]) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Given an s3_key, check the filename for a <code>filename_test_expr</code> match.
+if it's a match, create and add PDFLibProto object(s) to self.library
+according to file_preprocess.</p>
+<p>Calls <code>file_preprocess</code> method to create PDFLibProto object(s), the
+<code>fallback_dos</code> method to assign a default date of service, and adds the
+s3_key and version_id to self.keys_versions. See <code>specs.builtin_client_specs</code>
+for example instances. See <code>facility_pdf_library</code> in aws_extractor.py
+for usage.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>s3_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>An s3 key for an extract target</dd>
+<dt><strong><code>version_list</code></strong> :&ensp;<code>list[DateVersIsEmptyTuple]</code></dt>
+<dd>File versions for <code>s3_key</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the file was added to the library, False otherwise.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.S3FileGroup.fallback_dos"><code class="name flex">
+<span>def <span class="ident">fallback_dos</span></span>(<span>entry: <a title="utilities.library_utils.PDFLibReference" href="library_utils.html#utilities.library_utils.PDFLibReference">PDFLibReference</a>) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Default 'fallback_dos' function for the S3FileGroup dataclass.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>entry</code></strong> :&ensp;<code>PDFLibReference</code></dt>
+<dd>PDFLibReference to the file being processed.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Default date of service (DoS) for the file being processed.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.S3FileGroup.file_preprocess"><code class="name flex">
+<span>def <span class="ident">file_preprocess</span></span>(<span>pdf_lib_ref: <a title="utilities.library_utils.PDFLibReference" href="library_utils.html#utilities.library_utils.PDFLibReference">PDFLibReference</a>) ‑> collections.abc.Mapping[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Default 'file_preprocess' function for the S3FileGroup dataclass. Automatically
+returns PDFLibEntry for PDF files and PDFLibReference for all other files.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>doc_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>S3 key of the file being processed.</dd>
+<dt><strong><code>meta</code></strong> :&ensp;<code>dict[str, str]</code></dt>
+<dd>Metadata for the file being processed.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, PDFLibProto]</code></dt>
+<dd>PDFLibProto object with filename key for the file
+being processed.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.client_utils.S3FileGroup.finalize"><code class="name flex">
+<span>def <span class="ident">finalize</span></span>(<span>self) ‑> collections.abc.Mapping[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Call after collecting all keys into the group to apply the 'group_preprocess'
+method and return the finalized library.</p></div>
+</dd>
+<dt id="utilities.client_utils.S3FileGroup.group_preprocess"><code class="name flex">
+<span>def <span class="ident">group_preprocess</span></span>(<span>pdf_library: dict[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]) ‑> collections.abc.Mapping[str, <a title="utilities.library_utils.PDFLibProto" href="library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Default 'group_preprocess' function for the S3FileGroup dataclass.</p>
+<p>Calls 'csv_schedule_preprocess' for S3FileTypes SCHDL and OTHCSV,
+'csv_demo_preprocess' for S3FileType DEMOS, and the unmodified input
+for other file types.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="utilities" href="index.html">utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="utilities.client_utils.csv_demo_group_preprocess" href="#utilities.client_utils.csv_demo_group_preprocess">csv_demo_group_preprocess</a></code></li>
+<li><code><a title="utilities.client_utils.csv_schedule_group_preprocess" href="#utilities.client_utils.csv_schedule_group_preprocess">csv_schedule_group_preprocess</a></code></li>
+<li><code><a title="utilities.client_utils.db_push_dict" href="#utilities.client_utils.db_push_dict">db_push_dict</a></code></li>
+<li><code><a title="utilities.client_utils.dict_to_disk" href="#utilities.client_utils.dict_to_disk">dict_to_disk</a></code></li>
+<li><code><a title="utilities.client_utils.docvis_group_preprocess" href="#utilities.client_utils.docvis_group_preprocess">docvis_group_preprocess</a></code></li>
+<li><code><a title="utilities.client_utils.docvis_group_preprocess_precombined" href="#utilities.client_utils.docvis_group_preprocess_precombined">docvis_group_preprocess_precombined</a></code></li>
+<li><code><a title="utilities.client_utils.dummy_send" href="#utilities.client_utils.dummy_send">dummy_send</a></code></li>
+<li><code><a title="utilities.client_utils.file_preprocess_split_by_first_line" href="#utilities.client_utils.file_preprocess_split_by_first_line">file_preprocess_split_by_first_line</a></code></li>
+<li><code><a title="utilities.client_utils.file_preprocess_split_by_outline" href="#utilities.client_utils.file_preprocess_split_by_outline">file_preprocess_split_by_outline</a></code></li>
+<li><code><a title="utilities.client_utils.pdf_schedule_group_preprocess" href="#utilities.client_utils.pdf_schedule_group_preprocess">pdf_schedule_group_preprocess</a></code></li>
+<li><code><a title="utilities.client_utils.s3_push_dict" href="#utilities.client_utils.s3_push_dict">s3_push_dict</a></code></li>
+<li><code><a title="utilities.client_utils.unmatched_pdfs_group_preprocess" href="#utilities.client_utils.unmatched_pdfs_group_preprocess">unmatched_pdfs_group_preprocess</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="utilities.client_utils.S3FileGroup" href="#utilities.client_utils.S3FileGroup">S3FileGroup</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.client_utils.S3FileGroup.add_entries" href="#utilities.client_utils.S3FileGroup.add_entries">add_entries</a></code></li>
+<li><code><a title="utilities.client_utils.S3FileGroup.check_results" href="#utilities.client_utils.S3FileGroup.check_results">check_results</a></code></li>
+<li><code><a title="utilities.client_utils.S3FileGroup.fallback_dos" href="#utilities.client_utils.S3FileGroup.fallback_dos">fallback_dos</a></code></li>
+<li><code><a title="utilities.client_utils.S3FileGroup.file_preprocess" href="#utilities.client_utils.S3FileGroup.file_preprocess">file_preprocess</a></code></li>
+<li><code><a title="utilities.client_utils.S3FileGroup.file_type" href="#utilities.client_utils.S3FileGroup.file_type">file_type</a></code></li>
+<li><code><a title="utilities.client_utils.S3FileGroup.filename_test_expr" href="#utilities.client_utils.S3FileGroup.filename_test_expr">filename_test_expr</a></code></li>
+<li><code><a title="utilities.client_utils.S3FileGroup.finalize" href="#utilities.client_utils.S3FileGroup.finalize">finalize</a></code></li>
+<li><code><a title="utilities.client_utils.S3FileGroup.group_preprocess" href="#utilities.client_utils.S3FileGroup.group_preprocess">group_preprocess</a></code></li>
+<li><code><a title="utilities.client_utils.S3FileGroup.groupdict_xforms" href="#utilities.client_utils.S3FileGroup.groupdict_xforms">groupdict_xforms</a></code></li>
+<li><code><a title="utilities.client_utils.S3FileGroup.keys_versions" href="#utilities.client_utils.S3FileGroup.keys_versions">keys_versions</a></code></li>
+<li><code><a title="utilities.client_utils.S3FileGroup.library" href="#utilities.client_utils.S3FileGroup.library">library</a></code></li>
+<li><code><a title="utilities.client_utils.S3FileGroup.retain_for_reprocess_days" href="#utilities.client_utils.S3FileGroup.retain_for_reprocess_days">retain_for_reprocess_days</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

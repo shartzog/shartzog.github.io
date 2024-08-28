@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>utilities.value_cache_dict API documentation</title>
+<meta name="description" content="Useful in extending functionality for comprehensions by allowing the
+current iteration to reference the results of prior iteration(s).
+See
+…">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>utilities.value_cache_dict</code></h1>
+</header>
+<section id="section-intro">
+<p>Useful in extending functionality for comprehensions by allowing the
+current iteration to reference the results of prior iteration(s).
+See
+integrators/docuvision_integrator.py for an example implementation.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="utilities.value_cache_dict.CacheDictCheck"><code class="flex name class">
+<span>class <span class="ident">CacheDictCheck</span></span>
+<span>(</span><span>check_name: str, key_arg: str | int, value_arg: str | int, key_check: collections.abc.Callable[[typing.Any], bool], format_key: collections.abc.Callable[[typing.Any], collections.abc.Hashable] = builtins.str, value_check: collections.abc.Callable[[typing.Any], bool] = &lt;function CacheDictCheck.&lt;lambda&gt;&gt;, preprocess_value: collections.abc.Callable[[typing.Any], typing.Any] = &lt;function CacheDictCheck.&lt;lambda&gt;&gt;, concat_value: collections.abc.Callable[[typing.Any, typing.Any], typing.Any] = &lt;function CacheDictCheck.&lt;lambda&gt;&gt;, format_arg_value: collections.abc.Callable[[typing.Any, typing.Any], typing.Any] = &lt;function CacheDictCheck.&lt;lambda&gt;&gt;, cache_factory: collections.abc.Callable[[], typing.Any] = builtins.str, reset_arg: str | int | None = None, *, reset_check: collections.abc.Callable[[typing.Any, typing.Any], bool] = &lt;function CacheDictCheck.&lt;lambda&gt;&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines a cache_check for use with the ValueCacheDict decorator.</p>
+<p>Defines the tests for determining whether an arg or kwarg should
+be added to the cache, how the value should be formatted prior to
+being added, how to combine it with previously cached values, and
+how the value in the cache should be reincorporated into the values
+of the args and kwargs supplied in the call before they are
+forwarded to the wrapped function.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>check_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>key for this check's cache in the cache_dict of the
+@ValueCacheDict wrapped function.</dd>
+<dt><strong><code>key_arg</code></strong> :&ensp;<code>str | int</code></dt>
+<dd>the argument to the wrapped function that will
+be used to generate the cache dict key.
+An int represents the zero
+based index of a postional arg (see note below). A str must reference
+a valid keyword argument.</dd>
+<dt><strong><code>value_arg</code></strong> :&ensp;<code>str | int</code></dt>
+<dd>the argument to the wrapped function that will
+be used to create values for the cache.</dd>
+<dt><strong><code>key_check</code></strong> :&ensp;<code>Callable[[Any], bool]</code></dt>
+<dd>given the resolved value of the
+'key_arg' (see ValueCacheDict), return True to trigger caching.</dd>
+<dt><strong><code>format_key</code></strong> :&ensp;<code>Callable[[Any], Hashable]</code></dt>
+<dd>given the resolved value of
+the 'key_arg', return a cache dict key. (Default is str)</dd>
+<dt><strong><code>value_check</code></strong> :&ensp;<code>Callable[[Any], bool]</code></dt>
+<dd>given the resolved value of the
+'value_arg' (see ValueCacheDict), return True to trigger caching.
+(Default is lambda _: True)</dd>
+<dt><strong><code>preprocess_value</code></strong> :&ensp;<code>Callable[[Any], Any]</code></dt>
+<dd>given the resolved value of
+the 'value_arg', return a modified representation fit for caching.
+(Default is lambda x: x)</dd>
+<dt><strong><code>concat_value</code></strong> :&ensp;<code>Callable[[Any, Any], Any]</code></dt>
+<dd>given the cached value and
+the preprocessed new value, return a new cached value.
+(Default is lambda x, y: x + y)</dd>
+<dt><strong><code>format_arg_value</code></strong> :&ensp;<code>Callable[[Any, Any], Any]</code></dt>
+<dd>given the original
+resolved value of the 'value_arg' and the new cache value, return
+the value of 'value_arg' to use when calling the wrapped function.
+(Default is lambda: _, y: y (passes the new cache value))</dd>
+<dt><strong><code>cache_factory</code></strong> :&ensp;<code>Callable[[], Any]</code></dt>
+<dd>assigned to the "default_factory"
+attribute of the internal defaultdict serving as the cache for the
+duration of this check.
+(Default is str)</dd>
+<dt><strong><code>reset_arg</code></strong> :&ensp;<code>str | int | None</code></dt>
+<dd>the argument to the wrapped function that
+will be evaluated to determine whether the cache should be reset.
+If None, the cache will never reset.</dd>
+<dt><strong><code>reset_check</code></strong> :&ensp;<code>Callable[[Any, Any], bool]</code></dt>
+<dd>given the previously resolved
+value of the 'reset_arg' and the current resolved value, return True
+to reset the cache. (Default is lambda x, y: x != y)</dd>
+</dl>
+<p>NOTE: the arg at position zero of a class or instance method will be "cls"
+or "self", so the arguments in the actual function call will begin at
+position 1 for those use cases.</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.value_cache_dict.CacheDictCheck.cache_factory"><code class="name">var <span class="ident">cache_factory</span> : collections.abc.Callable[[], typing.Any]</code></dt>
+<dd>
+<div class="desc"><p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.</p></div>
+</dd>
+<dt id="utilities.value_cache_dict.CacheDictCheck.cached"><code class="name">var <span class="ident">cached</span> : dict[collections.abc.Hashable, typing.Any]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.value_cache_dict.CacheDictCheck.check_name"><code class="name">var <span class="ident">check_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.value_cache_dict.CacheDictCheck.format_key"><code class="name">var <span class="ident">format_key</span> : collections.abc.Callable[[typing.Any], collections.abc.Hashable]</code></dt>
+<dd>
+<div class="desc"><p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.</p></div>
+</dd>
+<dt id="utilities.value_cache_dict.CacheDictCheck.key_arg"><code class="name">var <span class="ident">key_arg</span> : str | int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.value_cache_dict.CacheDictCheck.key_check"><code class="name">var <span class="ident">key_check</span> : collections.abc.Callable[[typing.Any], bool]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.value_cache_dict.CacheDictCheck.reset_arg"><code class="name">var <span class="ident">reset_arg</span> : str | int | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.value_cache_dict.CacheDictCheck.reset_value"><code class="name">var <span class="ident">reset_value</span> : Any</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.value_cache_dict.CacheDictCheck.value_arg"><code class="name">var <span class="ident">value_arg</span> : str | int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.value_cache_dict.CacheDictCheck.concat_value"><code class="name flex">
+<span>def <span class="ident">concat_value</span></span>(<span>x, y) ‑> collections.abc.Callable[[typing.Any, typing.Any], typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.value_cache_dict.CacheDictCheck.format_arg_value"><code class="name flex">
+<span>def <span class="ident">format_arg_value</span></span>(<span>_, y) ‑> collections.abc.Callable[[typing.Any, typing.Any], typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.value_cache_dict.CacheDictCheck.preprocess_value"><code class="name flex">
+<span>def <span class="ident">preprocess_value</span></span>(<span>x) ‑> collections.abc.Callable[[typing.Any], typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.value_cache_dict.CacheDictCheck.reset_check"><code class="name flex">
+<span>def <span class="ident">reset_check</span></span>(<span>x, y) ‑> collections.abc.Callable[[typing.Any, typing.Any], bool]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.value_cache_dict.CacheDictCheck.value_check"><code class="name flex">
+<span>def <span class="ident">value_check</span></span>(<span>_) ‑> collections.abc.Callable[[typing.Any], bool]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.value_cache_dict.ValueCacheDict"><code class="flex name class">
+<span>class <span class="ident">ValueCacheDict</span></span>
+<span>(</span><span>cache_checks: collections.abc.Sequence[<a title="utilities.value_cache_dict.CacheDictCheck" href="#utilities.value_cache_dict.CacheDictCheck">CacheDictCheck</a>], **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A decorator proviing flexible caching options for use in comprehensions.</p>
+<p>Initially developed to provide a means to cache the parts of a full
+address when street address and city/state/zip are found in different
+sections of a form and thus labeled with independent bounding boxes,
+this class and its supporting class CacheDictCheck are implemented
+for general use. Useful in extending the basic functionality of
+comprehensions by allowing the current iteration to reference the
+results of prior iteration(s).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>cache_checks</code></strong> :&ensp;<code>Sequence[<a title="utilities.value_cache_dict.CacheDictCheck" href="#utilities.value_cache_dict.CacheDictCheck">CacheDictCheck</a>]</code></dt>
+<dd>one CacheDictCheck instance per
+cached parameter. See CacheDictCheck for details.</dd>
+<dt><strong><code>ex_handler</code></strong> :&ensp;<code>Callable[[Exception], bool]</code></dt>
+<dd>a user defined function to which
+all raised exceptions are passed. Return True to continue processing.
+Return False (default) to raise the exception to the calling thread.
+Default is <code>lambda _: False</code>.</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>cache_dict</code></strong> :&ensp;<code>dict[Any, Any]</code></dt>
+<dd>this attribute will be added to functions
+decorated with this class to provide convenient access to the <code>cached</code>
+attributes of each CacheDictCheck.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.value_cache_dict.ValueCacheDict.cache_dict"><code class="name">prop <span class="ident">cache_dict</span> : dict[collections.abc.Hashable, dict[collections.abc.Hashable, typing.Any]]</code></dt>
+<dd>
+<div class="desc"><p>dict of dicts of form {'[check.check_name]: {[check.cached]}'</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="utilities" href="index.html">utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="utilities.value_cache_dict.CacheDictCheck" href="#utilities.value_cache_dict.CacheDictCheck">CacheDictCheck</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.cache_factory" href="#utilities.value_cache_dict.CacheDictCheck.cache_factory">cache_factory</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.cached" href="#utilities.value_cache_dict.CacheDictCheck.cached">cached</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.check_name" href="#utilities.value_cache_dict.CacheDictCheck.check_name">check_name</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.concat_value" href="#utilities.value_cache_dict.CacheDictCheck.concat_value">concat_value</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.format_arg_value" href="#utilities.value_cache_dict.CacheDictCheck.format_arg_value">format_arg_value</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.format_key" href="#utilities.value_cache_dict.CacheDictCheck.format_key">format_key</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.key_arg" href="#utilities.value_cache_dict.CacheDictCheck.key_arg">key_arg</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.key_check" href="#utilities.value_cache_dict.CacheDictCheck.key_check">key_check</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.preprocess_value" href="#utilities.value_cache_dict.CacheDictCheck.preprocess_value">preprocess_value</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.reset_arg" href="#utilities.value_cache_dict.CacheDictCheck.reset_arg">reset_arg</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.reset_check" href="#utilities.value_cache_dict.CacheDictCheck.reset_check">reset_check</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.reset_value" href="#utilities.value_cache_dict.CacheDictCheck.reset_value">reset_value</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.value_arg" href="#utilities.value_cache_dict.CacheDictCheck.value_arg">value_arg</a></code></li>
+<li><code><a title="utilities.value_cache_dict.CacheDictCheck.value_check" href="#utilities.value_cache_dict.CacheDictCheck.value_check">value_check</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.value_cache_dict.ValueCacheDict" href="#utilities.value_cache_dict.ValueCacheDict">ValueCacheDict</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.value_cache_dict.ValueCacheDict.cache_dict" href="#utilities.value_cache_dict.ValueCacheDict.cache_dict">cache_dict</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

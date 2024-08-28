@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>integrators.docuvision_integrator API documentation</title>
+<meta name="description" content="Handle API calls to DocuVision.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>integrators.docuvision_integrator</code></h1>
+</header>
+<section id="section-intro">
+<p>Handle API calls to DocuVision.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator"><code class="flex name class">
+<span>class <span class="ident">DocuVisionIntegrator</span></span>
+<span>(</span><span>documents: dict[str, utilities.library_utils.PDFLibProto] = &lt;factory&gt;, page_map: dict[str, dict[str, list[int]]] = &lt;factory&gt;, split_by_pid: bool = False, min_confidence: float = 0.1, api_timeout: int = 5400, out_dir: str | None = None, aws_region: str = 'us-east-1', api_secret_name: str = '', base_url: str = '', base_path: str = '', api_key: str = '', service: str = 'docuvision-1', model: str = 'base-medrec-anesthesia', jp_query: str = 'sort_by(\n
+[].{label:dotmap,value:text_ocr,confidence:confidence},\n
+&confidence\n
+)', mock_ids: list[int] = &lt;factory&gt;, fail_on_error: bool = False, default_dos: str = '2024-08-27', table_converters: dict[str, collections.abc.Callable[[list[str]], list[dict[str, str]]]] = &lt;factory&gt;, dv_preferred_networks: list[str] | None = None, dv_required_page_types: set[str] | None = None, *, result_formatter: collections.abc.Callable[..., tuple[str, dict[str, typing.Any]]] | None = None, response_reducer: collections.abc.Callable[..., list[dict[str, typing.Any]]] | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Post a batch of PDFs to docuvision API, poll for results, and
+preprocess raw output to clean up and reformat results into form
+expected by downstream processes.</p>
+<p>If values are supplied for base_url, base_path, and api_key, the supplied
+values will override the corresponding values in the response from the
+boto3 secretsmanager client when api_secret_name is requested.
+If all 3 are supplied, no call to boto3 will occur at all allowing for
+"sans-AWS" use cases.</p>
+<p>Basic field validation occurs on first call to post_tasks (or manual call
+to check_api_info which tests with _post_location()). Instancing process
+can either pass a "documents" dict in during init OR manually populate
+the "documents" attribute with entries of filename:bytes for each pdf to
+be processed. When all documents are loaded, instancing process should
+call the .post_tasks() method.</p>
+<p>All documents will be posted and tasks submitted upon first call of
+the post_tasks() function.</p>
+<p>All tasks will be polled and responses collected upon first access of
+the results property. Subsequent calls to results will return previously
+stored results.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>documents</code></strong> :&ensp;<code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>dict of {filename: PDFLibProto}
+where PDFLibProto is a namedtuple of (body, meta) where body is
+a bytes object and meta is a dict of metadata for the pdf.</dd>
+<dt><strong><code>page_map</code></strong> :&ensp;<code>dict[str, dict[str, list[int]]]</code></dt>
+<dd>dict of {new_doc_id:
+{old_doc_id: [page_nums]}} where new_doc_id is the doc_id for the
+combined pdf created by docuvision and old_doc_id is the doc_id
+for the original pdf. page_nums is a list of page numbers from
+the original pdf that were included in the combined pdf.</dd>
+<dt><strong><code>split_by_pid</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, docuvision will split each pdf into
+separate documents based on patient id. If False, docuvision
+will combine all pdfs into a single document.</dd>
+<dt><strong><code>min_confidence</code></strong> :&ensp;<code>float</code></dt>
+<dd>minimum confidence required for a result to
+be included in the final output. All results with confidence
+below this value will be dropped.</dd>
+<dt><strong><code>api_timeout</code></strong> :&ensp;<code>int</code></dt>
+<dd>number of seconds to wait for a response from the
+docuvision API before raising an error.</dd>
+<dt><strong><code>out_dir</code></strong> :&ensp;<code>str</code></dt>
+<dd>path to directory where output json files will be
+written. If None, no files will be written.</dd>
+<dt><strong><code>aws_region</code></strong> :&ensp;<code>str</code></dt>
+<dd>AWS region to use for boto3 calls.</dd>
+<dt><strong><code>api_secret_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>name of secret in AWS secretsmanager containing
+the base_url, base_path, and api_key values for the docuvision API.</dd>
+<dt><strong><code>base_url</code></strong> :&ensp;<code>str</code></dt>
+<dd>base url for docuvision API. If None, will be pulled
+from AWS secretsmanager.</dd>
+<dt><strong><code>base_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>base path for docuvision API. If None, will be pulled
+from AWS secretsmanager.</dd>
+<dt><strong><code>api_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>api key for docuvision API. If None, will be pulled
+from AWS secretsmanager.</dd>
+<dt><strong><code>service</code></strong> :&ensp;<code>str</code></dt>
+<dd>docuvision service to use. Defaults to "docuvision-1".</dd>
+<dt><strong><code>model</code></strong> :&ensp;<code>str</code></dt>
+<dd>docuvision model to use. Defaults to "base-medrec-anesthesia".</dd>
+<dt><strong><code>jp_query</code></strong> :&ensp;<code>str</code></dt>
+<dd>jmespath query to use for result formatting. Defaults
+to:
+'''sort_by(
+[].{label:dotmap,value:text_ocr,confidence:confidence},
+&amp;confidence
+)'''</dd>
+<dt><strong><code>mock_ids</code></strong> :&ensp;<code>list[int]</code></dt>
+<dd>list of task_ids to use for mock responses.
+Defaults to [].</dd>
+<dt><strong><code>fail_on_error</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, raise an error if any task fails to
+post or any response fails to be collected. Defaults to False.</dd>
+<dt><strong><code>default_dos</code></strong> :&ensp;<code>str</code></dt>
+<dd>default date of service to use if no date of service
+is extracted from the facesheet. Defaults to gvars.DEFAULT_DOS.</dd>
+<dt><strong><code>result_formatter</code></strong> :&ensp;<code>Callable[&hellip;, tuple[str, dict[str, Any]]]</code></dt>
+<dd>function
+to use for reformatting raw results. Defaults to self._format_result.</dd>
+<dt><strong><code>response_reducer</code></strong> :&ensp;<code>Callable[&hellip;, list[dict[str, Any]]]</code></dt>
+<dd>function to use
+for reducing raw results to final output. Defaults to
+self._condense_response.</dd>
+<dt><strong><code>dv_preferred_networks</code></strong> :&ensp;<code>list[str] | None</code></dt>
+<dd>list of preferred Docuvision Neural
+Networks. Created for facilities where people manually upload 1-page PDFs</dd>
+<dt><strong><code>table_converters</code></strong> :&ensp;<code>dict[str, Callable[[list[str]], list[dict[str, str]]]]</code></dt>
+<dd>function
+reference for processing '*Table' labels returned by DV-1.</dd>
+<dt><strong><code>dv_required_page_types</code></strong> :&ensp;<code>set[str]</code></dt>
+<dd>if supplied, a case will only be created for a pid
+if at least one of the pages assigned to that pid have a type in this set.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>utilities.protocols.DocuVisionIntegratorProtocol</li>
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.api_key"><code class="name">var <span class="ident">api_key</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.api_secret_name"><code class="name">var <span class="ident">api_secret_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.api_timeout"><code class="name">var <span class="ident">api_timeout</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.aws_region"><code class="name">var <span class="ident">aws_region</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.base_path"><code class="name">var <span class="ident">base_path</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.base_url"><code class="name">var <span class="ident">base_url</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.default_dos"><code class="name">var <span class="ident">default_dos</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.documents"><code class="name">var <span class="ident">documents</span> : dict[str, utilities.library_utils.PDFLibProto]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.dv_preferred_networks"><code class="name">var <span class="ident">dv_preferred_networks</span> : list[str] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.dv_required_page_types"><code class="name">var <span class="ident">dv_required_page_types</span> : set[str] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.fail_on_error"><code class="name">var <span class="ident">fail_on_error</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.jp_query"><code class="name">var <span class="ident">jp_query</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.min_confidence"><code class="name">var <span class="ident">min_confidence</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.mock_ids"><code class="name">var <span class="ident">mock_ids</span> : list[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.model"><code class="name">var <span class="ident">model</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.out_dir"><code class="name">var <span class="ident">out_dir</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.page_map"><code class="name">var <span class="ident">page_map</span> : dict[str, dict[str, list[int]]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.response_reducer"><code class="name">var <span class="ident">response_reducer</span> : collections.abc.Callable[..., list[dict[str, typing.Any]]] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.result_formatter"><code class="name">var <span class="ident">result_formatter</span> : collections.abc.Callable[..., tuple[str, dict[str, typing.Any]]] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.service"><code class="name">var <span class="ident">service</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.split_by_pid"><code class="name">var <span class="ident">split_by_pid</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.table_converters"><code class="name">var <span class="ident">table_converters</span> : dict[str, collections.abc.Callable[[list[str]], list[dict[str, str]]]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.doc_ex"><code class="name">prop <span class="ident">doc_ex</span></code></dt>
+<dd>
+<div class="desc"><p>Exception to utilize if an entire document fails to extract.</p>
+<p>Controlled by self.fail_on_error. If True, raise an exception
+that will halt the entire process. If False, raise a ValueError
+that will be caught and logged by the LogExHandler decorator.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>LogExOverrideError | ValueError</code></dt>
+<dd>exception to raise</dd>
+</dl></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.pdf_library"><code class="name">prop <span class="ident">pdf_library</span> : dict[str, utilities.library_utils.PDFLibEntry]</code></dt>
+<dd>
+<div class="desc"><p>Dict of {case_doc_id: PDFLibEntry} where each entry represents the
+combined_pdf of a DocuVisionCase created by a child DocuVisionTask
+instance.</p>
+<p>Merged into S3Batch.pdf_library in aws_s3_batch.py for file matching
+and other downstream processes.</p></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.pdfs_by_doc_id"><code class="name">prop <span class="ident">pdfs_by_doc_id</span> : dict[str, bytes]</code></dt>
+<dd>
+<div class="desc"><p>Returns a dict of pdf bytes split and/or concatenated by task pids.</p></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.results"><code class="name">prop <span class="ident">results</span> : dict[str, list[dict[str, str]]]</code></dt>
+<dd>
+<div class="desc"><p>Process responses from all child tasks to produce results according to
+the current instance settings.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.check_api_info"><code class="name flex">
+<span>def <span class="ident">check_api_info</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test to see if api url, path, and key values have been provided
+and attempt to pull from AWS Secrets Manager via self.api_secret_name
+if not.</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>if api_key, base_url, or base_path cannot be determined.</dd>
+</dl></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.create_tasks"><code class="name flex">
+<span>def <span class="ident">create_tasks</span></span>(<span>self, documents: dict[str, utilities.library_utils.PDFLibProto] | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Obtain upload location and post PDFs. If mock_ids were defined, create
+mock tasks for each id and collect the existing respones.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>documents</code></strong> :&ensp;<code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>dict of {filename: PDFLibProto}
+where PDFLibProto is a namedtuple of (body, meta) where body is
+a bytes object and meta is a dict of metadata for the pdf.
+Optional. Extends self.documents if supplied.</dd>
+</dl></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.job_dict_entries"><code class="name flex">
+<span>def <span class="ident">job_dict_entries</span></span>(<span>self, extracted_data: dict[str, dict[str, typing.Any]]) ‑> dict[str, dict[str, typing.Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Dict of {job_id: job_dict} for all tasks in self._tasks where each job_dict
+contains values for db columns 'input', 'comments', and 'note'.</p>
+<p>Called by aws_s3_batch.py to recombine the values for the columns noted
+above with their corresponding output from table_transformer.py.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>extracted_data</code></strong> :&ensp;<code>dict[str, dict[str, Any]]</code></dt>
+<dd>TableTransformer output
+data supplied from aws_s3_batch.S3Batch.transformed.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, dict[str, Any]]</code></dt>
+<dd>dict of {job_id: job_dict} for all tasks
+in self._tasks.</dd>
+</dl></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.reset"><code class="name flex">
+<span>def <span class="ident">reset</span></span>(<span>self, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reset the dataclass to prepare for a new facility by clearing
+all documents, tasks, results, and internal variables.</p>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>documents</code></strong> :&ensp;<code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>dict of {filename: PDFLibProto}
+where PDFLibProto is a namedtuple of (body, meta) where body is
+a bytes object and meta is a dict of metadata for the pdf.</dd>
+<dt><strong><code>page_map</code></strong> :&ensp;<code>dict[str, dict[str, list[int]]]</code></dt>
+<dd>dict of {new_doc_id:
+{old_doc_id: [page_nums]}} where new_doc_id is the doc_id for the
+combined pdf created by docuvision and old_doc_id is the doc_id
+for the original pdf. page_nums is a list of page numbers from
+the original pdf that were included in the combined pdf.</dd>
+<dt><strong><code>out_dir</code></strong> :&ensp;<code>str</code></dt>
+<dd>path to directory where output json files will be
+written. If None, no files will be written.</dd>
+<dt><strong><code>split_by_pid</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, docuvision will split each pdf into
+separate documents based on patient id. If False, docuvision
+will combine all pdfs into a single document.</dd>
+<dt><strong><code>fail_on_error</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, raise an error if any task fails to
+post or any response fails to be collected. Defaults to False.</dd>
+<dt><strong><code>mock_ids</code></strong> :&ensp;<code>list[int]</code></dt>
+<dd>list of task_ids to use for mock responses.
+Defaults to [].</dd>
+<dt><strong><code>default_dos</code></strong> :&ensp;<code>str</code></dt>
+<dd>default date of service to use if no date of service
+is extracted from the facesheet. Defaults to gvars.DEFAULT_DOS.</dd>
+<dt><strong><code>api_secret_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>name of secret in AWS secretsmanager containing
+the base_url, base_path, and api_key values for the docuvision API.</dd>
+<dt><strong><code>dv_preferred_networks</code></strong> :&ensp;<code>list[str] | None</code></dt>
+<dd>list of preferred Docuvision Neural
+Networks. Created for facilities where people manually upload 1-page PDFs</dd>
+<dt><strong><code>table_converters</code></strong> :&ensp;<code>dict[str, Callable[[list[str]], list[dict[str, str]]]]</code></dt>
+<dd>function
+reference for processing '*Table' labels returned by DV-1.</dd>
+<dt><strong><code>dv_required_page_types</code></strong> :&ensp;<code>set[str]</code></dt>
+<dd>if supplied, a case will only be created for a pid
+if at least one of the pages assigned to that pid have a type in this set.</dd>
+</dl></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.tables_for"><code class="name flex">
+<span>def <span class="ident">tables_for</span></span>(<span>self, doc_id: str, section: str = 'DocuVision', sep: str = '.') ‑> dict[str, list[dict[str, str]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get results for the supplied doc_id in a tabular format suitable
+for downstream processing in table_transformer.py.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>doc_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>doc_id for the document to retrieve results for.</dd>
+<dt><strong><code>section</code></strong> :&ensp;<code>str</code></dt>
+<dd>section name to use for the table. Defaults to
+"DocuVision".</dd>
+<dt><strong><code>sep</code></strong> :&ensp;<code>str</code></dt>
+<dd>separator to use for table keys. Defaults to ".".</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, list[dict[str, str]]]</code></dt>
+<dd>dict of {table_name: [table_rows]}
+where each table_row is a dict of {label: value}.</dd>
+</dl></div>
+</dd>
+<dt id="integrators.docuvision_integrator.DocuVisionIntegrator.task_attr_list"><code class="name flex">
+<span>def <span class="ident">task_attr_list</span></span>(<span>self, attr: str) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>List the specified attribute for all tasks in self._tasks.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="integrators" href="index.html">integrators</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator" href="#integrators.docuvision_integrator.DocuVisionIntegrator">DocuVisionIntegrator</a></code></h4>
+<ul class="">
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.api_key" href="#integrators.docuvision_integrator.DocuVisionIntegrator.api_key">api_key</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.api_secret_name" href="#integrators.docuvision_integrator.DocuVisionIntegrator.api_secret_name">api_secret_name</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.api_timeout" href="#integrators.docuvision_integrator.DocuVisionIntegrator.api_timeout">api_timeout</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.aws_region" href="#integrators.docuvision_integrator.DocuVisionIntegrator.aws_region">aws_region</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.base_path" href="#integrators.docuvision_integrator.DocuVisionIntegrator.base_path">base_path</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.base_url" href="#integrators.docuvision_integrator.DocuVisionIntegrator.base_url">base_url</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.check_api_info" href="#integrators.docuvision_integrator.DocuVisionIntegrator.check_api_info">check_api_info</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.create_tasks" href="#integrators.docuvision_integrator.DocuVisionIntegrator.create_tasks">create_tasks</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.default_dos" href="#integrators.docuvision_integrator.DocuVisionIntegrator.default_dos">default_dos</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.doc_ex" href="#integrators.docuvision_integrator.DocuVisionIntegrator.doc_ex">doc_ex</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.documents" href="#integrators.docuvision_integrator.DocuVisionIntegrator.documents">documents</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.dv_preferred_networks" href="#integrators.docuvision_integrator.DocuVisionIntegrator.dv_preferred_networks">dv_preferred_networks</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.dv_required_page_types" href="#integrators.docuvision_integrator.DocuVisionIntegrator.dv_required_page_types">dv_required_page_types</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.fail_on_error" href="#integrators.docuvision_integrator.DocuVisionIntegrator.fail_on_error">fail_on_error</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.job_dict_entries" href="#integrators.docuvision_integrator.DocuVisionIntegrator.job_dict_entries">job_dict_entries</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.jp_query" href="#integrators.docuvision_integrator.DocuVisionIntegrator.jp_query">jp_query</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.min_confidence" href="#integrators.docuvision_integrator.DocuVisionIntegrator.min_confidence">min_confidence</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.mock_ids" href="#integrators.docuvision_integrator.DocuVisionIntegrator.mock_ids">mock_ids</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.model" href="#integrators.docuvision_integrator.DocuVisionIntegrator.model">model</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.out_dir" href="#integrators.docuvision_integrator.DocuVisionIntegrator.out_dir">out_dir</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.page_map" href="#integrators.docuvision_integrator.DocuVisionIntegrator.page_map">page_map</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.pdf_library" href="#integrators.docuvision_integrator.DocuVisionIntegrator.pdf_library">pdf_library</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.pdfs_by_doc_id" href="#integrators.docuvision_integrator.DocuVisionIntegrator.pdfs_by_doc_id">pdfs_by_doc_id</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.reset" href="#integrators.docuvision_integrator.DocuVisionIntegrator.reset">reset</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.response_reducer" href="#integrators.docuvision_integrator.DocuVisionIntegrator.response_reducer">response_reducer</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.result_formatter" href="#integrators.docuvision_integrator.DocuVisionIntegrator.result_formatter">result_formatter</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.results" href="#integrators.docuvision_integrator.DocuVisionIntegrator.results">results</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.service" href="#integrators.docuvision_integrator.DocuVisionIntegrator.service">service</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.split_by_pid" href="#integrators.docuvision_integrator.DocuVisionIntegrator.split_by_pid">split_by_pid</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.table_converters" href="#integrators.docuvision_integrator.DocuVisionIntegrator.table_converters">table_converters</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.tables_for" href="#integrators.docuvision_integrator.DocuVisionIntegrator.tables_for">tables_for</a></code></li>
+<li><code><a title="integrators.docuvision_integrator.DocuVisionIntegrator.task_attr_list" href="#integrators.docuvision_integrator.DocuVisionIntegrator.task_attr_list">task_attr_list</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

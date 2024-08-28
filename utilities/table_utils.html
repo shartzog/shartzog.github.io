@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>utilities.table_utils API documentation</title>
+<meta name="description" content="Utility functions for table extraction">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>utilities.table_utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Utility functions for table extraction</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="utilities.table_utils.drop_keys_from_rows"><code class="name flex">
+<span>def <span class="ident">drop_keys_from_rows</span></span>(<span>table: T_INT_RESULT, drop_keys: list[Callable[[str], bool]] | None) ‑> ~T_INT_RESULT</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Drop keys from table rows. Processes the InterpreterKwArgs drop_key_checks
+list to determine which keys should be removed.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table</code></strong> :&ensp;<code>list[dict[str, str]] | SubtableParser</code></dt>
+<dd>table rows</dd>
+<dt><strong><code>drop_keys</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of strings that cannot appear in a key</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>type[table]</code></dt>
+<dd>table rows with keys containing any of the</dd>
+</dl>
+<p>strings in drop_keys removed</p></div>
+</dd>
+<dt id="utilities.table_utils.find_split_rows"><code class="name flex">
+<span>def <span class="ident">find_split_rows</span></span>(<span>dict_list_rows: dict[str, list[str]], split_table_columns: list[str], min_match_ratio: float = 0.4) ‑> dict[str, list[str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Detect and correct raw tables created from "nested" table representations.</p>
+<p>This function updates dict_list_rows as if the originally processed data
+was in its unnested form.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dict_list_rows</code></strong></dt>
+<dd>dict[str, list[str]] whose keys are column headers and
+values are lists of column values.</dd>
+<dt><strong><code>split_table_columns</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>if every value in a table row matches
+one of these strings, that row is removed and used as the keys for
+values in the next row.</dd>
+<dt><strong><code>min_match_ratio</code></strong></dt>
+<dd>min exact char match to initiate a row split. implemented
+to prevent long text row values from triggering splits. e.g.
+"attempted to contact patient via Email" should not trigger
+a split due to "Email" split_table_columns entry.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, list[str]]</code></dt>
+<dd>corrected table rows.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; dict_list_rows = {
+...     &quot;Heading1&quot;: [&quot;Value1&quot;, &quot;Heading3&quot;, &quot;Value3&quot;, &quot;Heading5&quot;, &quot;Value5&quot;],
+...     &quot;Heading2&quot;: [&quot;Value2&quot;, &quot;Heading4&quot;, &quot;Value4&quot;, &quot;Heading6&quot;, &quot;Value6&quot;]
+... }
+&gt;&gt;&gt; split_table_columns = [&quot;Heading3&quot;, &quot;Heading4&quot;, &quot;Heading5&quot;, &quot;Heading6&quot;]
+&gt;&gt;&gt; find_split_rows(dict_list_rows, split_table_columns)
+defaultdict(&lt;class 'list'&gt;, {'Heading1': ['Value1'], 'Heading2': ['Value2'], 'Heading3': ['Value3'], 'Heading4': ['Value4'], 'Heading5': ['Value5'], 'Heading6': ['Value6']})
+</code></pre></div>
+</dd>
+<dt id="utilities.table_utils.listify_list_dict"><code class="name flex">
+<span>def <span class="ident">listify_list_dict</span></span>(<span>list_dict: dict[str, list[str]]) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Inverse of <code>utils.dictify_dict_list</code>. Convert a dict of lists to a list of
+dicts. Each dict in the list will have keys from the original dict and
+values from the corresponding index in the original dict's values.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>list_dict</code></strong></dt>
+<dd>dict[str, list[str]] whose keys are column headers and values
+are lists of column values.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>list of dicts with keys from list_dict and values
+from the corresponding index in the original dict's values.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; list_dict = {
+...     &quot;column1&quot;: [&quot;val1&quot;, &quot;val2&quot;],
+...     &quot;column2&quot;: [&quot;val3&quot;, &quot;val4&quot;]
+... }
+&gt;&gt;&gt; listify_list_dict(list_dict)
+[{'column1': 'val1', 'column2': 'val3'},
+{'column1': 'val2', 'column2': 'val4'}]
+</code></pre></div>
+</dd>
+<dt id="utilities.table_utils.prepend_heading"><code class="name flex">
+<span>def <span class="ident">prepend_heading</span></span>(<span>prepend_text, this_heading)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>helper function for roll_headings and roll_heading_rows.</p></div>
+</dd>
+<dt id="utilities.table_utils.roll_heading_rows"><code class="name flex">
+<span>def <span class="ident">roll_heading_rows</span></span>(<span>values_lists: list[list[str]], split_cols: list[str], min_match_ratio: float = 0.4, debug: bool = False) ‑> list[list[str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p><strong><em>IN PLACE MANIPULATION OF ARGUMENT "values_lists"</em></strong>
+performs same function as roll_headings but applies the transformation
+to ALL rows with values that match with entries in the split_column_values
+field in table_specs.</p></div>
+</dd>
+<dt id="utilities.table_utils.roll_headings"><code class="name flex">
+<span>def <span class="ident">roll_headings</span></span>(<span>lines: list[str], split_cols: Sequence[str] = (), min_column_len: int = 5) ‑> tuple[bool, list[str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="usage">Usage</h2>
+<p>Detect cases when column headings roll onto a second line, e.g.:
+Rate/Dose/
+Administering
+Medication
+Volume
+Action
+User
+Audit
+medication 1
+dose 1
+action 1
+admin user 1
+aud 1
+medication 2
+dose 2
+action 2
+admin user 2
+aud 2
+should have headings:
+Medication, Rate/Dose/Volume, Action, Administering User, and Audit</p>
+<h2 id="function">Function</h2>
+<p>Checks number of headings detected for lines[0] and lines[1] and compares
+that to the max number of fields detected on all other lines. if the
+number of headings in lines[0] &lt; the max number of fields detected for
+the remaining lines &lt;= the number headings in lines[1], append values
+from lines[0] to the correct column heading from lines[1] and return
+(True, [amended headings]).
+Otherwise, return (False, [first line headings]).</p></div>
+</dd>
+<dt id="utilities.table_utils.split_and_stack_columns"><code class="name flex">
+<span>def <span class="ident">split_and_stack_columns</span></span>(<span>lines: list[str], table_name: str, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Helper function for splitting multicolumn input lines.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of lines in the table.</dd>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table being interpreted.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, log the input and output lines</dd>
+<dt><strong><code>min_split_spaces</code></strong> :&ensp;<code>int</code></dt>
+<dd>minimum number of spaces for triggering splits</dd>
+<dt><strong><code>force_page_breaks</code></strong> :&ensp;<code>list[Callable[[str], bool]]</code></dt>
+<dd>list of functions that
+lines will be passed to. If any function returns True, a page break
+will be forced at that line. Serves as an arg to utils.columns()
+when vertically partitioning lines into columns.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; unsplit = [
+...     &quot;Column1 Entry:                  Column2 Entry:&quot;,
+...     &quot;   Value                            Value&quot;,
+...     &quot;Column1 Entry:                  Column2 Entry:&quot;,
+...     &quot;   Value                            Value&quot;,
+... ]
+&gt;&gt;&gt; split_and_stack_columns(unsplit, &quot;TestTable&quot;)
+['Column1 Entry:', 'Value', 'Column1 Entry:', 'Value', 'Column2 Entry:', 'Value', 'Column2 Entry:', 'Value']
+</code></pre></div>
+</dd>
+<dt id="utilities.table_utils.split_column_check"><code class="name flex">
+<span>def <span class="ident">split_column_check</span></span>(<span>page_table: list[dict[str, str]], split_distance: int = 5) ‑> list[dict[str, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check for columns that should be split into two by looking
+for stretches of spaces longer than split distance, e.g. a
+column named:
+<code>Column Header
+That Should Split</code>
+Should really be two columns named <code>Column Header</code> and
+<code>That Should Split</code>.</p></div>
+</dd>
+<dt id="utilities.table_utils.standardize_list_dict"><code class="name flex">
+<span>def <span class="ident">standardize_list_dict</span></span>(<span>list_dict: dict[str, list[str]]) ‑> dict[str, list[str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the mode len of the lists in list_dict.values() and add, remove,
+or combine elements in the list for any key whose current value does not
+equal the mode until all value lists have a length equal to the mode.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>list_dict</code></strong> :&ensp;<code>dict[str, list[str]]</code></dt>
+<dd>dict representing a table of values
+for example:
+{
+"column1": ["val1", "val2", &hellip;],
+"column2": ["val1", "val2"],
+&hellip;
+}</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict[str, str]]</code></dt>
+<dd>as above with list lengths standardized</dd>
+</dl></div>
+</dd>
+<dt id="utilities.table_utils.unmatched_char_ratio"><code class="name flex">
+<span>def <span class="ident">unmatched_char_ratio</span></span>(<span>arr_1d, strip_list, debug=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sum of lengths for entries in arr_1d after removing all instances of
+strings in strip_list ÷ sum of lengths for entries in arr_1d</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="utilities.table_utils.InterpreterKwArgs"><code class="flex name class">
+<span>class <span class="ident">InterpreterKwArgs</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The set of kwargs that are valid across all the interpreter functions in
+table_interpreters.py. Some settings (e.g. drop_key_checks, debug_table,
+skip_line_checks, etc.) are implemented by the @interpreter_check
+decorator and are thereby universal, but most are only applicable in one
+or two interpreter functions. Consult the definition of your chosen
+interpreter function in table_interpreters.py to determine if a given
+setting has been implemented.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>debug_table</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of table names for which debug output
+should be enabled</dd>
+<dt><strong><code>drop_key_checks</code></strong> :&ensp;<code>list[Callable[[str], bool]]</code></dt>
+<dd>list of functions to
+that keys will be passed to. If any function returns True, the
+key will be dropped from the table.</dd>
+<dt><strong><code>value_append_separator</code></strong> :&ensp;<code>str</code></dt>
+<dd>string to use to separate values when
+appending them together</dd>
+<dt><strong><code>roll_keys</code></strong> :&ensp;<code>list[tuple[str, &hellip;]]</code></dt>
+<dd>list of tuples of keys that are
+allowed to collect data across multiple lines. Each list entry
+is a tuple to allow for multiple keys to be rolled together, e.g.
+" Procedure: Start of Proc Desc
+Diagnosis: Start of Dx Desc"
+"
+End of Proc Desc
+End of Dx Desc"
+Used in fields_interpreter only.</dd>
+<dt><strong><code>min_split_spaces</code></strong> :&ensp;<code>int</code></dt>
+<dd>minimum number of spaces for triggering splits
+in key/value data, individual values, and table columns.</dd>
+<dt><strong><code>force_save_keys</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of keys that should always be saved
+even if they are not followed by a ":". Used in fields_interpreter
+only.</dd>
+<dt><strong><code>min_val_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>minimum length for a value to be considered valid</dd>
+<dt><strong><code>skip_line_checks</code></strong> :&ensp;<code>list[Callable[[str], bool]]</code></dt>
+<dd>list of functions that
+lines will be passed to. If any function returns True, the line
+will be skipped.</dd>
+<dt><strong><code>split_table_columns</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>if every value in a table row matches
+one of these strings, that row is removed and used as the keys for
+values in the next row. Applied universally during table cleaning.
+also a TableSpec level setting.</dd>
+<dt><strong><code>force_page_breaks</code></strong> :&ensp;<code>list[Callable[[str], bool]]</code></dt>
+<dd>list of functions that
+lines will be passed to. If any function returns True, a page break
+will be forced at that line. Serves as an arg to utils.columns()
+when vertically partitioning lines into columns.</dd>
+<dt><strong><code>roll_on_ending_colon</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, a line that ends with a colon
+will trigger 'roll_keys' behavior automatically.</dd>
+<dt><strong><code>roll_on_titles</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, a line that contains no ":" that is
+formatted in title or upper case will trigger 'roll_keys' behavior
+automatically.</dd>
+<dt><strong><code>subtable_parser</code></strong> :&ensp;<code>Callable[&hellip;, <a title="utilities.table_utils.SubtableParser" href="#utilities.table_utils.SubtableParser">SubtableParser</a>]</code></dt>
+<dd>use with
+subtable_interpreter to define behaviors and perform custom
+processing on tables that may or may not have repetative sections
+corresponding to independent value sets, e.g. an insurance table
+that may or may not list a primary, secondary, and tertiary.</dd>
+<dt><strong><code>min_rows</code></strong> :&ensp;<code>int</code></dt>
+<dd>minimum number of value lines that a table must have
+to be eligible for interpreation.</dd>
+<dt><strong><code>regex_expr</code></strong> :&ensp;<code>re.Pattern</code></dt>
+<dd>compiled regex expression used by
+regex_interpreter. The joined lines are passed to this pattern's
+finditer method at interpretation time and the key value pairs
+returned in each matches' <strong>groupdict()</strong> are added to the table,
+ergo the pattern MUST have named groups.</dd>
+</dl>
+<p>NOTE: This class was originally implemented as <code>InterpreterArgsUpdate</code>.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.table_utils.InterpreterKwArgs.debug_table"><code class="name">var <span class="ident">debug_table</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.drop_key_checks"><code class="name">var <span class="ident">drop_key_checks</span> : list[collections.abc.Callable[[str], bool]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.force_page_breaks"><code class="name">var <span class="ident">force_page_breaks</span> : list[collections.abc.Callable[[str], bool]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.force_save_keys"><code class="name">var <span class="ident">force_save_keys</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.min_rows"><code class="name">var <span class="ident">min_rows</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.min_split_spaces"><code class="name">var <span class="ident">min_split_spaces</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.min_val_length"><code class="name">var <span class="ident">min_val_length</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.regex_expr"><code class="name">var <span class="ident">regex_expr</span> : re.Pattern</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.roll_keys"><code class="name">var <span class="ident">roll_keys</span> : list[tuple[str, ...]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.roll_on_ending_colon"><code class="name">var <span class="ident">roll_on_ending_colon</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.roll_on_titles"><code class="name">var <span class="ident">roll_on_titles</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.skip_line_checks"><code class="name">var <span class="ident">skip_line_checks</span> : list[collections.abc.Callable[[str], bool]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.split_table_columns"><code class="name">var <span class="ident">split_table_columns</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.subtable_parser"><code class="name">var <span class="ident">subtable_parser</span> : collections.abc.Callable[..., <a title="utilities.table_utils.SubtableParser" href="#utilities.table_utils.SubtableParser">SubtableParser</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterKwArgs.value_append_separator"><code class="name">var <span class="ident">value_append_separator</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.table_utils.InterpreterSwap"><code class="flex name class">
+<span>class <span class="ident">InterpreterSwap</span></span>
+<span>(</span><span>table_name: ForwardRef('str'), interpreter: ForwardRef('Callable[[list[str], str], <a title="utilities.table_utils.SubtableParser" href="#utilities.table_utils.SubtableParser">SubtableParser</a> | list[dict[str, str]]]'), interpreter_kwargs: ForwardRef('<a title="utilities.table_utils.InterpreterKwArgs" href="#utilities.table_utils.InterpreterKwArgs">InterpreterKwArgs</a>') = {})</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Specify an alternative interpreter to use for tables with specific titles.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>the table name to which the alt interpreter should
+be applied. in practice, this value is used as the pattern in an
+re.match operation to allow for partial and multi table matches.</dd>
+<dt><strong><code>interpreter</code></strong> :&ensp;<code>Callable</code></dt>
+<dd>the alternate interpreter function to be
+applied in lieu of the TableSpec interpreter</dd>
+<dt><strong><code>interpreter_kwargs</code></strong> :&ensp;<code><a title="utilities.table_utils.InterpreterKwArgs" href="#utilities.table_utils.InterpreterKwArgs">InterpreterKwArgs</a></code></dt>
+<dd>(optional) each supplied key
+will override the corresponding key in the TableSpec's section
+level interpreter_kwargs.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.table_utils.InterpreterSwap.interpreter"><code class="name">var <span class="ident">interpreter</span> : collections.abc.Callable[[list[str], str], <a title="utilities.table_utils.SubtableParser" href="#utilities.table_utils.SubtableParser">SubtableParser</a> | list[dict[str, str]]]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterSwap.interpreter_kwargs"><code class="name">var <span class="ident">interpreter_kwargs</span> : <a title="utilities.table_utils.InterpreterKwArgs" href="#utilities.table_utils.InterpreterKwArgs">InterpreterKwArgs</a></code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+<dt id="utilities.table_utils.InterpreterSwap.table_name"><code class="name">var <span class="ident">table_name</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.table_utils.SubtableParser"><code class="flex name class">
+<span>class <span class="ident">SubtableParser</span></span>
+<span>(</span><span>sub_interpreter: Callable[[list[str], str], list[dict[str, str]]], condense_results: bool = False, fill_value: str = '', bypass_func: Callable[[list[str]], bool] = &lt;function SubtableParser.&lt;lambda&gt;&gt;, window_func: Callable[[list[str]], list[int]] = &lt;function SubtableParser.&lt;lambda&gt;&gt;, lines_func: Callable[[list[str], tuple[int, int]], list[str]] = &lt;function SubtableParser.&lt;lambda&gt;&gt;, title_func: Callable[[int, list[str], tuple[int, int]], str] = &lt;function SubtableParser.&lt;lambda&gt;&gt;, multicolumn: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Determines if the lines collected for a table are a single table or a
+collection of subtables and interprets them accordingly.</p>
+<p>If subtables are found, interpret each separately and store the results
+in self.data with the subtable titles as keys and the interpretation
+results for each as values. If condense_results is True, combined the
+results from all subtables into a single list of dicts after standardizing
+the keys in all rows.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sub_interpreter</code></strong> :&ensp;<code>Callable[[list[str], str], list[dict[str, str]]]</code></dt>
+<dd>
+<pre><code>    function to interpret each subtable
+</code></pre>
+</dd>
+<dt><strong><code>condense_results</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, combine the results of each subtable
+into a single list of dicts</dd>
+<dt><strong><code>fill_value</code></strong> :&ensp;<code>str</code></dt>
+<dd>value to use for missing keys in each row</dd>
+<dt><strong><code>bypass_func</code></strong> :&ensp;<code>Callable[[list[str]], bool]</code></dt>
+<dd>function to determine if the
+table should be interpreted as a single table. If True, the
+original lines are passed directly to sub_interpreter.</dd>
+<dt><strong><code>window_func</code></strong> :&ensp;<code>Callable[[list[str]], list[int]]</code></dt>
+<dd>function to determine
+the start index of each subtable. pairwise tuples of this output
+become the members of the windows attribute which in turn are used
+as input to the lines_func function.</dd>
+<dt><strong><code>lines_func</code></strong> :&ensp;<code>Callable[[list[str], tuple[int, int]], list[str]]</code></dt>
+<dd>function
+to extract the lines for a subtable from the original lines</dd>
+<dt><strong><code>title_func</code></strong> :&ensp;<code>Callable[[int, list[str], tuple[int, int]], str]</code></dt>
+<dd>function
+to determine the title of each subtable</dd>
+<dt><strong><code>multicolumn</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, split and stack columns before processing</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>collections.UserDict</li>
+<li>collections.abc.MutableMapping</li>
+<li>collections.abc.Mapping</li>
+<li>collections.abc.Collection</li>
+<li>collections.abc.Sized</li>
+<li>collections.abc.Iterable</li>
+<li>collections.abc.Container</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.table_utils.SubtableParser.updated_instance"><code class="name flex">
+<span>def <span class="ident">updated_instance</span></span>(<span>self, **kwargs) ‑> <a title="utilities.table_utils.SubtableParser" href="#utilities.table_utils.SubtableParser">SubtableParser</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a new instance of SubtableParser after updating any attributes
+supplied in kwargs.</p></div>
+</dd>
+<dt id="utilities.table_utils.SubtableParser.validate_all"><code class="name flex">
+<span>def <span class="ident">validate_all</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>ensure proper types for all entries</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs"><code class="flex name class">
+<span>class <span class="ident">SwappingInterpreterKwArgs</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extends <code><a title="utilities.table_utils.InterpreterKwArgs" href="#utilities.table_utils.InterpreterKwArgs">InterpreterKwArgs</a></code> with two additional keys that are only applicable
+in the interpreter_kwargs of a <code>TableSpec</code>.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>interpreter_swaps</code></strong> :&ensp;<code>list[<a title="utilities.table_utils.InterpreterSwap" href="#utilities.table_utils.InterpreterSwap">InterpreterSwap</a>]</code></dt>
+<dd>list of InterpreterSwap
+instances. Each instance specifies an alternative interpreter that
+should be applied for a specific table(s).</dd>
+<dt><strong><code>source_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>identifier for the source of the table. Typically
+the filename where the source section originated.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.debug_table"><code class="name">var <span class="ident">debug_table</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.drop_key_checks"><code class="name">var <span class="ident">drop_key_checks</span> : list[collections.abc.Callable[[str], bool]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.force_page_breaks"><code class="name">var <span class="ident">force_page_breaks</span> : list[collections.abc.Callable[[str], bool]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.force_save_keys"><code class="name">var <span class="ident">force_save_keys</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.interpreter_swaps"><code class="name">var <span class="ident">interpreter_swaps</span> : list[<a title="utilities.table_utils.InterpreterSwap" href="#utilities.table_utils.InterpreterSwap">InterpreterSwap</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.min_rows"><code class="name">var <span class="ident">min_rows</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.min_split_spaces"><code class="name">var <span class="ident">min_split_spaces</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.min_val_length"><code class="name">var <span class="ident">min_val_length</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.regex_expr"><code class="name">var <span class="ident">regex_expr</span> : re.Pattern</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.roll_keys"><code class="name">var <span class="ident">roll_keys</span> : list[tuple[str, ...]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.roll_on_ending_colon"><code class="name">var <span class="ident">roll_on_ending_colon</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.roll_on_titles"><code class="name">var <span class="ident">roll_on_titles</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.skip_line_checks"><code class="name">var <span class="ident">skip_line_checks</span> : list[collections.abc.Callable[[str], bool]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.source_id"><code class="name">var <span class="ident">source_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.split_table_columns"><code class="name">var <span class="ident">split_table_columns</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.subtable_parser"><code class="name">var <span class="ident">subtable_parser</span> : collections.abc.Callable[..., <a title="utilities.table_utils.SubtableParser" href="#utilities.table_utils.SubtableParser">SubtableParser</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.table_utils.SwappingInterpreterKwArgs.value_append_separator"><code class="name">var <span class="ident">value_append_separator</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.table_utils.TableEndCheck"><code class="flex name class">
+<span>class <span class="ident">TableEndCheck</span></span>
+<span>(</span><span>func: ForwardRef('Callable[[Sequence[str]], bool]'), tables: ForwardRef('Sequence[str]') = ())</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Tests the remaining lines in the source section with <code>func</code> if the
+currently collecting table title appears in <code>tables</code> or <code>tables</code> isn't
+supplied. If <code>func</code> returns <code>True</code>, data collection stops and the search
+for the next table begins.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>func</code></strong> :&ensp;<code>Callable[[Sequence[str]], bool]</code></dt>
+<dd>args[0] is all lines remaining</dd>
+<dt><strong><code>tables</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>only apply this check when this is an empty
+sequence or the current table's title appears in the sequence</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.table_utils.TableEndCheck.func"><code class="name">var <span class="ident">func</span> : collections.abc.Callable[[collections.abc.Sequence[str]], bool]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+<dt id="utilities.table_utils.TableEndCheck.tables"><code class="name">var <span class="ident">tables</span> : collections.abc.Sequence[str]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.table_utils.TableStartCheck"><code class="flex name class">
+<span>class <span class="ident">TableStartCheck</span></span>
+<span>(</span><span>title_offset: ForwardRef('int') = 0, func: ForwardRef('Callable[[list[str]], bool]') = &lt;function TableStartCheck.&lt;lambda&gt;&gt;, preset_title: ForwardRef('str | None') = None, data_start_offset: ForwardRef('int') = 1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines a test function for triggering data collection for a table and the
+offset from the triggered position for the table's title and first line.</p>
+<h2 id="usage">Usage</h2>
+<p>As a member of a start_checks list in a TableSpec. See the
+table_specs.py module in the specs subpackage for examples.</p>
+<p>NOTE: the default data_start_offset 1 currently results in a frustrating
+side effect, namely that the line at index 0 is completely ignored by the
+data collection process outside of it's potential use as a title.
+Frustrated by an apparently missing line in the source section's residual?
+This is your problem. It's a known issue and may be addressed in the future.
+In the interim, you should adjust <code>func</code> to trigger on the subsequent line
+and update <code>data_start_offset</code> and <code>title_offset</code> to 0 and -1 respectively.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>title_offset</code></strong> :&ensp;<code>int</code></dt>
+<dd>offset from the triggered line index for the table's
+title. If the title is on the same line as the trigger, this value
+should be 0.</dd>
+<dt><strong><code>func</code></strong> :&ensp;<code>Callable[[list[str]], bool]</code></dt>
+<dd>test function that returns True to
+trigger data collection for a new table.</dd>
+<dt><strong><code>preset_title</code></strong> :&ensp;<code>str</code></dt>
+<dd>if not None, the title of the table will be set to
+this value. This is useful for tables that have no title in the
+source data.</dd>
+<dt><strong><code>data_start_offset</code></strong> :&ensp;<code>int</code></dt>
+<dd>offset from the triggered line index for the
+first line of data. If table data begins on the line immediately
+following the trigger, this value should be 1 (default).</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.table_utils.TableStartCheck.data_start_offset"><code class="name">var <span class="ident">data_start_offset</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 3</p></div>
+</dd>
+<dt id="utilities.table_utils.TableStartCheck.func"><code class="name">var <span class="ident">func</span> : collections.abc.Callable[[list[str]], bool]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="utilities.table_utils.TableStartCheck.preset_title"><code class="name">var <span class="ident">preset_title</span> : str | None</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+<dt id="utilities.table_utils.TableStartCheck.title_offset"><code class="name">var <span class="ident">title_offset</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="utilities" href="index.html">utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="utilities.table_utils.drop_keys_from_rows" href="#utilities.table_utils.drop_keys_from_rows">drop_keys_from_rows</a></code></li>
+<li><code><a title="utilities.table_utils.find_split_rows" href="#utilities.table_utils.find_split_rows">find_split_rows</a></code></li>
+<li><code><a title="utilities.table_utils.listify_list_dict" href="#utilities.table_utils.listify_list_dict">listify_list_dict</a></code></li>
+<li><code><a title="utilities.table_utils.prepend_heading" href="#utilities.table_utils.prepend_heading">prepend_heading</a></code></li>
+<li><code><a title="utilities.table_utils.roll_heading_rows" href="#utilities.table_utils.roll_heading_rows">roll_heading_rows</a></code></li>
+<li><code><a title="utilities.table_utils.roll_headings" href="#utilities.table_utils.roll_headings">roll_headings</a></code></li>
+<li><code><a title="utilities.table_utils.split_and_stack_columns" href="#utilities.table_utils.split_and_stack_columns">split_and_stack_columns</a></code></li>
+<li><code><a title="utilities.table_utils.split_column_check" href="#utilities.table_utils.split_column_check">split_column_check</a></code></li>
+<li><code><a title="utilities.table_utils.standardize_list_dict" href="#utilities.table_utils.standardize_list_dict">standardize_list_dict</a></code></li>
+<li><code><a title="utilities.table_utils.unmatched_char_ratio" href="#utilities.table_utils.unmatched_char_ratio">unmatched_char_ratio</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="utilities.table_utils.InterpreterKwArgs" href="#utilities.table_utils.InterpreterKwArgs">InterpreterKwArgs</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.debug_table" href="#utilities.table_utils.InterpreterKwArgs.debug_table">debug_table</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.drop_key_checks" href="#utilities.table_utils.InterpreterKwArgs.drop_key_checks">drop_key_checks</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.force_page_breaks" href="#utilities.table_utils.InterpreterKwArgs.force_page_breaks">force_page_breaks</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.force_save_keys" href="#utilities.table_utils.InterpreterKwArgs.force_save_keys">force_save_keys</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.min_rows" href="#utilities.table_utils.InterpreterKwArgs.min_rows">min_rows</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.min_split_spaces" href="#utilities.table_utils.InterpreterKwArgs.min_split_spaces">min_split_spaces</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.min_val_length" href="#utilities.table_utils.InterpreterKwArgs.min_val_length">min_val_length</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.regex_expr" href="#utilities.table_utils.InterpreterKwArgs.regex_expr">regex_expr</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.roll_keys" href="#utilities.table_utils.InterpreterKwArgs.roll_keys">roll_keys</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.roll_on_ending_colon" href="#utilities.table_utils.InterpreterKwArgs.roll_on_ending_colon">roll_on_ending_colon</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.roll_on_titles" href="#utilities.table_utils.InterpreterKwArgs.roll_on_titles">roll_on_titles</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.skip_line_checks" href="#utilities.table_utils.InterpreterKwArgs.skip_line_checks">skip_line_checks</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.split_table_columns" href="#utilities.table_utils.InterpreterKwArgs.split_table_columns">split_table_columns</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.subtable_parser" href="#utilities.table_utils.InterpreterKwArgs.subtable_parser">subtable_parser</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterKwArgs.value_append_separator" href="#utilities.table_utils.InterpreterKwArgs.value_append_separator">value_append_separator</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.table_utils.InterpreterSwap" href="#utilities.table_utils.InterpreterSwap">InterpreterSwap</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.table_utils.InterpreterSwap.interpreter" href="#utilities.table_utils.InterpreterSwap.interpreter">interpreter</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterSwap.interpreter_kwargs" href="#utilities.table_utils.InterpreterSwap.interpreter_kwargs">interpreter_kwargs</a></code></li>
+<li><code><a title="utilities.table_utils.InterpreterSwap.table_name" href="#utilities.table_utils.InterpreterSwap.table_name">table_name</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.table_utils.SubtableParser" href="#utilities.table_utils.SubtableParser">SubtableParser</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.table_utils.SubtableParser.updated_instance" href="#utilities.table_utils.SubtableParser.updated_instance">updated_instance</a></code></li>
+<li><code><a title="utilities.table_utils.SubtableParser.validate_all" href="#utilities.table_utils.SubtableParser.validate_all">validate_all</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.table_utils.SwappingInterpreterKwArgs" href="#utilities.table_utils.SwappingInterpreterKwArgs">SwappingInterpreterKwArgs</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.debug_table" href="#utilities.table_utils.SwappingInterpreterKwArgs.debug_table">debug_table</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.drop_key_checks" href="#utilities.table_utils.SwappingInterpreterKwArgs.drop_key_checks">drop_key_checks</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.force_page_breaks" href="#utilities.table_utils.SwappingInterpreterKwArgs.force_page_breaks">force_page_breaks</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.force_save_keys" href="#utilities.table_utils.SwappingInterpreterKwArgs.force_save_keys">force_save_keys</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.interpreter_swaps" href="#utilities.table_utils.SwappingInterpreterKwArgs.interpreter_swaps">interpreter_swaps</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.min_rows" href="#utilities.table_utils.SwappingInterpreterKwArgs.min_rows">min_rows</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.min_split_spaces" href="#utilities.table_utils.SwappingInterpreterKwArgs.min_split_spaces">min_split_spaces</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.min_val_length" href="#utilities.table_utils.SwappingInterpreterKwArgs.min_val_length">min_val_length</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.regex_expr" href="#utilities.table_utils.SwappingInterpreterKwArgs.regex_expr">regex_expr</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.roll_keys" href="#utilities.table_utils.SwappingInterpreterKwArgs.roll_keys">roll_keys</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.roll_on_ending_colon" href="#utilities.table_utils.SwappingInterpreterKwArgs.roll_on_ending_colon">roll_on_ending_colon</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.roll_on_titles" href="#utilities.table_utils.SwappingInterpreterKwArgs.roll_on_titles">roll_on_titles</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.skip_line_checks" href="#utilities.table_utils.SwappingInterpreterKwArgs.skip_line_checks">skip_line_checks</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.source_id" href="#utilities.table_utils.SwappingInterpreterKwArgs.source_id">source_id</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.split_table_columns" href="#utilities.table_utils.SwappingInterpreterKwArgs.split_table_columns">split_table_columns</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.subtable_parser" href="#utilities.table_utils.SwappingInterpreterKwArgs.subtable_parser">subtable_parser</a></code></li>
+<li><code><a title="utilities.table_utils.SwappingInterpreterKwArgs.value_append_separator" href="#utilities.table_utils.SwappingInterpreterKwArgs.value_append_separator">value_append_separator</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.table_utils.TableEndCheck" href="#utilities.table_utils.TableEndCheck">TableEndCheck</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.table_utils.TableEndCheck.func" href="#utilities.table_utils.TableEndCheck.func">func</a></code></li>
+<li><code><a title="utilities.table_utils.TableEndCheck.tables" href="#utilities.table_utils.TableEndCheck.tables">tables</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.table_utils.TableStartCheck" href="#utilities.table_utils.TableStartCheck">TableStartCheck</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.table_utils.TableStartCheck.data_start_offset" href="#utilities.table_utils.TableStartCheck.data_start_offset">data_start_offset</a></code></li>
+<li><code><a title="utilities.table_utils.TableStartCheck.func" href="#utilities.table_utils.TableStartCheck.func">func</a></code></li>
+<li><code><a title="utilities.table_utils.TableStartCheck.preset_title" href="#utilities.table_utils.TableStartCheck.preset_title">preset_title</a></code></li>
+<li><code><a title="utilities.table_utils.TableStartCheck.title_offset" href="#utilities.table_utils.TableStartCheck.title_offset">title_offset</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

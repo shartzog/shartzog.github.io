@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>utilities.section_utils API documentation</title>
+<meta name="description" content="Utility functions and classes used by:
+section_extractor.py
+section_specs.py">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>utilities.section_utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Utility functions and classes used by:
+section_extractor.py
+section_specs.py</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="utilities.section_utils.default_roll_func"><code class="name flex">
+<span>def <span class="ident">default_roll_func</span></span>(<span>start_idxs: list[int], sect_lines: list[str])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Default line roll function. Developed for Cerner PDF line wrapping.</p>
+<p>Appends wrapped line text to the end of the previous line while attempting
+to preserve tabular layouts by examining the lines immediately before and
+after. NOTE: <code>sect_lines</code> will be updated in place.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>start_idxs</code></strong> :&ensp;<code>list[int]</code></dt>
+<dd>list of line indexes where line wrapping occurs.</dd>
+<dt><strong><code>sect_lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of lines in the current section.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; sect_lines = [
+...     &quot;   Column1      Column2&quot;,
+...     &quot;    Value1      Value&quot;,
+...     &quot;2&quot;
+... ]
+&gt;&gt;&gt; default_roll_func([1], sect_lines)
+&gt;&gt;&gt; sect_lines
+['   Column1      Column2', '    Value1      Value 2']
+</code></pre></div>
+</dd>
+<dt id="utilities.section_utils.field_roll_func"><code class="name flex">
+<span>def <span class="ident">field_roll_func</span></span>(<span>idxs: list[int], lines: list[str])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Field line roll function. Developed for TeamHealth Racine Facesheets.</p>
+<p>Appends line_splits from wrapped line text to a split with a matching index
+on the previous line. NOTE: <code>lines</code> will be updated in place.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>idxs</code></strong> :&ensp;<code>list[int]</code></dt>
+<dd>list of line indexes where line wrapping occurs.</dd>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of lines in the current section.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[str]</code></dt>
+<dd>list of lines with wrapped text appended to the previous line.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     &quot;                               up:&quot;,
+...     &quot;   Address:     4567 WILLOW WOOD DR&quot;,
+...     &quot;   City:        MOUNT          Stat   WI     Zip:      534    Phone:           602-620-2413&quot;,
+...     &quot;                PLEASANT       e:                      03&quot;,
+...     &quot;Guarantor Information&quot;
+... ]
+&gt;&gt;&gt; field_roll_func([2], lines)
+&gt;&gt;&gt; lines
+['                               up:',
+ '   Address:     4567 WILLOW WOOD DR',
+ '   City:        MOUNTPLEASANT          State:   WI     Zip:      53403    Phone:           602-620-2413',
+ 'Guarantor Information']
+</code></pre></div>
+</dd>
+<dt id="utilities.section_utils.is_attribution"><code class="name flex">
+<span>def <span class="ident">is_attribution</span></span>(<span>line: str | Sequence[str]) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Determine if a given line constitutes an "attribution" from a provider.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>line</code></strong> :&ensp;<code>str | Sequence[str]</code></dt>
+<dd>The input line or sequence of lines to check.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the line constitutes an attribution, False otherwise.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; is_attribution(&quot;   JM.1 - Mawn, John Gregory, MD on 07/10/24 1402&quot;)
+True
+&gt;&gt;&gt; is_attribution(&quot;Random text without attribution&quot;)
+False
+</code></pre></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="utilities.section_utils.AgentsStripper"><code class="flex name class">
+<span>class <span class="ident">AgentsStripper</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove 'Agents' table of O2 flows from Epic records.</p>
+<p>Initially implemented for NPH_BSWWACS.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_check" href="#utilities.section_utils.DocumentStripper.strip_check">strip_check</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_start_idx" href="#utilities.section_utils.DocumentStripper.strip_start_idx">strip_start_idx</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.stripping" href="#utilities.section_utils.DocumentStripper.stripping">stripping</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="utilities.section_utils.DocumentStripper"><code class="flex name class">
+<span>class <span class="ident">DocumentStripper</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Abstract class for constructing "strippers" that can be
+used to remove unwanted lines from a section. See
+RevisionHistoryStripper and VersionStripper below for example
+implementations.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="utilities.section_utils.AgentsStripper" href="#utilities.section_utils.AgentsStripper">AgentsStripper</a></li>
+<li><a title="utilities.section_utils.DuplicatedSectionsStripper" href="#utilities.section_utils.DuplicatedSectionsStripper">DuplicatedSectionsStripper</a></li>
+<li><a title="utilities.section_utils.FlowsheetDataStripper" href="#utilities.section_utils.FlowsheetDataStripper">FlowsheetDataStripper</a></li>
+<li><a title="utilities.section_utils.HistoryAndPhysicalStripper" href="#utilities.section_utils.HistoryAndPhysicalStripper">HistoryAndPhysicalStripper</a></li>
+<li><a title="utilities.section_utils.InsuranceInformationDataStrippter" href="#utilities.section_utils.InsuranceInformationDataStrippter">InsuranceInformationDataStrippter</a></li>
+<li><a title="utilities.section_utils.RevisionHistoryStripper" href="#utilities.section_utils.RevisionHistoryStripper">RevisionHistoryStripper</a></li>
+<li><a title="utilities.section_utils.TimelineDataStripper" href="#utilities.section_utils.TimelineDataStripper">TimelineDataStripper</a></li>
+<li><a title="utilities.section_utils.VersionStripper" href="#utilities.section_utils.VersionStripper">VersionStripper</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.section_utils.DocumentStripper.strip_start_idx"><code class="name">prop <span class="ident">strip_start_idx</span></code></dt>
+<dd>
+<div class="desc"><p>Line index where stripping began</p></div>
+</dd>
+<dt id="utilities.section_utils.DocumentStripper.stripping"><code class="name">prop <span class="ident">stripping</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>True if actively removing lines</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.section_utils.DocumentStripper.strip_check"><code class="name flex">
+<span>def <span class="ident">strip_check</span></span>(<span>self, lines: Sequence[str])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check to begin/end stripping based on current stripping status</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.section_utils.DuplicatedSectionsStripper"><code class="flex name class">
+<span>class <span class="ident">DuplicatedSectionsStripper</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove duplicated Intraop, Procedure Notes, summaries, events, and staff
+data present in NPH_BSWWACS.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_check" href="#utilities.section_utils.DocumentStripper.strip_check">strip_check</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_start_idx" href="#utilities.section_utils.DocumentStripper.strip_start_idx">strip_start_idx</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.stripping" href="#utilities.section_utils.DocumentStripper.stripping">stripping</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="utilities.section_utils.FlowsheetDataStripper"><code class="flex name class">
+<span>class <span class="ident">FlowsheetDataStripper</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove Intraprocedure Flowsheet Data section from Epic records.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_check" href="#utilities.section_utils.DocumentStripper.strip_check">strip_check</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_start_idx" href="#utilities.section_utils.DocumentStripper.strip_start_idx">strip_start_idx</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.stripping" href="#utilities.section_utils.DocumentStripper.stripping">stripping</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="utilities.section_utils.ForceNameTuple"><code class="flex name class">
+<span>class <span class="ident">ForceNameTuple</span></span>
+<span>(</span><span>checks: ForwardRef('Sequence[Callable[[str], bool]]'), title: ForwardRef('str'), apply_after_breaks: ForwardRef('bool') = False, replace: ForwardRef('bool') = False, insert: ForwardRef('bool') = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Tests the current title with each check func. if any return True,
+the current title is replaced with the value in the <code>title</code> attribute.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>checks</code></strong> :&ensp;<code>Sequence[Callable[[str], bool]]</code></dt>
+<dd>each callable is passed the
+current title. If any return True, the current title is replaced.</dd>
+<dt><strong><code>title</code></strong> :&ensp;<code>str</code></dt>
+<dd>the new title to use when any check returns True</dd>
+<dt><strong><code>apply_after_breaks</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, the force name check is applied
+after any heading breaks are applied. Defaults to False.</dd>
+<dt><strong><code>replace</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, the line containing the original title is
+replaced with the new title. if False, only the title is changed.
+Defaults to False. NOTE: Implemented in section_extractor ONLY.
+Has no effect for table_extractor use case.</dd>
+<dt><strong><code>insert</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, the forced title is inserted as the first line
+of the section/table. Default is False. NOTE: Implemented in
+section_extractor ONLY. Has no effect for table_extractor use cases.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.section_utils.ForceNameTuple.apply_after_breaks"><code class="name">var <span class="ident">apply_after_breaks</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+<dt id="utilities.section_utils.ForceNameTuple.checks"><code class="name">var <span class="ident">checks</span> : collections.abc.Sequence[collections.abc.Callable[[str], bool]]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+<dt id="utilities.section_utils.ForceNameTuple.insert"><code class="name">var <span class="ident">insert</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 4</p></div>
+</dd>
+<dt id="utilities.section_utils.ForceNameTuple.replace"><code class="name">var <span class="ident">replace</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 3</p></div>
+</dd>
+<dt id="utilities.section_utils.ForceNameTuple.title"><code class="name">var <span class="ident">title</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.section_utils.HBTuple"><code class="flex name class">
+<span>class <span class="ident">HBTuple</span></span>
+<span>(</span><span>hbreak: ForwardRef('str'), offset: ForwardRef('int') = 0, right: ForwardRef('bool') = False, replace: ForwardRef('bool') = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Heading Break Tuple</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>hbreak</code></strong> :&ensp;<code>str</code></dt>
+<dd>the string at which the heading's text will be split</dd>
+<dt><strong><code>offset</code></strong> :&ensp;<code>int</code></dt>
+<dd>added to str.rfind(hbreak) to set final split position</dd>
+<dt><strong><code>right</code></strong> :&ensp;<code>bool</code></dt>
+<dd>take final title from left (default) or right of split</dd>
+<dt><strong><code>replace</code></strong> :&ensp;<code>bool</code></dt>
+<dd>replace 1st line with new title. Defaults to False.
+Only applies to sections. Not implemented for tables.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.section_utils.HBTuple.hbreak"><code class="name">var <span class="ident">hbreak</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+<dt id="utilities.section_utils.HBTuple.offset"><code class="name">var <span class="ident">offset</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="utilities.section_utils.HBTuple.replace"><code class="name">var <span class="ident">replace</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 3</p></div>
+</dd>
+<dt id="utilities.section_utils.HBTuple.right"><code class="name">var <span class="ident">right</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.section_utils.HistoryAndPhysicalStripper"><code class="flex name class">
+<span>class <span class="ident">HistoryAndPhysicalStripper</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove H&amp;P / History and Physical section data from ABS Epic records.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_check" href="#utilities.section_utils.DocumentStripper.strip_check">strip_check</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_start_idx" href="#utilities.section_utils.DocumentStripper.strip_start_idx">strip_start_idx</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.stripping" href="#utilities.section_utils.DocumentStripper.stripping">stripping</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="utilities.section_utils.InsuranceInformationDataStrippter"><code class="flex name class">
+<span>class <span class="ident">InsuranceInformationDataStrippter</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove an Insurance Information table: specific for TMA_GTR</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_check" href="#utilities.section_utils.DocumentStripper.strip_check">strip_check</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_start_idx" href="#utilities.section_utils.DocumentStripper.strip_start_idx">strip_start_idx</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.stripping" href="#utilities.section_utils.DocumentStripper.stripping">stripping</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="utilities.section_utils.LTTuple"><code class="flex name class">
+<span>class <span class="ident">LTTuple</span></span>
+<span>(</span><span>latch: ForwardRef('Callable[[Sequence[str]], bool]'), trigger: ForwardRef('Callable[[Sequence[str]], bool]') = &lt;function LTTuple.&lt;lambda&gt;&gt;, unlatch: ForwardRef('Callable[[Sequence[str]], bool]') = &lt;function LTTuple.&lt;lambda&gt;&gt;, title_check: ForwardRef('Callable[[str], bool]') = &lt;function LTTuple.&lt;lambda&gt;&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A Latch/Unlatch/Trigger mechanism for managing state transitions during iteration.</p>
+<p>LTTuple defines four callable attributes: latch, trigger, unlatch, and
+title_check. Typically, an iterative process will take some action if
+the current iteration object returns True when passed to 'trigger'
+<em>if and only if</em> a prior object passed to 'latch' has returned True
+<em>and</em> none of the objects between the latching object and the triggering
+object have returned True when passed to 'unlatch'.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>latch</code></strong> :&ensp;<code>Callable[[Sequence[str]], bool]</code></dt>
+<dd>Function to determine when to latch.</dd>
+<dt><strong><code>trigger</code></strong> :&ensp;<code>Callable[[Sequence[str]], bool]</code></dt>
+<dd>Function to determine when to trigger.
+Default is <code>lambda x: True</code>.</dd>
+<dt><strong><code>unlatch</code></strong> :&ensp;<code>Callable[[Sequence[str]], bool]</code></dt>
+<dd>Function to determine when to unlatch.
+Default is <code>lambda x: False</code>.</dd>
+<dt><strong><code>title_check</code></strong> :&ensp;<code>Callable[[str]], bool]</code></dt>
+<dd>An optional function for checking a section
+the title. If the current title returns False, skip the check. Default is
+<code>lambda x: True</code></dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; ltt = LTTuple(
+...     latch=lambda remainder: False if not remainder else remainder[0]==&quot;latch&quot;,
+...     trigger=lambda remainder: False if not remainder else remainder[0]==&quot;trigger&quot;,
+...     unlatch=lambda remainder: False if not remainder else remainder[0]==&quot;unlatch&quot;
+... )
+&gt;&gt;&gt; lines = [&quot;latch&quot;, &quot;unlatch&quot;, &quot;trigger&quot;, &quot;latch&quot;, &quot;line1&quot;, &quot;line3&quot;, &quot;trigger&quot;, &quot;end&quot;]
+&gt;&gt;&gt; latched = False
+&gt;&gt;&gt; for i, _ in enumerate(lines):
+...     latched = (latched or ltt.latch(lines[i:])) and not ltt.unlatch(lines[i:])
+...     if latched and ltt.trigger(lines[i:]):
+...         print(i)
+6
+</code></pre></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.section_utils.LTTuple.latch"><code class="name">var <span class="ident">latch</span> : collections.abc.Callable[[collections.abc.Sequence[str]], bool]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+<dt id="utilities.section_utils.LTTuple.title_check"><code class="name">var <span class="ident">title_check</span> : collections.abc.Callable[[str], bool]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 3</p></div>
+</dd>
+<dt id="utilities.section_utils.LTTuple.trigger"><code class="name">var <span class="ident">trigger</span> : collections.abc.Callable[[collections.abc.Sequence[str]], bool]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="utilities.section_utils.LTTuple.unlatch"><code class="name">var <span class="ident">unlatch</span> : collections.abc.Callable[[collections.abc.Sequence[str]], bool]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.section_utils.LineRollCheck"><code class="flex name class">
+<span>class <span class="ident">LineRollCheck</span></span>
+<span>(</span><span>description: ForwardRef('str'), lines_check: ForwardRef('Callable[[int, list[str]], bool]'), roll_func: ForwardRef('Callable[[list[int], list[str]], None]') = &lt;function default_roll_func&gt;, title_check: ForwardRef('Callable[[str], bool]') = &lt;function LineRollCheck.&lt;lambda&gt;&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines tests for detecting wrapped lines and correcting them.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>description</code></strong> :&ensp;<code>str</code></dt>
+<dd>appears in a log message if this check is fired.</dd>
+<dt><strong><code>lines_check</code></strong> :&ensp;<code>Callable[[int, list[str]], bool]</code></dt>
+<dd>given an index and
+the full list of lines in a section, return True if the line at
+index + 1 should be rolled up to the index line. False otherwise.</dd>
+<dt><strong><code>roll_func</code></strong> :&ensp;<code>Callable[[list[int], list[str]], list[str]]</code></dt>
+<dd>given a list
+of line indexes where line wrapping occurs and the list of lines
+in the current section, update the list of lines by rolling all
+wrapped line text into the previous line. Defaults to default_roll_func.</dd>
+<dt><strong><code>title_check</code></strong> :&ensp;<code>Callable[[str], bool]</code></dt>
+<dd>given the title of the current
+section, return True to enable this line roll check or False to
+skip it. Defaults to lambda _: True.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.section_utils.LineRollCheck.description"><code class="name">var <span class="ident">description</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+<dt id="utilities.section_utils.LineRollCheck.lines_check"><code class="name">var <span class="ident">lines_check</span> : collections.abc.Callable[[int, list[str]], bool]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="utilities.section_utils.LineRollCheck.roll_func"><code class="name">var <span class="ident">roll_func</span> : collections.abc.Callable[[list[int], list[str]], None]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+<dt id="utilities.section_utils.LineRollCheck.title_check"><code class="name">var <span class="ident">title_check</span> : collections.abc.Callable[[str], bool]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 3</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.section_utils.RevisionHistoryStripper"><code class="flex name class">
+<span>class <span class="ident">RevisionHistoryStripper</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove revision history sections to prevent parsing errors.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_check" href="#utilities.section_utils.DocumentStripper.strip_check">strip_check</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_start_idx" href="#utilities.section_utils.DocumentStripper.strip_start_idx">strip_start_idx</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.stripping" href="#utilities.section_utils.DocumentStripper.stripping">stripping</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="utilities.section_utils.SectExtBase"><code class="flex name class">
+<span>class <span class="ident">SectExtBase</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines fields required in a class in order for it to function in
+use cases intended for a full SectionExtractor instance.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="utilities.section_utils.SectExtBase.new_from_table_dict"><code class="name flex">
+<span>def <span class="ident">new_from_table_dict</span></span>(<span>tab_dict: dict[str, list[dict[str, str]]])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>return a new SectExtBase instance with
+self.table_dictionary set equal to tab_dict</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.section_utils.SectStartDisqualifier"><code class="flex name class">
+<span>class <span class="ident">SectStartDisqualifier</span></span>
+<span>(</span><span>title_check: ForwardRef('Callable[[str], bool]') = &lt;function SectStartDisqualifier.&lt;lambda&gt;&gt;, remaining_lines_disqualifier: ForwardRef('Callable[[Sequence[str]], bool]') = &lt;function SectStartDisqualifier.&lt;lambda&gt;&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Section start disqalifier. Prevents a new section from triggering if the
+conditions described below are met.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>title_check</code></strong> :&ensp;<code>Callable[[str], bool]</code></dt>
+<dd>given the title of the currently
+extracting section, return True to enable this disqualifier or
+False to skip it.</dd>
+<dt><strong><code>remaining_lines_disqualifier</code></strong> :&ensp;<code>Callable[[Sequence[str]], bool]</code></dt>
+<dd>given
+the lines remaining in the extracted text, return True to prevent
+a new section from starting at the current position.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.section_utils.SectStartDisqualifier.remaining_lines_disqualifier"><code class="name">var <span class="ident">remaining_lines_disqualifier</span> : collections.abc.Callable[[collections.abc.Sequence[str]], bool]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="utilities.section_utils.SectStartDisqualifier.title_check"><code class="name">var <span class="ident">title_check</span> : collections.abc.Callable[[str], bool]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.section_utils.StripperTuple"><code class="flex name class">
+<span>class <span class="ident">StripperTuple</span></span>
+<span>(</span><span>stripper_class: ForwardRef('Type[<a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a>]'), kwargs: ForwardRef('dict[str, Any]'))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Simple tuple defining a stripper class and its kwargs.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.section_utils.StripperTuple.kwargs"><code class="name">var <span class="ident">kwargs</span> : dict[str, typing.Any]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="utilities.section_utils.StripperTuple.stripper_class"><code class="name">var <span class="ident">stripper_class</span> : Type[<a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a>]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.section_utils.TimelineDataStripper"><code class="flex name class">
+<span>class <span class="ident">TimelineDataStripper</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove Patient Care Timeline section from ABS Epic records.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_check" href="#utilities.section_utils.DocumentStripper.strip_check">strip_check</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_start_idx" href="#utilities.section_utils.DocumentStripper.strip_start_idx">strip_start_idx</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.stripping" href="#utilities.section_utils.DocumentStripper.stripping">stripping</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="utilities.section_utils.VersionStripper"><code class="flex name class">
+<span>class <span class="ident">VersionStripper</span></span>
+<span>(</span><span>*, depth=2, end_strip_latches: Sequence[<a title="utilities.section_utils.LTTuple" href="#utilities.section_utils.LTTuple">LTTuple</a>] = ())</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove all but the most recent version for all Op Notes.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></b></code>:
+<ul class="hlist">
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_check" href="#utilities.section_utils.DocumentStripper.strip_check">strip_check</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_start_idx" href="#utilities.section_utils.DocumentStripper.strip_start_idx">strip_start_idx</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.stripping" href="#utilities.section_utils.DocumentStripper.stripping">stripping</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="utilities" href="index.html">utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="utilities.section_utils.default_roll_func" href="#utilities.section_utils.default_roll_func">default_roll_func</a></code></li>
+<li><code><a title="utilities.section_utils.field_roll_func" href="#utilities.section_utils.field_roll_func">field_roll_func</a></code></li>
+<li><code><a title="utilities.section_utils.is_attribution" href="#utilities.section_utils.is_attribution">is_attribution</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="utilities.section_utils.AgentsStripper" href="#utilities.section_utils.AgentsStripper">AgentsStripper</a></code></h4>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.DocumentStripper" href="#utilities.section_utils.DocumentStripper">DocumentStripper</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_check" href="#utilities.section_utils.DocumentStripper.strip_check">strip_check</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.strip_start_idx" href="#utilities.section_utils.DocumentStripper.strip_start_idx">strip_start_idx</a></code></li>
+<li><code><a title="utilities.section_utils.DocumentStripper.stripping" href="#utilities.section_utils.DocumentStripper.stripping">stripping</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.DuplicatedSectionsStripper" href="#utilities.section_utils.DuplicatedSectionsStripper">DuplicatedSectionsStripper</a></code></h4>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.FlowsheetDataStripper" href="#utilities.section_utils.FlowsheetDataStripper">FlowsheetDataStripper</a></code></h4>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.ForceNameTuple" href="#utilities.section_utils.ForceNameTuple">ForceNameTuple</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.section_utils.ForceNameTuple.apply_after_breaks" href="#utilities.section_utils.ForceNameTuple.apply_after_breaks">apply_after_breaks</a></code></li>
+<li><code><a title="utilities.section_utils.ForceNameTuple.checks" href="#utilities.section_utils.ForceNameTuple.checks">checks</a></code></li>
+<li><code><a title="utilities.section_utils.ForceNameTuple.insert" href="#utilities.section_utils.ForceNameTuple.insert">insert</a></code></li>
+<li><code><a title="utilities.section_utils.ForceNameTuple.replace" href="#utilities.section_utils.ForceNameTuple.replace">replace</a></code></li>
+<li><code><a title="utilities.section_utils.ForceNameTuple.title" href="#utilities.section_utils.ForceNameTuple.title">title</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.HBTuple" href="#utilities.section_utils.HBTuple">HBTuple</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.section_utils.HBTuple.hbreak" href="#utilities.section_utils.HBTuple.hbreak">hbreak</a></code></li>
+<li><code><a title="utilities.section_utils.HBTuple.offset" href="#utilities.section_utils.HBTuple.offset">offset</a></code></li>
+<li><code><a title="utilities.section_utils.HBTuple.replace" href="#utilities.section_utils.HBTuple.replace">replace</a></code></li>
+<li><code><a title="utilities.section_utils.HBTuple.right" href="#utilities.section_utils.HBTuple.right">right</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.HistoryAndPhysicalStripper" href="#utilities.section_utils.HistoryAndPhysicalStripper">HistoryAndPhysicalStripper</a></code></h4>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.InsuranceInformationDataStrippter" href="#utilities.section_utils.InsuranceInformationDataStrippter">InsuranceInformationDataStrippter</a></code></h4>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.LTTuple" href="#utilities.section_utils.LTTuple">LTTuple</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.section_utils.LTTuple.latch" href="#utilities.section_utils.LTTuple.latch">latch</a></code></li>
+<li><code><a title="utilities.section_utils.LTTuple.title_check" href="#utilities.section_utils.LTTuple.title_check">title_check</a></code></li>
+<li><code><a title="utilities.section_utils.LTTuple.trigger" href="#utilities.section_utils.LTTuple.trigger">trigger</a></code></li>
+<li><code><a title="utilities.section_utils.LTTuple.unlatch" href="#utilities.section_utils.LTTuple.unlatch">unlatch</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.LineRollCheck" href="#utilities.section_utils.LineRollCheck">LineRollCheck</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.section_utils.LineRollCheck.description" href="#utilities.section_utils.LineRollCheck.description">description</a></code></li>
+<li><code><a title="utilities.section_utils.LineRollCheck.lines_check" href="#utilities.section_utils.LineRollCheck.lines_check">lines_check</a></code></li>
+<li><code><a title="utilities.section_utils.LineRollCheck.roll_func" href="#utilities.section_utils.LineRollCheck.roll_func">roll_func</a></code></li>
+<li><code><a title="utilities.section_utils.LineRollCheck.title_check" href="#utilities.section_utils.LineRollCheck.title_check">title_check</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.RevisionHistoryStripper" href="#utilities.section_utils.RevisionHistoryStripper">RevisionHistoryStripper</a></code></h4>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.SectExtBase" href="#utilities.section_utils.SectExtBase">SectExtBase</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.section_utils.SectExtBase.new_from_table_dict" href="#utilities.section_utils.SectExtBase.new_from_table_dict">new_from_table_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.SectStartDisqualifier" href="#utilities.section_utils.SectStartDisqualifier">SectStartDisqualifier</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.section_utils.SectStartDisqualifier.remaining_lines_disqualifier" href="#utilities.section_utils.SectStartDisqualifier.remaining_lines_disqualifier">remaining_lines_disqualifier</a></code></li>
+<li><code><a title="utilities.section_utils.SectStartDisqualifier.title_check" href="#utilities.section_utils.SectStartDisqualifier.title_check">title_check</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.StripperTuple" href="#utilities.section_utils.StripperTuple">StripperTuple</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.section_utils.StripperTuple.kwargs" href="#utilities.section_utils.StripperTuple.kwargs">kwargs</a></code></li>
+<li><code><a title="utilities.section_utils.StripperTuple.stripper_class" href="#utilities.section_utils.StripperTuple.stripper_class">stripper_class</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.TimelineDataStripper" href="#utilities.section_utils.TimelineDataStripper">TimelineDataStripper</a></code></h4>
+</li>
+<li>
+<h4><code><a title="utilities.section_utils.VersionStripper" href="#utilities.section_utils.VersionStripper">VersionStripper</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

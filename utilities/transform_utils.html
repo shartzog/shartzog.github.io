@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>utilities.transform_utils API documentation</title>
+<meta name="description" content="utility functions used by:
+table_transformer.py
+transform_specs.py
+summary_specs.py">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>utilities.transform_utils</code></h1>
+</header>
+<section id="section-intro">
+<p>utility functions used by:
+table_transformer.py
+transform_specs.py
+summary_specs.py</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="utilities.transform_utils.address_parser"><code class="name flex">
+<span>def <span class="ident">address_parser</span></span>(<span>address_string: str, tag_mapping: collections.abc.Mapping[str, str] | None = None) ‑> dict[str, str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>given a string containing an address, return a dict with keys from
+tag_mapping value set</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>address_string</code></strong> :&ensp;<code>str</code></dt>
+<dd>string containing a full address</dd>
+<dt><strong><code>tag_mapping</code></strong> :&ensp;<code>Mapping[str, str]</code></dt>
+<dd>Optional. map from usaddress builtin tags</dd>
+</dl>
+<p>to user specified output tags. Defaults to gvars.USADDRESS_MAPPING.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, str]</code></dt>
+<dd>dict containing all keys in the supplied tag_mapping.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.transform_utils.address_split"><code class="name flex">
+<span>def <span class="ident">address_split</span></span>(<span>table_name: str, full_address: str, *, key_prefix: str = '', key_suffix: str = '', debug=False) ‑> types.SimpleNamespace</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Given a full address (e.g., "102 Maple Ln, Leesburg, GA 31763"), return a simple
+namespace with attributes street1, street2, city, state, and zip.</p>
+<p>This function parses a full address string and returns a SimpleNamespace object
+with the parsed address components. It handles special cases such as addresses
+in Hawaii and formats ZIP codes appropriately. Optional key prefixes and suffixes
+can be added to the returned namespace attributes. NOTE: Appropriate for use as the
+<code>split_func</code> parameter of a <code>split_key</code> operation in a <code>specs.TransformSpec</code>.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table containing the address.</dd>
+<dt><strong><code>full_address</code></strong> :&ensp;<code>str</code></dt>
+<dd>Full address string.</dd>
+<dt><strong><code>key_prefix</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. Prefix to add to all keys in the returned namespace.
+Must be valid to appear in a Python identifier if supplied. Defaults to "".</dd>
+<dt><strong><code>key_suffix</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. Suffix to add to all keys in the returned namespace.
+Must be valid to appear in a Python identifier if supplied. Defaults to "".</dd>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. Enable debug logging. Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>SimpleNamespace</code></dt>
+<dd>A namespace with attributes street1, street2, city, state, and zip.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; address = &quot;102 Maple Ln, Leesburg, GA 31763&quot;
+&gt;&gt;&gt; result = address_split(&quot;AddressTable&quot;, address)
+&gt;&gt;&gt; result.street1
+'102 MAPLE LN'
+&gt;&gt;&gt; result.city
+'LEESBURG'
+&gt;&gt;&gt; result.state
+'GA'
+&gt;&gt;&gt; result.zip
+'31763'
+</code></pre></div>
+</dd>
+<dt id="utilities.transform_utils.contextualize_summary"><code class="name flex">
+<span>def <span class="ident">contextualize_summary</span></span>(<span>flat_summary: dict[str, dict[str, <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]], drop_nulls: bool = False, context_prefix='', context_sep='|', force_index=False) ‑> dict[str, dict[str, <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Prep a deduped summary for additional merge/dedup operations.
+Extends keys in all sub-dicts with contexts from their vStr values.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>flat_summary</code></strong></dt>
+<dd>flattened, deduped summary dict.</dd>
+<dt><strong><code>drop_nulls</code></strong></dt>
+<dd>if True, drop keys with null values (see is_null()).</dd>
+<dt><strong><code>context_prefix</code></strong></dt>
+<dd>prefix to add to each context string if not already present.</dd>
+<dt><strong><code>context_sep</code></strong></dt>
+<dd>separator between key and context string.</dd>
+<dt><strong><code>force_index</code></strong></dt>
+<dd>if True, override table indices with list indices. Set if
+contextualizing a summary that's already been properly deduped to
+avoid improper incrementing of list indices.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, dict[str, Any]]</code></dt>
+<dd>contextualized summary dict.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.transform_utils.dedup_dict_lists"><code class="name flex">
+<span>def <span class="ident">dedup_dict_lists</span></span>(<span>nest_dict)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove duplicates from a list of dictionaries or a nested dictionary containing lists of dictionaries.</p>
+<p>This function recursively processes a nested dictionary or a list of dictionaries,
+removing duplicate dictionaries based on their key-value pairs. It handles nested
+structures and ensures that only unique dictionaries are retained. The function
+skips deduplication for the key "custom_fields".</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>nest_dict</code></strong> :&ensp;<code>dict | list</code></dt>
+<dd>A nested dictionary or a list of dictionaries to
+deduplicate.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict | list</code></dt>
+<dd>A deduplicated nested dictionary or list of dictionaries.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; nest_dict = {
+...     &quot;key1&quot;: [{&quot;a&quot;: &quot;1&quot;, &quot;b&quot;: &quot;2&quot;}, {&quot;a&quot;: &quot;1&quot;, &quot;b&quot;: &quot;2&quot;}],
+...     &quot;key2&quot;: {&quot;subkey&quot;: [{&quot;c&quot;: &quot;3&quot;}, {&quot;c&quot;: &quot;3&quot;}]},
+...     &quot;custom_fields&quot;: [{&quot;d&quot;: &quot;4&quot;}, {&quot;d&quot;: &quot;4&quot;}]
+... }
+&gt;&gt;&gt; dedup_dict_lists(nest_dict)
+{'key1': [{'a': '1', 'b': '2'}], 'key2': {'subkey': [{'c': '3'}]}, 'custom_fields': [{'d': '4'}, {'d': '4'}]}
+</code></pre></div>
+</dd>
+<dt id="utilities.transform_utils.dedup_list_of_dict_by_keys"><code class="name flex">
+<span>def <span class="ident">dedup_list_of_dict_by_keys</span></span>(<span>dict_list: list[dict]) ‑> list[dict]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove duplicates from a list of dictionaries based on their flattened key-value pairs.</p>
+<p>This function takes a list of dictionaries and removes duplicates by comparing
+their flattened key-value pairs. It handles cases where the dictionaries have
+nested structures and ensures that only unique dictionaries are returned. If the
+list contains only one dictionary or if the dictionaries contain the key
+"inputType", no deduplication is performed.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dict_list</code></strong> :&ensp;<code>list[dict]</code></dt>
+<dd>A list of dictionaries to deduplicate.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[dict]</code></dt>
+<dd>A list of unique dictionaries.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; dict_list = [
+...     {&quot;a&quot;: &quot;1&quot;, &quot;b&quot;: {&quot;c&quot;: &quot;2&quot;}},
+...     {&quot;a&quot;: &quot;1&quot;, &quot;b&quot;: {&quot;c&quot;: &quot;2&quot;}},
+...     {&quot;a&quot;: &quot;3&quot;, &quot;b&quot;: {&quot;d&quot;: &quot;4&quot;}}
+... ]
+&gt;&gt;&gt; dedup_list_of_dict_by_keys(dict_list)
+[{'a': '1', 'b': {'c': '2'}}, {'a': '3', 'b': {'d': '4'}}]
+</code></pre></div>
+</dd>
+<dt id="utilities.transform_utils.earliest_date"><code class="name flex">
+<span>def <span class="ident">earliest_date</span></span>(<span>date_list: collections.abc.Sequence[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>self explanatory</p></div>
+</dd>
+<dt id="utilities.transform_utils.earliest_datetime"><code class="name flex">
+<span>def <span class="ident">earliest_datetime</span></span>(<span>date_list: collections.abc.Sequence[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>self explanatory</p></div>
+</dd>
+<dt id="utilities.transform_utils.earliest_time"><code class="name flex">
+<span>def <span class="ident">earliest_time</span></span>(<span>time_list: collections.abc.Sequence[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>self explanatory</p></div>
+</dd>
+<dt id="utilities.transform_utils.employer_split"><code class="name flex">
+<span>def <span class="ident">employer_split</span></span>(<span>table_name: str, employer_string: str, **kwargs) ‑> types.SimpleNamespace</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split an employer string into individual fields for name, address, and phone.</p>
+<p>This function processes a single string containing employer information, which
+may include the employer's name, address, and phone number, and splits it into
+individual fields. It handles various delimiters and uses the <code>usaddress</code> library
+to parse the address. NOTE: Appropriate for use as the <code>split_func</code> parameter of
+a <code>split_key</code> operation in a <code>specs.TransformSpec</code>.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name of the table containing the employer string.</dd>
+<dt><strong><code>employer_string</code></strong> :&ensp;<code>str</code></dt>
+<dd>The string containing employer information.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. Enable debug logging. Defaults to False.</dd>
+<dt><strong><code>person_type</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. The type of person (e.g., "patient").
+Defaults to "patient". Used as a prefix for all namespace attrs.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>SimpleNamespace</code></dt>
+<dd>A namespace with attributes for the employer's name, address,</dd>
+</dl>
+<p>and phone number.</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; employer_string = &quot;Acme Corp, 123 Main St, Anytown, USA; 843-563-4567&quot;
+&gt;&gt;&gt; result = employer_split(&quot;EmployerTable&quot;, employer_string)
+&gt;&gt;&gt; result.patient_employer
+'Acme Corp'
+&gt;&gt;&gt; result.patient_employer_street1
+'123 Main St'
+&gt;&gt;&gt; result.patient_employer_city
+'Anytown'
+&gt;&gt;&gt; result.patient_employer_phone
+'+1 843-563-4567'
+</code></pre></div>
+</dd>
+<dt id="utilities.transform_utils.explode_nested"><code class="name flex">
+<span>def <span class="ident">explode_nested</span></span>(<span>nested: dict[str, typing.Any], explode_spec: <a title="utilities.transform_utils.ExplodeSpec" href="#utilities.transform_utils.ExplodeSpec">ExplodeSpec</a>) ‑> dict[str, typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Explode an object in a nested dict into a list of dicts.</p>
+<p>NOTE: updates <code>nested</code> in place.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>nested</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>nested dict containing the object to explode</dd>
+<dt><strong><code>explode_spec</code></strong> :&ensp;<code><a title="utilities.transform_utils.ExplodeSpec" href="#utilities.transform_utils.ExplodeSpec">ExplodeSpec</a></code></dt>
+<dd>defines which and how to explode keys in a nested object</dd>
+</dl></div>
+</dd>
+<dt id="utilities.transform_utils.extend_key_with_value_context"><code class="name flex">
+<span>def <span class="ident">extend_key_with_value_context</span></span>(<span>key: str, value: str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>, context_prefix='', context_sep='|', force_index=False) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extend flattened key with value context to prevent dict merges from
+overwriting data and allow for FieldManager operations against merged
+schedule/demo and PDF extracted data.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>key</code></strong> :&ensp;<code>str</code></dt>
+<dd>flattened key</dd>
+<dt><strong><code>value</code></strong> :&ensp;<code>vStr</code></dt>
+<dd>value to be merged</dd>
+<dt><strong><code>context_sep</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. separator between key and context. Defaults to "|".</dd>
+<dt><strong><code>force_index</code></strong></dt>
+<dd>if True, override table index with list index. Set when
+working with a summary that's already been properly deduped to
+avoid improper incrementing of list indices.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>extended key</dd>
+</dl></div>
+</dd>
+<dt id="utilities.transform_utils.extract_asa_status"><code class="name flex">
+<span>def <span class="ident">extract_asa_status</span></span>(<span>candidates: collections.abc.Sequence[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert extracted ASA status values to a string representation of an integer.</p>
+<p>This function processes a sequence of strings to find the numeric 'Physical Status'
+from a list of arbitrary extracted values. It converts Roman numeral ASA
+statuses to integer strings prior to selecting the most frequent element in the
+set of extracted candidates.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>candidates</code></strong> :&ensp;<code>Sequence[str | vStr]</code></dt>
+<dd>A sequence of strings containing Roman
+numeral ASA statuses.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str | vStr</code></dt>
+<dd>The most frequent ASA status as a string representation of an</dd>
+</dl>
+<p>integer.</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; extract_asa_status([&quot;II&quot;, &quot;III&quot;, &quot;IV&quot;, &quot;2 - emergent&quot;])
+'2'
+</code></pre></div>
+</dd>
+<dt id="utilities.transform_utils.flatten"><code class="name flex">
+<span>def <span class="ident">flatten</span></span>(<span>nest: dict[str, typing.Any], drop_nulls: bool = False) ‑> dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Given a nested json object, return {jmespath_pattern: value} for all
+base values (i.e. values of type str, vStr, bool, int or float).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>nest</code></strong></dt>
+<dd>nested json object to flatten.</dd>
+<dt><strong><code>drop_nulls</code></strong></dt>
+<dd>if True, drop keys with null values (see is_null()).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, str | vStr]</code></dt>
+<dd>flattened json object.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.transform_utils.flatten_summary"><code class="name flex">
+<span>def <span class="ident">flatten_summary</span></span>(<span>job_dict: dict[str, dict[str, typing.Any]], drop_nulls: bool = False, append_context=False, context_prefix='', context_sep='|', force_index=False) ‑> dict[str, dict[str, typing.Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Flatten a summary dict for deduplication and merging.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>job_dict</code></strong></dt>
+<dd>summary dict to flatten.</dd>
+<dt><strong><code>drop_nulls</code></strong></dt>
+<dd>if True, drop keys with null values (see is_null()).</dd>
+<dt><strong><code>append_context</code></strong></dt>
+<dd>if True, extend keys with value context to prevent dict
+merges from overwriting data and allow for FieldManager operations
+against merged schedule/demo and PDF extracted data.</dd>
+<dt><strong><code>context_prefix</code></strong></dt>
+<dd>prefix to add to each context string if not already present.</dd>
+<dt><strong><code>context_sep</code></strong></dt>
+<dd>separator between key and context string.</dd>
+<dt><strong><code>force_index</code></strong></dt>
+<dd>if True, override table indices with list indices. Set if
+flattening a summary that's already been properly deduped to avoid
+improper incrementing of list indices.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, dict[str, Any]]</code></dt>
+<dd>flattened summary dict.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.transform_utils.is_address"><code class="name flex">
+<span>def <span class="ident">is_address</span></span>(<span>addr_str: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>test string for valid address</p></div>
+</dd>
+<dt id="utilities.transform_utils.is_null"><code class="name flex">
+<span>def <span class="ident">is_null</span></span>(<span>val: Any) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return True if val is None or a string containing a null value.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>val</code></strong></dt>
+<dd>value to test.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if val is not a verified or non-null original value vStr and
+str(val).lower() is "false", "none", "&ndash;", or "null".</dd>
+</dl></div>
+</dd>
+<dt id="utilities.transform_utils.joined_set"><code class="name flex">
+<span>def <span class="ident">joined_set</span></span>(<span>element_list: collections.abc.Sequence[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>], sep: str = '; ') ‑> <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>self explanatory</p></div>
+</dd>
+<dt id="utilities.transform_utils.json_pair"><code class="name flex">
+<span>def <span class="ident">json_pair</span></span>(<span>key: str, value: str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a> | list[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>convenience method to return a json escaped key value pair</p></div>
+</dd>
+<dt id="utilities.transform_utils.latest_date"><code class="name flex">
+<span>def <span class="ident">latest_date</span></span>(<span>date_list: collections.abc.Sequence[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>self explanatory</p></div>
+</dd>
+<dt id="utilities.transform_utils.latest_datetime"><code class="name flex">
+<span>def <span class="ident">latest_datetime</span></span>(<span>date_list: collections.abc.Sequence[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>self explanatory</p></div>
+</dd>
+<dt id="utilities.transform_utils.latest_time"><code class="name flex">
+<span>def <span class="ident">latest_time</span></span>(<span>time_list: collections.abc.Sequence[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>self explanatory</p></div>
+</dd>
+<dt id="utilities.transform_utils.most_freq_name_element"><code class="name flex">
+<span>def <span class="ident">most_freq_name_element</span></span>(<span>name_candidates_list: collections.abc.Sequence[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>], element: str) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the most frequent value in a list of name candidates and return the specified
+element of the HumanName object in uppercase.</p>
+<p>This function determines the most frequent name from a list of name candidates
+and returns the specified element (e.g., "first", "last", "full_name") of the
+HumanName object in uppercase. The function uses a tiebreaker to handle cases
+where multiple names have the same frequency.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name_candidates_list</code></strong> :&ensp;<code>Sequence[str | vStr]</code></dt>
+<dd>A list of name candidates.</dd>
+<dt><strong><code>element</code></strong> :&ensp;<code>str</code></dt>
+<dd>The element of the HumanName object to return (e.g., "first",
+"last", "full_name").</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str | vStr</code></dt>
+<dd>The most frequent name element in uppercase, preserving vStr
+attributes if present.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; from nameparser import HumanName
+&gt;&gt;&gt; name_candidates = [&quot;John Doe&quot;, &quot;Jane Doe&quot;, &quot;John Smith&quot;]
+&gt;&gt;&gt; most_freq_name_element(name_candidates, &quot;first&quot;)
+'JOHN'
+</code></pre></div>
+</dd>
+<dt id="utilities.transform_utils.nest_from_jmespath_keys"><code class="name flex">
+<span>def <span class="ident">nest_from_jmespath_keys</span></span>(<span>flat_dict: dict[str, typing.Any], dedup_lists: bool = True) ‑> dict[str, typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Produce nested JSON output from a flat dictionary with jmespath keys.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>flat_dict</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>A dictionary with jmespath query keys and their
+corresponding values.</dd>
+<dt><strong><code>dedup_lists</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If True, deduplicates lists within the nested
+structure. Defaults to True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, Any]</code></dt>
+<dd>A nested dictionary representation of the input flat dictionary.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; flat_dict = {&quot;schedule.asa&quot;: &quot;2&quot;, &quot;input.entities[0].text&quot;: &quot;test text&quot;}
+&gt;&gt;&gt; nest_from_jmespath_keys(flat_dict)
+{'input': {'entities': [{'text': 'test text'}]}, 'schedule': {'asa': '2'}}
+</code></pre></div>
+</dd>
+<dt id="utilities.transform_utils.note_split"><code class="name flex">
+<span>def <span class="ident">note_split</span></span>(<span>table_name: str, note: str, is_procedure=False, debug=False) ‑> types.SimpleNamespace</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split a note string into a namespace having the requisite attributes for an
+input-&gt;'entities' entry.</p>
+<p>This function processes a note string, splitting it into its components such as
+text, note type, and note header. It handles both general notes and procedure
+notes, formatting them appropriately. NOTE: Appropriate for use as the
+<code>split_func</code> parameter of a <code>split_key</code> operation in a <code>specs.TransformSpec</code>.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name of the table containing the note.</dd>
+<dt><strong><code>note</code></strong> :&ensp;<code>str</code></dt>
+<dd>The note string to be split.</dd>
+<dt><strong><code>is_procedure</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. Indicates if the note is a procedure note.
+Defaults to False.</dd>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. Enable debug logging. Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>SimpleNamespace</code></dt>
+<dd>A namespace containing the split components of the note.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; note = &quot;Header\nLine 1\nLine 2\nProcedure: Description&quot;
+&gt;&gt;&gt; result = note_split(&quot;NotesTable&quot;, note, is_procedure=True)
+&gt;&gt;&gt; result.noteHeader
+'Procedure - Description'
+&gt;&gt;&gt; result.text
+'Header\nLine 1\nLine 2'
+&gt;&gt;&gt; result.noteType
+'AnesProcNotes'
+</code></pre></div>
+</dd>
+<dt id="utilities.transform_utils.note_type"><code class="name flex">
+<span>def <span class="ident">note_type</span></span>(<span>table_name: str, first_line: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the GUI noteType based on the section title. See gvars.TITLE_TO_NOTE_TYPE_MAP.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name of the table containing the note.</dd>
+<dt><strong><code>first_line</code></strong> :&ensp;<code>str</code></dt>
+<dd>The first line of the note.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The determined note type.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; table_name = &quot;OpNotes&quot;
+&gt;&gt;&gt; first_line = &quot;Op Note: Procedure details&quot;
+&gt;&gt;&gt; note_type(table_name, first_line)
+'OpNote'
+</code></pre></div>
+</dd>
+<dt id="utilities.transform_utils.ordered_function_calls"><code class="name flex">
+<span>def <span class="ident">ordered_function_calls</span></span>(<span>transform_function_dict)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>refer to TableTransformer.apply_transforms() in table_transformer.py.</p></div>
+</dd>
+<dt id="utilities.transform_utils.phone_split"><code class="name flex">
+<span>def <span class="ident">phone_split</span></span>(<span>table_name: str, phone_string: str, *, class_dict: dict[str, str] | None = None, debug=False) ‑> types.SimpleNamespace</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split a phone string into home, work, and mobile phone numbers.</p>
+<p>This function processes a phone string and splits it into separate home, work,
+and mobile phone numbers. It uses a provided class dictionary to customize the
+keys for the returned SimpleNamespace object. If no class dictionary is provided,
+default keys are used. NOTE: Appropriate for use as the <code>split_func</code> parameter of
+a <code>split_key</code> operation in a <code>specs.TransformSpec</code>.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name of the table containing the phone string.</dd>
+<dt><strong><code>phone_string</code></strong> :&ensp;<code>str</code></dt>
+<dd>The phone string to be split.</dd>
+<dt><strong><code>class_dict</code></strong> :&ensp;<code>dict[str, str] | None</code>, optional</dt>
+<dd>A dictionary to customize the
+keys for the returned SimpleNamespace object. Defaults to None.</dd>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. Enable debug logging. Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>SimpleNamespace</code></dt>
+<dd>A namespace with attributes for home, work, and mobile phone</dd>
+</dl>
+<p>numbers.</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; phone_string = &quot;Home: 843-521-1000; Work: 843-521-1001; Mobile: 843-521-1002&quot;
+&gt;&gt;&gt; class_dict = {
+...     &quot;home_phone&quot;: &quot;Home: {}&quot;,
+...     &quot;work_phone&quot;: &quot;Work: {}&quot;,
+...     &quot;mobile_phone&quot;: &quot;Mobile: {}&quot;,
+... }
+&gt;&gt;&gt; result = phone_split(&quot;PhoneTable&quot;, phone_string, class_dict=class_dict)
+&gt;&gt;&gt; result.home_phone
+'Home: +1 843-521-1000'
+&gt;&gt;&gt; result.work_phone
+'Work: +1 843-521-1001'
+&gt;&gt;&gt; result.mobile_phone
+'Mobile: +1 843-521-1002'
+</code></pre></div>
+</dd>
+<dt id="utilities.transform_utils.proc_data_split"><code class="name flex">
+<span>def <span class="ident">proc_data_split</span></span>(<span>table_name: str, proc_data_json: str, debug: bool = False) ‑> types.SimpleNamespace</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Splits procedure data into table entries compatible with Responsible Staff.</p>
+<p>This function processes a JSON string containing procedure data and splits it
+into a dictionary of table entries that are compatible with the Responsible Staff
+format. It handles various keys related to providers and times, and ensures that
+the output dictionary is properly formatted. NOTE: Appropriate for use as the
+<code>split_func</code> parameter of a <code>split_key</code> operation in a <code>specs.TransformSpec</code>.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name of the table being processed.</dd>
+<dt><strong><code>proc_data_json</code></strong> :&ensp;<code>str</code></dt>
+<dd>A JSON string containing the procedure data.</dd>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If True, debug information will be logged. Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>SimpleNamespace</code></dt>
+<dd>A namespace with attributes containing the processed provider data.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; table_name = &quot;ProcedureTable&quot;
+&gt;&gt;&gt; proc_data_json = (
+...     '{&quot;PerformedBy&quot;: &quot;Dr. Smith, MD&quot;, '
+...     '&quot;AnesStartTime&quot;: &quot;08:00&quot;, '
+...     '&quot;AnesEndTime&quot;: &quot;10:00&quot;}'
+... )
+&gt;&gt;&gt; result = proc_data_split(table_name, proc_data_json)
+&gt;&gt;&gt; result.AnPrvNm1
+'Dr. Smith, MD'
+&gt;&gt;&gt; result.AnPrvStrtTm1
+'08:00'
+&gt;&gt;&gt; result.AnPrvEndTm1
+'10:00'
+</code></pre></div>
+</dd>
+<dt id="utilities.transform_utils.select_datetime_from_list"><code class="name flex">
+<span>def <span class="ident">select_datetime_from_list</span></span>(<span>date_list, earliest=True, date_only=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>supports recursive lists of date, datetime, and most date string formats</p></div>
+</dd>
+<dt id="utilities.transform_utils.select_time_from_list"><code class="name flex">
+<span>def <span class="ident">select_time_from_list</span></span>(<span>time_list, earliest=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>get earliest or latest time from a list of strings interpretable
+as time values.</p></div>
+</dd>
+<dt id="utilities.transform_utils.standardize_field_value"><code class="name flex">
+<span>def <span class="ident">standardize_field_value</span></span>(<span>field_value: str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>, field_name: str, standard_map: <a title="utilities.transform_utils.StandardMap" href="#utilities.transform_utils.StandardMap">StandardMap</a>, exempt_checks: collections.abc.Sequence[collections.abc.Callable[[str], bool]] = (), split_regex: str = &#x27;[\\s,;\\+\\\\/%\\$\\^\\*\\.:\&#x27;\\&quot;\\-&gt;&lt;`]+&#x27;, min_token_length: int = 2) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Standardize a field value based on a standard_map.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>field_value</code></strong> :&ensp;<code>str | vStr</code></dt>
+<dd>value to standardize</dd>
+<dt><strong><code>field_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>name of field to standardize. used for logging.</dd>
+<dt><strong><code>standard_map</code></strong> :&ensp;<code><a title="utilities.transform_utils.StandardMap" href="#utilities.transform_utils.StandardMap">StandardMap</a></code></dt>
+<dd>a mapping between official values and lists
+of keywords. The standard value order determines the priority of assignment.</dd>
+<dt><strong><code>exempt_checks</code></strong> :&ensp;<code>Sequence[Callable[[str], bool]]</code></dt>
+<dd>return raw from lookup if any
+check(raw) returns true. Default is (). See _tokenized_lookup() for more info.</dd>
+<dt><strong><code>split_regex</code></strong> :&ensp;<code>str</code></dt>
+<dd>poor man's tokenizer. See tokenized_lookup() for more info.</dd>
+<dt><strong><code>min_token_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>forces direct 'raw' matches for mapping values less than
+a cutoff. Default is 2. Avoids matches between, e.g., a mapping '1' and a
+cluttered raw value like 'N/A\nJunky Field 1\nJunky Data'.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str | vStr</code></dt>
+<dd>The standardized value.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.transform_utils.stripped_first_element"><code class="name flex">
+<span>def <span class="ident">stripped_first_element</span></span>(<span>element_list: collections.abc.Sequence[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>return first element from list after calling strip(",- /.")</p></div>
+</dd>
+<dt id="utilities.transform_utils.tokenized_lookup"><code class="name flex">
+<span>def <span class="ident">tokenized_lookup</span></span>(<span>raw: str, standard_map: <a title="utilities.transform_utils.StandardMap" href="#utilities.transform_utils.StandardMap">StandardMap</a>, split_regex: str = &#x27;[\\s,;\\+\\\\/%\\$\\^\\*\\.:\&#x27;\\&quot;\\-&gt;&lt;`]+&#x27;, min_token_length: int = 2) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Given a dict with standard field values as keys and a list of mapped tokens
+as values, return the most likely matched standard field value for the raw value.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>raw</code></strong> :&ensp;<code>str</code></dt>
+<dd>value to standardize</dd>
+<dt><strong><code>standard_map</code></strong> :&ensp;<code><a title="utilities.transform_utils.StandardMap" href="#utilities.transform_utils.StandardMap">StandardMap</a></code></dt>
+<dd>map of standard values to tokens</dd>
+<dt><strong><code>split_regex</code></strong> :&ensp;<code>str</code></dt>
+<dd>regex used to tokenize raw value. Default is
+"[\s,;+\/%\$\^*.:'"-&gt;&lt;`]+".</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<ol>
+<li>the first standard value whose map contains a hard match, i.e. where
+raw.lower() is a member of the map.</li>
+<li>the first standard value whose map includes any token from the list
+of tokens produced by applying split_regex to the raw value.</li>
+<li>the first standard value whose map includes "*".</li>
+<li>an empty string</li>
+</ol></div>
+</dd>
+<dt id="utilities.transform_utils.unflatten"><code class="name flex">
+<span>def <span class="ident">unflatten</span></span>(<span>flat_dict: dict[str, typing.Any], drop_nulls: bool = False, level: int = 0) ‑> dict[str, typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Given a dict of {jmespath_pattern: value}, return its nested form.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>flat_dict</code></strong></dt>
+<dd>flattened json object.</dd>
+<dt><strong><code>drop_nulls</code></strong></dt>
+<dd>if True, drop keys with null values (see is_null()).</dd>
+<dt><strong><code>level</code></strong></dt>
+<dd>the level at which the unflatten operation is applied, e.g. <code>1</code>
+for a 'flattened_summary' as returned by the eponymous function.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, Any]</code></dt>
+<dd>nested json object.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.transform_utils.unq_clean_key"><code class="name flex">
+<span>def <span class="ident">unq_clean_key</span></span>(<span>value_dict: dict[str, typing.Any] = None, this_key: str = 'key') ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>return a new unique key for value_dict containing no illegal
+json key chars</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="utilities.transform_utils.ExplodeSpec"><code class="flex name class">
+<span>class <span class="ident">ExplodeSpec</span></span>
+<span>(</span><span>target_path: str, source_key_key: str = 'key', source_value_key: str = 'value', source_key_xform: collections.abc.Callable[[str], str] = &lt;function ExplodeSpec.&lt;lambda&gt;&gt;, source_value_xform: collections.abc.Callable[[str], str] = &lt;function ExplodeSpec.&lt;lambda&gt;&gt;, add_keys: dict[str, collections.abc.Callable[[dict[str, typing.Any]], str]] = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines which keys to explode and how to explode them in a nested object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>target_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>path to the nested <em>object</em> whose children will be exploded</dd>
+<dt><strong><code>source_key_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>key that will be set to xformed source key in the exploded object</dd>
+<dt><strong><code>source_value_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>key that will be set to xformed source value in the exploded obj</dd>
+<dt><strong><code>source_key_xform</code></strong> :&ensp;<code>Callable[[str], str]</code></dt>
+<dd>reformat function for source keys</dd>
+<dt><strong><code>source_value_xform</code></strong> :&ensp;<code>Callable[[str], str]</code></dt>
+<dd>reformat function for source values</dd>
+<dt><strong><code>add_keys</code></strong> :&ensp;<code>dict[str, Callable[[dict[str, Any]], str]]</code></dt>
+<dd>keys to add to the exploded object</dd>
+</dl></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.transform_utils.ExplodeSpec.add_keys"><code class="name">var <span class="ident">add_keys</span> : dict[str, collections.abc.Callable[[dict[str, typing.Any]], str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.transform_utils.ExplodeSpec.source_key_key"><code class="name">var <span class="ident">source_key_key</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.transform_utils.ExplodeSpec.source_value_key"><code class="name">var <span class="ident">source_value_key</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.transform_utils.ExplodeSpec.target_path"><code class="name">var <span class="ident">target_path</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.transform_utils.ExplodeSpec.source_key_xform"><code class="name flex">
+<span>def <span class="ident">source_key_xform</span></span>(<span>x) ‑> collections.abc.Callable[[str], str]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.transform_utils.ExplodeSpec.source_value_xform"><code class="name flex">
+<span>def <span class="ident">source_value_xform</span></span>(<span>x) ‑> collections.abc.Callable[[str], str]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.transform_utils.KeyTuple"><code class="flex name class">
+<span>class <span class="ident">KeyTuple</span></span>
+<span>(</span><span>source_key: str, dest_key: str, xform: collections.abc.Callable[[str], str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>] = utilities.v_str.vStr)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A tuple of source / destination keys with an optional value transform.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>source_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>original key name</dd>
+<dt><strong><code>dest_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>new key name</dd>
+<dt><strong><code>xform</code></strong> :&ensp;<code>Callable[[str], str | vStr]</code></dt>
+<dd>optional value transform function.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.transform_utils.KeyTuple.dest_key"><code class="name">var <span class="ident">dest_key</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="utilities.transform_utils.KeyTuple.source_key"><code class="name">var <span class="ident">source_key</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+<dt id="utilities.transform_utils.KeyTuple.xform"><code class="name">var <span class="ident">xform</span> : collections.abc.Callable[[str], str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.transform_utils.StandardMap"><code class="flex name class">
+<span>class <span class="ident">StandardMap</span></span>
+<span>(</span><span>mapping: dict[str, collections.abc.Collection[str]])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A dictionary for use as a standard_map in a call to standardize_field_value()</p>
+<p>Performs post processing to set the case of all mapping values to lower(),
+add the standard value itself to each mapping, and convert the mappings
+themselves to sets for faster lookup.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="utilities" href="index.html">utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="utilities.transform_utils.address_parser" href="#utilities.transform_utils.address_parser">address_parser</a></code></li>
+<li><code><a title="utilities.transform_utils.address_split" href="#utilities.transform_utils.address_split">address_split</a></code></li>
+<li><code><a title="utilities.transform_utils.contextualize_summary" href="#utilities.transform_utils.contextualize_summary">contextualize_summary</a></code></li>
+<li><code><a title="utilities.transform_utils.dedup_dict_lists" href="#utilities.transform_utils.dedup_dict_lists">dedup_dict_lists</a></code></li>
+<li><code><a title="utilities.transform_utils.dedup_list_of_dict_by_keys" href="#utilities.transform_utils.dedup_list_of_dict_by_keys">dedup_list_of_dict_by_keys</a></code></li>
+<li><code><a title="utilities.transform_utils.earliest_date" href="#utilities.transform_utils.earliest_date">earliest_date</a></code></li>
+<li><code><a title="utilities.transform_utils.earliest_datetime" href="#utilities.transform_utils.earliest_datetime">earliest_datetime</a></code></li>
+<li><code><a title="utilities.transform_utils.earliest_time" href="#utilities.transform_utils.earliest_time">earliest_time</a></code></li>
+<li><code><a title="utilities.transform_utils.employer_split" href="#utilities.transform_utils.employer_split">employer_split</a></code></li>
+<li><code><a title="utilities.transform_utils.explode_nested" href="#utilities.transform_utils.explode_nested">explode_nested</a></code></li>
+<li><code><a title="utilities.transform_utils.extend_key_with_value_context" href="#utilities.transform_utils.extend_key_with_value_context">extend_key_with_value_context</a></code></li>
+<li><code><a title="utilities.transform_utils.extract_asa_status" href="#utilities.transform_utils.extract_asa_status">extract_asa_status</a></code></li>
+<li><code><a title="utilities.transform_utils.flatten" href="#utilities.transform_utils.flatten">flatten</a></code></li>
+<li><code><a title="utilities.transform_utils.flatten_summary" href="#utilities.transform_utils.flatten_summary">flatten_summary</a></code></li>
+<li><code><a title="utilities.transform_utils.is_address" href="#utilities.transform_utils.is_address">is_address</a></code></li>
+<li><code><a title="utilities.transform_utils.is_null" href="#utilities.transform_utils.is_null">is_null</a></code></li>
+<li><code><a title="utilities.transform_utils.joined_set" href="#utilities.transform_utils.joined_set">joined_set</a></code></li>
+<li><code><a title="utilities.transform_utils.json_pair" href="#utilities.transform_utils.json_pair">json_pair</a></code></li>
+<li><code><a title="utilities.transform_utils.latest_date" href="#utilities.transform_utils.latest_date">latest_date</a></code></li>
+<li><code><a title="utilities.transform_utils.latest_datetime" href="#utilities.transform_utils.latest_datetime">latest_datetime</a></code></li>
+<li><code><a title="utilities.transform_utils.latest_time" href="#utilities.transform_utils.latest_time">latest_time</a></code></li>
+<li><code><a title="utilities.transform_utils.most_freq_name_element" href="#utilities.transform_utils.most_freq_name_element">most_freq_name_element</a></code></li>
+<li><code><a title="utilities.transform_utils.nest_from_jmespath_keys" href="#utilities.transform_utils.nest_from_jmespath_keys">nest_from_jmespath_keys</a></code></li>
+<li><code><a title="utilities.transform_utils.note_split" href="#utilities.transform_utils.note_split">note_split</a></code></li>
+<li><code><a title="utilities.transform_utils.note_type" href="#utilities.transform_utils.note_type">note_type</a></code></li>
+<li><code><a title="utilities.transform_utils.ordered_function_calls" href="#utilities.transform_utils.ordered_function_calls">ordered_function_calls</a></code></li>
+<li><code><a title="utilities.transform_utils.phone_split" href="#utilities.transform_utils.phone_split">phone_split</a></code></li>
+<li><code><a title="utilities.transform_utils.proc_data_split" href="#utilities.transform_utils.proc_data_split">proc_data_split</a></code></li>
+<li><code><a title="utilities.transform_utils.select_datetime_from_list" href="#utilities.transform_utils.select_datetime_from_list">select_datetime_from_list</a></code></li>
+<li><code><a title="utilities.transform_utils.select_time_from_list" href="#utilities.transform_utils.select_time_from_list">select_time_from_list</a></code></li>
+<li><code><a title="utilities.transform_utils.standardize_field_value" href="#utilities.transform_utils.standardize_field_value">standardize_field_value</a></code></li>
+<li><code><a title="utilities.transform_utils.stripped_first_element" href="#utilities.transform_utils.stripped_first_element">stripped_first_element</a></code></li>
+<li><code><a title="utilities.transform_utils.tokenized_lookup" href="#utilities.transform_utils.tokenized_lookup">tokenized_lookup</a></code></li>
+<li><code><a title="utilities.transform_utils.unflatten" href="#utilities.transform_utils.unflatten">unflatten</a></code></li>
+<li><code><a title="utilities.transform_utils.unq_clean_key" href="#utilities.transform_utils.unq_clean_key">unq_clean_key</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="utilities.transform_utils.ExplodeSpec" href="#utilities.transform_utils.ExplodeSpec">ExplodeSpec</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.transform_utils.ExplodeSpec.add_keys" href="#utilities.transform_utils.ExplodeSpec.add_keys">add_keys</a></code></li>
+<li><code><a title="utilities.transform_utils.ExplodeSpec.source_key_key" href="#utilities.transform_utils.ExplodeSpec.source_key_key">source_key_key</a></code></li>
+<li><code><a title="utilities.transform_utils.ExplodeSpec.source_key_xform" href="#utilities.transform_utils.ExplodeSpec.source_key_xform">source_key_xform</a></code></li>
+<li><code><a title="utilities.transform_utils.ExplodeSpec.source_value_key" href="#utilities.transform_utils.ExplodeSpec.source_value_key">source_value_key</a></code></li>
+<li><code><a title="utilities.transform_utils.ExplodeSpec.source_value_xform" href="#utilities.transform_utils.ExplodeSpec.source_value_xform">source_value_xform</a></code></li>
+<li><code><a title="utilities.transform_utils.ExplodeSpec.target_path" href="#utilities.transform_utils.ExplodeSpec.target_path">target_path</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.transform_utils.KeyTuple" href="#utilities.transform_utils.KeyTuple">KeyTuple</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.transform_utils.KeyTuple.dest_key" href="#utilities.transform_utils.KeyTuple.dest_key">dest_key</a></code></li>
+<li><code><a title="utilities.transform_utils.KeyTuple.source_key" href="#utilities.transform_utils.KeyTuple.source_key">source_key</a></code></li>
+<li><code><a title="utilities.transform_utils.KeyTuple.xform" href="#utilities.transform_utils.KeyTuple.xform">xform</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.transform_utils.StandardMap" href="#utilities.transform_utils.StandardMap">StandardMap</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

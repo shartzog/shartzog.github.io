@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>aws_s3_batch API documentation</title>
+<meta name="description" content="Manages S3 and database interactions for PDF extractor.
+Called from extract_s3.py.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>aws_s3_batch</code></h1>
+</header>
+<section id="section-intro">
+<p>Manages S3 and database interactions for PDF extractor.
+Called from extract_s3.py.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="aws_s3_batch.S3Batch"><code class="flex name class">
+<span>class <span class="ident">S3Batch</span></span>
+<span>(</span><span>pdf_library: dict[str, <a title="utilities.library_utils.PDFLibProto" href="utilities/library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>], keys_versions: set[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>] | list[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>], failed_only: bool = False, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Container for processing all pdfs for a single facility.</p>
+<p>Exposes methods to trigger execution of all pdf-extractor modules
+and send extracted data to db, s3 or disk.</p>
+<p>Creates a new S3Batch instance.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf_library</code></strong> :&ensp;<code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>dict of PDFLibProto objects
+representing PDFs to be extracted.</dd>
+<dt><strong><code>keys_versions</code></strong> :&ensp;<code>lu.KeysVersions</code></dt>
+<dd>set of lu.KeyVersionTuple objects
+representing S3 objects to be copied and deleted.</dd>
+<dt><strong><code>failed_only</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. if True, copy_failed_objects will
+be called and self.keys_versions will be updated to remove
+successfully copied objects. Defaults to False.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<p>See <code><a title="aws_s3_batch.S3BatchArgs" href="#aws_s3_batch.S3BatchArgs">S3BatchArgs</a></code>.</p></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_s3_batch.S3Batch.original_filenames"><code class="name">var <span class="ident">original_filenames</span></code></dt>
+<dd>
+<div class="desc"><p>The set of filenames for S3 keys in the original keys_versions object.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.stitch_map"><code class="name">var <span class="ident">stitch_map</span></code></dt>
+<dd>
+<div class="desc"><p>A mapping between source pdf entries and stitching destinations.</p>
+<p>WARNING: Accessing this property prior to calling the <code><a title="aws_s3_batch.S3Batch.extract_pdfs" href="#aws_s3_batch.S3Batch.extract_pdfs">S3Batch.extract_pdfs()</a></code>
+on this <code><a title="aws_s3_batch.S3Batch" href="#aws_s3_batch.S3Batch">S3Batch</a></code> instance may result in unexpected behavior.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.transformed"><code class="name">prop <span class="ident">transformed</span> : dict[str, dict[str, typing.Any]]</code></dt>
+<dd>
+<div class="desc"><p>Return self.xfmr.output if such is available and of type dict.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_s3_batch.S3Batch.add_placeholders"><code class="name flex">
+<span>def <span class="ident">add_placeholders</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add placeholder cases for the set of dates of service found in the
+meta dicts of self.placeholder_documents and add corresponding PDFs
+to their input-&gt;'entities' lists.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.add_xform_debug_output"><code class="name flex">
+<span>def <span class="ident">add_xform_debug_output</span></span>(<span>self, pdf_summary: dict[str, dict[str, typing.Any]] | None = None, pdf_deduped: dict[str, dict[str, typing.Any]] | None = None, pdf_xformed: dict[str, dict[str, typing.Any]] | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add pre_summary, summary, and transformed output to debug_output.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.check_insurances"><code class="name flex">
+<span>def <span class="ident">check_insurances</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update and assign insurance IDs for extracted insurance data.</p>
+<p>For each extracted insurance, search common_db.shared.insurance_providers
+for a matching entry and update the extracted value with standard DB
+values for company name, plan name, phone, address, and insuranceID.
+If no record is found, set the confidence of all extracted fields to 0
+and leave insuranceID blank.</p>
+<p>Environment Variable/FacilitySpec Setting:
+INSURANCE_INTEGRATION_MODE/insurance_integration_mode: "0" or "1".
+If "0", disable this routine entirely.
+If "1" (default), execute the routine as described above.
+NOTE: The FacilitySpec setting overrides env var if not None.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.check_providers"><code class="name flex">
+<span>def <span class="ident">check_providers</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find NPIs for extracted provider names.</p>
+<p>Search local db provider store and public API for extracted surgeon and
+anesthesiaStaff provider names and assign NPIs accordingly.</p>
+<p>Environment Variable/FacilitySpec Setting:
+PROVIDER_INTEGRATION_MODE/provider_integration_mode: "0", "1" (default), or "2".
+If "0", skip NPI lookups altogether.
+If "1", set the confidence of any unmatched provider name to 0.0 and return
+the as found name and an empty, 0.0 confidence vStr for NPI.
+If "2", return as found values but update local DB store with lookup result
+(used during startup to initialize the local DB table).
+NOTE: The FacilitySpec setting overrides env var if not None.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.collect_docuvision_results"><code class="name flex">
+<span>def <span class="ident">collect_docuvision_results</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save results from docuvision PDFs to self.section_dict.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.copy_failed_objects"><code class="name flex">
+<span>def <span class="ident">copy_failed_objects</span></span>(<span>self, failed_keys: set[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>] | list[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>]) ‑> set[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>] | list[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Copy objects to S3 failed folder.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.copy_object"><code class="name flex">
+<span>def <span class="ident">copy_object</span></span>(<span>self, key_vers: <a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>, dest: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Copy a single s3 object from one key to another.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.copy_processed_objects"><code class="name flex">
+<span>def <span class="ident">copy_processed_objects</span></span>(<span>self, push_results: dict) ‑> tuple[set[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>] | list[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>], set[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>] | list[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns two sets of tuples of (str, str).
+The first contains
+(key, version) pairs for files that didn't extract properly or
+failed to meet the file naming conventions for extractable files.
+The second contains (key, version) pairs for files that
+encountered an error during the S3 copy process itself.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.delete_objects"><code class="name flex">
+<span>def <span class="ident">delete_objects</span></span>(<span>self, keys_vers_to_del: set[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>] | list[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>]) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Permanently deletes all s3 object keys in keys_vers_to_del.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.drop_duplicate_cases"><code class="name flex">
+<span>def <span class="ident">drop_duplicate_cases</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Drop duplicate cases from self.transformed and update the input
+entities of the retained case with a 'SUPERSEDED' copy of the source
+PDF of the duplicate case.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.extract_pdfs"><code class="name flex">
+<span>def <span class="ident">extract_pdfs</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calls pdf_extractor.py functions.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.extract_sections"><code class="name flex">
+<span>def <span class="ident">extract_sections</span></span>(<span>self, debug=False) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calls section_extractor.py and table_extractor.py functions.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.map_results_to_s3_keys"><code class="name flex">
+<span>def <span class="ident">map_results_to_s3_keys</span></span>(<span>self) ‑> dict[str, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates send_results to include keys for pdfs that were either split
+into multiple cases or stitched to another pdf during processing.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.match_extracts"><code class="name flex">
+<span>def <span class="ident">match_extracts</span></span>(<span>self, src_job_ids: collections.abc.Sequence[int] = (-1,)) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Match transformer output with:
+- data from existing DB cases having the same date of service
+as an extracted record, and
+- schedule and demographic data obtained from CSVs and other
+discrete references.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>src_job_ids</code></strong> :&ensp;<code>Sequence[int]</code></dt>
+<dd>Optional. List of analysis_jobs ids
+to include in addition to those identified via date of service.
+Defaults to (-1,), i.e. no additional ids are included.</dd>
+</dl></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.match_schedule_to_demographics"><code class="name flex">
+<span>def <span class="ident">match_schedule_to_demographics</span></span>(<span>self) ‑> dict[str, dict[str, <a title="utilities.v_str.vStr" href="utilities/v_str.html#utilities.v_str.vStr">vStr</a>]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract, match, and reformat data found in discrete schedule and
+demographic references and save the results to self.matching_data.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.merge_docvis"><code class="name flex">
+<span>def <span class="ident">merge_docvis</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Merge input, comments, and note from docuvision integrator if required.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.post_docuvision_tasks"><code class="name flex">
+<span>def <span class="ident">post_docuvision_tasks</span></span>(<span>self, split_by_pid=True) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create tasks for multipatient docuvision PDFs.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.send"><code class="name flex">
+<span>def <span class="ident">send</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Call the send_func defined in the facility spec to save extracted
+data to DB, S3, or disk.</p></div>
+</dd>
+<dt id="aws_s3_batch.S3Batch.transform_tables"><code class="name flex">
+<span>def <span class="ident">transform_tables</span></span>(<span>self, auto=True, src_job_ids: collections.abc.Sequence[int] = (-1,)) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calls table_transformer.py functions.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="aws_s3_batch.S3BatchArgs"><code class="flex name class">
+<span>class <span class="ident">S3BatchArgs</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Kwargs template for the S3Batch class defined below.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>bucket</code></strong> :&ensp;<code>str</code></dt>
+<dd>S3 bucket containing files to extract</dd>
+<dt><strong><code>facility_spec</code></strong> :&ensp;<code>sp.FacilitySpec</code></dt>
+<dd>facility (e.g. chaph) entry from specs/client_specs</dd>
+<dt><strong><code>log_console</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True (default), log to console. if false, log to file.</dd>
+<dt><strong><code>log_dir</code></strong> :&ensp;<code>str</code></dt>
+<dd>where to save logs if log_console is false</dd>
+<dt><strong><code>log_name_template</code></strong> :&ensp;<code>str</code></dt>
+<dd>log name base for batch (e.g. "chaph_[PREFIX]")</dd>
+<dt><strong><code>facility_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>facility_spec key for client_specs</dd>
+<dt><strong><code>client_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>synonym for client; organization providing PDFs for processing</dd>
+<dt><strong><code>section_specs</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>optional override for standard section_specs</dd>
+<dt><strong><code>summary_specs</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>optional override for standard summary_specs</dd>
+<dt><strong><code>table_specs</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>optional override for standard table_specs</dd>
+<dt><strong><code>transform_specs</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>optional override for standard transform_specs</dd>
+<dt><strong><code>match_specs</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>optional override for standard match_specs</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="aws_s3_batch.S3BatchArgs.bucket"><code class="name">var <span class="ident">bucket</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_s3_batch.S3BatchArgs.client_path"><code class="name">var <span class="ident">client_path</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_s3_batch.S3BatchArgs.facility_path"><code class="name">var <span class="ident">facility_path</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_s3_batch.S3BatchArgs.facility_spec"><code class="name">var <span class="ident">facility_spec</span> : <a title="specs._types._client.FacilitySpec" href="specs/_types/_client.html#specs._types._client.FacilitySpec">FacilitySpec</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_s3_batch.S3BatchArgs.log_console"><code class="name">var <span class="ident">log_console</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_s3_batch.S3BatchArgs.log_dir"><code class="name">var <span class="ident">log_dir</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_s3_batch.S3BatchArgs.log_name_template"><code class="name">var <span class="ident">log_name_template</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_s3_batch.S3BatchArgs.match_specs"><code class="name">var <span class="ident">match_specs</span> : dict[str, <a title="specs._types._match.MatchSpec" href="specs/_types/_match.html#specs._types._match.MatchSpec">MatchSpec</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_s3_batch.S3BatchArgs.section_specs"><code class="name">var <span class="ident">section_specs</span> : dict[str, <a title="specs._types._section.SectionSpec" href="specs/_types/_section.html#specs._types._section.SectionSpec">SectionSpec</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_s3_batch.S3BatchArgs.summary_specs"><code class="name">var <span class="ident">summary_specs</span> : dict[str, typing.Any]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_s3_batch.S3BatchArgs.table_specs"><code class="name">var <span class="ident">table_specs</span> : dict[str, dict[str, <a title="specs._types._table.TableSpec" href="specs/_types/_table.html#specs._types._table.TableSpec">TableSpec</a>]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_s3_batch.S3BatchArgs.transform_specs"><code class="name">var <span class="ident">transform_specs</span> : dict[str, dict[str, dict[str, dict[str, dict[str, dict[str, typing.Any]]]]]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="aws_s3_batch.S3Batch" href="#aws_s3_batch.S3Batch">S3Batch</a></code></h4>
+<ul class="">
+<li><code><a title="aws_s3_batch.S3Batch.add_placeholders" href="#aws_s3_batch.S3Batch.add_placeholders">add_placeholders</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.add_xform_debug_output" href="#aws_s3_batch.S3Batch.add_xform_debug_output">add_xform_debug_output</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.check_insurances" href="#aws_s3_batch.S3Batch.check_insurances">check_insurances</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.check_providers" href="#aws_s3_batch.S3Batch.check_providers">check_providers</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.collect_docuvision_results" href="#aws_s3_batch.S3Batch.collect_docuvision_results">collect_docuvision_results</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.copy_failed_objects" href="#aws_s3_batch.S3Batch.copy_failed_objects">copy_failed_objects</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.copy_object" href="#aws_s3_batch.S3Batch.copy_object">copy_object</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.copy_processed_objects" href="#aws_s3_batch.S3Batch.copy_processed_objects">copy_processed_objects</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.delete_objects" href="#aws_s3_batch.S3Batch.delete_objects">delete_objects</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.drop_duplicate_cases" href="#aws_s3_batch.S3Batch.drop_duplicate_cases">drop_duplicate_cases</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.extract_pdfs" href="#aws_s3_batch.S3Batch.extract_pdfs">extract_pdfs</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.extract_sections" href="#aws_s3_batch.S3Batch.extract_sections">extract_sections</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.map_results_to_s3_keys" href="#aws_s3_batch.S3Batch.map_results_to_s3_keys">map_results_to_s3_keys</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.match_extracts" href="#aws_s3_batch.S3Batch.match_extracts">match_extracts</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.match_schedule_to_demographics" href="#aws_s3_batch.S3Batch.match_schedule_to_demographics">match_schedule_to_demographics</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.merge_docvis" href="#aws_s3_batch.S3Batch.merge_docvis">merge_docvis</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.original_filenames" href="#aws_s3_batch.S3Batch.original_filenames">original_filenames</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.post_docuvision_tasks" href="#aws_s3_batch.S3Batch.post_docuvision_tasks">post_docuvision_tasks</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.send" href="#aws_s3_batch.S3Batch.send">send</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.stitch_map" href="#aws_s3_batch.S3Batch.stitch_map">stitch_map</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.transform_tables" href="#aws_s3_batch.S3Batch.transform_tables">transform_tables</a></code></li>
+<li><code><a title="aws_s3_batch.S3Batch.transformed" href="#aws_s3_batch.S3Batch.transformed">transformed</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_s3_batch.S3BatchArgs" href="#aws_s3_batch.S3BatchArgs">S3BatchArgs</a></code></h4>
+<ul class="two-column">
+<li><code><a title="aws_s3_batch.S3BatchArgs.bucket" href="#aws_s3_batch.S3BatchArgs.bucket">bucket</a></code></li>
+<li><code><a title="aws_s3_batch.S3BatchArgs.client_path" href="#aws_s3_batch.S3BatchArgs.client_path">client_path</a></code></li>
+<li><code><a title="aws_s3_batch.S3BatchArgs.facility_path" href="#aws_s3_batch.S3BatchArgs.facility_path">facility_path</a></code></li>
+<li><code><a title="aws_s3_batch.S3BatchArgs.facility_spec" href="#aws_s3_batch.S3BatchArgs.facility_spec">facility_spec</a></code></li>
+<li><code><a title="aws_s3_batch.S3BatchArgs.log_console" href="#aws_s3_batch.S3BatchArgs.log_console">log_console</a></code></li>
+<li><code><a title="aws_s3_batch.S3BatchArgs.log_dir" href="#aws_s3_batch.S3BatchArgs.log_dir">log_dir</a></code></li>
+<li><code><a title="aws_s3_batch.S3BatchArgs.log_name_template" href="#aws_s3_batch.S3BatchArgs.log_name_template">log_name_template</a></code></li>
+<li><code><a title="aws_s3_batch.S3BatchArgs.match_specs" href="#aws_s3_batch.S3BatchArgs.match_specs">match_specs</a></code></li>
+<li><code><a title="aws_s3_batch.S3BatchArgs.section_specs" href="#aws_s3_batch.S3BatchArgs.section_specs">section_specs</a></code></li>
+<li><code><a title="aws_s3_batch.S3BatchArgs.summary_specs" href="#aws_s3_batch.S3BatchArgs.summary_specs">summary_specs</a></code></li>
+<li><code><a title="aws_s3_batch.S3BatchArgs.table_specs" href="#aws_s3_batch.S3BatchArgs.table_specs">table_specs</a></code></li>
+<li><code><a title="aws_s3_batch.S3BatchArgs.transform_specs" href="#aws_s3_batch.S3BatchArgs.transform_specs">transform_specs</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

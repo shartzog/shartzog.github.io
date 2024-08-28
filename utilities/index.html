@@ -1,0 +1,1495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>utilities API documentation</title>
+<meta name="description" content="shared extractor utility functions">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Package <code>utilities</code></h1>
+</header>
+<section id="section-intro">
+<p>shared extractor utility functions</p>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="utilities.aws_utils" href="aws_utils.html">utilities.aws_utils</a></code></dt>
+<dd>
+<div class="desc"><p>Container for send functions called via aws_specs
+and aws_specs_dev</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.azure_ocr_integrator" href="azure_ocr_integrator.html">utilities.azure_ocr_integrator</a></code></dt>
+<dd>
+<div class="desc"><p>Function call for Microsoft Azure OCR requests</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.client_utils" href="client_utils.html">utilities.client_utils</a></code></dt>
+<dd>
+<div class="desc"><p>Container for send functions called via client_specs
+and client_specs_dev</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.env_var_action" href="env_var_action.html">utilities.env_var_action</a></code></dt>
+<dd>
+<div class="desc"><p>EnvVarAction class definition</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.hl7_utils" href="hl7_utils.html">utilities.hl7_utils</a></code></dt>
+<dd>
+<div class="desc"><p>Parse HL7 data into pdf extractor schedule/demographic format.</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.json_decoders" href="json_decoders.html">utilities.json_decoders</a></code></dt>
+<dd>
+<div class="desc"><p>Custom json decoders</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.library_utils" href="library_utils.html">utilities.library_utils</a></code></dt>
+<dd>
+<div class="desc"><p>Tools for constructing and managing 'pdf_library' objects</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.log_utils" href="log_utils.html">utilities.log_utils</a></code></dt>
+<dd>
+<div class="desc"><p>exception handler with logging and dynamic continuation</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.managed_fields" href="managed_fields.html">utilities.managed_fields</a></code></dt>
+<dd>
+<div class="desc"><p>FieldManager and ManagedField class and related utilities. See specs/_bases/_fields.py
+for examples of well commented, globally applicable …</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.pdf_utils" href="pdf_utils.html">utilities.pdf_utils</a></code></dt>
+<dd>
+<div class="desc"><p>Utility functions for raw pdf, CSV, and other delimited file processing.</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.protocols" href="protocols.html">utilities.protocols</a></code></dt>
+<dd>
+<div class="desc"><p>Define protocols for inaccessible (due to circular imports) external classes</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.section_utils" href="section_utils.html">utilities.section_utils</a></code></dt>
+<dd>
+<div class="desc"><p>Utility functions and classes used by:
+section_extractor.py
+section_specs.py</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.table_interpreters" href="table_interpreters.html">utilities.table_interpreters</a></code></dt>
+<dd>
+<div class="desc"><p>library of "interpreter" functions called during table extraction
+that covert free text lines into a raw table format</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.table_utils" href="table_utils.html">utilities.table_utils</a></code></dt>
+<dd>
+<div class="desc"><p>Utility functions for table extraction</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.transform_utils" href="transform_utils.html">utilities.transform_utils</a></code></dt>
+<dd>
+<div class="desc"><p>utility functions used by:
+table_transformer.py
+transform_specs.py
+summary_specs.py</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.utils" href="utils.html">utilities.utils</a></code></dt>
+<dd>
+<div class="desc"><p>Utiltily functions with global scope</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.v_str" href="v_str.html">utilities.v_str</a></code></dt>
+<dd>
+<div class="desc"><p>String implementation used to associate source context and confidence
+with information extracted from the PDF</p></div>
+</dd>
+<dt><code class="name"><a title="utilities.value_cache_dict" href="value_cache_dict.html">utilities.value_cache_dict</a></code></dt>
+<dd>
+<div class="desc"><p>Useful in extending functionality for comprehensions by allowing the
+current iteration to reference the results of prior iteration(s).
+See
+…</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="utilities.AzureOCRIntegrator"><code class="flex name class">
+<span>class <span class="ident">AzureOCRIntegrator</span></span>
+<span>(</span><span>max_retries: int = 10, timeout: int = 60)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract text from pdf images via calls to Azure Cognitive Services OCR API.</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.AzureOCRIntegrator.client"><code class="name">var <span class="ident">client</span> : azure.cognitiveservices.vision.computervision._computer_vision_client.ComputerVisionClient | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.AzureOCRIntegrator.last_op_id"><code class="name">var <span class="ident">last_op_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.AzureOCRIntegrator.last_read_results"><code class="name">var <span class="ident">last_read_results</span> : list[azure.cognitiveservices.vision.computervision.models._models_py3.ReadResult]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.AzureOCRIntegrator.max_retries"><code class="name">var <span class="ident">max_retries</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.AzureOCRIntegrator.timeout"><code class="name">var <span class="ident">timeout</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.AzureOCRIntegrator.create_client"><code class="name flex">
+<span>def <span class="ident">create_client</span></span>(<span>self, azure_secret_name: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create an Azure ComputerVisionClient based on the supplied AWS secret.</p>
+<p>If the <code>azure_secret_name</code> parameter is empty or does not point to
+a valid AWS secret, self.client is set to None and no image text will
+be extracted.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>azure_secret_name</code></strong></dt>
+<dd>the name of the secret defined in AWS for
+this facility's subscription key.</dd>
+</dl>
+<p>Environment Variables:
+AWS_ACCESS_KEY_ID: the access key ID for an account with access to the secret
+AWS_SECRET_ACCESS_KEY: the secret access key for an account with access to the secret
+AWS_SESSION_TOKEN (optional): required if the selected account is not allowed the
+non-interactive login permission. Blank otherwise.
+AWS_REGION (optional): defaults to "us-east-1" if not set.</p></div>
+</dd>
+<dt id="utilities.AzureOCRIntegrator.ocr_pages"><code class="name flex">
+<span>def <span class="ident">ocr_pages</span></span>(<span>self, pdf: bytes, pages: list[int], debug_path: pathlib.Path | None = None) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Read the text from supplied pdf page indices.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pdf</code></strong></dt>
+<dd>bytes of a pdf file</dd>
+<dt><strong><code>pages</code></strong></dt>
+<dd>list of pdf page indices to OCR</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[str]</code></dt>
+<dd>list of strings containing structured text extracted
+from each supplied page index.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.CacheDictCheck"><code class="flex name class">
+<span>class <span class="ident">CacheDictCheck</span></span>
+<span>(</span><span>check_name: str, key_arg: str | int, value_arg: str | int, key_check: collections.abc.Callable[[typing.Any], bool], format_key: collections.abc.Callable[[typing.Any], collections.abc.Hashable] = builtins.str, value_check: collections.abc.Callable[[typing.Any], bool] = &lt;function CacheDictCheck.&lt;lambda&gt;&gt;, preprocess_value: collections.abc.Callable[[typing.Any], typing.Any] = &lt;function CacheDictCheck.&lt;lambda&gt;&gt;, concat_value: collections.abc.Callable[[typing.Any, typing.Any], typing.Any] = &lt;function CacheDictCheck.&lt;lambda&gt;&gt;, format_arg_value: collections.abc.Callable[[typing.Any, typing.Any], typing.Any] = &lt;function CacheDictCheck.&lt;lambda&gt;&gt;, cache_factory: collections.abc.Callable[[], typing.Any] = builtins.str, reset_arg: str | int | None = None, *, reset_check: collections.abc.Callable[[typing.Any, typing.Any], bool] = &lt;function CacheDictCheck.&lt;lambda&gt;&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines a cache_check for use with the ValueCacheDict decorator.</p>
+<p>Defines the tests for determining whether an arg or kwarg should
+be added to the cache, how the value should be formatted prior to
+being added, how to combine it with previously cached values, and
+how the value in the cache should be reincorporated into the values
+of the args and kwargs supplied in the call before they are
+forwarded to the wrapped function.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>check_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>key for this check's cache in the cache_dict of the
+@ValueCacheDict wrapped function.</dd>
+<dt><strong><code>key_arg</code></strong> :&ensp;<code>str | int</code></dt>
+<dd>the argument to the wrapped function that will
+be used to generate the cache dict key.
+An int represents the zero
+based index of a postional arg (see note below). A str must reference
+a valid keyword argument.</dd>
+<dt><strong><code>value_arg</code></strong> :&ensp;<code>str | int</code></dt>
+<dd>the argument to the wrapped function that will
+be used to create values for the cache.</dd>
+<dt><strong><code>key_check</code></strong> :&ensp;<code>Callable[[Any], bool]</code></dt>
+<dd>given the resolved value of the
+'key_arg' (see ValueCacheDict), return True to trigger caching.</dd>
+<dt><strong><code>format_key</code></strong> :&ensp;<code>Callable[[Any], Hashable]</code></dt>
+<dd>given the resolved value of
+the 'key_arg', return a cache dict key. (Default is str)</dd>
+<dt><strong><code>value_check</code></strong> :&ensp;<code>Callable[[Any], bool]</code></dt>
+<dd>given the resolved value of the
+'value_arg' (see ValueCacheDict), return True to trigger caching.
+(Default is lambda _: True)</dd>
+<dt><strong><code>preprocess_value</code></strong> :&ensp;<code>Callable[[Any], Any]</code></dt>
+<dd>given the resolved value of
+the 'value_arg', return a modified representation fit for caching.
+(Default is lambda x: x)</dd>
+<dt><strong><code>concat_value</code></strong> :&ensp;<code>Callable[[Any, Any], Any]</code></dt>
+<dd>given the cached value and
+the preprocessed new value, return a new cached value.
+(Default is lambda x, y: x + y)</dd>
+<dt><strong><code>format_arg_value</code></strong> :&ensp;<code>Callable[[Any, Any], Any]</code></dt>
+<dd>given the original
+resolved value of the 'value_arg' and the new cache value, return
+the value of 'value_arg' to use when calling the wrapped function.
+(Default is lambda: _, y: y (passes the new cache value))</dd>
+<dt><strong><code>cache_factory</code></strong> :&ensp;<code>Callable[[], Any]</code></dt>
+<dd>assigned to the "default_factory"
+attribute of the internal defaultdict serving as the cache for the
+duration of this check.
+(Default is str)</dd>
+<dt><strong><code>reset_arg</code></strong> :&ensp;<code>str | int | None</code></dt>
+<dd>the argument to the wrapped function that
+will be evaluated to determine whether the cache should be reset.
+If None, the cache will never reset.</dd>
+<dt><strong><code>reset_check</code></strong> :&ensp;<code>Callable[[Any, Any], bool]</code></dt>
+<dd>given the previously resolved
+value of the 'reset_arg' and the current resolved value, return True
+to reset the cache. (Default is lambda x, y: x != y)</dd>
+</dl>
+<p>NOTE: the arg at position zero of a class or instance method will be "cls"
+or "self", so the arguments in the actual function call will begin at
+position 1 for those use cases.</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.CacheDictCheck.cache_factory"><code class="name">var <span class="ident">cache_factory</span> : collections.abc.Callable[[], typing.Any]</code></dt>
+<dd>
+<div class="desc"><p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.</p></div>
+</dd>
+<dt id="utilities.CacheDictCheck.cached"><code class="name">var <span class="ident">cached</span> : dict[collections.abc.Hashable, typing.Any]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.CacheDictCheck.check_name"><code class="name">var <span class="ident">check_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.CacheDictCheck.format_key"><code class="name">var <span class="ident">format_key</span> : collections.abc.Callable[[typing.Any], collections.abc.Hashable]</code></dt>
+<dd>
+<div class="desc"><p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.</p></div>
+</dd>
+<dt id="utilities.CacheDictCheck.key_arg"><code class="name">var <span class="ident">key_arg</span> : str | int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.CacheDictCheck.key_check"><code class="name">var <span class="ident">key_check</span> : collections.abc.Callable[[typing.Any], bool]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.CacheDictCheck.reset_arg"><code class="name">var <span class="ident">reset_arg</span> : str | int | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.CacheDictCheck.reset_value"><code class="name">var <span class="ident">reset_value</span> : Any</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.CacheDictCheck.value_arg"><code class="name">var <span class="ident">value_arg</span> : str | int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.CacheDictCheck.concat_value"><code class="name flex">
+<span>def <span class="ident">concat_value</span></span>(<span>x, y) ‑> collections.abc.Callable[[typing.Any, typing.Any], typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.CacheDictCheck.format_arg_value"><code class="name flex">
+<span>def <span class="ident">format_arg_value</span></span>(<span>_, y) ‑> collections.abc.Callable[[typing.Any, typing.Any], typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.CacheDictCheck.preprocess_value"><code class="name flex">
+<span>def <span class="ident">preprocess_value</span></span>(<span>x) ‑> collections.abc.Callable[[typing.Any], typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.CacheDictCheck.reset_check"><code class="name flex">
+<span>def <span class="ident">reset_check</span></span>(<span>x, y) ‑> collections.abc.Callable[[typing.Any, typing.Any], bool]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.CacheDictCheck.value_check"><code class="name flex">
+<span>def <span class="ident">value_check</span></span>(<span>_) ‑> collections.abc.Callable[[typing.Any], bool]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.ContextRule"><code class="flex name class">
+<span>class <span class="ident">ContextRule</span></span>
+<span>(</span><span>title: ForwardRef('str'), controller_keys: ForwardRef('list[str]'), patterns: ForwardRef('list[re.Pattern]'), applied_context: ForwardRef('Sequence[str]'), is_active: ForwardRef('Callable[[KeyGroups], Any]'), candidate_filter: ForwardRef('Callable[[KeyGroups, Any], KeyGroups]') = &lt;function ContextRule.&lt;lambda&gt;&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Conditionally modify the preferred point of origin (context) and/or
+manipulate the list of candidate values for all standard keys matched
+by a list of regular expressions. See FieldManager._apply_context_rules()
+for implementation. See specs/_bases/_fields.py for examples of well
+commented, globally applicable ContextRules that reduce DB/CSV and
+PDF/DB/CSV summaries. These global context rules are available from
+the specs subpackage, i.e.:
+<code>import specs
+specs.CSV_DB_CONTEXT_RULE
+# context rule for CSV/DB summaries</code></p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>title</code></strong> :&ensp;<code>str</code></dt>
+<dd>a descriptive name used for logging and maintainability purposes.</dd>
+<dt><strong><code>controller_keys</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>A list of standard keys whose standard_key_groups entries
+will determine if the rule is activated.</dd>
+<dt><strong><code>patterns</code></strong> :&ensp;<code>list[re.Pattern]</code></dt>
+<dd>A list of regular expressions that determine the set of
+standard keys who are subject to the rule's actions.</dd>
+<dt><strong><code>applied_context</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>the new context_priority value for matched keys if the
+supplied <code>is_active</code> function returns <code>True</code> (boolean type only).</dd>
+<dt><strong><code>is_active</code></strong> :&ensp;<code>Callable[[KeyGroups], Any]</code></dt>
+<dd>A function that takes the subset of the
+FieldManager's standard_key_groups that matches the rule's controller_keys and
+determines if the rule is in effect (bool) or an alternative input for a custom
+<code>candidate_filter</code> in advanced applications.</dd>
+<dt><strong><code>candidate_filter</code></strong> :&ensp;<code>Callable[[KeyGroups, Any], KeyGroups]</code></dt>
+<dd>A function that takes the
+subset of the FieldManager's standard_key_groups that matches the rule's keys and
+the result from the <code>is_active</code> func and returns the subset of the FieldManager's
+standard_key_groups that are eligible to appear in the output. Optional. Defaults
+to a null operation (i.e. lambda x, _: x).</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.ContextRule.applied_context"><code class="name">var <span class="ident">applied_context</span> : collections.abc.Sequence[str]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 3</p></div>
+</dd>
+<dt id="utilities.ContextRule.candidate_filter"><code class="name">var <span class="ident">candidate_filter</span> : collections.abc.Callable[[dict[str, dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]], typing.Any], dict[str, dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]]]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 5</p></div>
+</dd>
+<dt id="utilities.ContextRule.controller_keys"><code class="name">var <span class="ident">controller_keys</span> : list[str]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="utilities.ContextRule.is_active"><code class="name">var <span class="ident">is_active</span> : collections.abc.Callable[[dict[str, dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]]], typing.Any]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 4</p></div>
+</dd>
+<dt id="utilities.ContextRule.patterns"><code class="name">var <span class="ident">patterns</span> : list[re.Pattern]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+<dt id="utilities.ContextRule.title"><code class="name">var <span class="ident">title</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.DocuVisionIntegratorProtocol"><code class="flex name class">
+<span>class <span class="ident">DocuVisionIntegratorProtocol</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Define externally accessed methods for the DocuVisionIntegrator class. See
+<code>./app/integrators/docuvision_integrator.py</code> for class implementation.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="integrators.docuvision_integrator.DocuVisionIntegrator" href="../integrators/docuvision_integrator.html#integrators.docuvision_integrator.DocuVisionIntegrator">DocuVisionIntegrator</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.DocuVisionIntegratorProtocol.api_key"><code class="name">var <span class="ident">api_key</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.DocuVisionIntegratorProtocol.base_path"><code class="name">var <span class="ident">base_path</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.DocuVisionIntegratorProtocol.base_url"><code class="name">var <span class="ident">base_url</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.DocuVisionIntegratorProtocol.page_map"><code class="name">var <span class="ident">page_map</span> : dict[str, dict[str, list[int]]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.DocuVisionIntegratorProtocol.split_by_pid"><code class="name">var <span class="ident">split_by_pid</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.DocuVisionIntegratorProtocol.pdf_library"><code class="name">prop <span class="ident">pdf_library</span> : dict[str, typing.Any]</code></dt>
+<dd>
+<div class="desc"><p>Dict of {case_doc_id: PDFLibEntry} where each entry represents the
+combined_pdf of a DocuVisionCase created by a child DocuVisionTask
+instance.</p>
+<p>Merged into S3Batch.pdf_library in aws_s3_batch.py for file matching
+and other downstream processes.</p></div>
+</dd>
+<dt id="utilities.DocuVisionIntegratorProtocol.pdfs_by_doc_id"><code class="name">prop <span class="ident">pdfs_by_doc_id</span> : dict[str, bytes]</code></dt>
+<dd>
+<div class="desc"><p>Returns a dict of pdf bytes split and/or concatenated by task pids.</p></div>
+</dd>
+<dt id="utilities.DocuVisionIntegratorProtocol.results"><code class="name">prop <span class="ident">results</span> : dict[str, list[dict[str, str]]]</code></dt>
+<dd>
+<div class="desc"><p>Process responses from all child tasks to produce results according to
+the current instance settings.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.DocuVisionIntegratorProtocol.create_tasks"><code class="name flex">
+<span>def <span class="ident">create_tasks</span></span>(<span>self, documents: dict[str, typing.Any] | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Obtain upload location and post PDFs. If mock_ids were defined, create
+mock tasks for each id and collect the existing respones.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>documents</code></strong> :&ensp;<code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>dict of {filename: PDFLibProto}
+where PDFLibProto is a namedtuple of (body, meta) where body is
+a bytes object and meta is a dict of metadata for the pdf.
+Optional. Extends self.documents if supplied.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.DocuVisionIntegratorProtocol.job_dict_entries"><code class="name flex">
+<span>def <span class="ident">job_dict_entries</span></span>(<span>self, extracted_data: dict[str, dict[str, typing.Any]]) ‑> dict[str, dict[str, typing.Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Dict of {job_id: job_dict} for all tasks in self._tasks where each job_dict
+contains values for db columns 'input', 'comments', and 'note'.</p>
+<p>Called by aws_s3_batch.py to recombine the values for the columns noted
+above with their corresponding output from table_transformer.py.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>extracted_data</code></strong> :&ensp;<code>dict[str, dict[str, Any]]</code></dt>
+<dd>TableTransformer output
+data supplied from aws_s3_batch.S3Batch.transformed.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, dict[str, Any]]</code></dt>
+<dd>dict of {job_id: job_dict} for all tasks
+in self._tasks.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.DocuVisionIntegratorProtocol.reset"><code class="name flex">
+<span>def <span class="ident">reset</span></span>(<span>self, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reset the dataclass to prepare for a new facility by clearing
+all documents, tasks, results, and internal variables.</p>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>documents</code></strong> :&ensp;<code>dict[str, lu.PDFLibProto]</code></dt>
+<dd>dict of {filename: PDFLibProto}
+where PDFLibProto is a namedtuple of (body, meta) where body is
+a bytes object and meta is a dict of metadata for the pdf.</dd>
+<dt><strong><code>page_map</code></strong> :&ensp;<code>dict[str, dict[str, list[int]]]</code></dt>
+<dd>dict of {new_doc_id:
+{old_doc_id: [page_nums]}} where new_doc_id is the doc_id for the
+combined pdf created by docuvision and old_doc_id is the doc_id
+for the original pdf. page_nums is a list of page numbers from
+the original pdf that were included in the combined pdf.</dd>
+<dt><strong><code>out_dir</code></strong> :&ensp;<code>str</code></dt>
+<dd>path to directory where output json files will be
+written. If None, no files will be written.</dd>
+<dt><strong><code>split_by_pid</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, docuvision will split each pdf into
+separate documents based on patient id. If False, docuvision
+will combine all pdfs into a single document.</dd>
+<dt><strong><code>fail_on_error</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, raise an error if any task fails to
+post or any response fails to be collected. Defaults to False.</dd>
+<dt><strong><code>mock_ids</code></strong> :&ensp;<code>list[int]</code></dt>
+<dd>list of task_ids to use for mock responses.
+Defaults to [].</dd>
+<dt><strong><code>default_dos</code></strong> :&ensp;<code>str</code></dt>
+<dd>default date of service to use if no date of service
+is extracted from the facesheet. Defaults to gvars.DEFAULT_DOS.</dd>
+<dt><strong><code>api_secret_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>name of secret in AWS secretsmanager containing
+the base_url, base_path, and api_key values for the docuvision API.</dd>
+<dt><strong><code>dv_preferred_networks</code></strong> :&ensp;<code>list[str] | None</code></dt>
+<dd>list of preferred Docuvision Neural
+Networks. Created for facilities where people manually upload 1-page PDFs</dd>
+<dt><strong><code>table_converters</code></strong> :&ensp;<code>dict[str, Callable[[list[str]], list[dict[str, str]]]]</code></dt>
+<dd>function
+reference for processing '*Table' labels returned by DV-1.</dd>
+<dt><strong><code>dv_required_page_types</code></strong> :&ensp;<code>set[str]</code></dt>
+<dd>if supplied, a case will only be created for a pid
+if at least one of the pages assigned to that pid have a type in this set.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.DocuVisionIntegratorProtocol.tables_for"><code class="name flex">
+<span>def <span class="ident">tables_for</span></span>(<span>self, doc_id: str, section: str = 'DocuVision', sep: str = '.') ‑> dict[str, list[dict[str, str]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get results for the supplied doc_id in a tabular format suitable
+for downstream processing in table_transformer.py.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>doc_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>doc_id for the document to retrieve results for.</dd>
+<dt><strong><code>section</code></strong> :&ensp;<code>str</code></dt>
+<dd>section name to use for the table. Defaults to
+"DocuVision".</dd>
+<dt><strong><code>sep</code></strong> :&ensp;<code>str</code></dt>
+<dd>separator to use for table keys. Defaults to ".".</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, list[dict[str, str]]]</code></dt>
+<dd>dict of {table_name: [table_rows]}
+where each table_row is a dict of {label: value}.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.DocuVisionIntegratorProtocol.task_attr_list"><code class="name flex">
+<span>def <span class="ident">task_attr_list</span></span>(<span>self, attr: str) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>List the specified attribute for all tasks in self._tasks.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.EnvVarAction"><code class="flex name class">
+<span>class <span class="ident">EnvVarAction</span></span>
+<span>(</span><span>option_strings, dest, default=None, type=None, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Custom argparse action to override command line args with
+environment variable values if environment variables have
+been set.
+To work, the environment variable name must equal
+(cmd line arg namespace name).upper().
+For example:</p>
+<pre><code>    cmd line arg        namespace name      env var name
+    ------------        --------------      ------------
+    --log-console       log_console         LOG_CONSOLE
+    --aws-s3-bucket     aws_s3_bucket       AWS_S3_BUCKET
+</code></pre>
+<p>For boolean type args, this action works similarly to the
+'store_true' built-in action, i.e. the cmd line arg functions
+as a switch to set the namespace value to True (unless the
+environment variable is defined in which case the env value
+will be used).</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>argparse.Action</li>
+<li>argparse._AttributeHolder</li>
+</ul>
+</dd>
+<dt id="utilities.FieldManager"><code class="flex name class">
+<span>class <span class="ident">FieldManager</span></span>
+<span>(</span><span>managed_fields: dict[str, <a title="utilities.ManagedField" href="#utilities.ManagedField">ManagedField</a>], standard_keys: list[str], context_rules: Sequence[<a title="utilities.ContextRule" href="#utilities.ContextRule">ContextRule</a>] = (), context_sep: str = '|', output_dir: str | None = None, patient_id: str = 'Unknown', raw_summary: dict[str, <a title="utilities.vStr" href="#utilities.vStr">vStr</a>] = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply the settings defined in the ManagedField objects to the data in a flattened
+summary dictionary from the output of a TableTransformer instance.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>managed_fields</code></strong> :&ensp;<code>dict[str, <a title="utilities.ManagedField" href="#utilities.ManagedField">ManagedField</a>]</code></dt>
+<dd>A dictionary mapping keys to ManagedField
+objects.</dd>
+<dt><strong><code>standard_keys</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>A list of standard keys used in the data typically
+defined in a summary_spec (see specs/summary_specs.py and table_transformer.py).</dd>
+<dt><strong><code>context_rules</code></strong> :&ensp;<code>Sequence[<a title="utilities.ContextRule" href="#utilities.ContextRule">ContextRule</a>]</code></dt>
+<dd>A list of context rules to apply to the data.
+ContextRules allow for conditional modification of the preferred point of origin
+(context) and/or manipulation of the candidate values for a standard key subset.</dd>
+<dt><strong><code>context_sep</code></strong> :&ensp;<code>str</code></dt>
+<dd>A string used to separate keys and their context.
+Defaults to "|". Example key: "schedule.startTime|CSV|0".</dd>
+<dt><strong><code>output_dir</code></strong> :&ensp;<code>str | None</code></dt>
+<dd>An optional file path prefix (end in "/" to target a folder)
+If supplied, <code>f"{output_dir}{patient_id}_managed_fields.json"</code> will be created
+after calling the <code>reduce()</code> method.</dd>
+<dt><strong><code>patient_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>an identifier for the patient being processed. Used in debug
+output filenames and logging. Defaults to 'Unknown'.</dd>
+<dt><strong><code>raw_summary</code></strong> :&ensp;<code>dict[str, <a title="utilities.vStr" href="#utilities.vStr">vStr</a>]</code></dt>
+<dd>A dict containing raw summary data for one patient.
+Defaults to an empty dict to facilitate templating (see <code>__call__()</code> docstring)</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>standard_key_groups</code></strong> :&ensp;<code>KeyGroups</code></dt>
+<dd>A mapping between standard keys and groups of
+corresponding context bearing candidate key value pairs. Has form
+<code>{'&lt;standard key&gt;': {'&lt;standard key&gt;&lt;sep&gt;&lt;context&gt;': '&lt;value&gt;', ...}, ...}</code></dd>
+<dt><strong><code>context_groups</code></strong> :&ensp;<code>dict[str, KeyGroups]</code></dt>
+<dd>The inverse of standard_key_groups
+(kind of). Groups raw data by context. Initialized as a defaultdict(dict). Used
+in list and grouped element merge operations. See <code>_GROUPED_ELEMENTS</code>. Has form
+<code>{'&lt;parent&gt;': {'&lt;context&gt;': {'&lt;final element&gt;': '&lt;value&gt;', ...}, ...}, ...}</code>.</dd>
+<dt><strong><code>context_group_priorities</code></strong> :&ensp;<code>dict[str, list[str]]</code></dt>
+<dd>Records the _group_context of the
+first candidate selected for a standard_key in a context group to ensure that
+the same context is prioritized for subsequent group members.</dd>
+<dt><strong><code>list_manager</code></strong> :&ensp;<code>dict[str, list[tuple[int, int]]]</code></dt>
+<dd>init==False. A dictionary used to
+track the output list indexes of "array type" standard keys.</dd>
+<dt><strong><code>output</code></strong> :&ensp;<code>dict[str, <a title="utilities.vStr" href="#utilities.vStr">vStr</a>]</code></dt>
+<dd>init==False. A dictionary containing the reduced output.
+Empty until the reduce() method is called.</dd>
+</dl>
+<p>During post intialization, the supplied raw_summary (dict[str, vStr]) is compiled into
+standard_key_groups (dict[str, dict[str, vStr]]) where the keys of raw_summary appear
+as subkeys within standard_key_groups with standard_keys members as parent keys. E.g.,
+raw_summary entries:
+<code>{
+"schedule.diagnosis|PDF.Anesthesia Record.Case Summary|0": "Right hip displacement",
+"schedule.diagnosis|PDF.Operative Note|7": "Displacement of right hip",
+}</code>
+would be compiled into standard_key_groups entries:
+<code>{
+"schedule.diagnosis": {
+"schedule.diagnosis|PDF.Anesthesia Record.Case Summary|0": "Right hip displacement",
+"schedule.diagnosis|PDF.Operative Note|7": "Displacement of right hip",
+}
+}</code>
+The same is true, generally speaking, for array type keys with the additional step of
+replacing the wildcard card in the standard key definition with the proper list index
+using the list_manager dictionary. E.g., raw_summary entries:
+<code>{
+"patient_info.insurance[0].company|PDF.Anesthesia Record.Active Insurance|0": "Aetna",
+"patient_info.insurance[0].company|PDF.Anesthesia Record.Active Insurance|1": "BCBS",
+"patient_info.insurance[1].company|PDF.Anesthesia Record.Active Insurance|0": "MDCR",
+}</code>
+would be compiled into standard_key_groups entries:
+<code>{
+"patient_info.insurance[0].company": {
+"patient_info.insurance[0].company|PDF.Anesthesia Record.Active Insurance|0": "Aetna",
+},
+"patient_info.insurance[1].company": {
+"patient_info.insurance[0].company|PDF.Anesthesia Record.Active Insurance|1": "BCBS",
+},
+"patient_info.insurance[2].company": {
+"patient_info.insurance[1].company|PDF.Anesthesia Record.Active Insurance|0": "MDCR",
+},
+}</code>
+by virtue of their combined list and table indexes (0, 0), (0, 1), and (1, 0) respectively.</p>
+<p>The reduce() method iterates over each standard field in standard_key_groups, selecting the
+proper final standard key value from the list of candidates according to the ManagedField
+definition. If the field is not managed and present in standard_keys, the default
+ManagedField will be applied (selects the most frequent value in the list of candidates).</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.FieldManager.context_group_priorities"><code class="name">var <span class="ident">context_group_priorities</span> : dict[str, list[str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.FieldManager.context_groups"><code class="name">var <span class="ident">context_groups</span> : dict[str, dict[str, dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.FieldManager.context_rules"><code class="name">var <span class="ident">context_rules</span> : collections.abc.Sequence[<a title="utilities.managed_fields.ContextRule" href="managed_fields.html#utilities.managed_fields.ContextRule">ContextRule</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.FieldManager.context_sep"><code class="name">var <span class="ident">context_sep</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.FieldManager.list_manager"><code class="name">var <span class="ident">list_manager</span> : dict[str, list[tuple[int, int]]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.FieldManager.managed_fields"><code class="name">var <span class="ident">managed_fields</span> : dict[str, <a title="utilities.managed_fields.ManagedField" href="managed_fields.html#utilities.managed_fields.ManagedField">ManagedField</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.FieldManager.output"><code class="name">var <span class="ident">output</span> : dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.FieldManager.output_dir"><code class="name">var <span class="ident">output_dir</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.FieldManager.patient_id"><code class="name">var <span class="ident">patient_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.FieldManager.raw_summary"><code class="name">var <span class="ident">raw_summary</span> : dict[str, <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.FieldManager.standard_key_groups"><code class="name">var <span class="ident">standard_key_groups</span> : dict[str, dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.FieldManager.standard_keys"><code class="name">var <span class="ident">standard_keys</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.FieldManager.expand_dependencies"><code class="name flex">
+<span>def <span class="ident">expand_dependencies</span></span>(<span>self, this_field: <a title="utilities.ManagedField" href="#utilities.ManagedField">ManagedField</a>) ‑> collections.abc.Sequence[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Allow a 'non-list' field to depend on all values collected for a
+list field.</p>
+<p>If a non-list field depends upon a list type field, replace the original
+wildcarded list key reference supplied in its dependencies with the list
+of indexed keys for which we actually collected data.</p>
+<h2 id="example">Example</h2>
+<p>Given a raw_summary containing data for three anesthesia providers,
+and a standard field "schedule.surgeon" with dependency
+"schedule.anesthesiaStaff[*].provider", expand the wildcarded list
+dependency into entries for the three provider values collected and
+return:
+<code>[
+"schedule.anesthesiaStaff[0].provider",
+"schedule.anesthesiaStaff[1].provider",
+"schedule.anesthesiaStaff[2].provider",
+]</code></p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>this_field</code></strong> :&ensp;<code><a title="utilities.ManagedField" href="#utilities.ManagedField">ManagedField</a></code></dt>
+<dd>the managed field to process</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[str]</code></dt>
+<dd>return the original dependencies if the supplied field
+is itself a list field. otherwise, replace all wildcarded list
+type dependency references with the list of indexed keys
+generated by the dependency's collected values in
+_build_standard_key_groups().</dd>
+</dl></div>
+</dd>
+<dt id="utilities.FieldManager.reduce"><code class="name flex">
+<span>def <span class="ident">reduce</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reduces self.standard_key_groups by applying the settings defined in
+self.managed_fields.</p>
+<p>This method iterates over each standard field in self.standard_key_groups.
+If the field is not managed and present in self.standard_keys, the default
+ManagedField will be applied (selects the most frequent value in the list
+of candidates). If the field is managed, its dependencies are recursively
+reduced and a final value is generated according to the preprocess and
+xform functions defined in its ManagedField definition.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_input</code></strong> :&ensp;<code>KeyGroups | None</code></dt>
+<dd>The input dictionary to reduce. If None,
+the method uses the standard_key_groups attribute.</dd>
+<dt><strong><code>_recursing_for</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>A list of standard keys that are being
+recursively reduced due to their presence as a dependency in a
+different standard key's ManagedField definition. Used to avoid
+infinite recursion.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>The reduced dictionary.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.LogExHandler"><code class="flex name class">
+<span>class <span class="ident">LogExHandler</span></span>
+<span>(</span><span>continue_on_error: bool, default_return=False, *, is_generator=False, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A decorator class to handle exceptions, log them, and optionally continue execution.</p>
+<p>This decorator can be used to wrap functions and handle exceptions by logging
+them along with their trace information. It provides options to continue execution
+or stop it based on the configuration. It also supports generator functions.</p>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; @LogExHandler(True)
+... def your_func(arg_1, arg_2, **kwargs):
+...     pass
+</code></pre>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>continue_on_error</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If False, raises an additional exception after
+saving the log to disk to stop execution.</dd>
+<dt><strong><code>default_return</code></strong> :&ensp;<code>Optional</code></dt>
+<dd>If a literal, returns the literal. If a string,
+checks if 'self.', 'args' or 'kwargs' is in default_return. If so, sets
+return_val = eval(default_return). If is_generator is False, this can
+be used to return an argument supplied to the original function for
+continued processing. If is_generator is True, eval(default_return)
+should generate a new and complete "args" object. This new "args" object
+will then be passed to another instance of the generator to allow
+processing to continue in a fully transparent fashion for the caller.
+NOTE: the new "args" object should be modified from the original to
+exclude the object that resulted in the original error. Otherwise,
+exceptions will be logged until depth &gt;= gvars.MAX_EX_DEPTH.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>is_generator</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Set to True if decorating a generator function that
+utilizes the "yield" statement. Otherwise, the LogExHandler wrapper
+immediately returns the generator object to the caller without evaluating
+any of the internal generator logic, and exceptions raised during iteration
+will not be caught or logged by this decorator. Modifies "default_return"
+behavior (see above).</dd>
+<dt><strong><code>max_depth</code></strong> :&ensp;<code>int</code></dt>
+<dd>Set the maximum number of attempts at re-entering a wrapped
+generator. No effect when is_generator==False. Default is <code>gvars.MAX_EX_DEPTH</code>.</dd>
+<dt><strong><code>exit_code</code></strong> :&ensp;<code>int</code></dt>
+<dd>Sets a custom exit code in implementations where
+continue_on_error=False. Should be a positive integer. Defaults to 1.</dd>
+<dt><strong><code>notify</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, capture logged exceptions in <code>gvars.NOTIFICATIONS</code> to
+send an email notification at the conclusion of the run. Default is False.</dd>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>Additional arbitrary keyword args are captured as class attributes.
+Allows the caller to pass in classes and/or objects not present in this
+module for use when evaluating a custom <code>default_return</code> (see above).</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; import contextlib, io  # NOTE: required for stdout redirect during doctest evaluation
+&gt;&gt;&gt; @LogExHandler(continue_on_error=True, default_return=0)
+... def example_function(x, y):
+...     return x / y
+&gt;&gt;&gt; with contextlib.redirect_stdout(io.StringIO()):
+...     test = example_function(10, 0)
+&gt;&gt;&gt; test
+0
+</code></pre></div>
+</dd>
+<dt id="utilities.LogExOverrideError"><code class="flex name class">
+<span>class <span class="ident">LogExOverrideError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Raise this exception to force all nested LogExHandlers to propagate an
+error upward to the first wrapped function with continue_on_error=False.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="utilities.ManagedField"><code class="flex name class">
+<span>class <span class="ident">ManagedField</span></span>
+<span>(</span><span>standard_key: str, context_priority: Sequence[str] = ('CSV', 'PDF', 'DB'), xform: Callable[[str | <a title="utilities.vStr" href="#utilities.vStr">vStr</a>], str | <a title="utilities.vStr" href="#utilities.vStr">vStr</a>] = &lt;function ManagedField.&lt;lambda&gt;&gt;, generated: bool = False, dependencies: Sequence[str] = (), preprocess: Callable[[str | <a title="utilities.vStr" href="#utilities.vStr">vStr</a>, dict[str, str | <a title="utilities.vStr" href="#utilities.vStr">vStr</a>]], str | <a title="utilities.vStr" href="#utilities.vStr">vStr</a>] = &lt;function ManagedField.&lt;lambda&gt;&gt;, reducer: Callable[[Sequence[str | <a title="utilities.vStr" href="#utilities.vStr">vStr</a>]], str | <a title="utilities.vStr" href="#utilities.vStr">vStr</a>] = &lt;function most_freq_element&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Standardize, recombine, generate, and prioritize extracted data based
+on point of origin, current value, and pre-defined dependencies.</p>
+<p>Useful for establishing enums, rejecting bad inputs, and accepting
+postprocedure data over preprocedure data, among other use cases. Use the
+<code><a title="utilities.transform_utils.standardize_field_value" href="transform_utils.html#utilities.transform_utils.standardize_field_value">standardize_field_value()</a></code> function for establishing enums.
+Implemented at the client and facility level of specs/client_specs.py.
+Global definitions for the ClaimMaker UI use case are available as members
+of the specs subpackage, i.e.:
+<code>import specs
+specs.BASE_MANAGED_FIELDS
+# baseline field definitions</code></p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>standard_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>a key from a summary_specs entry</dd>
+<dt><strong><code>context_priority</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>A list used to prioritize the value
+selected from a list of vStr candidates based on vStr.ctx and/or
+point of origin provided in a summary key. Default is <code>("CSV", "PDF", "DB")</code>.</dd>
+<dt><strong><code>xform</code></strong> :&ensp;<code>Callable[[str | vStr], str | vStr]</code></dt>
+<dd>transform to apply to produce
+a standard output from the provided input, if required. Defaults to
+a null operation (i.e. <code>lambda x: x</code>) to allow context only operations.</dd>
+<dt><strong><code>generated</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if true, calculate a value for this key from its
+depedencies and add it to the summary output even if the key is absent
+in the original summary provided to the FieldManager.</dd>
+<dt><strong><code>dependencies</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>list of standard field names that will be used
+to augment or construct the managed output</dd>
+<dt><strong><code>preprocess</code></strong> :&ensp;<code>Callable[[<a title="utilities.vStr" href="#utilities.vStr">vStr</a>, dict[str, <a title="utilities.vStr" href="#utilities.vStr">vStr</a>]], <a title="utilities.vStr" href="#utilities.vStr">vStr</a>]</code></dt>
+<dd>takes raw value and
+the dict of dependency values as input. preps raw value for xform.
+defaults to a null operation (i.e. <code>lambda x, _: x</code>).</dd>
+<dt><strong><code>reducer</code></strong> :&ensp;<code>Callable[[Sequence[<a title="utilities.vStr" href="#utilities.vStr">vStr</a>]], <a title="utilities.vStr" href="#utilities.vStr">vStr</a>]</code></dt>
+<dd>takes a list of candidate
+vStr values as input and returns the final output for this field.
+Defaults to <code><a title="utilities.utils.most_freq_element" href="utils.html#utilities.utils.most_freq_element">most_freq_element()</a></code>.</dd>
+</dl></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.ManagedField.context_priority"><code class="name">var <span class="ident">context_priority</span> : collections.abc.Sequence[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.ManagedField.dependencies"><code class="name">var <span class="ident">dependencies</span> : collections.abc.Sequence[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.ManagedField.generated"><code class="name">var <span class="ident">generated</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.ManagedField.standard_key"><code class="name">var <span class="ident">standard_key</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.ManagedField.clone"><code class="name flex">
+<span>def <span class="ident">clone</span></span>(<span>self, list_idx: str) ‑> <a title="utilities.managed_fields.ManagedField" href="managed_fields.html#utilities.managed_fields.ManagedField">ManagedField</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Clone this instance after replacing '*' with the supplied list_idx
+in standard_key and all dependencies.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>list_idx</code></strong> :&ensp;<code>str</code></dt>
+<dd>an integer string e.g. "1"</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="utilities.ManagedField" href="#utilities.ManagedField">ManagedField</a></code></dt>
+<dd>a new ManagedFields instance</dd>
+</dl></div>
+</dd>
+<dt id="utilities.ManagedField.preprocess"><code class="name flex">
+<span>def <span class="ident">preprocess</span></span>(<span>x, _) ‑> collections.abc.Callable[[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>, dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]], str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.ManagedField.reduce"><code class="name flex">
+<span>def <span class="ident">reduce</span></span>(<span>self, candidates: dict[str, str | <a title="utilities.vStr" href="#utilities.vStr">vStr</a>]) ‑> tuple[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Call self.reducer and return the key and value of the selected candidate.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>candidates</code></strong></dt>
+<dd>dictionary of candidate keys and values</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[str, str | vStr]</code></dt>
+<dd>the selected candidate key and value</dd>
+</dl></div>
+</dd>
+<dt id="utilities.ManagedField.reducer"><code class="name flex">
+<span>def <span class="ident">reducer</span></span>(<span>check_lists, tiebreak_func=&lt;function vstr_confidence_tiebreak&gt;, xform: collections.abc.Callable[[typing.Any], typing.Union[str, <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>, typing.Any]] = utilities.v_str.vStr) ‑> collections.abc.Callable[[collections.abc.Sequence[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]], str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the most frequent element from a list of lists.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>check_lists</code></strong> :&ensp;<code>list[list[Any]]</code></dt>
+<dd>A list of lists containing elements to check.</dd>
+<dt><strong><code>tiebreak_func</code></strong> :&ensp;<code>Callable[[Any, Any], Any]</code></dt>
+<dd>A function to break ties between
+elements with the same frequency. Default is <code>vstr_confidence_tiebreak</code>.</dd>
+<dt><strong><code>xform</code></strong> :&ensp;<code>Callable[[Any], str | vStr | Any]</code></dt>
+<dd>A transformation function applied
+to each element. Defaults to <code><a title="utilities.vStr" href="#utilities.vStr">vStr</a></code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Any</code></dt>
+<dd>The most frequent element after applying the transformation and tiebreak
+functions.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; check_lists = [[&quot;a&quot;, &quot;b&quot;, &quot;a&quot;], [&quot;a&quot;, &quot;c&quot;, &quot;b&quot;, &quot;b&quot;]]
+&gt;&gt;&gt; tiebreak_func = lambda *args: sorted(args)[0]
+&gt;&gt;&gt; xform = str.upper
+&gt;&gt;&gt; most_freq_element(check_lists, tiebreak_func, xform)
+'A'
+&gt;&gt;&gt; tiebreak_func = lambda *args: sorted(args)[-1]
+&gt;&gt;&gt; most_freq_element(check_lists, tiebreak_func, xform)
+'B'
+</code></pre></div>
+</dd>
+<dt id="utilities.ManagedField.xform"><code class="name flex">
+<span>def <span class="ident">xform</span></span>(<span>x) ‑> collections.abc.Callable[[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>], str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.ProviderIntegratorProtocol"><code class="flex name class">
+<span>class <span class="ident">ProviderIntegratorProtocol</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Define externally accessed methods for the ProviderIntegrator class</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="integrators.provider_integrator.ProviderIntegrator" href="../integrators/provider_integrator.html#integrators.provider_integrator.ProviderIntegrator">ProviderIntegrator</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.ProviderIntegratorProtocol.api_url"><code class="name">var <span class="ident">api_url</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.ProviderIntegratorProtocol.full_name"><code class="name">var <span class="ident">full_name</span> : <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.ProviderIntegratorProtocol.is_anes_provider"><code class="name">var <span class="ident">is_anes_provider</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.ProviderIntegratorProtocol.mode"><code class="name">var <span class="ident">mode</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.ProviderIntegratorProtocol.npi"><code class="name">var <span class="ident">npi</span> : str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.ProviderIntegratorProtocol.public_only"><code class="name">var <span class="ident">public_only</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.ProviderIntegratorProtocol.last_api_response"><code class="name">prop <span class="ident">last_api_response</span> : dict[str, typing.Any] | None</code></dt>
+<dd>
+<div class="desc"><p>last public API query response</p></div>
+</dd>
+<dt id="utilities.ProviderIntegratorProtocol.last_url_params"><code class="name">prop <span class="ident">last_url_params</span> : dict[str, typing.Any]</code></dt>
+<dd>
+<div class="desc"><p>last public API query parameters</p></div>
+</dd>
+<dt id="utilities.ProviderIntegratorProtocol.query_name"><code class="name">prop <span class="ident">query_name</span></code></dt>
+<dd>
+<div class="desc"><p>name of last query function</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.ProviderIntegratorProtocol.search"><code class="name flex">
+<span>def <span class="ident">search</span></span>(<span>self, is_anes_provider: bool, full_name: str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>, npi: str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a> = '', mode: str | None = None) ‑> tuple[<a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>, <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>progressively search local DB and public API with supplied provider
+data and return (a) fully populated vStr objects for the provider name
+and NPI upon a successful lookup or (b) an 'original value only' vStr
+object for the provider name and a "null" vStr upon failure.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.ValueCacheDict"><code class="flex name class">
+<span>class <span class="ident">ValueCacheDict</span></span>
+<span>(</span><span>cache_checks: collections.abc.Sequence[<a title="utilities.value_cache_dict.CacheDictCheck" href="value_cache_dict.html#utilities.value_cache_dict.CacheDictCheck">CacheDictCheck</a>], **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A decorator proviing flexible caching options for use in comprehensions.</p>
+<p>Initially developed to provide a means to cache the parts of a full
+address when street address and city/state/zip are found in different
+sections of a form and thus labeled with independent bounding boxes,
+this class and its supporting class CacheDictCheck are implemented
+for general use. Useful in extending the basic functionality of
+comprehensions by allowing the current iteration to reference the
+results of prior iteration(s).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>cache_checks</code></strong> :&ensp;<code>Sequence[<a title="utilities.CacheDictCheck" href="#utilities.CacheDictCheck">CacheDictCheck</a>]</code></dt>
+<dd>one CacheDictCheck instance per
+cached parameter. See CacheDictCheck for details.</dd>
+<dt><strong><code>ex_handler</code></strong> :&ensp;<code>Callable[[Exception], bool]</code></dt>
+<dd>a user defined function to which
+all raised exceptions are passed. Return True to continue processing.
+Return False (default) to raise the exception to the calling thread.
+Default is <code>lambda _: False</code>.</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>cache_dict</code></strong> :&ensp;<code>dict[Any, Any]</code></dt>
+<dd>this attribute will be added to functions
+decorated with this class to provide convenient access to the <code>cached</code>
+attributes of each CacheDictCheck.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.ValueCacheDict.cache_dict"><code class="name">prop <span class="ident">cache_dict</span> : dict[collections.abc.Hashable, dict[collections.abc.Hashable, typing.Any]]</code></dt>
+<dd>
+<div class="desc"><p>dict of dicts of form {'[check.check_name]: {[check.cached]}'</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.vStr"><code class="flex name class">
+<span>class <span class="ident">vStr</span></span>
+<span>(</span><span>_str, context: str = '', confidence: float = 0.0, force_type: bool | None = None, og_value: str | None = None, verified: bool | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Built-in string extended with attributes used in data validation.</p>
+<h2 id="atrributes">Atrributes</h2>
+<p>ctx [str]: point of origin data for the value (<code>context</code> arg)
+con [float]: confidence that the value is correct (<code>confidence</code> arg)
+frc [bool]: force all descendents to class <code><a title="utilities.vStr" href="#utilities.vStr">vStr</a></code> (<code>force_type</code> arg)
+ogv [str]: <code>originalValue</code> in data_entry_fields (<code>og_value</code> arg)
+tru [bool]: <code>isVerified</code> in data_entry_fields (<code>verified</code> arg)</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.str</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="utilities.vStr.cat"><code class="name flex">
+<span>def <span class="ident">cat</span></span>(<span>*args) ‑> <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>equivalent to vStr.jn("", (args)). emulates ''.join(args)</p></div>
+</dd>
+<dt id="utilities.vStr.from_data_entry_dict"><code class="name flex">
+<span>def <span class="ident">from_data_entry_dict</span></span>(<span>de_dict: dict[str, Any], verify_all: bool = False) ‑> <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a vStr constructed from a data_entry_fields object
+from the claimmaker DB and/or a validated claimmaker job dict</p></div>
+</dd>
+<dt id="utilities.vStr.from_nested"><code class="name flex">
+<span>def <span class="ident">from_nested</span></span>(<span>val: Any, is_verified: bool = False) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Used when manually created cases contain data in nested columns with
+no corresponding entry in the data_entry_fields column.</p>
+<p>returns a 1.0 confidence vStr with context 'DB.User' for 'non-null'
+vals i.e. when val != type(val)()</p></div>
+</dd>
+<dt id="utilities.vStr.jn"><code class="name flex">
+<span>def <span class="ident">jn</span></span>(<span>sep: str, iterable: Iterable[str | <a title="utilities.vStr" href="#utilities.vStr">vStr</a>]) ‑> <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>emulates str.join()</p></div>
+</dd>
+<dt id="utilities.vStr.merge_attrs"><code class="name flex">
+<span>def <span class="ident">merge_attrs</span></span>(<span>iterable: Iterable[str | <a title="utilities.vStr" href="#utilities.vStr">vStr</a>]) ‑> tuple[str, float, bool, str | None, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>merge vStr attrs from multiple instances. returns pipe delimited
+string for ctx and mean for con or empty string / 0.0 if no vStr is
+present in input</p></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.vStr.con"><code class="name">var <span class="ident">con</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.vStr.ctx"><code class="name">var <span class="ident">ctx</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.vStr.data_entry_dict"><code class="name">prop <span class="ident">data_entry_dict</span></code></dt>
+<dd>
+<div class="desc"><p>return a data_entry_fields dict representing this vStr</p></div>
+</dd>
+<dt id="utilities.vStr.frc"><code class="name">var <span class="ident">frc</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.vStr.is_verified"><code class="name">prop <span class="ident">is_verified</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>True if value has been validated by a user.</p></div>
+</dd>
+<dt id="utilities.vStr.ogv"><code class="name">var <span class="ident">ogv</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.vStr.tru"><code class="name">var <span class="ident">tru</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.vStr.extend_context"><code class="name flex">
+<span>def <span class="ident">extend_context</span></span>(<span>self, suffix: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Append suffix to current ctx value</p></div>
+</dd>
+<dt id="utilities.vStr.format"><code class="name flex">
+<span>def <span class="ident">format</span></span>(<span>self, *args, **kwargs) ‑> <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>If any of the supplied args or kwargs is of type vStr, return the
+str.format result as a vStr having attributes merged from all vStr
+inputs. If none of the inputs are</p></div>
+</dd>
+<dt id="utilities.vStr.mutation_decorator"><code class="name flex">
+<span>def <span class="ident">mutation_decorator</span></span>(<span>self, mutation_func: Callable[..., str])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Decorates underlying str mutation functions (e.g. upper, lower,
+strip, split, etc.) to restore ctx and con attributes post mutation</p></div>
+</dd>
+<dt id="utilities.vStr.prepend_context"><code class="name flex">
+<span>def <span class="ident">prepend_context</span></span>(<span>self, prefix: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Prepend prefix to current ctx value</p></div>
+</dd>
+<dt id="utilities.vStr.replace_context"><code class="name flex">
+<span>def <span class="ident">replace_context</span></span>(<span>self, new_context: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Prepend prefix to current ctx value</p></div>
+</dd>
+<dt id="utilities.vStr.set_custom_attrs"><code class="name flex">
+<span>def <span class="ident">set_custom_attrs</span></span>(<span>self, context: str, confidence: float, force_type: bool, og_value: str, verified: bool)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>set custom attributes <code>("ctx", "con", "frc", "ogv", "tru")</code></p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="utilities.aws_utils" href="aws_utils.html">utilities.aws_utils</a></code></li>
+<li><code><a title="utilities.azure_ocr_integrator" href="azure_ocr_integrator.html">utilities.azure_ocr_integrator</a></code></li>
+<li><code><a title="utilities.client_utils" href="client_utils.html">utilities.client_utils</a></code></li>
+<li><code><a title="utilities.env_var_action" href="env_var_action.html">utilities.env_var_action</a></code></li>
+<li><code><a title="utilities.hl7_utils" href="hl7_utils.html">utilities.hl7_utils</a></code></li>
+<li><code><a title="utilities.json_decoders" href="json_decoders.html">utilities.json_decoders</a></code></li>
+<li><code><a title="utilities.library_utils" href="library_utils.html">utilities.library_utils</a></code></li>
+<li><code><a title="utilities.log_utils" href="log_utils.html">utilities.log_utils</a></code></li>
+<li><code><a title="utilities.managed_fields" href="managed_fields.html">utilities.managed_fields</a></code></li>
+<li><code><a title="utilities.pdf_utils" href="pdf_utils.html">utilities.pdf_utils</a></code></li>
+<li><code><a title="utilities.protocols" href="protocols.html">utilities.protocols</a></code></li>
+<li><code><a title="utilities.section_utils" href="section_utils.html">utilities.section_utils</a></code></li>
+<li><code><a title="utilities.table_interpreters" href="table_interpreters.html">utilities.table_interpreters</a></code></li>
+<li><code><a title="utilities.table_utils" href="table_utils.html">utilities.table_utils</a></code></li>
+<li><code><a title="utilities.transform_utils" href="transform_utils.html">utilities.transform_utils</a></code></li>
+<li><code><a title="utilities.utils" href="utils.html">utilities.utils</a></code></li>
+<li><code><a title="utilities.v_str" href="v_str.html">utilities.v_str</a></code></li>
+<li><code><a title="utilities.value_cache_dict" href="value_cache_dict.html">utilities.value_cache_dict</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="utilities.AzureOCRIntegrator" href="#utilities.AzureOCRIntegrator">AzureOCRIntegrator</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.AzureOCRIntegrator.client" href="#utilities.AzureOCRIntegrator.client">client</a></code></li>
+<li><code><a title="utilities.AzureOCRIntegrator.create_client" href="#utilities.AzureOCRIntegrator.create_client">create_client</a></code></li>
+<li><code><a title="utilities.AzureOCRIntegrator.last_op_id" href="#utilities.AzureOCRIntegrator.last_op_id">last_op_id</a></code></li>
+<li><code><a title="utilities.AzureOCRIntegrator.last_read_results" href="#utilities.AzureOCRIntegrator.last_read_results">last_read_results</a></code></li>
+<li><code><a title="utilities.AzureOCRIntegrator.max_retries" href="#utilities.AzureOCRIntegrator.max_retries">max_retries</a></code></li>
+<li><code><a title="utilities.AzureOCRIntegrator.ocr_pages" href="#utilities.AzureOCRIntegrator.ocr_pages">ocr_pages</a></code></li>
+<li><code><a title="utilities.AzureOCRIntegrator.timeout" href="#utilities.AzureOCRIntegrator.timeout">timeout</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.CacheDictCheck" href="#utilities.CacheDictCheck">CacheDictCheck</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.CacheDictCheck.cache_factory" href="#utilities.CacheDictCheck.cache_factory">cache_factory</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.cached" href="#utilities.CacheDictCheck.cached">cached</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.check_name" href="#utilities.CacheDictCheck.check_name">check_name</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.concat_value" href="#utilities.CacheDictCheck.concat_value">concat_value</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.format_arg_value" href="#utilities.CacheDictCheck.format_arg_value">format_arg_value</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.format_key" href="#utilities.CacheDictCheck.format_key">format_key</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.key_arg" href="#utilities.CacheDictCheck.key_arg">key_arg</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.key_check" href="#utilities.CacheDictCheck.key_check">key_check</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.preprocess_value" href="#utilities.CacheDictCheck.preprocess_value">preprocess_value</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.reset_arg" href="#utilities.CacheDictCheck.reset_arg">reset_arg</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.reset_check" href="#utilities.CacheDictCheck.reset_check">reset_check</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.reset_value" href="#utilities.CacheDictCheck.reset_value">reset_value</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.value_arg" href="#utilities.CacheDictCheck.value_arg">value_arg</a></code></li>
+<li><code><a title="utilities.CacheDictCheck.value_check" href="#utilities.CacheDictCheck.value_check">value_check</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.ContextRule" href="#utilities.ContextRule">ContextRule</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.ContextRule.applied_context" href="#utilities.ContextRule.applied_context">applied_context</a></code></li>
+<li><code><a title="utilities.ContextRule.candidate_filter" href="#utilities.ContextRule.candidate_filter">candidate_filter</a></code></li>
+<li><code><a title="utilities.ContextRule.controller_keys" href="#utilities.ContextRule.controller_keys">controller_keys</a></code></li>
+<li><code><a title="utilities.ContextRule.is_active" href="#utilities.ContextRule.is_active">is_active</a></code></li>
+<li><code><a title="utilities.ContextRule.patterns" href="#utilities.ContextRule.patterns">patterns</a></code></li>
+<li><code><a title="utilities.ContextRule.title" href="#utilities.ContextRule.title">title</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.DocuVisionIntegratorProtocol" href="#utilities.DocuVisionIntegratorProtocol">DocuVisionIntegratorProtocol</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.api_key" href="#utilities.DocuVisionIntegratorProtocol.api_key">api_key</a></code></li>
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.base_path" href="#utilities.DocuVisionIntegratorProtocol.base_path">base_path</a></code></li>
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.base_url" href="#utilities.DocuVisionIntegratorProtocol.base_url">base_url</a></code></li>
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.create_tasks" href="#utilities.DocuVisionIntegratorProtocol.create_tasks">create_tasks</a></code></li>
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.job_dict_entries" href="#utilities.DocuVisionIntegratorProtocol.job_dict_entries">job_dict_entries</a></code></li>
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.page_map" href="#utilities.DocuVisionIntegratorProtocol.page_map">page_map</a></code></li>
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.pdf_library" href="#utilities.DocuVisionIntegratorProtocol.pdf_library">pdf_library</a></code></li>
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.pdfs_by_doc_id" href="#utilities.DocuVisionIntegratorProtocol.pdfs_by_doc_id">pdfs_by_doc_id</a></code></li>
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.reset" href="#utilities.DocuVisionIntegratorProtocol.reset">reset</a></code></li>
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.results" href="#utilities.DocuVisionIntegratorProtocol.results">results</a></code></li>
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.split_by_pid" href="#utilities.DocuVisionIntegratorProtocol.split_by_pid">split_by_pid</a></code></li>
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.tables_for" href="#utilities.DocuVisionIntegratorProtocol.tables_for">tables_for</a></code></li>
+<li><code><a title="utilities.DocuVisionIntegratorProtocol.task_attr_list" href="#utilities.DocuVisionIntegratorProtocol.task_attr_list">task_attr_list</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.EnvVarAction" href="#utilities.EnvVarAction">EnvVarAction</a></code></h4>
+</li>
+<li>
+<h4><code><a title="utilities.FieldManager" href="#utilities.FieldManager">FieldManager</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.FieldManager.context_group_priorities" href="#utilities.FieldManager.context_group_priorities">context_group_priorities</a></code></li>
+<li><code><a title="utilities.FieldManager.context_groups" href="#utilities.FieldManager.context_groups">context_groups</a></code></li>
+<li><code><a title="utilities.FieldManager.context_rules" href="#utilities.FieldManager.context_rules">context_rules</a></code></li>
+<li><code><a title="utilities.FieldManager.context_sep" href="#utilities.FieldManager.context_sep">context_sep</a></code></li>
+<li><code><a title="utilities.FieldManager.expand_dependencies" href="#utilities.FieldManager.expand_dependencies">expand_dependencies</a></code></li>
+<li><code><a title="utilities.FieldManager.list_manager" href="#utilities.FieldManager.list_manager">list_manager</a></code></li>
+<li><code><a title="utilities.FieldManager.managed_fields" href="#utilities.FieldManager.managed_fields">managed_fields</a></code></li>
+<li><code><a title="utilities.FieldManager.output" href="#utilities.FieldManager.output">output</a></code></li>
+<li><code><a title="utilities.FieldManager.output_dir" href="#utilities.FieldManager.output_dir">output_dir</a></code></li>
+<li><code><a title="utilities.FieldManager.patient_id" href="#utilities.FieldManager.patient_id">patient_id</a></code></li>
+<li><code><a title="utilities.FieldManager.raw_summary" href="#utilities.FieldManager.raw_summary">raw_summary</a></code></li>
+<li><code><a title="utilities.FieldManager.reduce" href="#utilities.FieldManager.reduce">reduce</a></code></li>
+<li><code><a title="utilities.FieldManager.standard_key_groups" href="#utilities.FieldManager.standard_key_groups">standard_key_groups</a></code></li>
+<li><code><a title="utilities.FieldManager.standard_keys" href="#utilities.FieldManager.standard_keys">standard_keys</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.LogExHandler" href="#utilities.LogExHandler">LogExHandler</a></code></h4>
+</li>
+<li>
+<h4><code><a title="utilities.LogExOverrideError" href="#utilities.LogExOverrideError">LogExOverrideError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="utilities.ManagedField" href="#utilities.ManagedField">ManagedField</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.ManagedField.clone" href="#utilities.ManagedField.clone">clone</a></code></li>
+<li><code><a title="utilities.ManagedField.context_priority" href="#utilities.ManagedField.context_priority">context_priority</a></code></li>
+<li><code><a title="utilities.ManagedField.dependencies" href="#utilities.ManagedField.dependencies">dependencies</a></code></li>
+<li><code><a title="utilities.ManagedField.generated" href="#utilities.ManagedField.generated">generated</a></code></li>
+<li><code><a title="utilities.ManagedField.preprocess" href="#utilities.ManagedField.preprocess">preprocess</a></code></li>
+<li><code><a title="utilities.ManagedField.reduce" href="#utilities.ManagedField.reduce">reduce</a></code></li>
+<li><code><a title="utilities.ManagedField.reducer" href="#utilities.ManagedField.reducer">reducer</a></code></li>
+<li><code><a title="utilities.ManagedField.standard_key" href="#utilities.ManagedField.standard_key">standard_key</a></code></li>
+<li><code><a title="utilities.ManagedField.xform" href="#utilities.ManagedField.xform">xform</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.ProviderIntegratorProtocol" href="#utilities.ProviderIntegratorProtocol">ProviderIntegratorProtocol</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.ProviderIntegratorProtocol.api_url" href="#utilities.ProviderIntegratorProtocol.api_url">api_url</a></code></li>
+<li><code><a title="utilities.ProviderIntegratorProtocol.full_name" href="#utilities.ProviderIntegratorProtocol.full_name">full_name</a></code></li>
+<li><code><a title="utilities.ProviderIntegratorProtocol.is_anes_provider" href="#utilities.ProviderIntegratorProtocol.is_anes_provider">is_anes_provider</a></code></li>
+<li><code><a title="utilities.ProviderIntegratorProtocol.last_api_response" href="#utilities.ProviderIntegratorProtocol.last_api_response">last_api_response</a></code></li>
+<li><code><a title="utilities.ProviderIntegratorProtocol.last_url_params" href="#utilities.ProviderIntegratorProtocol.last_url_params">last_url_params</a></code></li>
+<li><code><a title="utilities.ProviderIntegratorProtocol.mode" href="#utilities.ProviderIntegratorProtocol.mode">mode</a></code></li>
+<li><code><a title="utilities.ProviderIntegratorProtocol.npi" href="#utilities.ProviderIntegratorProtocol.npi">npi</a></code></li>
+<li><code><a title="utilities.ProviderIntegratorProtocol.public_only" href="#utilities.ProviderIntegratorProtocol.public_only">public_only</a></code></li>
+<li><code><a title="utilities.ProviderIntegratorProtocol.query_name" href="#utilities.ProviderIntegratorProtocol.query_name">query_name</a></code></li>
+<li><code><a title="utilities.ProviderIntegratorProtocol.search" href="#utilities.ProviderIntegratorProtocol.search">search</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.ValueCacheDict" href="#utilities.ValueCacheDict">ValueCacheDict</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.ValueCacheDict.cache_dict" href="#utilities.ValueCacheDict.cache_dict">cache_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.vStr" href="#utilities.vStr">vStr</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.vStr.cat" href="#utilities.vStr.cat">cat</a></code></li>
+<li><code><a title="utilities.vStr.con" href="#utilities.vStr.con">con</a></code></li>
+<li><code><a title="utilities.vStr.ctx" href="#utilities.vStr.ctx">ctx</a></code></li>
+<li><code><a title="utilities.vStr.data_entry_dict" href="#utilities.vStr.data_entry_dict">data_entry_dict</a></code></li>
+<li><code><a title="utilities.vStr.extend_context" href="#utilities.vStr.extend_context">extend_context</a></code></li>
+<li><code><a title="utilities.vStr.format" href="#utilities.vStr.format">format</a></code></li>
+<li><code><a title="utilities.vStr.frc" href="#utilities.vStr.frc">frc</a></code></li>
+<li><code><a title="utilities.vStr.from_data_entry_dict" href="#utilities.vStr.from_data_entry_dict">from_data_entry_dict</a></code></li>
+<li><code><a title="utilities.vStr.from_nested" href="#utilities.vStr.from_nested">from_nested</a></code></li>
+<li><code><a title="utilities.vStr.is_verified" href="#utilities.vStr.is_verified">is_verified</a></code></li>
+<li><code><a title="utilities.vStr.jn" href="#utilities.vStr.jn">jn</a></code></li>
+<li><code><a title="utilities.vStr.merge_attrs" href="#utilities.vStr.merge_attrs">merge_attrs</a></code></li>
+<li><code><a title="utilities.vStr.mutation_decorator" href="#utilities.vStr.mutation_decorator">mutation_decorator</a></code></li>
+<li><code><a title="utilities.vStr.ogv" href="#utilities.vStr.ogv">ogv</a></code></li>
+<li><code><a title="utilities.vStr.prepend_context" href="#utilities.vStr.prepend_context">prepend_context</a></code></li>
+<li><code><a title="utilities.vStr.replace_context" href="#utilities.vStr.replace_context">replace_context</a></code></li>
+<li><code><a title="utilities.vStr.set_custom_attrs" href="#utilities.vStr.set_custom_attrs">set_custom_attrs</a></code></li>
+<li><code><a title="utilities.vStr.tru" href="#utilities.vStr.tru">tru</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>integrators.docuvision_task API documentation</title>
+<meta name="description" content="represents a single request to the docuvision api">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>integrators.docuvision_task</code></h1>
+</header>
+<section id="section-intro">
+<p>represents a single request to the docuvision api</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="integrators.docuvision_task.DocuVisionCase"><code class="flex name class">
+<span>class <span class="ident">DocuVisionCase</span></span>
+<span>(</span><span>pid: str, parent: <a title="integrators.docuvision_task.DocuVisionTask" href="#integrators.docuvision_task.DocuVisionTask">DocuVisionTask</a>, page_types: dict[int, str] = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>basic representation of a single claimmaker case produced from a
+DocuVisionTask instance</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="integrators.docuvision_task.DocuVisionCase.page_types"><code class="name">var <span class="ident">page_types</span> : dict[int, str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionCase.parent"><code class="name">var <span class="ident">parent</span> : <a title="integrators.docuvision_task.DocuVisionTask" href="#integrators.docuvision_task.DocuVisionTask">DocuVisionTask</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionCase.pid"><code class="name">var <span class="ident">pid</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="integrators.docuvision_task.DocuVisionCase.case_doc_id"><code class="name">prop <span class="ident">case_doc_id</span> : str</code></dt>
+<dd>
+<div class="desc"><p>The filename for the object tied to the 'View PDF' button.</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionCase.case_pdfs"><code class="name">prop <span class="ident">case_pdfs</span> : dict[str, bytes]</code></dt>
+<dd>
+<div class="desc"><p>dict of (filename, bytes) for pdfs in input entities</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionCase.case_pdfs_text"><code class="name">prop <span class="ident">case_pdfs_text</span> : dict[str, str]</code></dt>
+<dd>
+<div class="desc"><p>dict of (filename, bytes) for pdfs in input entities</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionCase.combined_pdf"><code class="name">prop <span class="ident">combined_pdf</span> : bytes</code></dt>
+<dd>
+<div class="desc"><p>PDF with all pages for case; tied to UI 'View PDF' button</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionCase.is_placeholder"><code class="name">prop <span class="ident">is_placeholder</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>convenience function for separate treatment of placeholder case
+in comprehensions, etc.</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionCase.job_input"><code class="name">prop <span class="ident">job_input</span> : dict[str, Any]</code></dt>
+<dd>
+<div class="desc"><p>A properly formated input column value for the case.</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionCase.names"><code class="name">prop <span class="ident">names</span> : list[utils.vStr]</code></dt>
+<dd>
+<div class="desc"><p>list of all identified PatientNames in this case's response</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionCase.response"><code class="name">prop <span class="ident">response</span> : list[dict[str, Any]]</code></dt>
+<dd>
+<div class="desc"><p>list of entries from parent.response.result.RESULT occurring on pages
+assigned to the pid of this case</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionCase.scheduled_cases"><code class="name">prop <span class="ident">scheduled_cases</span> : dict[str, list[dict[str, str]]]</code></dt>
+<dd>
+<div class="desc"><p>list of all identified PatientNames in LAST, FIRST and FIRST LAST format</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionCase.type_pages"><code class="name">prop <span class="ident">type_pages</span> : dict[str, list[int]]</code></dt>
+<dd>
+<div class="desc"><p>reversal of page_types, returns list of pg #'s for each doc type</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask"><code class="flex name class">
+<span>class <span class="ident">DocuVisionTask</span></span>
+<span>(</span><span>pdf_entry: lu.PDFLibProto, api_url: str, api_key: str, split_by_pid: bool = False, service: str = 'docuvision-1', model: str = 'base-medrec-anesthesia', min_confidence: float = 0.1, task_id: int = 0, location: <a title="integrators.docuvision_task.PostTaskLocation" href="#integrators.docuvision_task.PostTaskLocation">PostTaskLocation</a> = &lt;factory&gt;, document: <a title="integrators.docuvision_task.PostTaskDocument" href="#integrators.docuvision_task.PostTaskDocument">PostTaskDocument</a> = &lt;factory&gt;, response: du.GetTaskResponse = &lt;factory&gt;, pdf_text_pages: list[str] = &lt;factory&gt;, children: list[<a title="integrators.docuvision_task.DocuVisionCase" href="#integrators.docuvision_task.DocuVisionCase">DocuVisionCase</a>] = &lt;factory&gt;, fail_on_error: bool = False, mock: bool = False, default_dos: str = '2024-08-27', required_page_types: set[str] | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create and process a single docuvision request / response.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>pdf_entry</code></strong></dt>
+<dd>The PDFLibEntry object for the pdf we're processing.</dd>
+<dt><strong><code>api_url</code></strong></dt>
+<dd>The URL of the DocuVision API.</dd>
+<dt><strong><code>api_key</code></strong></dt>
+<dd>The API key for the DocuVision API.</dd>
+<dt><strong><code>split_by_pid</code></strong></dt>
+<dd>If True, split the PDF into individual child cases.</dd>
+<dt><strong><code>service</code></strong></dt>
+<dd>The DocuVision service to use.</dd>
+<dt><strong><code>model</code></strong></dt>
+<dd>The DocuVision model to use.</dd>
+<dt><strong><code>min_confidence</code></strong></dt>
+<dd>The minimum confidence level for the DocuVision response.</dd>
+<dt><strong><code>task_id</code></strong></dt>
+<dd>The DocuVision task ID.</dd>
+<dt><strong><code>location</code></strong></dt>
+<dd>The upload location for the PDF.</dd>
+<dt><strong><code>document</code></strong></dt>
+<dd>The document object for the DocuVision API request.</dd>
+<dt><strong><code>response</code></strong></dt>
+<dd>The DocuVision API response.</dd>
+<dt><strong><code>pdf_text_pages</code></strong></dt>
+<dd>The text of each page of the original PDF.</dd>
+<dt><strong><code>children</code></strong></dt>
+<dd>The child cases.</dd>
+<dt><strong><code>fail_on_error</code></strong></dt>
+<dd>If True, raise an error if the DocuVision API returns an error.</dd>
+<dt><strong><code>mock</code></strong></dt>
+<dd>If True, use the mock API.</dd>
+<dt><strong><code>created_db_job</code></strong></dt>
+<dd>If True, a placeholder job was created in the database.</dd>
+<dt><strong><code>default_dos</code></strong></dt>
+<dd>the DOS to use for the placeholder if no DateEncounter labels are returned.</dd>
+<dt><strong><code>required_page_types</code></strong></dt>
+<dd>if supplied, cases will be dropped unless they have at least one
+page whose type appears in this set.</dd>
+</dl></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="integrators.docuvision_task.DocuVisionTask.api_key"><code class="name">var <span class="ident">api_key</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.api_url"><code class="name">var <span class="ident">api_url</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.children"><code class="name">var <span class="ident">children</span> : list[<a title="integrators.docuvision_task.DocuVisionCase" href="#integrators.docuvision_task.DocuVisionCase">DocuVisionCase</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.created_db_job"><code class="name">var <span class="ident">created_db_job</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.default_dos"><code class="name">var <span class="ident">default_dos</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.document"><code class="name">var <span class="ident">document</span> : <a title="integrators.docuvision_task.PostTaskDocument" href="#integrators.docuvision_task.PostTaskDocument">PostTaskDocument</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.fail_on_error"><code class="name">var <span class="ident">fail_on_error</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.location"><code class="name">var <span class="ident">location</span> : <a title="integrators.docuvision_task.PostTaskLocation" href="#integrators.docuvision_task.PostTaskLocation">PostTaskLocation</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.min_confidence"><code class="name">var <span class="ident">min_confidence</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.mock"><code class="name">var <span class="ident">mock</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.model"><code class="name">var <span class="ident">model</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.pdf_entry"><code class="name">var <span class="ident">pdf_entry</span> : utilities.library_utils.PDFLibProto</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.pdf_text_pages"><code class="name">var <span class="ident">pdf_text_pages</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.required_page_types"><code class="name">var <span class="ident">required_page_types</span> : set[str] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.response"><code class="name">var <span class="ident">response</span> : <a title="integrators.docuvision_utils.GetTaskResponse" href="docuvision_utils.html#integrators.docuvision_utils.GetTaskResponse">GetTaskResponse</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.service"><code class="name">var <span class="ident">service</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.split_by_pid"><code class="name">var <span class="ident">split_by_pid</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.task_id"><code class="name">var <span class="ident">task_id</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="integrators.docuvision_task.DocuVisionTask.child_job_entries"><code class="name">prop <span class="ident">child_job_entries</span> : dict[str, dict[str, Any]]</code></dt>
+<dd>
+<div class="desc"><p>get a list of updated job representations to merge with other extracted
+data prior to pushing to DB/disk</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.db_job"><code class="name">prop <span class="ident">db_job</span> : dict[str, Any]</code></dt>
+<dd>
+<div class="desc"><p>Find or create a placeholder case for this task in the database.</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.doc_id"><code class="name">prop <span class="ident">doc_id</span> : str</code></dt>
+<dd>
+<div class="desc"><p>bytes representing the original source PDF</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.file_id"><code class="name">prop <span class="ident">file_id</span></code></dt>
+<dd>
+<div class="desc"><p>The filename from the original document ID</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.fname_template"><code class="name">prop <span class="ident">fname_template</span></code></dt>
+<dd>
+<div class="desc"><p>a template string for producing child pdf doc_ids. supply note_type
+and pid when calling format.</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.job_entries"><code class="name">prop <span class="ident">job_entries</span></code></dt>
+<dd>
+<div class="desc"><p>aggregated placeholder and child job entries</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.note_type"><code class="name">prop <span class="ident">note_type</span></code></dt>
+<dd>
+<div class="desc"><p>The noteType property value assigned to the "Original" input entity and
+the Complete Record case_pdf of all child cases.</p>
+<p>If the original filename followed the UI file naming convention
+(<noteType><em><batchId></em><caseId>_<hash>.pdf), use the noteType indicated
+in the filename. Otherwise, assign "Scanned".</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.original_doc_id_query"><code class="name">prop <span class="ident">original_doc_id_query</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Return a jmespath query for searching an input entities array for
+references to the s3 key where the source pdf was originally uploaded.</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.page_map"><code class="name">prop <span class="ident">page_map</span> : dict[str, dict[str, list[int]]]</code></dt>
+<dd>
+<div class="desc"><p>The collection of page map entries for all child cases.</p>
+<p>Used when splitting by PID to segment the raw PDF and response into
+individual child cases.</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.pdf"><code class="name">prop <span class="ident">pdf</span> : bytes</code></dt>
+<dd>
+<div class="desc"><p>bytes representing the original source PDF</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.pdf_library"><code class="name">prop <span class="ident">pdf_library</span> : dict[str, lu.PDFLibEntry]</code></dt>
+<dd>
+<div class="desc"><p>A standard S3Batch pdf_library containing the PDFs of all child cases</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.pdf_reader"><code class="name">prop <span class="ident">pdf_reader</span> : pu.PdfReader</code></dt>
+<dd>
+<div class="desc"><p>bytes representing the original source PDF</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.pdfs_out"><code class="name">prop <span class="ident">pdfs_out</span> : dict[str, bytes]</code></dt>
+<dd>
+<div class="desc"><p>A dict of {document_id: bytes} for all child cases. Used to upload PDFs to S3.</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.placeholder"><code class="name">prop <span class="ident">placeholder</span> : <a title="integrators.docuvision_task.DocuVisionCase" href="#integrators.docuvision_task.DocuVisionCase">DocuVisionCase</a></code></dt>
+<dd>
+<div class="desc"><p>The child to which the "Original" and "Summary" input entities are posted.</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.placeholder_scan_idx"><code class="name">prop <span class="ident">placeholder_scan_idx</span> : int</code></dt>
+<dd>
+<div class="desc"><p>next scan index to use when populating noteHeader</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.prefix"><code class="name">prop <span class="ident">prefix</span></code></dt>
+<dd>
+<div class="desc"><p>The S3 prefix of the original document ID</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.splitting"><code class="name">prop <span class="ident">splitting</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>True if splitting by PID or page map</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="integrators.docuvision_task.DocuVisionTask.create_children"><code class="name flex">
+<span>def <span class="ident">create_children</span></span>(<span>self, page_map: dict[str, dict[str, list[int]]] | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>build pagemap for document splitting based on cacluated 'pid' in API
+response</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.get"><code class="name flex">
+<span>def <span class="ident">get</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Poll the API for the response.</p>
+<p>If this is a mock task, find the original PDF object and download it from S3.</p>
+<p>If the response indicates success:
+- Collect the text from each page of the raw PDF into self.pdf_text_pages
+- Verify PIDs cascaded to pid_found==False pages via extracted text.
+- Convert the response to a GetTaskResponse dataclass for downstream processing.</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.hdr_for"><code class="name flex">
+<span>def <span class="ident">hdr_for</span></span>(<span>self, input_id: str, is_placeholder: bool)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the noteHeader and noteType input entity properties for the provided input_id.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>input_id</code></strong></dt>
+<dd>The document ID of the input entity.</dd>
+<dt><strong><code>is_placeholder</code></strong></dt>
+<dd>If True, this is the placeholder case.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dict defining the noteType and noteHeader input entity properties.</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.post"><code class="name flex">
+<span>def <span class="ident">post</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Obtain an upload location, upload the PDF, and post the task to the API.</p></div>
+</dd>
+<dt id="integrators.docuvision_task.DocuVisionTask.update_db_job_inputs"><code class="name flex">
+<span>def <span class="ident">update_db_job_inputs</span></span>(<span>self, docvis_summary: list[dict[str, str]])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>extend current db_job with entities from this task</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="integrators.docuvision_task.PostTaskDocument"><code class="flex name class">
+<span>class <span class="ident">PostTaskDocument</span></span>
+<span>(</span><span>name: str = '', sizeBytes: int = 0, dataKey: str = '', md5Sum: str = '', dataType: str = 'blob', mimeType: str = 'PDF', encodingType: str = 'base64/utf-8', model: str = 'base-medrec-anesthesia', confidenceInterval: float = 0.1, isPerformOCR: bool = True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>dataclass representation of a docuvision response</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="integrators.docuvision_task.PostTaskDocument.confidenceInterval"><code class="name">var <span class="ident">confidenceInterval</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.PostTaskDocument.dataKey"><code class="name">var <span class="ident">dataKey</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.PostTaskDocument.dataType"><code class="name">var <span class="ident">dataType</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.PostTaskDocument.encodingType"><code class="name">var <span class="ident">encodingType</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.PostTaskDocument.isPerformOCR"><code class="name">var <span class="ident">isPerformOCR</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.PostTaskDocument.md5Sum"><code class="name">var <span class="ident">md5Sum</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.PostTaskDocument.mimeType"><code class="name">var <span class="ident">mimeType</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.PostTaskDocument.model"><code class="name">var <span class="ident">model</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.PostTaskDocument.name"><code class="name">var <span class="ident">name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.PostTaskDocument.sizeBytes"><code class="name">var <span class="ident">sizeBytes</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="integrators.docuvision_task.PostTaskDocument.post_task_payload"><code class="name flex">
+<span>def <span class="ident">post_task_payload</span></span>(<span>self, service: str) ‑> dict[str, str | dict[str, str | dict[str, typing.Any]]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>request formatted for submission to docuvision API</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="integrators.docuvision_task.PostTaskLocation"><code class="flex name class">
+<span>class <span class="ident">PostTaskLocation</span></span>
+<span>(</span><span>url: str = '', fields: dict[str, str] = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>dataclass representation of a 'upload-locations' response</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="integrators.docuvision_task.PostTaskLocation.fields"><code class="name">var <span class="ident">fields</span> : dict[str, str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="integrators.docuvision_task.PostTaskLocation.url"><code class="name">var <span class="ident">url</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="integrators" href="index.html">integrators</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="integrators.docuvision_task.DocuVisionCase" href="#integrators.docuvision_task.DocuVisionCase">DocuVisionCase</a></code></h4>
+<ul class="two-column">
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.case_doc_id" href="#integrators.docuvision_task.DocuVisionCase.case_doc_id">case_doc_id</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.case_pdfs" href="#integrators.docuvision_task.DocuVisionCase.case_pdfs">case_pdfs</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.case_pdfs_text" href="#integrators.docuvision_task.DocuVisionCase.case_pdfs_text">case_pdfs_text</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.combined_pdf" href="#integrators.docuvision_task.DocuVisionCase.combined_pdf">combined_pdf</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.is_placeholder" href="#integrators.docuvision_task.DocuVisionCase.is_placeholder">is_placeholder</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.job_input" href="#integrators.docuvision_task.DocuVisionCase.job_input">job_input</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.names" href="#integrators.docuvision_task.DocuVisionCase.names">names</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.page_types" href="#integrators.docuvision_task.DocuVisionCase.page_types">page_types</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.parent" href="#integrators.docuvision_task.DocuVisionCase.parent">parent</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.pid" href="#integrators.docuvision_task.DocuVisionCase.pid">pid</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.response" href="#integrators.docuvision_task.DocuVisionCase.response">response</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.scheduled_cases" href="#integrators.docuvision_task.DocuVisionCase.scheduled_cases">scheduled_cases</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionCase.type_pages" href="#integrators.docuvision_task.DocuVisionCase.type_pages">type_pages</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="integrators.docuvision_task.DocuVisionTask" href="#integrators.docuvision_task.DocuVisionTask">DocuVisionTask</a></code></h4>
+<ul class="">
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.api_key" href="#integrators.docuvision_task.DocuVisionTask.api_key">api_key</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.api_url" href="#integrators.docuvision_task.DocuVisionTask.api_url">api_url</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.child_job_entries" href="#integrators.docuvision_task.DocuVisionTask.child_job_entries">child_job_entries</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.children" href="#integrators.docuvision_task.DocuVisionTask.children">children</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.create_children" href="#integrators.docuvision_task.DocuVisionTask.create_children">create_children</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.created_db_job" href="#integrators.docuvision_task.DocuVisionTask.created_db_job">created_db_job</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.db_job" href="#integrators.docuvision_task.DocuVisionTask.db_job">db_job</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.default_dos" href="#integrators.docuvision_task.DocuVisionTask.default_dos">default_dos</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.doc_id" href="#integrators.docuvision_task.DocuVisionTask.doc_id">doc_id</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.document" href="#integrators.docuvision_task.DocuVisionTask.document">document</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.fail_on_error" href="#integrators.docuvision_task.DocuVisionTask.fail_on_error">fail_on_error</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.file_id" href="#integrators.docuvision_task.DocuVisionTask.file_id">file_id</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.fname_template" href="#integrators.docuvision_task.DocuVisionTask.fname_template">fname_template</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.get" href="#integrators.docuvision_task.DocuVisionTask.get">get</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.hdr_for" href="#integrators.docuvision_task.DocuVisionTask.hdr_for">hdr_for</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.job_entries" href="#integrators.docuvision_task.DocuVisionTask.job_entries">job_entries</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.location" href="#integrators.docuvision_task.DocuVisionTask.location">location</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.min_confidence" href="#integrators.docuvision_task.DocuVisionTask.min_confidence">min_confidence</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.mock" href="#integrators.docuvision_task.DocuVisionTask.mock">mock</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.model" href="#integrators.docuvision_task.DocuVisionTask.model">model</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.note_type" href="#integrators.docuvision_task.DocuVisionTask.note_type">note_type</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.original_doc_id_query" href="#integrators.docuvision_task.DocuVisionTask.original_doc_id_query">original_doc_id_query</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.page_map" href="#integrators.docuvision_task.DocuVisionTask.page_map">page_map</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.pdf" href="#integrators.docuvision_task.DocuVisionTask.pdf">pdf</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.pdf_entry" href="#integrators.docuvision_task.DocuVisionTask.pdf_entry">pdf_entry</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.pdf_library" href="#integrators.docuvision_task.DocuVisionTask.pdf_library">pdf_library</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.pdf_reader" href="#integrators.docuvision_task.DocuVisionTask.pdf_reader">pdf_reader</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.pdf_text_pages" href="#integrators.docuvision_task.DocuVisionTask.pdf_text_pages">pdf_text_pages</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.pdfs_out" href="#integrators.docuvision_task.DocuVisionTask.pdfs_out">pdfs_out</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.placeholder" href="#integrators.docuvision_task.DocuVisionTask.placeholder">placeholder</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.placeholder_scan_idx" href="#integrators.docuvision_task.DocuVisionTask.placeholder_scan_idx">placeholder_scan_idx</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.post" href="#integrators.docuvision_task.DocuVisionTask.post">post</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.prefix" href="#integrators.docuvision_task.DocuVisionTask.prefix">prefix</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.required_page_types" href="#integrators.docuvision_task.DocuVisionTask.required_page_types">required_page_types</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.response" href="#integrators.docuvision_task.DocuVisionTask.response">response</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.service" href="#integrators.docuvision_task.DocuVisionTask.service">service</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.split_by_pid" href="#integrators.docuvision_task.DocuVisionTask.split_by_pid">split_by_pid</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.splitting" href="#integrators.docuvision_task.DocuVisionTask.splitting">splitting</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.task_id" href="#integrators.docuvision_task.DocuVisionTask.task_id">task_id</a></code></li>
+<li><code><a title="integrators.docuvision_task.DocuVisionTask.update_db_job_inputs" href="#integrators.docuvision_task.DocuVisionTask.update_db_job_inputs">update_db_job_inputs</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="integrators.docuvision_task.PostTaskDocument" href="#integrators.docuvision_task.PostTaskDocument">PostTaskDocument</a></code></h4>
+<ul class="two-column">
+<li><code><a title="integrators.docuvision_task.PostTaskDocument.confidenceInterval" href="#integrators.docuvision_task.PostTaskDocument.confidenceInterval">confidenceInterval</a></code></li>
+<li><code><a title="integrators.docuvision_task.PostTaskDocument.dataKey" href="#integrators.docuvision_task.PostTaskDocument.dataKey">dataKey</a></code></li>
+<li><code><a title="integrators.docuvision_task.PostTaskDocument.dataType" href="#integrators.docuvision_task.PostTaskDocument.dataType">dataType</a></code></li>
+<li><code><a title="integrators.docuvision_task.PostTaskDocument.encodingType" href="#integrators.docuvision_task.PostTaskDocument.encodingType">encodingType</a></code></li>
+<li><code><a title="integrators.docuvision_task.PostTaskDocument.isPerformOCR" href="#integrators.docuvision_task.PostTaskDocument.isPerformOCR">isPerformOCR</a></code></li>
+<li><code><a title="integrators.docuvision_task.PostTaskDocument.md5Sum" href="#integrators.docuvision_task.PostTaskDocument.md5Sum">md5Sum</a></code></li>
+<li><code><a title="integrators.docuvision_task.PostTaskDocument.mimeType" href="#integrators.docuvision_task.PostTaskDocument.mimeType">mimeType</a></code></li>
+<li><code><a title="integrators.docuvision_task.PostTaskDocument.model" href="#integrators.docuvision_task.PostTaskDocument.model">model</a></code></li>
+<li><code><a title="integrators.docuvision_task.PostTaskDocument.name" href="#integrators.docuvision_task.PostTaskDocument.name">name</a></code></li>
+<li><code><a title="integrators.docuvision_task.PostTaskDocument.post_task_payload" href="#integrators.docuvision_task.PostTaskDocument.post_task_payload">post_task_payload</a></code></li>
+<li><code><a title="integrators.docuvision_task.PostTaskDocument.sizeBytes" href="#integrators.docuvision_task.PostTaskDocument.sizeBytes">sizeBytes</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="integrators.docuvision_task.PostTaskLocation" href="#integrators.docuvision_task.PostTaskLocation">PostTaskLocation</a></code></h4>
+<ul class="">
+<li><code><a title="integrators.docuvision_task.PostTaskLocation.fields" href="#integrators.docuvision_task.PostTaskLocation.fields">fields</a></code></li>
+<li><code><a title="integrators.docuvision_task.PostTaskLocation.url" href="#integrators.docuvision_task.PostTaskLocation.url">url</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

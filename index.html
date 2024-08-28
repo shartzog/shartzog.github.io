@@ -1,187 +1,1033 @@
----
-layout: default
-section_id: home
-slides:
-  - bg: images/header2.jpg
-    class: animate-in
-    title:
-      text: Hank helps<br>medical coders
-      animation: bottom-to-top
-      class: medium-7 medium-offset-1
-    buttons:
-      animation: bottom-to-top slow
-      class: medium-11 medium-offset-1
-      items:
-        - text: DOWNLOAD HANK
-          url: signup.html
-    infos:
-      - text: "With Hank you'll code faster and more accurately, saving time and making more money."
+<!doctype html>
+<html lang="en">
 
----
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="generator" content="pdoc3 0.11.1">
+    <title>PDF Extractor Docs - Hank AI</title>
+    <meta name="description" content="PDF Extractor Documentation Homepage">
+    <link rel="icon" href="titleico.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css"
+        integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA=="
+        crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css"
+        integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA=="
+        crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/an-old-hope.min.css"
+        crossorigin>
+    <style>
+        :root {
+            --highlight-color: #fe9
+        }
 
+        .flex {
+            display: flex !important
+        }
 
+        .scrollable-container {
+            width: 100%;
+            max-width: 58vw;
+            height: 1000px;
+            border: 1px solid #ccc;
+            overflow-y: scroll;
+            overflow-x: auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
 
+        body {
+            line-height: 1.5em;
+            background-color: #f2faff;
+        }
 
-<div class='advanced mod modDefaultSlider' >
-  <div class='sequence mainseq' data-autostop='on' data-timeout='0' >
-    <ul class='sequence-canvas'>
-      {% for slide in page.slides %}
+        #content {
+            padding: 20px
+        }
 
-        <li class='frame {{class}}' >
-          <div class='bg mainslide' style='background-image: url({{slide.bg}});background-position: top left;'></div>
-          <div class='title {{slide.title.animation}}' style='color: rgb(255, 255, 255);'>
-            <div class='row'>
-              <div class='{{slide.title.class}} columns'>
-                <div class='mytitle'>{{slide.title.text}}</div>
-                <div class='btnspacing spacing'></div>
-                {% for info in slide.infos %}
-                <div class="header-text">{{info.text}}</div>
-                {% endfor %}
-              </div>
+        #sidebar {
+            padding: 1.5em;
+            overflow: hidden
+        }
+
+        #sidebar>*:last-child {
+            margin-bottom: 2cm
+        }
+
+        .http-server-breadcrumbs {
+            font-size: 130%;
+            margin: 0 0 15px 0
+        }
+
+        #footer {
+            font-size: .75em;
+            padding: 5px 30px;
+            border-top: 1px solid #ddd;
+            text-align: right
+        }
+
+        #footer p {
+            margin: 0 0 0 1em;
+            display: inline-block
+        }
+
+        #footer p:last-child {
+            margin-right: 30px
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-weight: 300
+        }
+
+        h1 {
+            font-size: 2.5em;
+            line-height: 1.1em
+        }
+
+        h2 {
+            font-size: 1.75em;
+            margin: 2em 0 .50em 0
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin: 1.6em 0 .7em 0
+        }
+
+        h4 {
+            margin: 0;
+            font-size: 105%
+        }
+
+        h1:target,
+        h2:target,
+        h3:target,
+        h4:target,
+        h5:target,
+        h6:target {
+            background: var(--highlight-color);
+            padding: .2em 0
+        }
+
+        a {
+            color: #058;
+            text-decoration: none;
+            transition: color .2s ease-in-out
+        }
+
+        a:visited {
+            color: #503
+        }
+
+        a:hover {
+            color: #b62
+        }
+
+        .title code {
+            font-weight: bold
+        }
+
+        h2[id^="header-"] {
+            margin-top: 2em
+        }
+
+        .ident {
+            color: #900;
+            font-weight: bold
+        }
+
+        pre code {
+            font-size: .8em;
+            line-height: 1.4em;
+            padding: 1em;
+            display: block
+        }
+
+        code {
+            background: #f3f3f3;
+            font-family: "DejaVu Sans Mono", monospace;
+            padding: 1px 4px;
+            overflow-wrap: break-word
+        }
+
+        h1 code {
+            background: transparent
+        }
+
+        pre {
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            margin: 1em 0
+        }
+
+        #http-server-module-list {
+            display: flex;
+            flex-flow: column
+        }
+
+        #http-server-module-list div {
+            display: flex
+        }
+
+        #http-server-module-list dt {
+            min-width: 10%
+        }
+
+        #http-server-module-list p {
+            margin-top: 0
+        }
+
+        .toc ul,
+        #index {
+            list-style-type: none;
+            margin: 0;
+            padding: 0
+        }
+
+        #index code {
+            background: transparent
+        }
+
+        #index h3 {
+            border-bottom: 1px solid #ddd
+        }
+
+        #index ul {
+            padding: 0
+        }
+
+        #index h4 {
+            margin-top: .6em;
+            font-weight: bold
+        }
+
+        @media (min-width:200ex) {
+            #index .two-column {
+                column-count: 2
+            }
+        }
+
+        @media (min-width:300ex) {
+            #index .two-column {
+                column-count: 3
+            }
+        }
+
+        dl {
+            margin-bottom: 2em
+        }
+
+        dl dl:last-child {
+            margin-bottom: 4em
+        }
+
+        dd {
+            margin: 0 0 1em 3em
+        }
+
+        #header-classes+dl>dd {
+            margin-bottom: 3em
+        }
+
+        dd dd {
+            margin-left: 2em
+        }
+
+        dd p {
+            margin: 10px 0
+        }
+
+        .name {
+            background: #eee;
+            font-size: .85em;
+            padding: 5px 10px;
+            display: inline-block;
+            min-width: 40%
+        }
+
+        .name:hover {
+            background: #e0e0e0
+        }
+
+        dt:target .name {
+            background: var(--highlight-color)
+        }
+
+        .name>span:first-child {
+            white-space: nowrap
+        }
+
+        .name.class>span:nth-child(2) {
+            margin-left: .4em
+        }
+
+        .inherited {
+            color: #999;
+            border-left: 5px solid #eee;
+            padding-left: 1em
+        }
+
+        .inheritance em {
+            font-style: normal;
+            font-weight: bold
+        }
+
+        .desc h2 {
+            font-weight: 400;
+            font-size: 1.25em
+        }
+
+        .desc h3 {
+            font-size: 1em
+        }
+
+        .desc dt code {
+            background: inherit
+        }
+
+        .source summary,
+        .git-link-div {
+            color: #666;
+            text-align: right;
+            font-weight: 400;
+            font-size: .8em;
+            text-transform: uppercase
+        }
+
+        .source summary>* {
+            white-space: nowrap;
+            cursor: pointer
+        }
+
+        .git-link {
+            color: inherit;
+            margin-left: 1em
+        }
+
+        .source pre {
+            max-height: 500px;
+            overflow: auto;
+            margin: 0
+        }
+
+        .source pre code {
+            font-size: 12px;
+            overflow: visible
+        }
+
+        .hlist {
+            list-style: none
+        }
+
+        .hlist li {
+            display: inline
+        }
+
+        .hlist li:after {
+            content: ',\2002'
+        }
+
+        .hlist li:last-child:after {
+            content: none
+        }
+
+        .hlist .hlist {
+            display: inline;
+            padding-left: 1em
+        }
+
+        img {
+            max-width: 100%
+        }
+
+        td {
+            padding: 0 .5em
+        }
+
+        .admonition {
+            padding: .1em 1em;
+            margin-bottom: 1em
+        }
+
+        .admonition-title {
+            font-weight: bold
+        }
+
+        .admonition.note,
+        .admonition.info,
+        .admonition.important {
+            background: #aef
+        }
+
+        .admonition.todo,
+        .admonition.versionadded,
+        .admonition.tip,
+        .admonition.hint {
+            background: #dfd
+        }
+
+        .admonition.warning,
+        .admonition.versionchanged,
+        .admonition.deprecated {
+            background: #fd4
+        }
+
+        .admonition.error,
+        .admonition.danger,
+        .admonition.caution {
+            background: lightpink
+        }
+    </style>
+    <style media="screen and (min-width: 700px)">
+        @media screen and (min-width:700px) {
+            #sidebar {
+                width: 30%;
+                height: 100vh;
+                overflow: auto;
+                position: sticky;
+                top: 0
+            }
+
+            #content {
+                width: 70%;
+                max-width: 60vw;
+                padding: 3em 4em;
+                border-left: 1px solid #ddd
+            }
+
+            pre code {
+                font-size: 1em
+            }
+
+            .name {
+                font-size: 1em
+            }
+
+            main {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: flex-end
+            }
+
+            .toc ul ul,
+            #index ul ul {
+                padding-left: 1em
+            }
+
+            .toc>ul>li {
+                margin-top: .5em
+            }
+        }
+    </style>
+    <style media="print">
+        @media print {
+            #sidebar h1 {
+                page-break-before: always
+            }
+
+            .source {
+                display: none
+            }
+        }
+
+        @media print {
+            * {
+                background: transparent !important;
+                color: #000 !important;
+                box-shadow: none !important;
+                text-shadow: none !important
+            }
+
+            a[href]:after {
+                content: " (" attr(href) ")";
+                font-size: 90%
+            }
+
+            a[href][title]:after {
+                content: none
+            }
+
+            abbr[title]:after {
+                content: " (" attr(title) ")"
+            }
+
+            .ir a:after,
+            a[href^="javascript:"]:after,
+            a[href^="#"]:after {
+                content: ""
+            }
+
+            pre,
+            blockquote {
+                border: 1px solid #999;
+                page-break-inside: avoid
+            }
+
+            thead {
+                display: table-header-group
+            }
+
+            tr,
+            img {
+                page-break-inside: avoid
+            }
+
+            img {
+                max-width: 100% !important
+            }
+
+            @page {
+                margin: 0.5cm
+            }
+
+            p,
+            h2,
+            h3 {
+                orphans: 3;
+                widows: 3
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                page-break-after: avoid
+            }
+        }
+    </style>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+        integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ=="
+        crossorigin></script>
+    <script>window.addEventListener('DOMContentLoaded', () => {
+            hljs.configure({ languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml'] });
+            hljs.highlightAll();
+        })</script>
+</head>
+
+<body>
+    <main>
+        <article id="content">
+            <header>
+                <h1 class="title">PDF Extractor</h1>
+            </header>
+            <section id="section-intro">
+                <p>Documentation homepage for PDF Extractor</p>
+            </section>
+            <section id="quick-links">
+                <h2>Quick Links</h2>
+                <h3>Specifications</h3>
+                <ul id="spec-types">
+                    <li><a title="client-specs"
+                            href="specs/_types/_client.html#specs._types._client.ClientSpecStatic">Static Client
+                            Spec</a></li>
+                    <li><a title="facility-specs"
+                            href="specs/_types/_client.html#specs._types._client.FacilitySpec">Facility Spec</a></li>
+                    <li><a title="section-specs"
+                            href="specs/_types/_section.html#specs._types._section.SectionSpec">Section Spec</a></li>
+                    <li><a title="table-specs" href="specs/_types/_table.html#specs._types._table.TableSpec">Table
+                            Spec</a></li>
+                </ul>
+                <h3>Table Interpretation</h3>
+                <ul id="table-interpretation">
+                    <li><a title="table_interpreters" href="utilities/table_interpreters.html">Table
+                            Interpreters</a></li>
+                    <li><a title="table_utils"
+                            href="utilities/table_utils.html#utilities.table_utils.InterpreterKwArgs">Interpreter
+                            KwArgs</a></li>
+                </ul>
+                <h3>Utilities Subpackages</h3>
+                <ul id="utility-subpackages">
+                    <li><a title="utilities.utils" href="utilities/utils.html">General Purpose (utilities.utils)</a>
+                    </li>
+                    <li><a title="utilities.client_utils" href="utilities/client_utils.html">Remote File Interaction
+                            (utilities.client_utils)</a></li>
+                    <li><a title="utilities.library_utils" href="utilities/library_utils.html">PDF Library and
+                            S3FileType Class Definitions (utilities.library_utils)</a></li>
+                    <li><a title="utilities.log_utils" href="utilities/log_utils.html">Logging and Exception Handling
+                            (utilities.log_utils)</a></li>
+                    <li><a title="utilities.pdf_utils" href="utilities/pdf_utils.html">PDF and CSV File Extraction
+                            (utilities.pdf_utils)</a></li>
+                    <li><a title="utilities.section_utils" href="utilities/section_utils.html">Section Extraction
+                            (utilities.section_utils)</a></li>
+                    <li><a title="utilities.table_utils" href="utilities/table_utils.html">Table Extraction
+                            (utilities.table_utils)</a></li>
+                    <li><a title="utilities.transform_utils" href="utilities/transform_utils.html">Data Transformation
+                            (utilities.transform_utils)</a></li>
+                    <li><a title="utilities.managed_fields" href="utilities/managed_fields.html">Field Standardization
+                            and
+                            Interaction (utilities.managed_fields)</a></li>
+                </ul>
+                <h3>External Interfaces</h3>
+                <ul id="external-interfaces">
+                    <li><a title="integrators.docuvision_task" href="integrators/docuvision_task.html">Hank AI
+                            DocuVision API (integrators.docuvision_task)</a></li>
+                    <li><a title="integrators.provider_integrator" href="integrators/provider_integrator.html">National
+                            Library of Medicine National NPI Registry API (integrators.provider_integrator)</a> (<a
+                            href="https://clinicaltables.nlm.nih.gov/apidoc/npi_idv/v3/doc.html">API Docs</a>)</li>
+                    <li><a title="dbops" href="dbops/index.html">PostgresDB (dbops)</a></li>
+                    <li><a title="utilities.azure_ocr_integrator" href="utilities/azure_ocr_integrator.html">Azure Read
+                            OCR API (utilities.azure_ocr_integrator)</a> (<a
+                            href="https://learn.microsoft.com/en-us/python/api/overview/azure/cognitiveservices-vision-computervision-readme">SDK
+                            Docs</a>)</li>
+                </ul>
+            </section>
+<section><h2>Repository Readme</h2><hr><div class="scrollable-container"><h1>pdf-extractor</h1>
+<p>A customizable framework for extracting, segmenting, contextualizing, and standardizing text data from pdf medical records</p>
+<h2>Purpose</h2>
+<p>Translate PDF, csv, and other inputs into a desired json schema and insert the translated records into a Hank ClaimMaker DB or post them directly to s3.</p>
+<h2>Development Setup</h2>
+<h3>AWS CLI</h3>
+<p>Download and install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">AWS CLI</a></p>
+<h3>Python Environment (Windows)</h3>
+<ul>
+<li>Please note that most of the current development team is using Windows machines</li>
+<li>Install <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a></li>
+<li>From a command prompt, run the following:</li>
+<li>conda create --name=pdfext python=3.10.9</li>
+<li>conda activate pdfext</li>
+<li>conda install pip</li>
+<li>pip install -r requirements-dev.txt</li>
+<li>pip install notebook</li>
+<li>For Mac/Linux:</li>
+<li>pip install notebook</li>
+<li>pip install psycopg2</li>
+</ul>
+<h3>VSCode Setup</h3>
+<ul>
+<li>Open pdfext.code-workspace using VSCode</li>
+<li>Type <code>Ctrl+Shift+P</code>. In the command search bar, type "Select Interpreter" and choose "Python: Select Interpreter" and then "Set at workspace level".</li>
+<li>Choose your newly created <code>pdfext</code> environment from the list.</li>
+</ul>
+<h3>Environment Variables</h3>
+<p>The following parameters may ONLY be supplied as environment variables. Two of these MUST be supplied or errors will result. See <a href="#command-line-argument--environment-variable-reference">below</a> for additional options. Pay particular attention to those marked <a href="#required-parameters">Required</a> and <a href="#recommended-parameters">Recommended</a>.</p>
+<ul>
+<li>AWS_ACCESS_KEY_ID</li>
+<li>Set to access key ID of an active SDLC PowerUser/Admin AWS session or IAM user <code>hank-ai-clients-dev_importer</code> (defined in the SDLC AWS account)</li>
+<li>AWS_SECRET_ACCESS_KEY</li>
+<li>Set to secret access key of an active SDLC PowerUser/Admin AWS session or IAM user <code>hank-ai-clients-dev_importer</code></li>
+<li>AWS_SESSION_TOKEN</li>
+<li>OPTIONAL. If using SSO credentials, set to the session token of an active SDLC PowerUser/Admin AWS session. Not required for IAM user.</li>
+</ul>
+<h3>Command Line Testing</h3>
+<ul>
+<li>Production operations all occur from within a <a href="#docker">Docker Container</a>, but either of the <a href="#cli-modules">CLI Modules</a> can be invoked directly from a command prompt on Windows, Linux, or MAC for rapid development and testing.</li>
+<li>See the Command Line Argument / Environment Variable Reference <a href="#command-line-argument--environment-variable-reference">below</a> for additional information.</li>
+</ul>
+<h2>Basic ClaimMaker Client / Facility Setup</h2>
+<p>This section covers the <em>basics</em> of setting up a new client / facility in pdf_extractor. It does not attempt to provide an exhaustive description of all features available to the developer.</p>
+<h3>AWS Setup</h3>
+<ol>
+<li>(new clients only) Follow the steps in <code>scripts/create_client_secrets.py</code> to generate the db and api secrets for the client <em>in both DEV and PROD</em>. Record the <em>PROD</em> secret names for use during <a href="#client-specs-update">Client Specs Setup</a>.</li>
+<li>Follow the steps in <code>scripts/create_s3_folders.py</code> to generate the S3 folder structure for the new client / facility.</li>
+</ol>
+<h3>Client Specs Update</h3>
+<ol>
+<li>(new clients only) Open <code>app/specs/client_specs.py</code>. Insert a new key in the <code>builtin_client_specs</code> ClientSpecs object that corresponds to the client folder name created in step 2 of <a href="#aws-setup">AWS Setup</a> <em>excluding the final '/'</em>.</li>
+<li>(new clients only) Set the value of the newly created key from step one to a ClientSpecStatic instance with an extending empty dictionary (i.e. <code>ClientSpecsStatic(...) | {}</code>). The ClientSpecStatic instance should inhert from BASE_CLIENT_SPECS as shown for existing clients. Set the secret name parameters of the instance to match those recorded in step 1 of <a href="#aws-setup">AWS Setup</a>.</li>
+<li>Insert a new key in the extending dictionary that corresponds to the facility folder name created in step 2 of <a href="#aws-setup">AWS Setup</a> <em>excluding the final '/'</em>. Set its value to a FacilitySpec instance created according to <a href="#configure-the-facilityspec">Configure the FacilitySpec</a>.</li>
+</ol>
+<h3>Configure the FacilitySpec</h3>
+<ol>
+<li>Always inherit from BASE_FACILITY_SPEC as shown for existing clients, i.e. <code>FacilitySpec(BASE_FACILITY_SPEC, ...settings...)</code>.</li>
+<li>Set the <code>facility_name</code> parameter to the value found in the <code>shared.facilities</code> table of the client's ClaimMaker DB. Typically, this is the uppercase variant of the facility key added in step 3 of <a href="#client-specs-update">Client Specs Update</a>.</li>
+<li>Set the <code>first_dos</code> parameter to the startup date of service for the new facility (per client direction).</li>
+<li>If data will be extracted from PDFs using DocuVision, (a) set the <code>use_docuvision</code> parameter to <code>True</code> and (b) set the <code>file_groups</code> parameter to <code>[cu.S3FileGroup(file_type=lu.S3FileType.DOCVIS)]</code>. If the length of an average PDF is more than 100 pages, also set the <code>max_keys</code> parameter to <code>5</code> (recommended but not required).</li>
+<li>If data will be extracted from PDFs directly, (a) set the <code>file_groups</code> parameter to <code>[cu.S3FileGroup(file_type=lu.S3FileType.PDF)]</code> (optional if no CSVs will be processed as this is the default) and (b) set the <code>extract_func</code> parameter to <code>extract_single_patient_pdfs</code> or <code>extract_multi_patient_pdfs</code> (or a custom <code>partial</code> implementation of one or the other) according to the content of the source PDFs.</li>
+<li>If data will be extracted from a CSV schedule, (a) follow the steps described in the <a href="https://docs.google.com/spreadsheets/d/1yG_ZN3U5USXXD5YNP5dUvgNnHw8NxnpKNtUm55OR130/copy?id=1yG_ZN3U5USXXD5YNP5dUvgNnHw8NxnpKNtUm55OR130&amp;title=Sched%20Demo%20Mapping">Schedule Mapping Template</a> to populate <code>app/specs/match_specs.py</code> with an entry for the new facility, (b) set the <code>match_specs_key</code> parameter to the key of the match_specs entry you created, and (c) append <code>cu.S3FileGroup(file_type=lu.S3FileType.SCHED, filename_test_expr=re.compile(r"(?i)^.*\.csv$"))</code> to the <code>file_groups</code> list.</li>
+<li>If demographics data is provided in a separate CSV reference, (a) adjust the <code>filename_test_expr</code> shown for the schedule in step 6 to differentiate schedule files from demographic files and (b) append an additional <code>cu.S3FileGroup</code> with <code>file_type=lu.S3FileType.DEMOS</code> (and an appropriately differentiated <code>filename_test_expr</code>) to the <code>file_groups</code> list.</li>
+</ol>
+<blockquote>
+<p>NOTE: The FacilitySpec setup described above covers the most basic of basic use cases and assumes (a) single patient pdfs are comprehensive for a given encounter (no file combining), (b) multi patient pdfs contain a first line header with some encounter identifying information followed by <code>Page # of #</code>, and (c) all file names are loosely equivalent to <code>&lt;optional non-numeric data&gt;YYYYMMDD&lt;optional additional info&gt;.&lt;pdf or csv&gt;</code> with YYYYMMDD representing the date the file was bridged.</p>
+</blockquote>
+<h2>Core Concepts</h2>
+<h3>Functional Programming</h3>
+<ul>
+<li>Well, sort of... There are still a lot of OOP concepts in play but all of the core modules rely on Mappings defined on a per facility (or facility type) basis to define the operations and transformations that must occur to successfully generate the desired output.</li>
+<li>The Mappings rely heavily on the "partial" class defined in the builtin module "functools" to define facility specific implementations of various functions and/or classes.</li>
+<li>The "LogExHandler" class defined in utils.py serves to some degree as a context manager for functional programming operations, allowing the caller to define fallbacks and re-enter generator loops after an exception has occurred. See "TEST CASE #4" in scripts/manual_tests.py for an example of its capabilities.</li>
+</ul>
+<h3>"Flattening" and "Unflattening" with JMESPath</h3>
+<ul>
+<li><a href="https://jmespath.org/specification.html">https://jmespath.org/specification.html</a></li>
+<li>The python port of JMESPath is relied upon heavily for flattening/unflattening operations. Understanding JMESPath search pattern syntax will be helpful in understanding many of the operations contained in the transform_utils.py module.</li>
+<li>If a nested object is desired as the final output, a <a href="#can-we-get-to-the-summary_spec-already">Summary Spec</a> containing output keys corresponding to valid jmespath search patterns should be used along with <a href="https://github.com/hank-ai/pdf-extractor/blob/main/app/specs/summary_specs.py#L10">"summary_func"</a> <code>as_nested_dict</code>.</li>
+</ul>
+<h3>Pickling Specs using Dill</h3>
+<ul>
+<li>All of the various "*_specs" mappings can be pickled using dill and supplied as kwargs to the aws_extractor.py extract_buckets function.</li>
+<li>See scripts/ria_*_specs.py script files for pickling methods for each spec type.</li>
+<li>Pickles for all spec types can be supplied via the --aws-s3-key-*-specs series of <a href="#other-optional-parameters">cli args</a>.</li>
+</ul>
+<h3>"Sections" and "Tables"</h3>
+<ul>
+<li>A "section" refers to a logical grouping of lines of text that has been extracted from the larger body of a PDF. Unique specifications for delineating sections can be defined in the sect_specs mapping according to "facility type". The "section_specs_key" field in the facility's client_spec mapping (in <code>specs.builtin_client_specs</code>) determines which spec is utilized at runtime.</li>
+<li>A "table" is loosely analogous to a "table" in a DB and consists of a list of dicts each of which represents a single "row" of data. As such, every dict MUST have the same set of keys if multiple "rows" are present, but it's not uncommon for a table to have only one "row". The data in a table is generated by passing a subset of the lines from a single section to a specified "interpreter" function. The "interpreter" to be used and the logic for selecting the lines from the source section are specified by section title AND facility type in <code>specs.builtin_table_specs</code> (driven by "section_specs_key" as above).</li>
+<li>All extracted sections are included as separate "documents" in the right pane of the Hank UI unless specifically excluded via a transformation of "Raw Sections" defined in <code>specs.builtin_transform_specs</code> (e.g. the "Proocedure Notes" section is dropped from the output via spec entry transform_specs["claimmaker_transform_spec"]["Raw Sections"]["section_transforms"]["pre"]["1.drop_tables"] because the individual tables in that section are included as documents rather than the section as a whole; see TableTransformer Tips below).</li>
+<li>The key/value data from tables (e.g. Patient Name, MRN, DOB, etc.) are used to populate the Hank UI DB and/or to match documents with schedules and demographic downloads when such are available. Tables are NOT included as "documents" in the right pane of the UI by default, but a transformation specified in <code>specs.builtin_transform_specs</code> (see TableTransformer Tips below) can be applied in cases where the lines of a table (rather than a section) should be displayed (e.g. individual "Procedures" are displayed as documents via spec entry transform_specs["claimmaker_transform_spec"]["Raw Tables"]["Procedure"]["table_transforms"]["1.split_key"]).</li>
+</ul>
+<h2>Core Functionality</h2>
+<h3>specs</h3>
+<h5>Client: "It's gotta look like this." Developer: "I got u fam..." *imports <code>spec</code> package</h5>
+<ul>
+<li>Provides TypedDict classes for customizing behaviors for all workflow steps.</li>
+<li>Defines generic base instances for all TypedDict classes.</li>
+<li>Includes a base definition for parsing Epic PDFs.</li>
+<li>Defines builtin specs for all clients and facilities and functions for retrieving them at runtime.</li>
+</ul>
+<h3>aws_extractor.py</h3>
+<h5>Serves as the head for all cli modules. Two entrypoints: <code>extract_cases()</code> and <code>extract_buckets()</code></h5>
+<ul>
+<li>Downloads PDFs from S3 for each client/facility and instantiates an <a href="https://github.com/search?q=repo%3Ahank-ai/pdf-extractor%20S3Batch&amp;type=code">S3Batch</a>.</li>
+<li><a href="https://github.com/search?q=repo%3Ahank-ai/pdf-extractor%20S3Batch&amp;type=code">S3Batch</a> contains methods for invoking all of the remaining core modules defined below.</li>
+<li>Scheduled execution function <code>extract_buckets</code> yields instances of S3Batch back to caller.</li>
+<li>On-demand file processing function <code>extract_cases</code> calls all remaining modules implicitly.</li>
+<li>Each batch is sent to a pdf_extractor function as defined by facility specific specs in <code>specs.builtin_client_specs</code>.</li>
+<li>Batches are determined by the filename portion of the S3 object key.</li>
+<li>Extracts information contained in the filename and appends a Source File Metadata section to the text extracted from the PDF to include this information in the output.</li>
+<li>Customizable "send_func" is defined in <code>specs.builtin_client_specs</code> for each facility. Target a db for uploading data or send directly to s3 as a flat file.</li>
+<li>Manages s3 object location, moving objects from "unprocessed" to "processed" (when extraction is successful) or "failed" (if fatal errors are encountered or an object does not match any *_test_expr regular expression strings defined for the facility in <code>specs/client.py</code>).</li>
+</ul>
+<h3>pdf_extractor.py</h3>
+<h5>Extract structured text information from PDF</h5>
+<ul>
+<li>Split multi patient PDFs based on supplied “split generator function” or combine multiple PDFs into a single case via supplied "file match function"</li>
+<li>Identifies repetitive “header/footer” lines and strips them from all pages. Any relevant information is appended to the end of the text output in a Header/Footer Info section.</li>
+<li>Drops “continued” title lines</li>
+<li>One function call to extract an entire library of 1+ PDF/patient format</li>
+<li>One function call to extract all patients from a library of multi patient PDFs</li>
+<li>Output contains a list of lines of text, a corresponding list of files of origin, and a "pagemap" used to select the proper pages when splitting a "multi-patient" pdf into patient specific children.</li>
+</ul>
+<h3>section_extractor.py</h3>
+<h5>Separate extracted text into discrete sections + “everything else”</h5>
+<ul>
+<li>Sections are “stripped” from the main text into independent “notes”</li>
+<li>Section names are dynamically determined (not hard coded)</li>
+<li>Section starts and ends are identified base on supplied functions</li>
+<li>Document “Stripping” support for removing unnecessary sections</li>
+<li>Removes “Attributions” to reduce parsing/NLP complexity</li>
+<li>E.g. Procedure:[AA.1] Colonoscopy --&gt; Procedure: Colonoscopy</li>
+<li>Epic specific; needs abstraction</li>
+<li>All text remaining after section extraction concludes is added to a final “Anesthesia Record” section</li>
+<li>1 instance per patient record (created via factory function)</li>
+<li>Automatically creates associated Table Extractor instance</li>
+</ul>
+<h3>table_extractor.py</h3>
+<h5>Extract fields and tables from extracted sections (including the “everything else” section)</h5>
+<ul>
+<li>Transforms structured text into field/value pairs</li>
+<li>Table names are dynamically determined</li>
+<li>Processing driven by supplied “interpreter” function</li>
+<li>A default “interpreter” is assigned based on section but alternate interpreters can be assigned based on table name (hard config; needs improvement)</li>
+<li>Interpreter signature standardized with additional parameters passed via kwargs</li>
+<li>Supports interpretation of entire section as single table or splitting into subtables</li>
+<li>1 instance per patient record; created automatically by SectionExtractor</li>
+</ul>
+<h3>table_transformer.py</h3>
+<h5>Transform high dimensional field/table data into standard field outputs</h5>
+<ul>
+<li>Ingests patients from a dictionary of SectionExtractors (created via factory function) or a directory of json files</li>
+<li>Groups data for all patients by section and table for interrogation and transformation</li>
+<li>Manual mode with data analysis tools for data inspection, testing and debugging</li>
+<li>Auto mode (default) applies all transformations defined in a “transform spec” dictionary and summarizes data into a summary dict and summary DF for all patients</li>
+<li>Summaries generated based on function dictionaries</li>
+<li>Currently developed summaries (see <code>specs.builtin_summary_specs</code>):<ul>
+<li>gui_summary_spec: creates json output suitable for ingestion by back end/GUI for lumberton multi-patient PDFs</li>
+<li>default_summary_spec: creates a standardized output for use during automated audit activities</li>
+</ul>
+</li>
+<li>See TableTransformer Tips below for more info.</li>
+</ul>
+<h2>Support Libraries</h2>
+<h3>matchops</h3>
+<h5>Standard framework for matching records across datasets using pandas dataframes</h5>
+<h4>matcher.py</h4>
+<ul>
+<li>DataFrameMatcher class definition</li>
+<li>Standard class used to match records across datasets</li>
+<li>Caller specifies a left and right data source and DataFrameConstructor and an ordered sequence of joins to be performed</li>
+<li>After each join, successfully matched records are removed from the left dataframe and added to the output</li>
+<li>Matching ends and output is returned when the left dataframe is empty (i.e. all records in left have been matched) or all defined joins have been exhausted</li>
+</ul>
+<h4>constructor.py</h4>
+<ul>
+<li>DataFrameConstructor class definition</li>
+<li>Standard class used to construct the dataframes utilized by the DataFrameMatcher class</li>
+<li>Caller defines a data source and a pandas method to be used when attempting to construct the dataframe</li>
+<li>Caller can optionally define a list of required columns to return an empty dataframe with the columns specified if an exception is encountered.</li>
+</ul>
+<h4>standard_matchers.py</h4>
+<ul>
+<li>Contains general use matching specifications <code>case_matcher</code> and <code>case_deduper</code>.</li>
+<li><code>case_matcher</code> provides general purpose matching for combining data from disparate sources, e.g. matching csv with db data and then pdf data.</li>
+<li><code>case_deduper</code> compares data between pdfs to prevent duplicate case creation when two PDFs are received for the same patient encounter.</li>
+</ul>
+<h3>dbops</h3>
+<h5>Contains all DB related functionality including connections, selects, inserts and updates</h5>
+<h4>push_analysis_jobs.py</h4>
+<ul>
+<li>Insert/update functions for tables analysis_jobs and analysis_job_claims</li>
+</ul>
+<h4>selects.py</h4>
+<ul>
+<li>Select functions for all tables</li>
+<li>"Read only" db module</li>
+</ul>
+<h4>create_batch.py</h4>
+<ul>
+<li>Insert function for batches table</li>
+</ul>
+<h4>db_utils.py</h4>
+<ul>
+<li>Common DB functions</li>
+<li>set_db_globals</li>
+<li>db_check decorator</li>
+<li>minimized_query convenience function</li>
+<li>TrimEncoder, a custom JSONEncoder used to create a "preview" of the output for a case by trimming any value with a length &gt; 100 chars to be 100 chars. Appends "..." to any trimmed value.</li>
+</ul>
+<h3>schemaops</h3>
+<h5>Schema definitions and validators for jsonb DB columns patient_info, input, and schedule</h5>
+<h4>*.model.json</h4>
+<ul>
+<li>All files ending with this prefix must contain a valid jsonschema draft 7 schema definition</li>
+<li>The "*" portion of the filename should correspond to a DB column that implements the defined schema</li>
+<li>All such files are added as validators by default when an instance of DefaultingValidatorGroup is created.</li>
+</ul>
+<h4>validators.py</h4>
+<ul>
+<li>DefaultingValidatorGroup class definition and support functions</li>
+<li>When a DefaultingValidorGroup instance is called, it verifies the values contained in dict passed in as an argument, adding default values for all required fields if a default value is defined.</li>
+</ul>
+<h2>CLI Module - extract_s3.py</h2>
+<ul>
+<li>Primary CLI module targeted by the Docker Container when populating the Hank UI DB</li>
+<li>Can be run locally. See the <a href="#command-line-argument--environment-variable-reference">Command Line Argument Reference</a> for details.</li>
+<li>Invoked via AWS EventBridge rules detailed below:</li>
+<li><code>pdf-extractor[-dev][-client-reference]</code><ul>
+<li>standard scheduled runs at 10AM UTC. Processes ALL KEYS located in <code>unprocessed/</code> folders for all clients and facilities defined in specs.builtin_client_specs</li>
+<li>can be constrained to specific clients by setting the container command to <code>['--client-list', 'client1,client2,...']</code> in the Batch Job Input Transformer definition</li>
+</ul>
+</li>
+<li><code>pdf-extractor-run-on-upload[-dev]</code><ul>
+<li>triggered on S3 object creation if newly created key is prefixed <code>to-extract/</code>. Processes ONLY the newly created object.</li>
+</ul>
+</li>
+</ul>
+<h2>Docker</h2>
+<ul>
+<li>Uses the standard <code>python:3.10-slim-bullseye</code> base image</li>
+<li>The container version that runs is selected via version tag (e.g. v0.7.0) in the AWS Batch job definition and is manually configured.</li>
+<li>To bump the version running in prod:</li>
+<li>Using the AWS Batch console, create a new revision of the pdf-extractor job definition that targets the latest container version.</li>
+<li>The job definition with the highest revision number is automatically selected when the job is triggered via EventBridge.</li>
+</ul>
+<h2>TableTransformer Tips</h2>
+<ul>
+<li>Two specs are passed to the constructor for the TableTransformer class defined in table_transformer.py:</li>
+<li>A transform_spec from <code>specs.builtin_transform_specs</code> that defines an ordered series of section and table transforms to apply during preprocessing.</li>
+<li>A summary_spec from <code>specs.builtin_summary_specs</code> that further reduces the transformed data into the final output</li>
+</ul>
+<h4>What's a transform_spec?</h4>
+<ul>
+<li>Simply put, a transform_spec defines a series of transforms to apply to the "raw" section/table data that was supplied to the TableTransformer class constructor. A transform might: perform a pivot, copy a key/value from one table to another, drop a table, split a key (e.g. full address to street, city, state, etc.), or rename keys.</li>
+<li>The transforms defined by a transform_spec occur in three steps: section "pre" transforms, table transforms, and section "post" transforms. Each of these steps is applied across the entire dataset in series (i.e. "pre" transforms for all sections, then table transforms for all sections, then "post" transforms for all sections), and sections are processed in the order in which they appear. THIS ORDERING IS CRITICAL!!! Transform B might target elements that are created by Transform A and later deleted by Transform C.</li>
+<li>Each transform_spec has the following structure:</li>
+<li>Section Name: The extracted name of a section from a PDF<ul>
+<li>"section_transforms" (literal, required): If no section transforms are required, the value should be set to {}. Defines transforms scoped at the Section level. As such, any transform that involves more than one table or section (e.g. moving data from one table to another, moving an entire table from one section to another, etc.) must
+  be defined at this level.</li>
+<li>"pre" (literal): transforms to apply PRIOR to any defined table transforms<ul>
+<li>Transform Function Reference (one or more): key is of form [alphanumeric identifier defining the order in which to apply the function].[name of a transform function defined in the TableTransformer class], e.g. "1.copy_keys", "2.move_tables", "zzz.drop_tables", etc.</li>
+<li>transform function kwargs</li>
+</ul>
+</li>
+<li>"post" (literal): transforms to apply AFTER any defined table transforms<ul>
+<li>Transform Function Reference (one or more): as above</li>
+<li>transform function kwargs</li>
+</ul>
+</li>
+<li>Table Name (0 or more): The extracted name of a table from the PDF that occurs within the parent section.</li>
+<li>"table_transforms" (literal, required): included for extensibility, no other keys are currently defined under a Table Name<ul>
+<li>Transform Function Reference: as above except the referenced function must be defined in the Section class (in table_transformer.py)</li>
+<li>transform function kwargs</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Second Section Name: ...</li>
+<li>One of the most common use cases for transforms is to disambiguate keys like "Name", "Address", "Provider", etc. "Name", for example, could refer to the name of the patient, provider, guarantor, or even the name of an insurance company depending on the table in which it appeared. To ensure the correct key's value is captured in the final output, it is often beneficial to rename these keys to something unique, e.g. converting "Name" to "GuarNm" in the Guarantor Information table.</li>
+</ul>
+<h4>Hey! You didn't say anything about a "condense spec"</h4>
+<ul>
+<li>A third type of spec, a "condense spec", can be used to define the operations performed by a "condense_tables" transform. Getting to know them will make it a bit easier to understand how the summary_spec is applied. Here are the basics:</li>
+<li>The purpose of the condense_tables transform is to convert a relatively unstructured, "as extracted" table into a standard format with predictable field names and values.</li>
+<li>The "condense spec", the mapping parameter that defines this standard format, can be defined "inline" (within the transform_spec itself) or abstracted into a separate mapping (e.g. the "op_notes_condense_spec" in the <code>specs/transform_specs.py</code> module).</li>
+<li>The top level keys in the spec are the keys that will appear in the transformed output.</li>
+<li>The value of each entry in the spec is also a mapping. These "sub-mappings" each contain a "return" key containing a reference to a reduce function along with one or more additional keys. Each additional key is itself a "key search pattern" and its value is also a function reference. Each search pattern key is tested against the keys from all of the tables in the current section. The values for the matched keys are passed to the function reference to produce a list of candidate values collected by that particular search pattern. The results of all of the searches are then passed to the reduce function defined by the "return" key to select the final output from the list of candidates.</li>
+<li>JEEZ! Maybe an example will help:</li>
+</ul>
+<p><code>python
+  "patient_info.patient.accn": { # this key will appear in the transform output
+      "return": utils.most_freq_element, # final "reduce" function
+      "Acct*ID": tu.stripped_first_element, # first search pattern
+      "Hospital*Account": tu.stripped_first_element, # second search pattern
+      "Acct*#": tu.stripped_first_element, # third search pattern
+      "Acct*Num*": tu.stripped_first_element, # fourth search pattern
+  }</code></p>
+<h4>Can we get to the summary_spec already?</h4>
+<ul>
+<li>A summary_spec is essentially a special case of a condense spec that is used to populate the "summary_dict" and "output" attributes of the TableTransformer instance. The majority of the entries in a summary spec are simply the condense spec for populating the "summary_dict" attribute, but there are three additional keys, 1 required and 2 optional, that are used to define the final transform for converting the "summary_dict" (which contains keys of form [condense spec key entry].[section name].[table name].[table instance #]) to the final "output" (which contains keys that are section/table agnostic):</li>
+<li>summary_func (required, default="as_summary_dict"): a string matching the <strong>name</strong> of a function in the TableTransformer class that should be called to convert "summary_dict" into the desired "output". The default simply performs a simple "most frequent value" reduce operation to resolve any collisions resulting from the removal of the section/table context and copies the deduped results to "output".</li>
+<li>summary_args (optional): a dict of kwargs to be passed to the summary func along with the output of the condense operation.</li>
+<li>summary_key_addendum (optional): a list of additional keys eligible for inclusion in the "output" attribute of the TableTransformer instance.</li>
+</ul>
+<h2>Process Overview</h2>
+<p><img alt="Process Overview" src="https://github.com/hank-ai/pdf-extractor/blob/main/process_overview.jpg?raw=true" /></p>
+<h2>Command Line Argument / Environment Variable Reference</h2>
+<ul>
+<li>The following "command line" options all have "twin" environment variables. For example, argument <code>--aws-s3-bucket</code> has a twin environment variable <code>AWS_S3_BUCKET</code>.</li>
+<li><strong>If the environment variable is defined, its value always overrides the command line value.</strong></li>
+<li>If the environment variable is undefined and the command line argument is suppled, the environment variable is set to the command line value for the current run.</li>
+<li>See <a href="#environment-variables">Environment Variables</a> in <a href="#development-setup">Development Setup</a> for additional required environment variables.</li>
+</ul>
+<h3>Required Parameters</h3>
+<h4>--aws-s3-bucket <em>bucket-name</em></h4>
+<ul>
+<li>The name of the AWS S3 Bucket to scan for source PDFs. The top level folders in this bucket should correspond to the top level keys in your client_specs (default client_specs can be found in <code>specs.builtin_client_specs</code>).</li>
+</ul>
+<h3>Recommended Parameters</h3>
+<h4>--pdf-ext-run-mode <em>[1 or 2]</em></h4>
+<ul>
+<li>Run mode <code>0</code> (default)</li>
+<li>Normal production run.</li>
+<li>Run mode <code>1</code></li>
+<li><strong>Populates DEV database and moves DEV bucket keys to <code>processed</code></strong>. End to end SDLC testing. Use SLDC secrets and earlier start dates from specs/client_specs_dev, but do NOT override the db_push_dict send_func or set an output directory.</li>
+<li>Run mode <code>2</code></li>
+<li><strong>Dumps output to disk (not DB) and leaves all source keys in place</strong>. Overrides secrets, start dates, and send_funcs AND sets an output dir. Saves final extract dict to disk along with all intermediate objects.</li>
+</ul>
+<h4>--log-dir <em>/your/log/output/dir</em></h4>
+<ul>
+<li>The root directory path for logging. Default value is <code>.local</code>.</li>
+</ul>
+<h4>--client-list <em>client1,client2</em></h4>
+<ul>
+<li>A comma separated list of client keys appearing in <code>specs.builtin_client_specs</code>. If supplied, only clients appearing in the list will be processed during this run. Commonly used to limit the execution scope during development and testing.</li>
+</ul>
+<h4>--facility-list <em>facility1,facility2,facility3</em></h4>
+<ul>
+<li>A comma separated list of facility keys appearing in <code>specs.builtin_client_specs</code>. If supplied, only facilities appearing in the list will be processed during this run. Commonly used to limit the execution scope during development and testing.</li>
+</ul>
+<h3>Frequently Used Optional Parameters</h3>
+<h4>--pdf-ext-dev-base-path <em>/local/output/path/</em></h4>
+<ul>
+<li>Base path for all debug output when using <a href="#recommended-parameters">run mode</a> <code>2</code>. Defaults to './local' with a warning regarding storage of PHI on unencrypted local resources.</li>
+</ul>
+<h4>--no-db</h4>
+<ul>
+<li>Switch parameter. Prevents DB and S3 updates for all <a href="#recommended-parameters">Run Modes</a>.</li>
+</ul>
+<h4>--no-notifications</h4>
+<ul>
+<li>Email notifications will NOT be sent if this arg is supplied.</li>
+</ul>
+<h4>--log-console</h4>
+<ul>
+<li>Switch parameter. Bypass file logging and print all logging to the console stdout and stderr.</li>
+</ul>
+<h4>--client-specs-file <em>/path/to/local/client.bin</em></h4>
+<ul>
+<li>Allows user to pass the path to a custom aws client specification stored on a local storage device. The passed file must contain a pickle of a valid client_specs config.</li>
+</ul>
+<h3>Other Optional Parameters</h3>
+<h4>--max-keys <em>integer-between-0-and-1000</em></h4>
+<ul>
+<li>The maximum number of AWS S3 object keys to process for a single facility. Overridden by both MAX_KEYS env var AND <code>max_keys</code> setting in client_specs. The client_specs setting has the highest precedence. Default value is max aka 1000.</li>
+</ul>
+<h4>--aws-s3-key-client-specs <em>s3/path/to/client.bin</em></h4>
+<ul>
+<li>An AWS S3 key storing a pickle of a valid client_specs dict. If supplied, the value of specs.builtin_client_specs will be overwritten with the unpickled dict at runtime.</li>
+</ul>
+<h4>--aws-s3-key-match-specs <em>s3/path/to/match.bin</em></h4>
+<ul>
+<li>An AWS S3 key storing a pickle of a valid match_specs dict. If supplied, specs.builtin_match_specs will be overwritten with the unpickled dict at runtime.</li>
+</ul>
+<h4>--aws-s3-key-section-specs <em>s3/path/to/section.bin</em></h4>
+<ul>
+<li>An AWS S3 key storing a pickle of a valid section_specs dict. If supplied, the value of specs.builtin_section_specs will be overwritten with the unpickled dict at runtime.</li>
+</ul>
+<h4>--aws-s3-key-table-specs <em>s3/path/to/table.bin</em></h4>
+<ul>
+<li>An AWS S3 key storing a pickle of a valid table_specs dict. If supplied, the value of specs.builtin_table_specs will be overwritten with the unpickled dict at runtime.</li>
+</ul>
+<h4>--aws-s3-key-transform-specs <em>s3/path/to/transform.bin</em></h4>
+<ul>
+<li>An AWS S3 key storing a pickle of a valid transform_specs dict. If supplied, the value of specs.builtin_transform_specs will be overwritten with the unpickled dict at runtime.</li>
+</ul>
+<h4>--aws-s3-key-summary-specs <em>s3/path/to/summary.bin</em></h4>
+<ul>
+<li>An AWS S3 key storing a pickle of a valid summary_specs dict. If supplied, the value of specs.builtin_summary_specs will be overwritten with the unpickled dict at runtime.</li>
+</ul>
+<h4>--to-extract-key <em>s3/path/to/target.pdf</em></h4>
+<ul>
+<li>Specify a single key to extract when triggered by UI upload.</li>
+</ul>
+<h4>--api-secret-name <em>your-secret-name</em></h4>
+<ul>
+<li>Overrides client spec entry 'api_secret_name'. Used when debugging production operations to prevent charges to client.</li>
+</ul>
+<h4>--aws-region <em>us-east-1</em></h4>
+<ul>
+<li>Defaults to 'us-east-1'.</li>
+</ul></div></section>
+            </section>
+        </article>
+        <nav id="sidebar">
+            <div class="toc">
+                <ul>
+                    <li>
+                        <h3><img src="titleico.png" width="90" height="90" /> PDF Extractor </h3>
+                    </li>
+                </ul>
             </div>
-          </div>
+            <ul id="index">
+                <li>
+                    <h3>Modules</h3>
+                    <ul>
+<li><code><a title="aws_extractor" href="aws_extractor/aws_extractor.html">aws_extractor</a></code></li>
+<li><code><a title="aws_s3_batch" href="aws_s3_batch/aws_s3_batch.html">aws_s3_batch</a></code></li>
+<li><code><a title="extract_s3" href="extract_s3/extract_s3.html">extract_s3</a></code></li>
+<li><code><a title="gvars" href="gvars/gvars.html">gvars</a></code></li>
+<li><code><a title="log_levels" href="log_levels/log_levels.html">log_levels</a></code></li>
+<li><code><a title="pdf_extractor" href="pdf_extractor/pdf_extractor.html">pdf_extractor</a></code></li>
+<li><code><a title="schema_manager" href="schema_manager/schema_manager.html">schema_manager</a></code></li>
+<li><code><a title="section_extractor" href="section_extractor/section_extractor.html">section_extractor</a></code></li>
+<li><code><a title="table_extractor" href="table_extractor/table_extractor.html">table_extractor</a></code></li>
+<li><code><a title="table_transformer" href="table_transformer/table_transformer.html">table_transformer</a></code></li>
+                    </ul>
+                <li>
+                    <h3>Packages</h3>
+                    <ul>
+<li><code><a title="dbops" href="dbops/index.html">dbops</a></code></li>
+<li><code><a title="integrators" href="integrators/index.html">integrators</a></code></li>
+<li><code><a title="matchops" href="matchops/index.html">matchops</a></code></li>
+<li><code><a title="notify" href="notify/index.html">notify</a></code></li>
+<li><code><a title="rollup_cascade" href="rollup_cascade/index.html">rollup_cascade</a></code></li>
+<li><code><a title="schemaops" href="schemaops/index.html">schemaops</a></code></li>
+<li><code><a title="specs" href="specs/index.html">specs</a></code></li>
+<li><code><a title="utilities" href="utilities/index.html">utilities</a></code></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </main>
+    <footer id="footer">
+        <p>Generated by <a href="https://pdoc3.github.io/pdoc"
+                title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+    </footer>
+</body>
 
-          <div class='buttons-wrapper {{slide.buttons.animation}}' style=''>
-            <div class='row'>
-              <div class='{{slide.buttons.class}} columns'>
-                <div class='btnspacing spacing'></div>
-                {% for button in slide.buttons.items %}
-                  <a class='button mybtn signupbtn'>{{button.text}}</a>
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-</div>
-
-<div class="full fadein"  id="helphank" style='overflow: hidden; margin-top: -30px; margin-left: -25px;'>
-  <div class="row max-width-1000px" style="margin-top: 0px;">
-    <div class="small-12 columns">
-      <h1 class="main-title"><span style="color:#f9b052;">Grow</span> With Hank</h1>
-      <div class="box wfpic" style="width: 100%; text-align: left;">
-        <img class="" src="images/hank-workflow.jpg" style="margin: auto;">
-      </div>
-    </div>
-  </div>
-  <div class="row max-width-1000px" style="margin-top: -60px;">
-    <div class="small-4 columns">
-      <div class="wftitle" align='center'>
-        Coders
-      </div>
-      <p class="main-text">
-        teach Hank</p>
-    </div>
-    <div class="small-5 columns">
-      <div class="wftitle" align='center'>
-        Hank
-      </div>
-      <p class="main-text">
-        learns <b>really</b> fast</p>
-    </div>
-    <div class="small-3 columns">
-      <div class="wftitle" align='center'>
-        Together
-      </div>
-      <p class="main-text">
-        we <span style="color:#f9b052;"><b>grow</b></span></p>
-    </div>
-  </div>
-
-</div>
-
-
-
-
-<div class="bg divider" style="background-image: url('images/cloud-bottom.png');background-position: bottom center;background-size: cover;overflow: hidden;"></div>
-<div class="full alternate-row" id="productivity">
-  <div class="row max-width-1000px">
-    <div class="small-6 columns">
-      <div class="spacing"></div>
- <h1 class="main-title"><span style="color:#595ad4;">Increase</span> Your Productivity</h1>
-
-      <p class="main-text">
-        Code faster and get more done with Hank.</p>
-      <div class="spacing"></div>
-
-    </div>
-    <div class="small-6 columns">
-      <div class="box secpic" style="width: 500px; text-align: left;">
-        <img class="fadeinright" src="images/purplse-laptop.png" style="margin: auto;">
-      </div>
-    </div>
-  </div>
-</div>
-<div class="bg divider" style="background-image: url('images/curve-bottom.png');background-position: top center;background-size: cover;overflow: hidden;"></div>
-
-<div class="full"  id="accuracy" style='overflow: hidden;'>
-  <div class="row max-width-1000px">
-    <div class="small-6 columns">
-      <div class="box secpic" style="width: 500px; text-align: left;">
-        <img class="fadeinleft" src="images/computer-accuracy.png" >
-      </div>
-    </div>
-    <div class="small-6 columns">
-      <div class="two spacing"></div>
-     <h1 class="main-title"><span style="color:#00cc6f;">Improve</span> Your Accuracy</h1>
-
-      <p class="main-text">
-        Code more accurately with Hank.</p>
-    </div>
-    <div class="four spacing"></div>
-  </div>
-
-</div>
-
-<div class="bg divider" style="background-image: url('images/curve-bottom2.png');background-position: top center;background-size: cover;overflow: hidden;"></div>
-
-
-
-
-<div class="full alternate-row" id="bottomline">
-  <div class="row max-width-1000px">
-    <div class="small-6 columns">
-      <div class="spacing"></div>
- <h1 class="main-title"><span style="color:#d8124b;">Make</span> More Money</h1>
-
-      <p class="main-text">
-        Make More Money Today & Tomorrow With Hank.</p>
-      <div class="spacing"></div>
-
-    </div>
-    <div class="small-6 columns">
-      <div class="box secpic" style="width: 500px; text-align: left;">
-        <img class="fadeinright" src="images/money-graph.png" style="margin: auto;">
-      </div>
-    </div>
-  </div>
-</div>
-<div class="bg divider" style="background-image: url('images/cloud-bottom3.png');background-position: bottom center;background-size: cover;overflow: hidden;"></div>
-
-<div class="full" id="fairshare" style="background-image: url('images/rocket.jpg');background-position: bottom left;background-size: cover;overflow: hidden;">
-  <div class="box" style='width: 100%; min-height: 50px; background: #18cbfb; color: #18cbfb; margin-top: -110px'>x</div>
-  <div class="row max-width-1000px">
-    <div class="small-1 columns"><p></p></div>
-    <div class="small-10 columns">
-      <div class="spacing"></div>
-      <div class="box" style="text-align: center; width: 100%; ">
-       <h1 class="main-title"><span style="color:#fff;">Get Your Fair Share</span></h1>
-
-      <p class="main-text" style="color:#fff !important;">
-        Profit Sharing Options Available.</p>
-
-      <div class='btnspacing spacing'></div>
-      <div class='btnspacing spacing'></div>
-      <div class="box" style="text-align: center; width: 100%; ">
-
-        <a class="button mybtn signupbtn">Download Hank</a>
-      </div>
-      </div>
-    <div class="small-1 columns"><p></p></div>
-    </div>
-
-  </div>
-
-</div>
+</html>

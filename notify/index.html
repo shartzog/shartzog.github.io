@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>notify API documentation</title>
+<meta name="description" content="initialize notify module">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Package <code>notify</code></h1>
+</header>
+<section id="section-intro">
+<p>initialize notify module</p>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="notify.notifications" href="notifications.html">notify.notifications</a></code></dt>
+<dd>
+<div class="desc"><p>Defines the UserNotification class used by Notifier to build messages</p></div>
+</dd>
+<dt><code class="name"><a title="notify.notifier" href="notifier.html">notify.notifier</a></code></dt>
+<dd>
+<div class="desc"><p>features associated with end user notifications for reconciliation
+and other edge case handling</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="notify.ErrorNotification"><code class="flex name class">
+<span>class <span class="ident">ErrorNotification</span></span>
+<span>(</span><span>facility: str, function_name: str, error_type: str = 'Unknown', error_message: str = 'Unknown', traceback: str = 'Unknown', concerned_roles: Sequence[<a title="notify.SubscriptionType" href="#notify.SubscriptionType">SubscriptionType</a>] = ('Developer',))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A collection of fields describing an error notification.</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="notify.ErrorNotification.concerned_roles"><code class="name">var <span class="ident">concerned_roles</span> : Sequence[<a title="notify.notifier.SubscriptionType" href="notifier.html#notify.notifier.SubscriptionType">SubscriptionType</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.ErrorNotification.error_message"><code class="name">var <span class="ident">error_message</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.ErrorNotification.error_type"><code class="name">var <span class="ident">error_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.ErrorNotification.facility"><code class="name">var <span class="ident">facility</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.ErrorNotification.function_name"><code class="name">var <span class="ident">function_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.ErrorNotification.traceback"><code class="name">var <span class="ident">traceback</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="notify.ErrorNotification.from_exc_info"><code class="name flex">
+<span>def <span class="ident">from_exc_info</span></span>(<span>facility: str, function_name: str, exc_info: None | ErrInfo = None, mock: bool = False) ‑> <a title="notify.notifications.ErrorNotification" href="notifications.html#notify.notifications.ErrorNotification">ErrorNotification</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>returns a new UserNotification instance using the data from the job(s)</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="notify.EventType"><code class="flex name class">
+<span>class <span class="ident">EventType</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convenient access to predefined notification event descriptions</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.str</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="notify.EventType.CASE_ADDED"><code class="name">var <span class="ident">CASE_ADDED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.EventType.CASE_CLONED"><code class="name">var <span class="ident">CASE_CLONED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.EventType.CASE_CLOSED_BATCH_CLOSED"><code class="name">var <span class="ident">CASE_CLOSED_BATCH_CLOSED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.EventType.CASE_CLOSED_BATCH_OPEN"><code class="name">var <span class="ident">CASE_CLOSED_BATCH_OPEN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.EventType.CASE_DOCS_UPDATED"><code class="name">var <span class="ident">CASE_DOCS_UPDATED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.EventType.DUPLICATE_BATCH_CREATED"><code class="name">var <span class="ident">DUPLICATE_BATCH_CREATED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="notify.NotificationProto"><code class="flex name class">
+<span>class <span class="ident">NotificationProto</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>data elements required for describing a single user notification</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Protocol</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="notify.NotificationProto.concerned_roles"><code class="name">var <span class="ident">concerned_roles</span> : Sequence[<a title="notify.notifier.SubscriptionType" href="notifier.html#notify.notifier.SubscriptionType">SubscriptionType</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.NotificationProto.facility"><code class="name">var <span class="ident">facility</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.NotificationProto.mock"><code class="name">var <span class="ident">mock</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="notify.Notifier"><code class="flex name class">
+<span>class <span class="ident">Notifier</span></span>
+<span>(</span><span>client_name: str, notifications: Sequence[<a title="notify.notifier.NotificationProto" href="notifier.html#notify.notifier.NotificationProto">NotificationProto</a>], output_dir: str | None = None, subject: str = 'Claim Maker Notifications - 20240828', body_text: str = 'Please review the attached notifications from Hank AI Claim Maker.', body_html: str = &#x27;&lt;html&gt;\n
+&lt;head&gt;&lt;/head&gt;\n
+&lt;body&gt;\n
+&lt;a href=&quot;https://hank.ai&quot;&gt;&lt;img width=&quot;198&quot; height=&quot;62&quot;\n
+src=&quot;https://hank.ai/wp-content/uploads/2022/08/hank-logo-black-htm-white-bg-660px.png&quot; /&gt;\n
+&lt;/a&gt;&lt;br&gt;\n
+&lt;h3&gt;{}&lt;/h3&gt;\n
+&lt;p&gt;&lt;a href=&quot;https://claimmaker.hank.ai/app/coder&quot;&gt;Open Claim Maker&lt;/a&gt; (requires VPN)&lt;/p&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;\n
+&#x27;, encoding: str = 'utf-8')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>send a table of edge case handling notifications to client emails</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="notify.Notifier.body_html"><code class="name">var <span class="ident">body_html</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.Notifier.body_text"><code class="name">var <span class="ident">body_text</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.Notifier.client_name"><code class="name">var <span class="ident">client_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.Notifier.encoding"><code class="name">var <span class="ident">encoding</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.Notifier.notifications"><code class="name">var <span class="ident">notifications</span> : Sequence[<a title="notify.notifier.NotificationProto" href="notifier.html#notify.notifier.NotificationProto">NotificationProto</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.Notifier.output_dir"><code class="name">var <span class="ident">output_dir</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.Notifier.subject"><code class="name">var <span class="ident">subject</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="notify.Notifier.create_attachment"><code class="name flex">
+<span>def <span class="ident">create_attachment</span></span>(<span>self) ‑> email.mime.application.MIMEApplication</span>
+</code></dt>
+<dd>
+<div class="desc"><p>build an attachment from the provided notifications using pandas</p></div>
+</dd>
+<dt id="notify.Notifier.create_message"><code class="name flex">
+<span>def <span class="ident">create_message</span></span>(<span>self) ‑> email.mime.multipart.MIMEMultipart</span>
+</code></dt>
+<dd>
+<div class="desc"><p>build the email as a MIME multipart message</p></div>
+</dd>
+<dt id="notify.Notifier.log_summary"><code class="name flex">
+<span>def <span class="ident">log_summary</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.Notifier.send"><code class="name flex">
+<span>def <span class="ident">send</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>construct and send a raw email for the supplied notifications</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="notify.SubscriptionType"><code class="flex name class">
+<span>class <span class="ident">SubscriptionType</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convenient access to valid roles</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.str</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="notify.SubscriptionType.ACCT_MGR"><code class="name">var <span class="ident">ACCT_MGR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.SubscriptionType.ADMIN"><code class="name">var <span class="ident">ADMIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.SubscriptionType.AUDITOR"><code class="name">var <span class="ident">AUDITOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.SubscriptionType.CHG_ENTRY"><code class="name">var <span class="ident">CHG_ENTRY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.SubscriptionType.CODER"><code class="name">var <span class="ident">CODER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.SubscriptionType.CODER_ADMIN"><code class="name">var <span class="ident">CODER_ADMIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.SubscriptionType.DATA_ENTRY"><code class="name">var <span class="ident">DATA_ENTRY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.SubscriptionType.DEV"><code class="name">var <span class="ident">DEV</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.SubscriptionType.RC_ADMIN"><code class="name">var <span class="ident">RC_ADMIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.SubscriptionType.RECONCILER"><code class="name">var <span class="ident">RECONCILER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="notify.UserNotification"><code class="flex name class">
+<span>class <span class="ident">UserNotification</span></span>
+<span>(</span><span>facility: str, concerned_roles: Sequence[<a title="notify.SubscriptionType" href="#notify.SubscriptionType">SubscriptionType</a>], date_of_service: str, event_description: str | <a title="notify.EventType" href="#notify.EventType">EventType</a>, batch_id: int, batch_state: str, case_id: int, case_state: str, case_state_reason: str, created_batch_id: int = -9999, created_case_id: int = -9999)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A collection of fields describing a user event notification.</p>
+<p>Use the <code>from_job</code> class method to create a notification from
+directly from job(s) as returned by dbops.job_library / as
+constructed from PDFs in the final TableTransformer output.</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="notify.UserNotification.batch_id"><code class="name">var <span class="ident">batch_id</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.UserNotification.batch_state"><code class="name">var <span class="ident">batch_state</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.UserNotification.case_id"><code class="name">var <span class="ident">case_id</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.UserNotification.case_state"><code class="name">var <span class="ident">case_state</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.UserNotification.case_state_reason"><code class="name">var <span class="ident">case_state_reason</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.UserNotification.concerned_roles"><code class="name">var <span class="ident">concerned_roles</span> : Sequence[<a title="notify.notifier.SubscriptionType" href="notifier.html#notify.notifier.SubscriptionType">SubscriptionType</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.UserNotification.created_batch_id"><code class="name">var <span class="ident">created_batch_id</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.UserNotification.created_case_id"><code class="name">var <span class="ident">created_case_id</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.UserNotification.date_of_service"><code class="name">var <span class="ident">date_of_service</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.UserNotification.event_description"><code class="name">var <span class="ident">event_description</span> : str | <a title="notify.notifier.EventType" href="notifier.html#notify.notifier.EventType">EventType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="notify.UserNotification.facility"><code class="name">var <span class="ident">facility</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="notify.UserNotification.from_job"><code class="name flex">
+<span>def <span class="ident">from_job</span></span>(<span>roles: Sequence[<a title="notify.SubscriptionType" href="#notify.SubscriptionType">SubscriptionType</a>], event_type: str | <a title="notify.EventType" href="#notify.EventType">EventType</a>, job: dict[str, Any], to_case_state: str = '', to_case_state_reason: str = '', created_batch_id: int = -9999, mock: bool = False) ‑> <a title="notify.notifications.UserNotification" href="notifications.html#notify.notifications.UserNotification">UserNotification</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>returns a new UserNotification instance using the data from the job(s)</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="notify.notifications" href="notifications.html">notify.notifications</a></code></li>
+<li><code><a title="notify.notifier" href="notifier.html">notify.notifier</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="notify.ErrorNotification" href="#notify.ErrorNotification">ErrorNotification</a></code></h4>
+<ul class="two-column">
+<li><code><a title="notify.ErrorNotification.concerned_roles" href="#notify.ErrorNotification.concerned_roles">concerned_roles</a></code></li>
+<li><code><a title="notify.ErrorNotification.error_message" href="#notify.ErrorNotification.error_message">error_message</a></code></li>
+<li><code><a title="notify.ErrorNotification.error_type" href="#notify.ErrorNotification.error_type">error_type</a></code></li>
+<li><code><a title="notify.ErrorNotification.facility" href="#notify.ErrorNotification.facility">facility</a></code></li>
+<li><code><a title="notify.ErrorNotification.from_exc_info" href="#notify.ErrorNotification.from_exc_info">from_exc_info</a></code></li>
+<li><code><a title="notify.ErrorNotification.function_name" href="#notify.ErrorNotification.function_name">function_name</a></code></li>
+<li><code><a title="notify.ErrorNotification.traceback" href="#notify.ErrorNotification.traceback">traceback</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="notify.EventType" href="#notify.EventType">EventType</a></code></h4>
+<ul class="">
+<li><code><a title="notify.EventType.CASE_ADDED" href="#notify.EventType.CASE_ADDED">CASE_ADDED</a></code></li>
+<li><code><a title="notify.EventType.CASE_CLONED" href="#notify.EventType.CASE_CLONED">CASE_CLONED</a></code></li>
+<li><code><a title="notify.EventType.CASE_CLOSED_BATCH_CLOSED" href="#notify.EventType.CASE_CLOSED_BATCH_CLOSED">CASE_CLOSED_BATCH_CLOSED</a></code></li>
+<li><code><a title="notify.EventType.CASE_CLOSED_BATCH_OPEN" href="#notify.EventType.CASE_CLOSED_BATCH_OPEN">CASE_CLOSED_BATCH_OPEN</a></code></li>
+<li><code><a title="notify.EventType.CASE_DOCS_UPDATED" href="#notify.EventType.CASE_DOCS_UPDATED">CASE_DOCS_UPDATED</a></code></li>
+<li><code><a title="notify.EventType.DUPLICATE_BATCH_CREATED" href="#notify.EventType.DUPLICATE_BATCH_CREATED">DUPLICATE_BATCH_CREATED</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="notify.NotificationProto" href="#notify.NotificationProto">NotificationProto</a></code></h4>
+<ul class="">
+<li><code><a title="notify.NotificationProto.concerned_roles" href="#notify.NotificationProto.concerned_roles">concerned_roles</a></code></li>
+<li><code><a title="notify.NotificationProto.facility" href="#notify.NotificationProto.facility">facility</a></code></li>
+<li><code><a title="notify.NotificationProto.mock" href="#notify.NotificationProto.mock">mock</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="notify.Notifier" href="#notify.Notifier">Notifier</a></code></h4>
+<ul class="two-column">
+<li><code><a title="notify.Notifier.body_html" href="#notify.Notifier.body_html">body_html</a></code></li>
+<li><code><a title="notify.Notifier.body_text" href="#notify.Notifier.body_text">body_text</a></code></li>
+<li><code><a title="notify.Notifier.client_name" href="#notify.Notifier.client_name">client_name</a></code></li>
+<li><code><a title="notify.Notifier.create_attachment" href="#notify.Notifier.create_attachment">create_attachment</a></code></li>
+<li><code><a title="notify.Notifier.create_message" href="#notify.Notifier.create_message">create_message</a></code></li>
+<li><code><a title="notify.Notifier.encoding" href="#notify.Notifier.encoding">encoding</a></code></li>
+<li><code><a title="notify.Notifier.log_summary" href="#notify.Notifier.log_summary">log_summary</a></code></li>
+<li><code><a title="notify.Notifier.notifications" href="#notify.Notifier.notifications">notifications</a></code></li>
+<li><code><a title="notify.Notifier.output_dir" href="#notify.Notifier.output_dir">output_dir</a></code></li>
+<li><code><a title="notify.Notifier.send" href="#notify.Notifier.send">send</a></code></li>
+<li><code><a title="notify.Notifier.subject" href="#notify.Notifier.subject">subject</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="notify.SubscriptionType" href="#notify.SubscriptionType">SubscriptionType</a></code></h4>
+<ul class="two-column">
+<li><code><a title="notify.SubscriptionType.ACCT_MGR" href="#notify.SubscriptionType.ACCT_MGR">ACCT_MGR</a></code></li>
+<li><code><a title="notify.SubscriptionType.ADMIN" href="#notify.SubscriptionType.ADMIN">ADMIN</a></code></li>
+<li><code><a title="notify.SubscriptionType.AUDITOR" href="#notify.SubscriptionType.AUDITOR">AUDITOR</a></code></li>
+<li><code><a title="notify.SubscriptionType.CHG_ENTRY" href="#notify.SubscriptionType.CHG_ENTRY">CHG_ENTRY</a></code></li>
+<li><code><a title="notify.SubscriptionType.CODER" href="#notify.SubscriptionType.CODER">CODER</a></code></li>
+<li><code><a title="notify.SubscriptionType.CODER_ADMIN" href="#notify.SubscriptionType.CODER_ADMIN">CODER_ADMIN</a></code></li>
+<li><code><a title="notify.SubscriptionType.DATA_ENTRY" href="#notify.SubscriptionType.DATA_ENTRY">DATA_ENTRY</a></code></li>
+<li><code><a title="notify.SubscriptionType.DEV" href="#notify.SubscriptionType.DEV">DEV</a></code></li>
+<li><code><a title="notify.SubscriptionType.RC_ADMIN" href="#notify.SubscriptionType.RC_ADMIN">RC_ADMIN</a></code></li>
+<li><code><a title="notify.SubscriptionType.RECONCILER" href="#notify.SubscriptionType.RECONCILER">RECONCILER</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="notify.UserNotification" href="#notify.UserNotification">UserNotification</a></code></h4>
+<ul class="two-column">
+<li><code><a title="notify.UserNotification.batch_id" href="#notify.UserNotification.batch_id">batch_id</a></code></li>
+<li><code><a title="notify.UserNotification.batch_state" href="#notify.UserNotification.batch_state">batch_state</a></code></li>
+<li><code><a title="notify.UserNotification.case_id" href="#notify.UserNotification.case_id">case_id</a></code></li>
+<li><code><a title="notify.UserNotification.case_state" href="#notify.UserNotification.case_state">case_state</a></code></li>
+<li><code><a title="notify.UserNotification.case_state_reason" href="#notify.UserNotification.case_state_reason">case_state_reason</a></code></li>
+<li><code><a title="notify.UserNotification.concerned_roles" href="#notify.UserNotification.concerned_roles">concerned_roles</a></code></li>
+<li><code><a title="notify.UserNotification.created_batch_id" href="#notify.UserNotification.created_batch_id">created_batch_id</a></code></li>
+<li><code><a title="notify.UserNotification.created_case_id" href="#notify.UserNotification.created_case_id">created_case_id</a></code></li>
+<li><code><a title="notify.UserNotification.date_of_service" href="#notify.UserNotification.date_of_service">date_of_service</a></code></li>
+<li><code><a title="notify.UserNotification.event_description" href="#notify.UserNotification.event_description">event_description</a></code></li>
+<li><code><a title="notify.UserNotification.facility" href="#notify.UserNotification.facility">facility</a></code></li>
+<li><code><a title="notify.UserNotification.from_job" href="#notify.UserNotification.from_job">from_job</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>specs._types API documentation</title>
+<meta name="description" content="Spec definitions. TypedDicts are used for easy serialization.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>specs._types</code></h1>
+</header>
+<section id="section-intro">
+<p>Spec definitions. TypedDicts are used for easy serialization.</p>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="specs._types._client" href="_client.html">specs._types._client</a></code></dt>
+<dd>
+<div class="desc"><p>TypeDict definitions for client_specs.py</p></div>
+</dd>
+<dt><code class="name"><a title="specs._types._match" href="_match.html">specs._types._match</a></code></dt>
+<dd>
+<div class="desc"><p>TypeDict definitions for matchops classes.</p></div>
+</dd>
+<dt><code class="name"><a title="specs._types._section" href="_section.html">specs._types._section</a></code></dt>
+<dd>
+<div class="desc"><p>section spec typed dict</p></div>
+</dd>
+<dt><code class="name"><a title="specs._types._summary" href="_summary.html">specs._types._summary</a></code></dt>
+<dd>
+<div class="desc"><p>Type definitions for summary and condense specs.</p></div>
+</dd>
+<dt><code class="name"><a title="specs._types._table" href="_table.html">specs._types._table</a></code></dt>
+<dd>
+<div class="desc"><p>TypedDicts for use in table_specs.py</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="specs._types.ClientSpecStatic"><code class="flex name class">
+<span>class <span class="ident">ClientSpecStatic</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Top level keys that must be present in ClientSpec objects</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>db_secret_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the secret containing the database credentials.</dd>
+<dt><strong><code>api_secret_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the secret containing the api credentials.</dd>
+<dt><strong><code>managed_fields</code></strong> :&ensp;<code><a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, ManagedField]</code></dt>
+<dd>client level standard fields.</dd>
+<dt><strong><code>managed_fields_context_rules</code></strong> :&ensp;<code>list[ContextRule]</code></dt>
+<dd>client level context rules.</dd>
+<dt><strong><code>summary_key_addendum</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>additional summary keys specific to client.</dd>
+<dt><strong><code>summary_map_addendum</code></strong> :&ensp;<code><a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, <a title="specs._types.ReduceSpec" href="#specs._types.ReduceSpec">ReduceSpec</a>]</code></dt>
+<dd>dict of additional summary reduce specs.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="specs._types.ClientSpecStatic.api_secret_name"><code class="name">var <span class="ident">api_secret_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.ClientSpecStatic.db_secret_name"><code class="name">var <span class="ident">db_secret_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.ClientSpecStatic.managed_fields"><code class="name">var <span class="ident">managed_fields</span> : <a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, utilities.managed_fields.ManagedField]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.ClientSpecStatic.managed_fields_context_rules"><code class="name">var <span class="ident">managed_fields_context_rules</span> : list[utilities.managed_fields.ContextRule]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.ClientSpecStatic.summary_key_addendum"><code class="name">var <span class="ident">summary_key_addendum</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.ClientSpecStatic.summary_map_addendum"><code class="name">var <span class="ident">summary_map_addendum</span> : <a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, <a title="specs._types._summary.ReduceSpec" href="_summary.html#specs._types._summary.ReduceSpec">ReduceSpec</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="specs._types.FacilitySpec"><code class="flex name class">
+<span>class <span class="ident">FacilitySpec</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Facility entry in client_specs.builtin_client_specs.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>azure_secret_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>stores endpoint and subscription key for Azure Computer Vision OCR operations.</dd>
+<dt><strong><code>dest_prefix</code></strong> :&ensp;<code>str</code></dt>
+<dd>The final s3 folder specification for processed PDFs.</dd>
+<dt><strong><code>extract_func</code></strong> :&ensp;<code>partial | pu.ExtractFunc</code></dt>
+<dd>Function used for text extraction.</dd>
+<dt><strong><code>facility_name</code></strong> :&ensp;<code>str</code></dt>
+<dd><strong><em>MUST MATCH FACILITY NAME FROM ACE SALESFORCE</em></strong>.</dd>
+<dt><strong><code>failed_prefix</code></strong> :&ensp;<code>str</code></dt>
+<dd>The final s3 folder specification for failed PDFs.</dd>
+<dt><strong><code>first_dos</code></strong> :&ensp;<code>str</code></dt>
+<dd>The first date of service to be coded for facility.</dd>
+<dt>insurance_integration_mode (Literal['0', '1'] | None): overrides equivalent env var when set.</dt>
+<dt><strong><code>max_keys</code></strong> :&ensp;<code>int</code></dt>
+<dd>Override max keys passed to extract_buckets for this facility.</dd>
+<dt><strong><code>match_specs_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>Key for this facility in match_specs.</dd>
+<dt><strong><code>output_dir</code></strong> :&ensp;<code>str | None</code></dt>
+<dd>Optional directory for saving intermediate outputs.</dd>
+<dt>provider_integration_mode (Literal['0', '1', '2'] | None): overrides equivalent env var when set.</dt>
+<dt><strong><code>s3_prefix</code></strong> :&ensp;<code>str</code></dt>
+<dd>Non-filename portion of source PDF s3 keys.</dd>
+<dt><strong><code>section_specs_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>Key in section_specs.</dd>
+<dt><strong><code>send_func</code></strong> :&ensp;<code>Callable</code></dt>
+<dd>S3Batch output processing function.</dd>
+<dt><strong><code>source_prefix</code></strong> :&ensp;<code>str</code></dt>
+<dd>The final s3 folder specification for unprocessed PDFs.</dd>
+<dt><strong><code>summary_key_addendum</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>List of additional summary keys valid for this facility.</dd>
+<dt><strong><code>summary_map_addendum</code></strong> :&ensp;<code><a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, <a title="specs._types.ReduceSpec" href="#specs._types.ReduceSpec">ReduceSpec</a>]</code></dt>
+<dd>dict of additional summary reduce specs.</dd>
+<dt><strong><code>summary_specs_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>Key for summary type in summary_specs.</dd>
+<dt><strong><code>table_specs_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>Key for facility type in table_specs.</dd>
+<dt><strong><code>transform_specs_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>Key for facility type in transform_specs.</dd>
+<dt><strong><code>use_autocoding</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to enable/disable autocoding for the facility.</dd>
+<dt><strong><code>use_docuvision</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to enable/disable docuvision for the facility.</dd>
+<dt><strong><code>managed_fields</code></strong> :&ensp;<code><a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, ManagedField]</code></dt>
+<dd>Custom standard field values (optional).</dd>
+<dt><strong><code>managed_fields_context_rules</code></strong></dt>
+<dd>list[ContextRule]: facility level context rules.</dd>
+<dt><strong><code>dv_preferred_networks</code></strong> :&ensp;<code>list[str] | None</code></dt>
+<dd>List of DocuVision neural networks preferred for this facility.</dd>
+<dt><strong><code>dv_required_page_types</code></strong> :&ensp;<code>set[str] | None</code></dt>
+<dd>if supplied, docuvision will only create a case for a pid if at least one of the pages assigned to that pid has a noteType in this set.</dd>
+<dt><strong><code>send_reject_notifications</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, include a UserNotification for each rejected s3 file input in the ClaimMaker Alert email to the client. Defaults to False.</dd>
+<dt><strong><code>file_groups</code></strong> :&ensp;<code>list[S3FileGroup]</code></dt>
+<dd>list of file groups specifying how to process every file type according to a matched regex</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="specs._types.FacilitySpec.azure_secret_name"><code class="name">var <span class="ident">azure_secret_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.dest_prefix"><code class="name">var <span class="ident">dest_prefix</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.dv_preferred_networks"><code class="name">var <span class="ident">dv_preferred_networks</span> : list[str] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.dv_required_page_types"><code class="name">var <span class="ident">dv_required_page_types</span> : set[str] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.extract_func"><code class="name">var <span class="ident">extract_func</span> : functools.partial[<a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, utilities.utils.FileContentsEntry]] | collections.abc.Callable[[<a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, utilities.library_utils.PDFLibProto]], <a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, utilities.utils.FileContentsEntry]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.facility_name"><code class="name">var <span class="ident">facility_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.failed_prefix"><code class="name">var <span class="ident">failed_prefix</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.file_groups"><code class="name">var <span class="ident">file_groups</span> : list[utilities.client_utils.S3FileGroup]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.first_dos"><code class="name">var <span class="ident">first_dos</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.insurance_integration_mode"><code class="name">var <span class="ident">insurance_integration_mode</span> : Optional[Literal['0', '1']]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.managed_fields"><code class="name">var <span class="ident">managed_fields</span> : <a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, utilities.managed_fields.ManagedField]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.managed_fields_context_rules"><code class="name">var <span class="ident">managed_fields_context_rules</span> : list[utilities.managed_fields.ContextRule]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.match_specs_key"><code class="name">var <span class="ident">match_specs_key</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.max_keys"><code class="name">var <span class="ident">max_keys</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.output_dir"><code class="name">var <span class="ident">output_dir</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.provider_integration_mode"><code class="name">var <span class="ident">provider_integration_mode</span> : Optional[Literal['0', '1', '2']]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.s3_prefix"><code class="name">var <span class="ident">s3_prefix</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.section_specs_key"><code class="name">var <span class="ident">section_specs_key</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.send_func"><code class="name">var <span class="ident">send_func</span> : collections.abc.Callable[..., <a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, bool]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.send_reject_notifications"><code class="name">var <span class="ident">send_reject_notifications</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.source_prefix"><code class="name">var <span class="ident">source_prefix</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.summary_key_addendum"><code class="name">var <span class="ident">summary_key_addendum</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.summary_map_addendum"><code class="name">var <span class="ident">summary_map_addendum</span> : <a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, <a title="specs._types._summary.ReduceSpec" href="_summary.html#specs._types._summary.ReduceSpec">ReduceSpec</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.summary_specs_key"><code class="name">var <span class="ident">summary_specs_key</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.table_specs_key"><code class="name">var <span class="ident">table_specs_key</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.transform_specs_key"><code class="name">var <span class="ident">transform_specs_key</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.use_autocoding"><code class="name">var <span class="ident">use_autocoding</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.FacilitySpec.use_docuvision"><code class="name">var <span class="ident">use_docuvision</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="specs._types.MatchSpec"><code class="flex name class">
+<span>class <span class="ident">MatchSpec</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Spec definition for reference file dataframe matching.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>schedule_other</code></strong> :&ensp;<code>partial[DataFrameMatcher]</code></dt>
+<dd>partial function for matching
+other csvs to schedule.</dd>
+<dt><strong><code>schedule_demo</code></strong> :&ensp;<code>partial[DataFrameMatcher]</code></dt>
+<dd>partial function for matching
+demographics to schedule.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="specs._types.MatchSpec.schedule_demo"><code class="name">var <span class="ident">schedule_demo</span> : functools.partial[<a title="matchops.matcher.DataFrameMatcher" href="../../matchops/matcher.html#matchops.matcher.DataFrameMatcher">DataFrameMatcher</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.MatchSpec.schedule_other"><code class="name">var <span class="ident">schedule_other</span> : functools.partial[<a title="matchops.matcher.DataFrameMatcher" href="../../matchops/matcher.html#matchops.matcher.DataFrameMatcher">DataFrameMatcher</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="specs._types.ReduceSpec"><code class="flex name class">
+<span>class <span class="ident">ReduceSpec</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>TypedDict defining the fields required in a summary_map entry.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>reduce</code></strong> :&ensp;<code>Callable</code></dt>
+<dd>function to reduce a list of values to a single value</dd>
+<dt><strong><code>key_filters</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>if the source table key contains a value in this
+list, exclude its value from consideration.</dd>
+<dt><strong><code>value_filters</code></strong> :&ensp;<code>list[Callable]</code></dt>
+<dd>if any of these functions return True for
+for a candidate value, exclude it from consideration.</dd>
+<dt><strong><code>queries</code></strong> :&ensp;<code><a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, Callable]</code></dt>
+<dd>collect candidate values by querying the
+source table for keys that match the regex defined in the query key
+and reduce the results using the function defined in the query value.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="specs._types.ReduceSpec.key_filters"><code class="name">var <span class="ident">key_filters</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.ReduceSpec.queries"><code class="name">var <span class="ident">queries</span> : <a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, collections.abc.Callable[[list[str]], str | bool | list[typing.Any]]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.ReduceSpec.reduce"><code class="name">var <span class="ident">reduce</span> : collections.abc.Callable[[collections.abc.Sequence[typing.Any]], str | bool | list[typing.Any]] | str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.ReduceSpec.value_filters"><code class="name">var <span class="ident">value_filters</span> : list[collections.abc.Callable[..., bool]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="specs._types.SectionSpec"><code class="flex name class">
+<span>class <span class="ident">SectionSpec</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Section spec TypedDict definition.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>exact_titles</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of exact section titles to match</dd>
+<dt><strong><code>force_names</code></strong> :&ensp;<code>list[ForceNameTuple]</code></dt>
+<dd>list of tuples of check functions
+and names to force if the check function returns True when passed
+a current section's title.</dd>
+<dt><strong><code>strip_ends</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of strings to strip from the end of a
+section title.</dd>
+<dt><strong><code>heading_breaks</code></strong> :&ensp;<code>list[HBTuple]</code></dt>
+<dd>list of tuples of break strings to
+remove unwanted data from section titles.</dd>
+<dt><strong><code>sect_start_checks</code></strong> :&ensp;<code>list[Callable]</code></dt>
+<dd>list of functions to check if a
+section has started when passed the list of remaining extracted
+lines of text.</dd>
+<dt><strong><code>end_sect_latches</code></strong> :&ensp;<code>list[LTTuple]</code></dt>
+<dd>list of tuples containing a latch
+function that should return True when passed the list of remaining
+lines if the section is ending, a trigger function to end the
+section based on the current line, and an unlatch function to
+clear the "section ending" latch based on the current line.</dd>
+<dt><strong><code>sect_start_dqs</code></strong> :&ensp;<code>list[su.SectStartDisqualifier]</code></dt>
+<dd>list of
+su.SectStartDisqualifier. Disqualify section starts based on the
+currently extracting section name and the remaining extracted text.</dd>
+<dt><strong><code>line_roll_checks</code></strong> :&ensp;<code>list[su.LineRollCheck]</code></dt>
+<dd>list of LineRoleCheck tuples
+defining tests to detect and functions to correct improper line
+wrapping in the source document.</dd>
+<dt><strong><code>wrap_lines</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, search for horizontally distributed table
+layouts and move tables in the rightmost column such that they
+appear below the table in the leftmost column.</dd>
+<dt><strong><code>document_strippers</code></strong> :&ensp;<code>list[StripperTuple]</code></dt>
+<dd>list of tuples defining
+document stripper classes and their kwargs.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="specs._types.SectionSpec.document_strippers"><code class="name">var <span class="ident">document_strippers</span> : list[utilities.section_utils.StripperTuple]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SectionSpec.end_sect_latches"><code class="name">var <span class="ident">end_sect_latches</span> : list[utilities.section_utils.LTTuple]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SectionSpec.exact_titles"><code class="name">var <span class="ident">exact_titles</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SectionSpec.force_names"><code class="name">var <span class="ident">force_names</span> : list[utilities.section_utils.ForceNameTuple]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SectionSpec.heading_breaks"><code class="name">var <span class="ident">heading_breaks</span> : list[utilities.section_utils.HBTuple]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SectionSpec.line_roll_checks"><code class="name">var <span class="ident">line_roll_checks</span> : list[utilities.section_utils.LineRollCheck]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SectionSpec.sect_start_checks"><code class="name">var <span class="ident">sect_start_checks</span> : list[collections.abc.Callable[[collections.abc.Sequence[str]], bool]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SectionSpec.sect_start_dqs"><code class="name">var <span class="ident">sect_start_dqs</span> : list[utilities.section_utils.SectStartDisqualifier]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SectionSpec.strip_ends"><code class="name">var <span class="ident">strip_ends</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SectionSpec.wrap_lines"><code class="name">var <span class="ident">wrap_lines</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="specs._types.SummarySpec"><code class="flex name class">
+<span>class <span class="ident">SummarySpec</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Typed dict for required summary spec keys.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>summary_func</code></strong> :&ensp;<code>str</code></dt>
+<dd>must be a valid summary function name from TableTransformer()</dd>
+<dt><strong><code>summary_args</code></strong> :&ensp;<code><a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, Any]</code></dt>
+<dd>kwargs for summary_func</dd>
+<dt><strong><code>summary_key_addendum</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of valid output keys not appearing in summary_map</dd>
+<dt><strong><code>summary_map</code></strong> :&ensp;<code>CondenseSpec</code></dt>
+<dd>map of output keys to ReduceSpecs</dd>
+<dt><strong><code>summary_meets_claimmaker_standard</code></strong> :&ensp;<code>bool</code></dt>
+<dd>enables "claimmaker only" operations. See
+aws_s3_batch.py for more information.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="specs._types.SummarySpec.summary_args"><code class="name">var <span class="ident">summary_args</span> : <a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, typing.Any]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SummarySpec.summary_func"><code class="name">var <span class="ident">summary_func</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SummarySpec.summary_key_addendum"><code class="name">var <span class="ident">summary_key_addendum</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SummarySpec.summary_map"><code class="name">var <span class="ident">summary_map</span> : <a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, <a title="specs._types._summary.ReduceSpec" href="_summary.html#specs._types._summary.ReduceSpec">ReduceSpec</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.SummarySpec.summary_meets_claimmaker_standard"><code class="name">var <span class="ident">summary_meets_claimmaker_standard</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="specs._types.TableSpec"><code class="flex name class">
+<span>class <span class="ident">TableSpec</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>TypedDict representing args/configuration items for parsing the tables
+of a single section.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>save_full_text</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, save the full text of the table</dd>
+<dt><strong><code>split_table_columns</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of column names to split on</dd>
+<dt><strong><code>row_indent</code></strong> :&ensp;<code>int</code></dt>
+<dd>lines indented by at least this many spaces are
+appended to the list of lines in the previous table.</dd>
+<dt><strong><code>force_table_names</code></strong> :&ensp;<code>list[ForceNameTuple]</code></dt>
+<dd>list of tuples of check
+functions and names to force if the check function returns True
+when passed a current table's title.</dd>
+<dt><strong><code>rollup_cascade_reference</code></strong> :&ensp;<code>RollupCascadeManager</code></dt>
+<dd>container class
+for defining rollup/cascade operations.</dd>
+<dt><strong><code>heading_indent</code></strong> :&ensp;<code>int</code></dt>
+<dd>lines indented by exactly this many spaces are
+autmotically considered to be table headings.</dd>
+<dt><strong><code>stripped_head_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>key to use when storing data stripped from
+a table heading.</dd>
+<dt><strong><code>heading_contains</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>list of strings to check for in the
+line to detect it as a table heading.</dd>
+<dt><strong><code>start_checks</code></strong> :&ensp;<code>list[TableStartCheck]</code></dt>
+<dd>list of tuples of check
+functions for starting new tables.</dd>
+<dt><strong><code>end_checks</code></strong> :&ensp;<code>list[TableEndCheck]</code></dt>
+<dd>list of tuples of check functions
+for ending the current table.</dd>
+<dt><strong><code>interpreter</code></strong> :&ensp;<code>Callable</code></dt>
+<dd>function to interpret the table</dd>
+<dt><strong><code>interpreter_kwargs</code></strong> :&ensp;<code>SwappingInterpreterKwArgs</code></dt>
+<dd>kwargs for interpreter</dd>
+<dt><strong><code>process_residual</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, process residual text after
+removing all lines assigned to other tables.</dd>
+<dt><strong><code>heading_breaks</code></strong> :&ensp;<code>list[HBTuple]</code></dt>
+<dd>list of tuples of break strings to
+remove unwanted data from table titles. Inherited from section
+specs.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="specs._types.TableSpec.end_checks"><code class="name">var <span class="ident">end_checks</span> : list[utilities.table_utils.TableEndCheck]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.force_table_names"><code class="name">var <span class="ident">force_table_names</span> : list[utilities.section_utils.ForceNameTuple]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.heading_breaks"><code class="name">var <span class="ident">heading_breaks</span> : list[utilities.section_utils.HBTuple]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.heading_contains"><code class="name">var <span class="ident">heading_contains</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.heading_indent"><code class="name">var <span class="ident">heading_indent</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.interpreter"><code class="name">var <span class="ident">interpreter</span> : collections.abc.Callable[..., list[<a title="specs._types.dict" href="#specs._types.dict">dict</a>[str, str]] | utilities.table_utils.SubtableParser]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.interpreter_kwargs"><code class="name">var <span class="ident">interpreter_kwargs</span> : utilities.table_utils.SwappingInterpreterKwArgs</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.process_residual"><code class="name">var <span class="ident">process_residual</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.rollup_cascade_reference"><code class="name">var <span class="ident">rollup_cascade_reference</span> : <a title="rollup_cascade.manager.RollupCascadeManager" href="../../rollup_cascade/manager.html#rollup_cascade.manager.RollupCascadeManager">RollupCascadeManager</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.row_indent"><code class="name">var <span class="ident">row_indent</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.save_full_text"><code class="name">var <span class="ident">save_full_text</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.split_table_columns"><code class="name">var <span class="ident">split_table_columns</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.start_checks"><code class="name">var <span class="ident">start_checks</span> : list[utilities.table_utils.TableStartCheck]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="specs._types.TableSpec.stripped_head_key"><code class="name">var <span class="ident">stripped_head_key</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="specs" href="../index.html">specs</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="specs._types._client" href="_client.html">specs._types._client</a></code></li>
+<li><code><a title="specs._types._match" href="_match.html">specs._types._match</a></code></li>
+<li><code><a title="specs._types._section" href="_section.html">specs._types._section</a></code></li>
+<li><code><a title="specs._types._summary" href="_summary.html">specs._types._summary</a></code></li>
+<li><code><a title="specs._types._table" href="_table.html">specs._types._table</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="specs._types.ClientSpecStatic" href="#specs._types.ClientSpecStatic">ClientSpecStatic</a></code></h4>
+<ul class="">
+<li><code><a title="specs._types.ClientSpecStatic.api_secret_name" href="#specs._types.ClientSpecStatic.api_secret_name">api_secret_name</a></code></li>
+<li><code><a title="specs._types.ClientSpecStatic.db_secret_name" href="#specs._types.ClientSpecStatic.db_secret_name">db_secret_name</a></code></li>
+<li><code><a title="specs._types.ClientSpecStatic.managed_fields" href="#specs._types.ClientSpecStatic.managed_fields">managed_fields</a></code></li>
+<li><code><a title="specs._types.ClientSpecStatic.managed_fields_context_rules" href="#specs._types.ClientSpecStatic.managed_fields_context_rules">managed_fields_context_rules</a></code></li>
+<li><code><a title="specs._types.ClientSpecStatic.summary_key_addendum" href="#specs._types.ClientSpecStatic.summary_key_addendum">summary_key_addendum</a></code></li>
+<li><code><a title="specs._types.ClientSpecStatic.summary_map_addendum" href="#specs._types.ClientSpecStatic.summary_map_addendum">summary_map_addendum</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="specs._types.FacilitySpec" href="#specs._types.FacilitySpec">FacilitySpec</a></code></h4>
+<ul class="">
+<li><code><a title="specs._types.FacilitySpec.azure_secret_name" href="#specs._types.FacilitySpec.azure_secret_name">azure_secret_name</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.dest_prefix" href="#specs._types.FacilitySpec.dest_prefix">dest_prefix</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.dv_preferred_networks" href="#specs._types.FacilitySpec.dv_preferred_networks">dv_preferred_networks</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.dv_required_page_types" href="#specs._types.FacilitySpec.dv_required_page_types">dv_required_page_types</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.extract_func" href="#specs._types.FacilitySpec.extract_func">extract_func</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.facility_name" href="#specs._types.FacilitySpec.facility_name">facility_name</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.failed_prefix" href="#specs._types.FacilitySpec.failed_prefix">failed_prefix</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.file_groups" href="#specs._types.FacilitySpec.file_groups">file_groups</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.first_dos" href="#specs._types.FacilitySpec.first_dos">first_dos</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.insurance_integration_mode" href="#specs._types.FacilitySpec.insurance_integration_mode">insurance_integration_mode</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.managed_fields" href="#specs._types.FacilitySpec.managed_fields">managed_fields</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.managed_fields_context_rules" href="#specs._types.FacilitySpec.managed_fields_context_rules">managed_fields_context_rules</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.match_specs_key" href="#specs._types.FacilitySpec.match_specs_key">match_specs_key</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.max_keys" href="#specs._types.FacilitySpec.max_keys">max_keys</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.output_dir" href="#specs._types.FacilitySpec.output_dir">output_dir</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.provider_integration_mode" href="#specs._types.FacilitySpec.provider_integration_mode">provider_integration_mode</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.s3_prefix" href="#specs._types.FacilitySpec.s3_prefix">s3_prefix</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.section_specs_key" href="#specs._types.FacilitySpec.section_specs_key">section_specs_key</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.send_func" href="#specs._types.FacilitySpec.send_func">send_func</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.send_reject_notifications" href="#specs._types.FacilitySpec.send_reject_notifications">send_reject_notifications</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.source_prefix" href="#specs._types.FacilitySpec.source_prefix">source_prefix</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.summary_key_addendum" href="#specs._types.FacilitySpec.summary_key_addendum">summary_key_addendum</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.summary_map_addendum" href="#specs._types.FacilitySpec.summary_map_addendum">summary_map_addendum</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.summary_specs_key" href="#specs._types.FacilitySpec.summary_specs_key">summary_specs_key</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.table_specs_key" href="#specs._types.FacilitySpec.table_specs_key">table_specs_key</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.transform_specs_key" href="#specs._types.FacilitySpec.transform_specs_key">transform_specs_key</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.use_autocoding" href="#specs._types.FacilitySpec.use_autocoding">use_autocoding</a></code></li>
+<li><code><a title="specs._types.FacilitySpec.use_docuvision" href="#specs._types.FacilitySpec.use_docuvision">use_docuvision</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="specs._types.MatchSpec" href="#specs._types.MatchSpec">MatchSpec</a></code></h4>
+<ul class="">
+<li><code><a title="specs._types.MatchSpec.schedule_demo" href="#specs._types.MatchSpec.schedule_demo">schedule_demo</a></code></li>
+<li><code><a title="specs._types.MatchSpec.schedule_other" href="#specs._types.MatchSpec.schedule_other">schedule_other</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="specs._types.ReduceSpec" href="#specs._types.ReduceSpec">ReduceSpec</a></code></h4>
+<ul class="">
+<li><code><a title="specs._types.ReduceSpec.key_filters" href="#specs._types.ReduceSpec.key_filters">key_filters</a></code></li>
+<li><code><a title="specs._types.ReduceSpec.queries" href="#specs._types.ReduceSpec.queries">queries</a></code></li>
+<li><code><a title="specs._types.ReduceSpec.reduce" href="#specs._types.ReduceSpec.reduce">reduce</a></code></li>
+<li><code><a title="specs._types.ReduceSpec.value_filters" href="#specs._types.ReduceSpec.value_filters">value_filters</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="specs._types.SectionSpec" href="#specs._types.SectionSpec">SectionSpec</a></code></h4>
+<ul class="two-column">
+<li><code><a title="specs._types.SectionSpec.document_strippers" href="#specs._types.SectionSpec.document_strippers">document_strippers</a></code></li>
+<li><code><a title="specs._types.SectionSpec.end_sect_latches" href="#specs._types.SectionSpec.end_sect_latches">end_sect_latches</a></code></li>
+<li><code><a title="specs._types.SectionSpec.exact_titles" href="#specs._types.SectionSpec.exact_titles">exact_titles</a></code></li>
+<li><code><a title="specs._types.SectionSpec.force_names" href="#specs._types.SectionSpec.force_names">force_names</a></code></li>
+<li><code><a title="specs._types.SectionSpec.heading_breaks" href="#specs._types.SectionSpec.heading_breaks">heading_breaks</a></code></li>
+<li><code><a title="specs._types.SectionSpec.line_roll_checks" href="#specs._types.SectionSpec.line_roll_checks">line_roll_checks</a></code></li>
+<li><code><a title="specs._types.SectionSpec.sect_start_checks" href="#specs._types.SectionSpec.sect_start_checks">sect_start_checks</a></code></li>
+<li><code><a title="specs._types.SectionSpec.sect_start_dqs" href="#specs._types.SectionSpec.sect_start_dqs">sect_start_dqs</a></code></li>
+<li><code><a title="specs._types.SectionSpec.strip_ends" href="#specs._types.SectionSpec.strip_ends">strip_ends</a></code></li>
+<li><code><a title="specs._types.SectionSpec.wrap_lines" href="#specs._types.SectionSpec.wrap_lines">wrap_lines</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="specs._types.SummarySpec" href="#specs._types.SummarySpec">SummarySpec</a></code></h4>
+<ul class="">
+<li><code><a title="specs._types.SummarySpec.summary_args" href="#specs._types.SummarySpec.summary_args">summary_args</a></code></li>
+<li><code><a title="specs._types.SummarySpec.summary_func" href="#specs._types.SummarySpec.summary_func">summary_func</a></code></li>
+<li><code><a title="specs._types.SummarySpec.summary_key_addendum" href="#specs._types.SummarySpec.summary_key_addendum">summary_key_addendum</a></code></li>
+<li><code><a title="specs._types.SummarySpec.summary_map" href="#specs._types.SummarySpec.summary_map">summary_map</a></code></li>
+<li><code><a title="specs._types.SummarySpec.summary_meets_claimmaker_standard" href="#specs._types.SummarySpec.summary_meets_claimmaker_standard">summary_meets_claimmaker_standard</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="specs._types.TableSpec" href="#specs._types.TableSpec">TableSpec</a></code></h4>
+<ul class="">
+<li><code><a title="specs._types.TableSpec.end_checks" href="#specs._types.TableSpec.end_checks">end_checks</a></code></li>
+<li><code><a title="specs._types.TableSpec.force_table_names" href="#specs._types.TableSpec.force_table_names">force_table_names</a></code></li>
+<li><code><a title="specs._types.TableSpec.heading_breaks" href="#specs._types.TableSpec.heading_breaks">heading_breaks</a></code></li>
+<li><code><a title="specs._types.TableSpec.heading_contains" href="#specs._types.TableSpec.heading_contains">heading_contains</a></code></li>
+<li><code><a title="specs._types.TableSpec.heading_indent" href="#specs._types.TableSpec.heading_indent">heading_indent</a></code></li>
+<li><code><a title="specs._types.TableSpec.interpreter" href="#specs._types.TableSpec.interpreter">interpreter</a></code></li>
+<li><code><a title="specs._types.TableSpec.interpreter_kwargs" href="#specs._types.TableSpec.interpreter_kwargs">interpreter_kwargs</a></code></li>
+<li><code><a title="specs._types.TableSpec.process_residual" href="#specs._types.TableSpec.process_residual">process_residual</a></code></li>
+<li><code><a title="specs._types.TableSpec.rollup_cascade_reference" href="#specs._types.TableSpec.rollup_cascade_reference">rollup_cascade_reference</a></code></li>
+<li><code><a title="specs._types.TableSpec.row_indent" href="#specs._types.TableSpec.row_indent">row_indent</a></code></li>
+<li><code><a title="specs._types.TableSpec.save_full_text" href="#specs._types.TableSpec.save_full_text">save_full_text</a></code></li>
+<li><code><a title="specs._types.TableSpec.split_table_columns" href="#specs._types.TableSpec.split_table_columns">split_table_columns</a></code></li>
+<li><code><a title="specs._types.TableSpec.start_checks" href="#specs._types.TableSpec.start_checks">start_checks</a></code></li>
+<li><code><a title="specs._types.TableSpec.stripped_head_key" href="#specs._types.TableSpec.stripped_head_key">stripped_head_key</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

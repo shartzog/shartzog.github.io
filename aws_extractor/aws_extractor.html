@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>aws_extractor API documentation</title>
+<meta name="description" content="Manages S3 and database interactions for PDF extractor.
+Called from extract_s3.py.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>aws_extractor</code></h1>
+</header>
+<section id="section-intro">
+<p>Manages S3 and database interactions for PDF extractor.
+Called from extract_s3.py.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="aws_extractor.configure_db_from_secret"><code class="name flex">
+<span>def <span class="ident">configure_db_from_secret</span></span>(<span>client_spec: <a title="specs._types._client.ClientSpecStatic" href="specs/_types/_client.html#specs._types._client.ClientSpecStatic">ClientSpecStatic</a> | dict[str, <a title="specs._types._client.FacilitySpec" href="specs/_types/_client.html#specs._types._client.FacilitySpec">FacilitySpec</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pull connection info from AWS and connect to a ClaimMaker DB instance.</p>
+<p>Connection info is pulled from AWS secrets manager. client_spec
+setting 'db_secret_name' defines the secret to be pulled.</p>
+<h2 id="raises">Raises</h2>
+<p>SystemExit(98): Failed to retrieve the secret specified by
+'db_secret_name' from AWS
+SystemExit(99): Failed to connect to the DB using the connection
+information found in the specified secret. Raised IAOI
+(gvars.NO_DB and gvars.DISABLE_DB) == False. Otherwise, a
+warning is logged and execution is allowed to continue.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>client_spec</code></strong> :&ensp;<code>sp.ClientSpec</code></dt>
+<dd>spec for the current client selected
+from this run's client_specs object.</dd>
+</dl></div>
+</dd>
+<dt id="aws_extractor.extract_buckets"><code class="name flex">
+<span>def <span class="ident">extract_buckets</span></span>(<span>**kwargs) ‑> collections.abc.Iterator[aws_s3_batch.S3Batch]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Process all clients and facilities defined in the client_specs object
+supplied for this run.</p>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>aws_s3_bucket</code></strong> :&ensp;<code>str</code></dt>
+<dd>The source AWS S3 Bucket name.</dd>
+<dt><strong><code>no_db</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Somewhat of a misnomer as features have evolved. If true,
+the extraction is performed in a "read only" mode. SELECTs against
+DB resources ARE allowed, but writes TO the DB are NOT. S3 keys
+will be pulled but not updated or created. Defaults to False.</dd>
+<dt><strong><code>log_console</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Send all log data to the console stdout and stderr.
+Default is False.</dd>
+<dt><strong><code>log_dir</code></strong> :&ensp;<code>str</code></dt>
+<dd>If log_console is False, sets the folder where log files
+are saved. Defaults to the current working directory.</dd>
+<dt><strong><code>client_list</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>The list of client keys to process during the
+run. Optional. Defaults to all clients in the current client_specs
+object.</dd>
+<dt><strong><code>facility_list</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>The list of facility keys to process during
+the run. Optional. Defaults to all facilities for all clients
+defined in the current client_specs object.</dd>
+<dt><strong><code>client_specs</code></strong> :&ensp;<code>ClientSpecs</code></dt>
+<dd>Optional. Overrides builtin_client_specs if supplied.</dd>
+<dt><strong><code>match_specs</code></strong> :&ensp;<code>MatchSpecs</code></dt>
+<dd>Optional. Overrides builtin_match_specs if supplied.</dd>
+<dt><strong><code>section_specs</code></strong> :&ensp;<code>SectionSpecs</code></dt>
+<dd>Optional. Overrides builtin_section_specs if supplied.</dd>
+<dt><strong><code>table_specs</code></strong> :&ensp;<code>TableSpecs</code></dt>
+<dd>Optional. Overrides builtin_table_specs if supplied.</dd>
+<dt><strong><code>transform_specs</code></strong> :&ensp;<code>TransformSpecs</code></dt>
+<dd>Optional. Overrides builtin_transform_specs if supplied.</dd>
+<dt><strong><code>summary_specs</code></strong> :&ensp;<code>SummarySpecs</code></dt>
+<dd>Optional. Overrides builtin_summary_specs if supplied.</dd>
+<dt><strong><code>max_keys</code></strong> :&ensp;<code>int</code></dt>
+<dd>When set to a positive integer, sets the default for the
+maximum number of AWS S3 object keys to process per facility.
+<code>sp.FacilitySpec</code> <code>max_keys</code> settings override the value in
+"positive integer" mode. A value of <code>-1</code> triggers recursive
+operations. In this mode, batches of FacilitySpec.get('max_keys', 1000)
+S3 keys are processed in series until all keys in the facility
+S3 folder have been processed. Default is 1000, i.e. the maxiumum
+number of keys allowed in an AWS boto3 'list objects' response.</dd>
+<dt><strong><code>api_secret_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional override for all 'api_secret_name'
+client_spec entries. Used to avoid charges to clients when
+the container is executing in PROD for non-PROD purposes, e.g.
+debugging a prior production run or preloading data for a new
+client.</dd>
+<dt><strong><code>output_dir</code></strong> :&ensp;<code>str</code></dt>
+<dd>Forces debug output to save to disk at the supplied
+path. Overrides FacilitySpec setting <code>output_dir</code> for all
+facilities processed during the run. Does NOT interfere with DB or
+S3 interactions if otherwise enabled.</dd>
+<dt><strong><code>initialize</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, sets the global variables for the run and
+initializes the log file. If False, skips initialization and
+assumes that the global variables have already been set and the
+log file has already been initialized. Defaults to True.</dd>
+</dl>
+<h2 id="yields">Yields</h2>
+<dl>
+<dt><code>s3b.S3Batch</code></dt>
+<dd>A batch object for each facility processed during the run.</dd>
+</dl></div>
+</dd>
+<dt id="aws_extractor.extract_cases"><code class="name flex">
+<span>def <span class="ident">extract_cases</span></span>(<span>**kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split a single PDF into cases or process all pages under a single case
+using docuvision.</p>
+<p>Called for on demand runs triggered by uploads to the to-extract/ area
+of S3 (manual UI uploads and scanner service uploads).</p>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>aws_s3_bucket</code></strong> :&ensp;<code>str</code></dt>
+<dd>The source AWS S3 Bucket name.</dd>
+<dt><strong><code>no_db</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Somewhat of a misnomer as features have evolved. If true,
+the extraction is performed in a "read only" mode. SELECTs against
+DB resources ARE allowed, but writes TO the DB are NOT. S3 keys
+will be pulled but not updated or created. Defaults to False.
+log_console (bool): Send all log data to the console stdout and stderr.
+Default is False.</dd>
+<dt><strong><code>log_dir</code></strong> :&ensp;<code>str</code></dt>
+<dd>If log_console is False, sets the folder where log files
+are saved. Defaults to the current working directory.</dd>
+<dt><strong><code>client_specs</code></strong> :&ensp;<code>ClientSpecs</code></dt>
+<dd>Optional. Overrides builtin_client_specs if supplied.</dd>
+<dt><strong><code>section_specs</code></strong> :&ensp;<code>SectionSpecs</code></dt>
+<dd>Optional. Overrides builtin_section_specs if supplied.</dd>
+<dt><strong><code>table_specs</code></strong> :&ensp;<code>TableSpecs</code></dt>
+<dd>Optional. Overrides builtin_table_specs if supplied.</dd>
+<dt><strong><code>transform_specs</code></strong> :&ensp;<code>TransformSpecs</code></dt>
+<dd>Optional. Overrides builtin_transform_specs if supplied.</dd>
+<dt><strong><code>summary_specs</code></strong> :&ensp;<code>SummarySpecs</code></dt>
+<dd>Optional. Overrides builtin_summary_specs if supplied.</dd>
+<dt><strong><code>api_secret_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional override for all 'api_secret_name'
+client_spec entries. Used to avoid charges to clients when
+the container is executing in PROD for non-PROD purposes, e.g.
+debugging a prior production run or preloading data for a new
+client.</dd>
+</dl></div>
+</dd>
+<dt id="aws_extractor.extract_cases_failed"><code class="name flex">
+<span>def <span class="ident">extract_cases_failed</span></span>(<span>job_id: int, keys_versions: list[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>], batchargs: dict[str, typing.Any])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Clean up if a fatal error occurs during an on demand run.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>job_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>analysis_jobs.id of the placeholder case (when splitting
+by DocuVision PID) or patient case (when processing a manual
+upload) that failed.</dd>
+<dt><strong><code>keys_versions</code></strong> :&ensp;<code>list[lu.KeyVersionTuple]</code></dt>
+<dd>list of keys and versions
+that were processing when the error occurred.</dd>
+<dt><strong><code>batchargs</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>batchargs that were used to instantiate
+the S3Batch object that was processing the keys when the error
+occurred.</dd>
+</dl></div>
+</dd>
+<dt id="aws_extractor.facility_data"><code class="name flex">
+<span>def <span class="ident">facility_data</span></span>(<span>bucket: str, s3_prefix: str, max_keys: int = 1000) ‑> dict[str, list[<a title="utilities.library_utils.DateVersIsEmptyTuple" href="utilities/library_utils.html#utilities.library_utils.DateVersIsEmptyTuple">DateVersIsEmptyTuple</a>]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the list of S3 objects for the target facility from AWS S3.</p>
+<p>Permanently deletes all key versions if a "DeleteMarker" is the most recent
+version. Sets gvars.INCOMPLETE_CLIENTS and gvars.INCOMPLETE_FACILITIES if
+gvars.PROCESS_ALL_KEYS is True and the number of keys returned for the
+target facility exceeds <code>max_keys</code>.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>bucket</code></strong> :&ensp;<code>str</code></dt>
+<dd>The AWS S3 bucket name.</dd>
+<dt><strong><code>s3_prefix</code></strong> :&ensp;<code>str</code></dt>
+<dd>The prefix for the target facility.</dd>
+<dt><strong><code>max_keys</code></strong> :&ensp;<code>int</code></dt>
+<dd>The maximum number of keys to process. Defaults to 1000.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, list[lu.DateVersIsEmptyTuple]]</code></dt>
+<dd>A dict with keys corresponding
+to the s3 keys of the objects for the target facility. The values are
+a list of tuples of form (last modified date, s3 version id).
+Last modified is the first element to allow for easy sorting
+and ensures that the most recent version is always the final
+element in the returned list.</dd>
+</dl></div>
+</dd>
+<dt id="aws_extractor.facility_pdf_library"><code class="name flex">
+<span>def <span class="ident">facility_pdf_library</span></span>(<span>bucket: str, prefix: str, specs: <a title="specs._types._client.FacilitySpec" href="specs/_types/_client.html#specs._types._client.FacilitySpec">FacilitySpec</a>) ‑> tuple[dict[str, <a title="utilities.library_utils.PDFLibProto" href="utilities/library_utils.html#utilities.library_utils.PDFLibProto">PDFLibProto</a>], set[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>] | list[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>], set[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>] | list[<a title="utilities.library_utils.KeyVersionTuple" href="utilities/library_utils.html#utilities.library_utils.KeyVersionTuple">KeyVersionTuple</a>]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calls <code><a title="aws_extractor.facility_data" href="#aws_extractor.facility_data">facility_data()</a></code> and iterates over resulting dict to pull the most
+recent PDF version from S3.</p>
+<p>(1) The filename of each S3 key is tested to ensure it conforms to the file
+naming conventions defined in the FacilitySpec of the target facility
+and (2) filename metadata is collected and stored in the resulting PDFLibProto
+objects meta properties.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>bucket</code></strong> :&ensp;<code>str</code></dt>
+<dd>The S3 bucket name.</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code></dt>
+<dd>The prefix for the S3 keys.</dd>
+<dt><strong><code>specs</code></strong> :&ensp;<code>sp.FacilitySpec</code></dt>
+<dd>The FacilitySpec for the target facility.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>A tuple containing:</dd>
+</dl>
+<pre><code>    - pdf_library (dict[str, lu.PDFLibProto]): A dictionary with keys corresponding to S3 keys and
+      values of form {'body': pdf bytes, 'meta': [dict of filename metadata]}.
+    - keys_versions (lu.KeysVersions): A list of KeyVersionTuples for all objects having a
+      filename matching a *_test_expr defined from the FacilitySpec.
+    - bad_keys_versions (lu.KeysVersions): A list of KeyVersionTuples that failed to match
+      any of the FacilitySpec test expressions.
+</code></pre></div>
+</dd>
+<dt id="aws_extractor.get_facility_batchargs"><code class="name flex">
+<span>def <span class="ident">get_facility_batchargs</span></span>(<span>client: str, facility: str, raw_specs: Union[<a title="specs._types._client.FacilitySpec" href="specs/_types/_client.html#specs._types._client.FacilitySpec">FacilitySpec</a>, Any]) ‑> aws_s3_batch.S3BatchArgs</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create the S3BatchArgs for this facility using the global template
+as a base and overriding with facility specific settings.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>client</code></strong> :&ensp;<code>str</code></dt>
+<dd>The client currently extracting.</dd>
+<dt><strong><code>facility</code></strong> :&ensp;<code>str</code></dt>
+<dd>The facility currently extracting.</dd>
+<dt><strong><code>raw_specs</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>The FacilitySpec for the currently extracting
+facility.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>s3b.S3BatchArgs</code></dt>
+<dd>The batch arguments for the specified facility.</dd>
+</dl></div>
+</dd>
+<dt id="aws_extractor.send_error_notification"><code class="name flex">
+<span>def <span class="ident">send_error_notification</span></span>(<span>client: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>If error notifications were generated, create a notify.Notifier instance
+and send an email summary of the errors via AWS SES.</p>
+<p>Requires a ClaimMaker DB instance. Not supported for "s3 only" operations,
+e.g. revenue integrity or licensee containers.</p></div>
+</dd>
+<dt id="aws_extractor.set_global_batchargs"><code class="name flex">
+<span>def <span class="ident">set_global_batchargs</span></span>(<span>**kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a global S3BatchArgs template to use for all facilities.</p>
+<h2 id="kwargs">KwArgs</h2>
+<p>See extract_buckets() and extract_cases() KwArgs documentation.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="aws_extractor.configure_db_from_secret" href="#aws_extractor.configure_db_from_secret">configure_db_from_secret</a></code></li>
+<li><code><a title="aws_extractor.extract_buckets" href="#aws_extractor.extract_buckets">extract_buckets</a></code></li>
+<li><code><a title="aws_extractor.extract_cases" href="#aws_extractor.extract_cases">extract_cases</a></code></li>
+<li><code><a title="aws_extractor.extract_cases_failed" href="#aws_extractor.extract_cases_failed">extract_cases_failed</a></code></li>
+<li><code><a title="aws_extractor.facility_data" href="#aws_extractor.facility_data">facility_data</a></code></li>
+<li><code><a title="aws_extractor.facility_pdf_library" href="#aws_extractor.facility_pdf_library">facility_pdf_library</a></code></li>
+<li><code><a title="aws_extractor.get_facility_batchargs" href="#aws_extractor.get_facility_batchargs">get_facility_batchargs</a></code></li>
+<li><code><a title="aws_extractor.send_error_notification" href="#aws_extractor.send_error_notification">send_error_notification</a></code></li>
+<li><code><a title="aws_extractor.set_global_batchargs" href="#aws_extractor.set_global_batchargs">set_global_batchargs</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

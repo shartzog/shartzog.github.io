@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>matchops API documentation</title>
+<meta name="description" content="initialize matchops package">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Package <code>matchops</code></h1>
+</header>
+<section id="section-intro">
+<p>initialize matchops package</p>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="matchops.constructor" href="constructor.html">matchops.constructor</a></code></dt>
+<dd>
+<div class="desc"><p>module containing generic resources for constructing dataframes
+used in data operations.</p></div>
+</dd>
+<dt><code class="name"><a title="matchops.constructor_tools" href="constructor_tools.html">matchops.constructor_tools</a></code></dt>
+<dd>
+<div class="desc"><p>generic specs and func defs for data matching operations</p></div>
+</dd>
+<dt><code class="name"><a title="matchops.matcher" href="matcher.html">matchops.matcher</a></code></dt>
+<dd>
+<div class="desc"><p>module containing generic resources for constructing dataframes
+used in data operations.</p></div>
+</dd>
+<dt><code class="name"><a title="matchops.standard_matchers" href="standard_matchers.html">matchops.standard_matchers</a></code></dt>
+<dd>
+<div class="desc"><p>Base matchers for use with standard claimmaker data structures</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="matchops.AddColumn"><code class="flex name class">
+<span>class <span class="ident">AddColumn</span></span>
+<span>(</span><span>new_column_name: str, source_columns: list[str], apply_function: collections.abc.Callable[..., str], axis: int = 1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>defines a new column built from existing columns in a dataframe
+using the .apply() pandas function with axis=1.</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="matchops.AddColumn.apply_function"><code class="name">var <span class="ident">apply_function</span> : collections.abc.Callable[..., str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.AddColumn.axis"><code class="name">var <span class="ident">axis</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.AddColumn.new_column_name"><code class="name">var <span class="ident">new_column_name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.AddColumn.source_columns"><code class="name">var <span class="ident">source_columns</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="matchops.DataFrameConstructor"><code class="flex name class">
+<span>class <span class="ident">DataFrameConstructor</span></span>
+<span>(</span><span>constructor: collections.abc.Callable[..., pandas.core.frame.DataFrame] = &lt;function read_csv&gt;, converters: dict[str, collections.abc.Callable[..., str]] = &lt;factory&gt;, add_columns: list[<a title="matchops.constructor.AddColumn" href="constructor.html#matchops.constructor.AddColumn">AddColumn</a>] = &lt;factory&gt;, kwargs: dict[str, typing.Any] = &lt;factory&gt;, post_process: collections.abc.Callable[[pandas.core.frame.DataFrame], pandas.core.frame.DataFrame] | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>stores pandas methods, arguments, and data transformations required
+to construct dataframes from arbitrary datasources from a common api.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>constructor</code></strong> :&ensp;<code>Callable[&hellip;, pd.DataFrame]</code></dt>
+<dd>pandas method used to
+construct the dataframe</dd>
+<dt><strong><code>converters</code></strong> :&ensp;<code>dict[str, Callable[&hellip;, str]]</code></dt>
+<dd>dictionary of column
+names and functions to apply to the column values during
+construction.</dd>
+<dt><strong><code>add_columns</code></strong> :&ensp;<code>list[<a title="matchops.AddColumn" href="#matchops.AddColumn">AddColumn</a>]</code></dt>
+<dd>list of AddColumn dataclasses
+defining new columns to be added to the dataframe.</dd>
+<dt><strong><code>kwargs</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>keyword arguments passed to constructor().</dd>
+<dt><strong><code>post_process</code></strong> :&ensp;<code>Callable[[pd.DataFrame], pd.DataFrame] | None</code></dt>
+<dd>function
+to apply to the dataframe after construction.</dd>
+</dl></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="matchops.DataFrameConstructor.add_columns"><code class="name">var <span class="ident">add_columns</span> : list[<a title="matchops.constructor.AddColumn" href="constructor.html#matchops.constructor.AddColumn">AddColumn</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameConstructor.converters"><code class="name">var <span class="ident">converters</span> : dict[str, collections.abc.Callable[..., str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameConstructor.kwargs"><code class="name">var <span class="ident">kwargs</span> : dict[str, typing.Any]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameConstructor.post_process"><code class="name">var <span class="ident">post_process</span> : collections.abc.Callable[[pandas.core.frame.DataFrame], pandas.core.frame.DataFrame] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="matchops.DataFrameConstructor.get_frame"><code class="name flex">
+<span>def <span class="ident">get_frame</span></span>(<span>self, data: Any, *, static_cols: collections.abc.Mapping[str, str] | None = None, reqd: collections.abc.Sequence[str] = ()) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Construct a dataframe using the supplied data</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>Any</code></dt>
+<dd>data to be passed to constructor</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>static_cols</code></strong></dt>
+<dd>a mapping representing a name and static value to be
+added as a column to the dataframe</dd>
+<dt><strong><code>reqd</code></strong></dt>
+<dd>list of column names that must be present in the dataframe.
+if not present, add the column with a default value of "".</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="matchops.DataFrameMatcher"><code class="flex name class">
+<span>class <span class="ident">DataFrameMatcher</span></span>
+<span>(</span><span>left_source: Any = b'', left_constructor: <a title="matchops.constructor.DataFrameConstructor" href="constructor.html#matchops.constructor.DataFrameConstructor">DataFrameConstructor</a> = &lt;factory&gt;, left_static_cols: collections.abc.Mapping[str, str] = &lt;factory&gt;, right_source: Any = b'', right_constructor: <a title="matchops.constructor.DataFrameConstructor" href="constructor.html#matchops.constructor.DataFrameConstructor">DataFrameConstructor</a> = &lt;factory&gt;, right_static_cols: collections.abc.Mapping[str, str] = &lt;factory&gt;, joins: list[<a title="matchops.matcher.JoinSpec" href="matcher.html#matchops.matcher.JoinSpec">JoinSpec</a>] = &lt;factory&gt;, dq_not_match_cols: list[tuple[str, str]] = &lt;factory&gt;, dq_on_match_cols: list[tuple[str, str]] = &lt;factory&gt;, output_index: list[str] = &lt;factory&gt;, output_mapping: collections.abc.Mapping[str, str] = &lt;factory&gt;, sort_ascending: bool = True, keep_unmatched: bool = True, log_unmatched: bool = False, log_duplicates: bool = False, matcher_type: str = 'dataframe_matcher', output_dir: str = '')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Settings and functions required to process a facility schedule and
+match it to data found in a demographics export and the data extracted
+from the PDFs</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>left_source</code></strong> :&ensp;<code>io.BytesIO, bytes,</code> or <code>str</code></dt>
+<dd>source data for left (primary)
+dataframe. All types are converted to io.BytesIO and passed to
+left_construtor to be loaded by pandas</dd>
+<dt><strong><code>left_constructor</code></strong> :&ensp;<code>DataFrameConstrutor</code></dt>
+<dd>DataFrameConstructor instance
+defining pandas loading routine and data transformations for the
+left_source.</dd>
+<dt><strong><code>left_static_cols</code></strong> :&ensp;<code>Mapping[str, str]</code></dt>
+<dd>a mapping representing a name
+and static value to be added as a column to left (primary) dataframe</dd>
+<dt><strong><code>right_source</code></strong> :&ensp;<code>io.BytesIO, bytes,</code> or <code>str</code></dt>
+<dd>source data for left (matching)
+dataframe. All types are converted to io.BytesIO and passed to
+right_constructor to be loaded by pandas</dd>
+<dt><strong><code>right_constructor</code></strong> :&ensp;<code>DataFrameConstrutor</code></dt>
+<dd>DataFrameConstructor instance
+defining pandas loading routine and data transformations for the
+right_source.</dd>
+<dt><strong><code>right_static_cols</code></strong> :&ensp;<code>Mapping[str, str]</code></dt>
+<dd>a mapping representing a name
+and static value to be added as a column to right (secondary) df</dd>
+<dt><strong><code>joins</code></strong> :&ensp;<code>list[<a title="matchops.JoinSpec" href="#matchops.JoinSpec">JoinSpec</a>]</code></dt>
+<dd>list of successive join operations to call in
+sequence until all rows in left have been matched to a row in right.</dd>
+<dt><strong><code>dq_not_match_cols</code></strong> :&ensp;<code>list[tuple[str, str]]</code></dt>
+<dd>if columns are populated for
+both left and right, the values must also match for a join to occur.</dd>
+<dt><strong><code>dq_on_match_cols</code></strong> :&ensp;<code>list[tuple[str, str]]</code></dt>
+<dd>reverse of above, i.e. drop
+the join if either column is NOT populated or values match.</dd>
+<dt><strong><code>output_index</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>column or columns used to construct the index
+of the output dataframe</dd>
+<dt><strong><code>output_mapping</code></strong> :&ensp;<code>Mapping[str, list[str]]</code></dt>
+<dd>default={}, optional mapping
+applied when converting the dataframe output to a dictionary.
+(See to_dict() below).
+Entries should be of form:
+Key:
+column name from output dataframe
+Value:
+list of keys in the final dict in which the column
+value will be stored.</dd>
+<dt><strong><code>sort_ascending</code></strong> :&ensp;<code>bool</code></dt>
+<dd>default=True; sort output by index in ascending
+order. sort will be descending if False is passed.</dd>
+<dt><strong><code>keep_unmatched</code></strong> :&ensp;<code>bool</code></dt>
+<dd>default=True; if true, merge the remaining
+records in left dataframe with the output dataframe and populate
+nan values with "".
+If false, do not include unmatched records
+in output.</dd>
+<dt><strong><code>log_unmatched</code></strong> :&ensp;<code>bool</code></dt>
+<dd>default=False; if true, save a dictionary of
+all unmatched records to the log.
+Otherwise, only print the index
+for all unmatched records.</dd>
+<dt><strong><code>log_duplicates</code></strong> :&ensp;<code>bool</code></dt>
+<dd>default=False; if true, save a dictionary of
+duplicate records to the log.
+Otherwise, print a list of
+duplicate indices.</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>left</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>primary dataframe. when a row in left is
+matched with a row in right the result is stored in output and
+the original row is removed from left.
+this process continues
+until all rows from left have been matched or all defined joins
+have been performed.</dd>
+<dt><strong><code>right</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>matching dataframe. source data that is
+being matched with entries in left.</dd>
+<dt><strong><code>duplicates</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>dataframe containing row data for
+duplicated indices in output.</dd>
+<dt><strong><code>output</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>joined output dataframe</dd>
+</dl></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="matchops.DataFrameMatcher.dq_not_match_cols"><code class="name">var <span class="ident">dq_not_match_cols</span> : list[tuple[str, str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.dq_on_match_cols"><code class="name">var <span class="ident">dq_on_match_cols</span> : list[tuple[str, str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.joins"><code class="name">var <span class="ident">joins</span> : list[<a title="matchops.matcher.JoinSpec" href="matcher.html#matchops.matcher.JoinSpec">JoinSpec</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.keep_unmatched"><code class="name">var <span class="ident">keep_unmatched</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.left_constructor"><code class="name">var <span class="ident">left_constructor</span> : <a title="matchops.constructor.DataFrameConstructor" href="constructor.html#matchops.constructor.DataFrameConstructor">DataFrameConstructor</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.left_source"><code class="name">var <span class="ident">left_source</span> : Any</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.left_static_cols"><code class="name">var <span class="ident">left_static_cols</span> : collections.abc.Mapping[str, str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.log_duplicates"><code class="name">var <span class="ident">log_duplicates</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.log_unmatched"><code class="name">var <span class="ident">log_unmatched</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.matcher_type"><code class="name">var <span class="ident">matcher_type</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.output_dir"><code class="name">var <span class="ident">output_dir</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.output_index"><code class="name">var <span class="ident">output_index</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.output_mapping"><code class="name">var <span class="ident">output_mapping</span> : collections.abc.Mapping[str, str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.right_constructor"><code class="name">var <span class="ident">right_constructor</span> : <a title="matchops.constructor.DataFrameConstructor" href="constructor.html#matchops.constructor.DataFrameConstructor">DataFrameConstructor</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.right_source"><code class="name">var <span class="ident">right_source</span> : Any</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.right_static_cols"><code class="name">var <span class="ident">right_static_cols</span> : collections.abc.Mapping[str, str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.sort_ascending"><code class="name">var <span class="ident">sort_ascending</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="matchops.DataFrameMatcher.as_bytesio"><code class="name flex">
+<span>def <span class="ident">as_bytesio</span></span>(<span>source: _io.BytesIO | bytes | str) ‑> _io.BytesIO</span>
+</code></dt>
+<dd>
+<div class="desc"><p>convert all various source formats to io.BytesIO</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="matchops.DataFrameMatcher.match_on"><code class="name flex">
+<span>def <span class="ident">match_on</span></span>(<span>self, join_spec: <a title="matchops.matcher.JoinSpec" href="matcher.html#matchops.matcher.JoinSpec">JoinSpec</a>) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+<dd>
+<div class="desc"><p>set indices and perform join on left and right dataframes
+returning a dataframe of successfully matched records, and removing
+all successfully matched records from the left frame.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>join_spec</code></strong> :&ensp;<code><a title="matchops.JoinSpec" href="#matchops.JoinSpec">JoinSpec</a></code></dt>
+<dd>dataclass object with columns and join type</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>pd.DataFrame</code></dt>
+<dd>joined dataframe</dd>
+</dl></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self, valid_keys: collections.abc.Sequence[str] | None = None) ‑> dict[str, dict[str, utilities.v_str.vStr]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>convert output dataframe to dictionary.</p></div>
+</dd>
+<dt id="matchops.DataFrameMatcher.to_json"><code class="name flex">
+<span>def <span class="ident">to_json</span></span>(<span>self, valid_keys: str | None = None) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>convert output dataframe to json saving a copy to path if supplied.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="matchops.JoinSpec"><code class="flex name class">
+<span>class <span class="ident">JoinSpec</span></span>
+<span>(</span><span>left_columns: list[str], right_columns: list[str] = &lt;factory&gt;, join_type: Literal['left', 'right', 'inner', 'outer'] = 'inner', right_suffix: str = '_RIGHT', joins_formatters: list[collections.abc.Callable[[str], str]] = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines a list of columns from a left dataframe and a list of
+columns from a right dataframe that are to be used to join
+the two.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>left_columns</code></strong></dt>
+<dd>list of participating column names in the left dataframe</dd>
+<dt><strong><code>right_columns</code></strong> :&ensp;<code>optional</code></dt>
+<dd>list of participating column names in the
+right dataframe. If not supplied, defaults to left_columns. If
+supplied, left_columns and right_columns MUST be of equal length.</dd>
+<dt><strong><code>join_type</code></strong></dt>
+<dd>"left", "right", "inner", or "outer". Default is "inner".</dd>
+<dt><strong><code>right_suffix</code></strong></dt>
+<dd>text appended to right column name in join result when
+the original column name exists in both left and right.</dd>
+<dt><strong><code>joins_formatters</code></strong></dt>
+<dd>list of callables for reformatting index values
+prior to performing join operation.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>if length of left_columns != length of supplied right_columns
+OR length of left columns != length of supplied joins_formatters.</dd>
+</dl></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="matchops.JoinSpec.join_type"><code class="name">var <span class="ident">join_type</span> : Literal['left', 'right', 'inner', 'outer']</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.JoinSpec.joins_formatters"><code class="name">var <span class="ident">joins_formatters</span> : list[collections.abc.Callable[[str], str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.JoinSpec.left_columns"><code class="name">var <span class="ident">left_columns</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.JoinSpec.right_columns"><code class="name">var <span class="ident">right_columns</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="matchops.JoinSpec.right_suffix"><code class="name">var <span class="ident">right_suffix</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="matchops.constructor" href="constructor.html">matchops.constructor</a></code></li>
+<li><code><a title="matchops.constructor_tools" href="constructor_tools.html">matchops.constructor_tools</a></code></li>
+<li><code><a title="matchops.matcher" href="matcher.html">matchops.matcher</a></code></li>
+<li><code><a title="matchops.standard_matchers" href="standard_matchers.html">matchops.standard_matchers</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="matchops.AddColumn" href="#matchops.AddColumn">AddColumn</a></code></h4>
+<ul class="">
+<li><code><a title="matchops.AddColumn.apply_function" href="#matchops.AddColumn.apply_function">apply_function</a></code></li>
+<li><code><a title="matchops.AddColumn.axis" href="#matchops.AddColumn.axis">axis</a></code></li>
+<li><code><a title="matchops.AddColumn.new_column_name" href="#matchops.AddColumn.new_column_name">new_column_name</a></code></li>
+<li><code><a title="matchops.AddColumn.source_columns" href="#matchops.AddColumn.source_columns">source_columns</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="matchops.DataFrameConstructor" href="#matchops.DataFrameConstructor">DataFrameConstructor</a></code></h4>
+<ul class="">
+<li><code><a title="matchops.DataFrameConstructor.add_columns" href="#matchops.DataFrameConstructor.add_columns">add_columns</a></code></li>
+<li><code><a title="matchops.DataFrameConstructor.converters" href="#matchops.DataFrameConstructor.converters">converters</a></code></li>
+<li><code><a title="matchops.DataFrameConstructor.get_frame" href="#matchops.DataFrameConstructor.get_frame">get_frame</a></code></li>
+<li><code><a title="matchops.DataFrameConstructor.kwargs" href="#matchops.DataFrameConstructor.kwargs">kwargs</a></code></li>
+<li><code><a title="matchops.DataFrameConstructor.post_process" href="#matchops.DataFrameConstructor.post_process">post_process</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="matchops.DataFrameMatcher" href="#matchops.DataFrameMatcher">DataFrameMatcher</a></code></h4>
+<ul class="two-column">
+<li><code><a title="matchops.DataFrameMatcher.as_bytesio" href="#matchops.DataFrameMatcher.as_bytesio">as_bytesio</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.dq_not_match_cols" href="#matchops.DataFrameMatcher.dq_not_match_cols">dq_not_match_cols</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.dq_on_match_cols" href="#matchops.DataFrameMatcher.dq_on_match_cols">dq_on_match_cols</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.joins" href="#matchops.DataFrameMatcher.joins">joins</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.keep_unmatched" href="#matchops.DataFrameMatcher.keep_unmatched">keep_unmatched</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.left_constructor" href="#matchops.DataFrameMatcher.left_constructor">left_constructor</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.left_source" href="#matchops.DataFrameMatcher.left_source">left_source</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.left_static_cols" href="#matchops.DataFrameMatcher.left_static_cols">left_static_cols</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.log_duplicates" href="#matchops.DataFrameMatcher.log_duplicates">log_duplicates</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.log_unmatched" href="#matchops.DataFrameMatcher.log_unmatched">log_unmatched</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.match_on" href="#matchops.DataFrameMatcher.match_on">match_on</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.matcher_type" href="#matchops.DataFrameMatcher.matcher_type">matcher_type</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.output_dir" href="#matchops.DataFrameMatcher.output_dir">output_dir</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.output_index" href="#matchops.DataFrameMatcher.output_index">output_index</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.output_mapping" href="#matchops.DataFrameMatcher.output_mapping">output_mapping</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.right_constructor" href="#matchops.DataFrameMatcher.right_constructor">right_constructor</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.right_source" href="#matchops.DataFrameMatcher.right_source">right_source</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.right_static_cols" href="#matchops.DataFrameMatcher.right_static_cols">right_static_cols</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.sort_ascending" href="#matchops.DataFrameMatcher.sort_ascending">sort_ascending</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.to_dict" href="#matchops.DataFrameMatcher.to_dict">to_dict</a></code></li>
+<li><code><a title="matchops.DataFrameMatcher.to_json" href="#matchops.DataFrameMatcher.to_json">to_json</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="matchops.JoinSpec" href="#matchops.JoinSpec">JoinSpec</a></code></h4>
+<ul class="">
+<li><code><a title="matchops.JoinSpec.join_type" href="#matchops.JoinSpec.join_type">join_type</a></code></li>
+<li><code><a title="matchops.JoinSpec.joins_formatters" href="#matchops.JoinSpec.joins_formatters">joins_formatters</a></code></li>
+<li><code><a title="matchops.JoinSpec.left_columns" href="#matchops.JoinSpec.left_columns">left_columns</a></code></li>
+<li><code><a title="matchops.JoinSpec.right_columns" href="#matchops.JoinSpec.right_columns">right_columns</a></code></li>
+<li><code><a title="matchops.JoinSpec.right_suffix" href="#matchops.JoinSpec.right_suffix">right_suffix</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

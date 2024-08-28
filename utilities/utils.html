@@ -1,0 +1,1373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>utilities.utils API documentation</title>
+<meta name="description" content="Utiltily functions with global scope">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>utilities.utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Utiltily functions with global scope</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="utilities.utils.as_date"><code class="name flex">
+<span>def <span class="ident">as_date</span></span>(<span>str_or_dt: datetime.date | datetime.datetime | str, date_only=False, as_dt=False, futr=False, warn=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert a date, datetime, or string into a formatted date string or datetime object.</p>
+<p>This function converts the input <code>str_or_dt</code> into a date string formatted according
+to <code>gvars.DATE_FORMAT</code>. If <code>date_only</code> is True, it returns only the date part with
+'00:00:00' as the time. If <code>as_dt</code> is True, it returns a datetime object instead
+of a string. If the input cannot be converted, it returns an empty string and logs
+a warning if <code>warn</code> is True. It also handles future dates by adjusting them if
+<code>futr</code> is False.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>str_or_dt</code></strong> :&ensp;<code>date | datetime | str</code></dt>
+<dd>The input date, datetime, or string to convert.</dd>
+<dt><strong><code>date_only</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If True, returns only the date part. Defaults to False.</dd>
+<dt><strong><code>as_dt</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If True, returns a datetime object. Defaults to False.</dd>
+<dt><strong><code>futr</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If False, adjusts future dates to be within the past 100 years.
+Defaults to False.</dd>
+<dt><strong><code>warn</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If True, logs a warning when conversion fails. Defaults to True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str | datetime</code></dt>
+<dd>The formatted date string or datetime object, or an empty string if
+conversion fails.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; as_date(&quot;2020-12-31T23:59&quot;)
+'2020-12-31 23:59:00'
+&gt;&gt;&gt; as_date(&quot;2020-12-31&quot;, date_only=True)
+'2020-12-31'
+&gt;&gt;&gt; as_date(&quot;2020-12-31&quot;, as_dt=True)
+datetime.datetime(2020, 12, 31, 0, 0)
+&gt;&gt;&gt; as_date(&quot;not a date&quot;)
+''
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.as_name"><code class="name flex">
+<span>def <span class="ident">as_name</span></span>(<span>name_string: str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a> | list[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]) ‑> <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns name_string formatted as a name via the nameparser.HumanName class.</p>
+<p>If name_string is passed as a list, call as_name() recursively on each element
+and return the most frequent as_name() result.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name_string</code></strong> :&ensp;<code>vStr | str | list[str | vStr]</code></dt>
+<dd>The input name string or list of
+name strings to format.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>vStr</code></dt>
+<dd>The formatted name string.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; as_name(&quot;Primary: John Doe&quot;)
+'DOE, JOHN'
+&gt;&gt;&gt; as_name([&quot;John Doe&quot;, &quot;Jane Smith&quot;, &quot;John Doe&quot;])
+'DOE, JOHN'
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.as_phone"><code class="name flex">
+<span>def <span class="ident">as_phone</span></span>(<span>phone_string: str | list[str]) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert an input str to international format or return an empty string if invalid.</p>
+<p>If a list is supplied, returns the most frequently occuring successfully converted
+value after converting each element individually.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>phone_string</code></strong> :&ensp;<code>str | list[str]</code></dt>
+<dd>The input phone number string or list of
+phone number strings to process.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The phone number in standard international format, or an empty string
+if the input is invalid.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; as_phone(&quot;123-456-7890&quot;)  # this is NOT a valid US phone number
+''
+&gt;&gt;&gt; as_phone(&quot;843-563-7890&quot;)  # this IS a valid US phone number
+'+1 843-563-7890'
+&gt;&gt;&gt; as_phone([&quot;123-456-7890&quot;, &quot;123-456-7890&quot;, &quot;843-563-7890&quot;])
+'+1 843-563-7890'
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.as_time"><code class="name flex">
+<span>def <span class="ident">as_time</span></span>(<span>time_str: datetime.datetime | str, default_date: str = '', with_date: bool = True, strict: bool = False) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Format time info in the input to standard hh24:mm format, e.g. 19:05. Includes
+the date in the output by default if such is present.</p>
+<p>Use <code><a title="utilities.utils.has_time" href="#utilities.utils.has_time">has_time()</a></code> (<strong>not this function</strong>) to determine if a string contains time info.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>time_str</code></strong></dt>
+<dd>time string to format</dd>
+<dt><strong><code>with_date</code></strong></dt>
+<dd>include date in output. Default True.</dd>
+<dt><strong><code>default_date</code></strong> :&ensp;<code>str</code></dt>
+<dd>date to use if time_str does not include a date.
+Overridden by gvars.DEFAULT_DATE if no value is supplied.</dd>
+<dt><strong><code>strict</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if True, return empty string if default_date is falsy
+and time_str does not include a date. Default is False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>YYYY-MM-DD hh24:mm if with_date==True and time_str includes a date,
+hh24:mm if with_date=False or time_str does not include a date, and
+an empty string if time_str does not contain time data at all.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; as_time(&quot;2020-12-31T23:59&quot;)
+'2020-12-31 23:59'
+&gt;&gt;&gt; as_time(&quot;23:59&quot;, default_date=&quot;2020-12-31&quot;)
+'2020-12-31 23:59'
+&gt;&gt;&gt; as_time(&quot;23:59&quot;, with_date=False)
+'23:59'
+&gt;&gt;&gt; as_time(&quot;not a time&quot;)
+''
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.check_indent"><code class="name flex">
+<span>def <span class="ident">check_indent</span></span>(<span>line: str | collections.abc.Sequence[str], has_indent: int, strict: bool) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if a line is indented by a specified number of characters.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>line</code></strong> :&ensp;<code>str | Sequence[str]</code></dt>
+<dd>The input line or sequence of lines to check.</dd>
+<dt><strong><code>has_indent</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of characters to check for indentation.</dd>
+<dt><strong><code>strict</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, checks for exact indentation. If False, checks for
+at least the specified indentation.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the line meets the indentation criteria, False otherwise.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; check_indent(&quot;    indented line&quot;, 4, True)
+True
+&gt;&gt;&gt; check_indent(&quot;      indented line&quot;, 4, False)
+True
+&gt;&gt;&gt; check_indent(&quot;  indented line&quot;, 4, True)
+False
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.check_start"><code class="name flex">
+<span>def <span class="ident">check_start</span></span>(<span>line: str | collections.abc.Sequence[str], has_start: str, strict: bool) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if a line starts with a specified string, with optional leading spaces.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>line</code></strong> :&ensp;<code>str | Sequence[str]</code></dt>
+<dd>The input line or sequence of lines to check.</dd>
+<dt><strong><code>has_start</code></strong> :&ensp;<code>str</code></dt>
+<dd>The string to check for at the start of the line.</dd>
+<dt><strong><code>strict</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, checks for an exact match at the start. If False,
+allows additional leading spaces before the start string.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the line starts with the specified string, False otherwise.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; check_start(&quot;    start of line&quot;, &quot;start&quot;, False)
+True
+&gt;&gt;&gt; check_start(&quot;start of line&quot;, &quot;start&quot;, True)
+True
+&gt;&gt;&gt; check_start(&quot;    start of line&quot;, &quot;start&quot;, True)
+False
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.close_log"><code class="name flex">
+<span>def <span class="ident">close_log</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>write buffered log data to log file on disk.</p></div>
+</dd>
+<dt id="utilities.utils.columns"><code class="name flex">
+<span>def <span class="ident">columns</span></span>(<span>lines: list[str], min_rows: int = 2, min_split_spaces: int = 1, **kwargs) ‑> list[list[str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Segment a list of lines of text representing a table into logical columns.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>A list of strings representing the rows of a table.</dd>
+<dt><strong><code>min_rows</code></strong> :&ensp;<code>int</code></dt>
+<dd>Optional. Minimum number of rows to consider for a page break.
+Defaults to 2.</dd>
+<dt><strong><code>min_split_spaces</code></strong> :&ensp;<code>int</code></dt>
+<dd>Optional. Minimum number of contiguous spaces to
+consider for a column split. Defaults to 1.</dd>
+</dl>
+<h2 id="kwargs">KwArgs</h2>
+<dl>
+<dt><strong><code>force_page_breaks</code></strong> :&ensp;<code>list[Callable[[str], bool]]</code></dt>
+<dd>Optional. List of functions
+to which each line is passed. If any returns True, parse lines from that
+point forward as an independent area in the table.</dd>
+<dt><strong><code>debug</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. Enable debug logging. Defaults to False.</dd>
+<dt><strong><code>min_column_width</code></strong> :&ensp;<code>int</code></dt>
+<dd>Optional. Minimum width of columns. Defaults to 5.</dd>
+<dt><strong><code>min_val_length</code></strong> :&ensp;<code>int</code></dt>
+<dd>Optional. Alias for <code>min_column_width</code>.</dd>
+<dt><strong><code>split_table_columns</code></strong> :&ensp;<code>list</code></dt>
+<dd>Optional. List of predefined column names that
+should not be 'munged' when condensing the output to the header columns.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[list[str]]</code></dt>
+<dd>A list of lists, where each inner list represents a row with
+its columns split appropriately.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     ' COL1        COL2        COL3        COL4',
+...     ' VALUE1-1   VALUE2-1    VALUE3-1    VALUE4-1',
+...     'VAL1-2      VAL2-2     VAL3-2        VAL4-2',
+... ]
+&gt;&gt;&gt; columns(lines)
+[['COL1', 'COL2', 'COL3', 'COL4'],
+ ['VALUE1-1', 'VALUE2-1', 'VALUE3-1', 'VALUE4-1'],
+ ['VAL1-2', 'VAL2-2', 'VAL3-2', 'VAL4-2']]
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.condense_to_headings"><code class="name flex">
+<span>def <span class="ident">condense_to_headings</span></span>(<span>raw_vals_list: list[list[str]], split_cols: list[str] | None = None) ‑> list[list[str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Combine values for which the column header is empty with the previous column value.</p>
+<p>This function processes a list of rows, combining values in columns where the
+header is an empty string with the previous column's value. It then removes the
+columns with empty headers. This is useful for condensing tables where values
+that contain multiple spaces extend beyond their respective column heading.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>raw_vals_list</code></strong> :&ensp;<code>list[list[str]]</code></dt>
+<dd>A list of rows, where each row is a list of
+column values.</dd>
+<dt><strong><code>split_cols</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>Optional. A list of predefined column names used to
+identify additional header rows in wrapped table formats.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[list[str]]</code></dt>
+<dd>A list of rows with condensed column values and headers.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; raw_vals_list = [
+...     ['heading1', '', 'heading2', '', 'heading3'],
+...     ['value1-1', 'continued', 'value2-1', 'continued', 'value3-1'],
+...     ['value1-2', '', 'value2-2', '', 'value3-2'],
+... ]
+&gt;&gt;&gt; split_cols = []
+&gt;&gt;&gt; condense_to_headings(raw_vals_list, split_cols)
+[['heading1', 'heading2', 'heading3'],
+ ['value1-1 continued', 'value2-1 continued', 'value3-1'],
+ ['value1-2', 'value2-2', 'value3-2']]
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.contiguous_ints"><code class="name flex">
+<span>def <span class="ident">contiguous_ints</span></span>(<span>ints: collections.abc.Collection[int]) ‑> list[tuple[int, int]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Given a list of integers, return a list of tuples representing the first and last
+integer for any section of the list that corresponds to a set of contiguous integers.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ints</code></strong> :&ensp;<code>Sequence[int]</code></dt>
+<dd>A list of integers to process.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[tuple[int, int]]</code></dt>
+<dd>A list of tuples, each containing the start and end
+integers of a contiguous sequence.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lst = [1, 3, 2, 5, 6, 7, 8, 9, 12]
+&gt;&gt;&gt; contiguous_ints(lst)
+[(1, 3), (5, 9), (12, 12)]
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.deduped_key"><code class="name flex">
+<span>def <span class="ident">deduped_key</span></span>(<span>value_dict: dict[str, typing.Any], this_key: str, value: Any = None) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Ensure a key is unique within a dictionary, adjusting it if necessary.</p>
+<p>If <code>value_dict</code> contains <code>this_key</code>, append a numeric suffix or, if present,
+replace the array index in <code>this_key</code> with increasing numerical strings until
+it is no longer present in <code>value_dict</code>. Replaces occurrences of '[*]' in
+<code>this_key</code> with '[0]' by default.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>value_dict</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>The dictionary to check for key uniqueness.</dd>
+<dt><strong><code>this_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>The key to ensure is unique.</dd>
+<dt><strong><code>value</code></strong> :&ensp;<code>Any</code></dt>
+<dd>Optional. The value associated with the key. If supplied
+and equal to <code>value_dict[this_key]</code>, return <code>this_key</code> without deduping.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>A unique key that is not present in the dictionary.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; value_dict = {&quot;Provider[0]&quot;: &quot;Dr. Smith, MD&quot;, &quot;Diagnosis&quot;: &quot;GERD&quot;}
+&gt;&gt;&gt; deduped_key(value_dict, &quot;Provider[*]&quot;)
+'Provider[1]'
+&gt;&gt;&gt; deduped_key(value_dict, &quot;Provider[0]&quot;, &quot;Dr. Smith, MD&quot;)
+'Provider[0]'
+&gt;&gt;&gt; deduped_key(value_dict, &quot;Diagnosis&quot;, &quot;Acid Reflux&quot;)
+'Diagnosis.0'
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.dictify_dict_list"><code class="name flex">
+<span>def <span class="ident">dictify_dict_list</span></span>(<span>dict_list: list[dict[str, str]]) ‑> dict[str, list[str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Transforms a list of dicts into a dict of lists with standard lengths.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dict_list</code></strong> :&ensp;<code>list[dict[str, str]]</code></dt>
+<dd>A list of dictionaries representing the
+rows of an extracted table.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict[str, list[str]]</code></dt>
+<dd>A dictionary with the set of keys across all input dicts
+as keys and a list of strings of a common length representing the value from
+each input dict 'row'.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; dictify_dict_list(
+...     [
+...         {&quot;key1&quot;: &quot;value1&quot;, &quot;key2&quot;: &quot;value2&quot;},
+...         {&quot;key1&quot;: &quot;value1&quot;, &quot;key2&quot;: &quot;value2&quot;, &quot;extra key&quot;: &quot;I'm extra!&quot;},
+...         {&quot;key1&quot;: &quot;value1&quot;, &quot;key2&quot;: &quot;value2&quot;},
+...     ]
+... )
+{'key1': ['value1', 'value1', 'value1'], 'key2': ['value2', 'value2', 'value2'], 'extra key': ['', &quot;I'm extra!&quot;, '']}
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.dq_field_colon_ranges"><code class="name flex">
+<span>def <span class="ident">dq_field_colon_ranges</span></span>(<span>line: str) ‑> list[tuple[int, int]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>List start and stop positions of ranges that cannot contain field colons.</p>
+<p>Currently excludes all text within parentheticals, such as the ':' following
+'Left' in the string 'Procedure: Amputation (Left: Toe)'.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>line</code></strong> :&ensp;<code>str</code></dt>
+<dd>The input string to analyze.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[tuple[int, int]]</code></dt>
+<dd>A list of tuples, each containing the start
+and stop positions of ranges that cannot contain field colons.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; dq_field_colon_ranges(&quot;Procedure: Amputation (Left: Toe)&quot;)
+[(22, 33)]
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.exec_on_exit"><code class="name flex">
+<span>def <span class="ident">exec_on_exit</span></span>(<span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Wrapper function for forcing execution of a function when IPython
+execution completes or upon interpreter exit for cmd line execution.</p></div>
+</dd>
+<dt id="utilities.utils.extract_numerics"><code class="name flex">
+<span>def <span class="ident">extract_numerics</span></span>(<span>string: str | list[str], as_list: bool = False, joined: bool = False, tiebreak_func: collections.abc.Callable[[str, str], str] = &lt;function &lt;lambda&gt;&gt;) ‑> str | list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract numeric substrings from a given string or list of strings.</p>
+<p>If the input is a list of strings, the list is joined into a single string
+prior to extraction.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>string</code></strong> :&ensp;<code>str | list[str]</code></dt>
+<dd>The input string or list of strings to process.</dd>
+<dt><strong><code>as_list</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If True, returns a list of numeric substrings.
+If False, returns the most frequently occurring numeric substring or
+the concatenated numeric substrings if <code>joined</code> is True. Defaults to False.</dd>
+<dt><strong><code>joined</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If True, concatenates all numeric substrings into
+a single string. Only used if <code>as_list</code> is False. Defaults to False.</dd>
+<dt><strong><code>tiebreak_func</code></strong> :&ensp;<code>Callable[[str, str], str]</code></dt>
+<dd>Optional. A function to break
+ties between numeric substrings of the same frequency. Defaults to
+a function that returns the longer substring. Ignored if either
+<code>as_list</code> or <code>joined</code> is set to True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str | list[str]</code></dt>
+<dd>A list of numeric substrings or a numeric string.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; extract_numerics(&quot;abc123def456&quot;, as_list=True)
+['123', '456']
+&gt;&gt;&gt; extract_numerics(&quot;abc123def456&quot;, joined=True)
+'123456'
+&gt;&gt;&gt; tiebreak_func = lambda x, y: y if int(y) &gt; int(x) else x
+&gt;&gt;&gt; extract_numerics([&quot;abc123&quot;, &quot;def456&quot;, &quot;ghi98&quot;], tiebreak_func=tiebreak_func)
+'456'
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.find_page_breaks"><code class="name flex">
+<span>def <span class="ident">find_page_breaks</span></span>(<span>lines: collections.abc.Sequence[str], min_rows: int, force_page_breaks: list[collections.abc.Callable[[str], bool]] | None = None) ‑> list[tuple[int, int]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find page breaks by looking for repeating column headers.</p>
+<p>This function identifies page breaks in a list of lines by detecting repeating
+column headers. It returns a list of tuples, each representing the start and end
+indices of a page in the lines. The function also considers forced page breaks
+provided by the user.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>A list of strings representing the lines to analyze.</dd>
+<dt><strong><code>min_rows</code></strong> :&ensp;<code>int</code></dt>
+<dd>The minimum number of rows required for a valid page.</dd>
+<dt><strong><code>force_page_breaks</code></strong> :&ensp;<code>list[Callable[[str], bool]]</code></dt>
+<dd>Optional. A list of functions
+that take a line as input and return True to force a page break.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[tuple[int, int]]</code></dt>
+<dd>A list of tuples, each containing the start and end
+indices of a 'page' in the lines.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [
+...     'Header1  Header2  Header3',
+...     'Value1-1 Value2-1 Value3-1',
+...     'Value1-2 Value2-2 Value3-2',
+...     '     Header1   Header2  Header3',
+...     '     Value1-3  Value2-3 Value3-3',
+... ]
+&gt;&gt;&gt; find_page_breaks(lines, min_rows=1)
+[(0, 3), (3, 5)]
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.first_field_colon_idx"><code class="name flex">
+<span>def <span class="ident">first_field_colon_idx</span></span>(<span>line: str) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the index of the first colon not surrounded by numbers.</p>
+<p>This function identifies the index of the first colon in a string that is not
+part of a time structure (e.g., "##:##") or contained within a parenthetical.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>line</code></strong> :&ensp;<code>str</code></dt>
+<dd>The input string to analyze.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>The index of the first colon not surrounded by numbers or within</dd>
+</dl>
+<p>excluded ranges. Returns -1 if no such colon is found.</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; first_field_colon_idx(&quot;(Left: Toe) at 12:30    Diagnosis: Diabetes Mellitus&quot;)
+33
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.flatten_list_nest"><code class="name flex">
+<span>def <span class="ident">flatten_list_nest</span></span>(<span>list_nest: Any) ‑> Any</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Recursively flatten a nested list into a single-depth list.</p>
+<p>This function takes a nested list and returns a new list with all nested
+elements flattened to a single depth.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>list_nest</code></strong></dt>
+<dd>The nested list to flatten.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Any</code></dt>
+<dd>A single-depth list containing all elements from the nested list.
+If list_nest is 'falsy' or not a list, return it unchanged (hence
+the <code>Any</code> return type.)</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; flatten_list_nest([1, [2, [3, 4], 5], 6])
+[1, 2, 3, 4, 5, 6]
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.has_time"><code class="name flex">
+<span>def <span class="ident">has_time</span></span>(<span>val: datetime.datetime | str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Determine if a value contains time information.</p>
+<p>This function checks if the given value, either a datetime object or a string,
+contains interpretable hours and minutes of a datetime. It handles short date
+formats and strings that may not initially appear to contain time information.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>val</code></strong> :&ensp;<code>datetime | str</code></dt>
+<dd>The value to check.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the value contains time information, False otherwise.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; has_time(&quot;2020-12-31T23:59&quot;)
+True
+&gt;&gt;&gt; has_time(&quot;2020-12-31&quot;)
+False
+&gt;&gt;&gt; has_time(datetime(2020, 12, 31, 23, 59))
+True
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.is_date"><code class="name flex">
+<span>def <span class="ident">is_date</span></span>(<span>val: datetime.date | datetime.datetime | str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Determine if a value can be interpreted as a date.</p>
+<p>This function checks if the given value is a date, datetime, or a string that
+can be interpreted as a date. It handles short date formats and strings that
+include additional information such as age.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>val</code></strong> :&ensp;<code>date | datetime | str</code></dt>
+<dd>The value to check.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the value can be interpreted as a date, False otherwise.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; is_date(&quot;12/31/2020&quot;)
+True
+&gt;&gt;&gt; is_date(&quot;12/31/2020 (age 30 yrs)&quot;)
+True
+&gt;&gt;&gt; is_date(&quot;not a date&quot;)
+False
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.key_value_split"><code class="name flex">
+<span>def <span class="ident">key_value_split</span></span>(<span>key_val_string: str) ‑> tuple[str, typing.Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split a string into a key-value pair at the first 'field colon'.</p>
+<p>See <code><a title="utilities.utils.first_field_colon_idx" href="#utilities.utils.first_field_colon_idx">first_field_colon_idx()</a></code> for additional details. Recursively processes
+the value if the initially extracted value contains additional field colons.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>key_val_string</code></strong> :&ensp;<code>str</code></dt>
+<dd>The input string to split into a key-value pair.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[str, Any]</code></dt>
+<dd>A tuple containing the key and value split at the first
+'field colon'.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; key_val_string = &quot;Procedure: Amputation (Left: Toe) at 12:30&quot;
+&gt;&gt;&gt; key_value_split(key_val_string)
+('Procedure', 'Amputation (Left: Toe) at 12:30')
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.key_value_strings"><code class="name flex">
+<span>def <span class="ident">key_value_strings</span></span>(<span>line: str) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract key-value pairs from a string.</p>
+<p>This function processes a given line and returns a list of strings, each
+representing a key-value pair. It first inserts a space after any colon
+that is immediately followed by an uppercase letter or digit. Then, it
+splits the line using the <code><a title="utilities.utils.split_unlikely_fields" href="#utilities.utils.split_unlikely_fields">split_unlikely_fields()</a></code> function and applies
+a regular expression to find key-value pairs.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>line</code></strong> :&ensp;<code>str</code></dt>
+<dd>The input string to be processed.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[str]</code></dt>
+<dd>A list of strings, each containing a key-value pair.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; line = 'A:B  C:D'
+&gt;&gt;&gt; key_value_strings(line)
+['A: B', 'C: D']
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.last_field_colon_idx"><code class="name flex">
+<span>def <span class="ident">last_field_colon_idx</span></span>(<span>line: str) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the index of the last colon not surrounded by numbers.</p>
+<p>This function identifies the index of the last colon in a string that is not
+part of a time structure (e.g., "##:##") or contained within a parenthetical.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>line</code></strong> :&ensp;<code>str</code></dt>
+<dd>The input string to analyze.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>The index of the last colon not surrounded by numbers or within
+excluded ranges. Returns -1 if no such colon is found.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; last_field_colon_idx(&quot;Procedure: Amputation (Left: Toe) at 12:30&quot;)
+9
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.lindent"><code class="name flex">
+<span>def <span class="ident">lindent</span></span>(<span>line: str) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convenience function to count spaces at start of a string</p></div>
+</dd>
+<dt id="utilities.utils.line_splits"><code class="name flex">
+<span>def <span class="ident">line_splits</span></span>(<span>line: str) ‑> list[tuple[int, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find column names from a line of text and return (start index, column name) tuples.</p>
+<p>This function processes a given line of text to identify column names based on
+a regular expression. It returns a list of tuples, each containing the starting
+index of the column and the column text. If no matches are found, it returns
+a single tuple with the entire line. Preprocessing via <code><a title="utilities.utils.split_unlikely_fields" href="#utilities.utils.split_unlikely_fields">split_unlikely_fields()</a></code>
+allows for desired splits when spacing is otherwise inadequate to trigger a
+split based on <code>gvars.LINE_SPLIT_REGEX</code> alone.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>line</code></strong> :&ensp;<code>str</code></dt>
+<dd>The input line of text to be processed.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[tuple[int, str]]</code></dt>
+<dd>A list of tuples, each containing the starting index</dd>
+</dl>
+<p>and the column text.</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; line_splits(&quot;Begin End         Start Stop&quot;)
+[(0, 'Begin'), (6, 'End'), (18, 'Start'), (24, 'Stop')]
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.line_startswith_any"><code class="name flex">
+<span>def <span class="ident">line_startswith_any</span></span>(<span>line: str | collections.abc.Sequence[str], starts_list: collections.abc.Sequence[str], strict=False) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if a line starts with any string from a list of start strings.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>line</code></strong> :&ensp;<code>str | Sequence[str]</code></dt>
+<dd>The input line or sequence of lines to check. If
+not a string, checks occur against <code>line[0]</code>.</dd>
+<dt><strong><code>starts_list</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>A list of start strings to check against the line.</dd>
+<dt><strong><code>strict</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If False, allows additional leading spaces. If True,
+the result is equivalent to <code>line.startswith(tuple(starts_list))</code>. Defaults
+to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the line starts with any string from the <code>starts_list</code>, False otherwise.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; line_startswith_any(&quot;    start of line&quot;, [&quot;start&quot;, &quot;begin&quot;], strict=False)
+True
+&gt;&gt;&gt; line_startswith_any(&quot;start of line&quot;, [&quot;start&quot;, &quot;begin&quot;], strict=True)
+True
+&gt;&gt;&gt; line_startswith_any(&quot;    start of line&quot;, [&quot;start&quot;, &quot;begin&quot;], strict=True)
+False
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.lstripped_char_array"><code class="name flex">
+<span>def <span class="ident">lstripped_char_array</span></span>(<span>lines: collections.abc.Sequence[str], max_indent: int = -1) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert a list of strings to a character array and drop leading space columns
+up to a maximum indent.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>A list of strings to be converted and stripped.</dd>
+<dt><strong><code>max_indent</code></strong> :&ensp;<code>int</code></dt>
+<dd>The maximum number of leading space columns to remove.
+Supply -1 to remove all leading space columns. Defaults to -1.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The left stripped character array for the supplied lines.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [&quot;    line1&quot;, &quot;    line2&quot;, &quot;    line3&quot;]
+&gt;&gt;&gt; lstripped_char_array(lines, max_indent=3)
+array([[' ', 'l', 'i', 'n', 'e', '1'],
+       [' ', 'l', 'i', 'n', 'e', '2'],
+       [' ', 'l', 'i', 'n', 'e', '3']], dtype='&lt;U1')
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.match_ratio"><code class="name flex">
+<span>def <span class="ident">match_ratio</span></span>(<span>string_1: collections.abc.Sequence, string_2: collections.abc.Sequence, zero_if_empty=False) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Conveniece function for calling builtin SequenceMatcher.ratio()</p></div>
+</dd>
+<dt id="utilities.utils.most_freq_element"><code class="name flex">
+<span>def <span class="ident">most_freq_element</span></span>(<span>check_lists, tiebreak_func=&lt;function vstr_confidence_tiebreak&gt;, xform: collections.abc.Callable[[typing.Any], typing.Union[str, <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>, typing.Any]] = utilities.v_str.vStr)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the most frequent element from a list of lists.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>check_lists</code></strong> :&ensp;<code>list[list[Any]]</code></dt>
+<dd>A list of lists containing elements to check.</dd>
+<dt><strong><code>tiebreak_func</code></strong> :&ensp;<code>Callable[[Any, Any], Any]</code></dt>
+<dd>A function to break ties between
+elements with the same frequency. Default is <code><a title="utilities.utils.vstr_confidence_tiebreak" href="#utilities.utils.vstr_confidence_tiebreak">vstr_confidence_tiebreak()</a></code>.</dd>
+<dt><strong><code>xform</code></strong> :&ensp;<code>Callable[[Any], str | vStr | Any]</code></dt>
+<dd>A transformation function applied
+to each element. Defaults to <code>vStr</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Any</code></dt>
+<dd>The most frequent element after applying the transformation and tiebreak
+functions.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; check_lists = [[&quot;a&quot;, &quot;b&quot;, &quot;a&quot;], [&quot;a&quot;, &quot;c&quot;, &quot;b&quot;, &quot;b&quot;]]
+&gt;&gt;&gt; tiebreak_func = lambda *args: sorted(args)[0]
+&gt;&gt;&gt; xform = str.upper
+&gt;&gt;&gt; most_freq_element(check_lists, tiebreak_func, xform)
+'A'
+&gt;&gt;&gt; tiebreak_func = lambda *args: sorted(args)[-1]
+&gt;&gt;&gt; most_freq_element(check_lists, tiebreak_func, xform)
+'B'
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.multiline_check_start"><code class="name flex">
+<span>def <span class="ident">multiline_check_start</span></span>(<span>lines: collections.abc.Sequence[str], line_start_tuples: collections.abc.Sequence[<a title="utilities.utils.LineStart" href="#utilities.utils.LineStart">LineStart</a> | tuple[int, str, bool, bool]]) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test the start of multiple indexes in a list of strings.</p>
+<p>This function checks whether specified lines in a sequence of strings start with
+given substrings. It allows for both strict and non-strict matching, and compares
+the results against expected truth values.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>A sequence of strings to check.</dd>
+<dt><strong><code>line_start_tuples</code></strong> :&ensp;<code>Sequence[LineStart | tuple[int, str, bool, bool]]</code></dt>
+<dd>A sequence
+of tuples. See <code><a title="utilities.utils.LineStart" href="#utilities.utils.LineStart">LineStart</a></code> docstring for additional details.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if all specified <code><a title="utilities.utils.LineStart" href="#utilities.utils.LineStart">LineStart</a></code> checks match their defined truth targets.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = [&quot;    start of line&quot;, &quot;another line&quot;, &quot;  yet another line&quot;]
+&gt;&gt;&gt; line_start_tuples = [(0, &quot;start&quot;, False, True), (1, &quot;another&quot;, True, True)]
+&gt;&gt;&gt; multiline_check_start(lines, line_start_tuples)
+True
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.pbar"><code class="name flex">
+<span>def <span class="ident">pbar</span></span>(<span>iterable: collections.abc.Iterable[~T] = (), total: int = None, desc: str = None, postfix: str = None) ‑> collections.abc.Iterable[~T]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the global PBAR variable to a new tqdm instance for the given iterable.</p>
+<p>This function initializes a new tqdm progress bar for the provided iterable and
+assigns it to the global PBAR variable. If PBAR is already an instance of tqdm,
+it is closed before creating a new instance. If logging to the console is enabled
+(gvars.LOG_CONSOLE), the function returns the iterable without creating a progress
+bar.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>iterable</code></strong> :&ensp;<code>Iterable[gvars.T]</code></dt>
+<dd>Optional. The iterable to wrap with a progress
+bar. Defaults to an empty tuple.</dd>
+<dt><strong><code>total</code></strong> :&ensp;<code>int</code></dt>
+<dd>Optional. The total number of iterations. If not provided, it
+will be inferred from the iterable.</dd>
+<dt><strong><code>desc</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. A description to display alongside the progress bar.</dd>
+<dt><strong><code>postfix</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Optional. A dictionary of additional information to display
+at the end of the progress bar.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Iterable[gvars.T]</code></dt>
+<dd>The iterable wrapped with a tqdm progress bar, or the
+original iterable if logging to the console is enabled.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; for item in pbar(range(10), desc=&quot;Processing&quot;):
+...     pass
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.pbprint"><code class="name flex">
+<span>def <span class="ident">pbprint</span></span>(<span>msg, post=False, level=LogLevel.INFO, n=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Print a message to the tqdm progress bar or log it.</p>
+<p>If <code>gvars.LOG_CONSOLE</code> is False, this function prints the message to the tqdm
+progress bar. It also forwards the message to <code>logprint</code> for recording in the
+log file or stdout. The <code>msg</code> parameter can be any object and will be returned
+to the caller unchanged when the log operation completes. This is convenient
+for logging the output of a function call even if that output is required in
+later operations.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>msg</code></strong> :&ensp;<code>Any</code></dt>
+<dd>The message to print or log.</dd>
+<dt><strong><code>post</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If True, sets the message as the postfix of the
+progress bar. Defaults to False.</dd>
+<dt><strong><code>level</code></strong> :&ensp;<code>log_levels</code></dt>
+<dd>Optional. The log level for the message. Defaults to
+<code>log_levels.INFO</code>.</dd>
+<dt><strong><code>n</code></strong> :&ensp;<code>int</code></dt>
+<dd>Optional. The number of iterations to update the progress bar by.
+Defaults to None.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Any</code></dt>
+<dd>The original message, unchanged.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.utils.set_log_path"><code class="name flex">
+<span>def <span class="ident">set_log_path</span></span>(<span>log_dir: str = None, log_path: str = None, overwrite: bool = False, log_console: bool = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialize global log objects, creating the path to the desired log location
+if it doesn't exist.</p>
+<p>This function sets up the global logging configuration, including the log file
+path and console logging options. It ensures that the log directory exists and
+creates the log file if it does not already exist. If logging to the console is
+enabled or changed, it closes the existing log and updates the configuration.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>log_dir</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. The directory where the log file should be created.
+If not provided, the default directory is used.</dd>
+<dt><strong><code>log_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optional. The name of the log file. If not provided, a default
+name based on <code>gvars.LOG_NAME</code> and <code>gvars.RUN_ID</code> is used.</dd>
+<dt><strong><code>overwrite</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If True, the log file is overwritten. If False,
+log entries are appended to the existing file. Defaults to False.</dd>
+<dt><strong><code>log_console</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If True, enables logging to the console. If False,
+disables console logging. If not provided, the current console logging
+setting is used.</dd>
+</dl></div>
+</dd>
+<dt id="utilities.utils.split_unlikely_fields"><code class="name flex">
+<span>def <span class="ident">split_unlikely_fields</span></span>(<span>line: str) ‑> list[tuple[int, str]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split a line by unlikely fields defined by a regular expression.</p>
+<p>This function splits a given line into a list of tuples based on matches of
+the <code>gvars.UNLIKELY_FIELDS_REGEX</code> regular expression to account for inadequate
+spacing between columnar data. <code><a title="utilities.utils.line_splits" href="#utilities.utils.line_splits">line_splits()</a></code> should be called to
+fully segment the input line.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>line</code></strong> :&ensp;<code>str</code></dt>
+<dd>The input string to be split.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[tuple[int, str]]</code></dt>
+<dd>A list of tuples where each tuple contains the starting
+index and the corresponding segment of the split string.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; split_unlikely_fields(&quot;Begin End         Start Stop&quot;)
+[(0, 'Begin'), (6, 'End         Start'), (24, 'Stop')]
+&gt;&gt;&gt; line_splits(&quot;Begin End         Start Stop&quot;)
+[(0, 'Begin'), (6, 'End'), (18, 'Start'), (24, 'Stop')]
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.strtobool"><code class="name flex">
+<span>def <span class="ident">strtobool</span></span>(<span>val: <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a> | str | int | bool, strict: bool = True) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert a string representation of truth to a boolean value.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>val</code></strong> :&ensp;<code>vStr | str | int | bool</code></dt>
+<dd>The value to convert to a boolean.</dd>
+<dt><strong><code>strict</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Optional. If True, raises a ValueError for invalid truth
+values. If False, assumes False for invalid values. Defaults to True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>The boolean representation of the input value.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If <code>strict</code> is True and the input value is not a valid truth
+representation.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; strtobool(&quot;yes&quot;)
+True
+&gt;&gt;&gt; strtobool(&quot;no&quot;)
+False
+&gt;&gt;&gt; strtobool(1)
+True
+&gt;&gt;&gt; strtobool(0)
+False
+&gt;&gt;&gt; strtobool(&quot;invalid&quot;, strict=True)
+Traceback (most recent call last):
+    ...
+ValueError: invalid truth value: invalid
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.transpose_lists"><code class="name flex">
+<span>def <span class="ident">transpose_lists</span></span>(<span>iterable_of_iterable: collections.abc.Iterable[collections.abc.Iterable[~T]]) ‑> list[list[~T]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Transpose a list of lists.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>iterable_of_iterable</code></strong> :&ensp;<code>Iterable[Iterable[gvars.T]]</code></dt>
+<dd>An iterable of iterables
+to transpose.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[list[gvars.T]]</code></dt>
+<dd>A transposed list of lists.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; iterable_of_iterable = [
+...     [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;],
+...     [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;],
+...     [&quot;4&quot;, &quot;5&quot;, &quot;6&quot;]
+... ]
+&gt;&gt;&gt; transpose_lists(iterable_of_iterable)
+[['a', '1', '4'], ['b', '2', '5'], ['c', '3', '6']]
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.trim_leading_spaces"><code class="name flex">
+<span>def <span class="ident">trim_leading_spaces</span></span>(<span>lines: list[str]) ‑> list[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove leading columns consisting only of spaces from a list of strings.</p>
+<p>This function processes a list of strings, converts them to a character array,
+and removes all leading columns that consist entirely of spaces. It returns
+the modified list of strings with leading spaces removed.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>The input list of strings to process.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[str]</code></dt>
+<dd>The list of strings with leading columns of spaces removed.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; trim_leading_spaces(lines=[&quot;    abc&quot;, &quot;  def&quot;, &quot;    ghi&quot;])
+['  abc', 'def', '  ghi']
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.trim_vertical_spaces"><code class="name flex">
+<span>def <span class="ident">trim_vertical_spaces</span></span>(<span>lines: str | collections.abc.Sequence[str], max_space: int = 5) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove excess vertical whitespace between column values in a multiline string.</p>
+<p>This function processes a multiline string representation of tabular values and
+removes excess vertical whitespace between column values. It ensures that the
+spacing between columns does not exceed the specified maximum space.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>str | Sequence[str]</code></dt>
+<dd>A multiline string or a sequence of strings
+representing the lines to process.</dd>
+<dt><strong><code>max_space</code></strong> :&ensp;<code>int</code></dt>
+<dd>Optional. The maximum allowed vertical space between columns.
+Defaults to 5.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The processed multiline string with excess vertical whitespace removed.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = &quot;col1    col2    col3\nval1    val2    val3&quot;
+&gt;&gt;&gt; trim_vertical_spaces(lines, max_space=2)
+'col1  col2  col3\nval1  val2  val3'
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.tuple_w_next"><code class="name flex">
+<span>def <span class="ident">tuple_w_next</span></span>(<span>val_list: collections.abc.Sequence[~T], final_val: ~T) ‑> list[tuple[~T, ~T]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a list of consecutive value tuples from the input list pairing the final
+<code>val_list</code> element with <code>final_val</code>.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>val_list</code></strong> :&ensp;<code>Sequence[gvars.T]</code></dt>
+<dd>The input list of values to process.</dd>
+<dt><strong><code>final_val</code></strong> :&ensp;<code>gvars.T</code></dt>
+<dd>The value to pair with the last element of <code>val_list</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[tuple[gvars.T, gvars.T]]</code></dt>
+<dd>The list of paired value tuples.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; tuple_w_next([1, 2, 3], 4)
+[(1, 2), (2, 3), (3, 4)]
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.us_state_abbr"><code class="name flex">
+<span>def <span class="ident">us_state_abbr</span></span>(<span>state_string: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert full state names and 4-char abbreviations to 2-char US state abbreviations.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>state_string</code></strong> :&ensp;<code>str</code></dt>
+<dd>The state string to be converted.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The 2-character US state abbreviation.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; us_state_abbr(&quot;California&quot;)
+'CA'
+&gt;&gt;&gt; us_state_abbr(&quot;Cali&quot;)
+'CA'
+&gt;&gt;&gt; us_state_abbr(&quot;CA&quot;)
+'CA'
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.vertical_split_idxs"><code class="name flex">
+<span>def <span class="ident">vertical_split_idxs</span></span>(<span>char_arr: numpy.ndarray, min_v_split: int, min_len: int = 5) ‑> list[int]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the indices of the middlemost member of each contiguous all-spaces column set.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>char_arr</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>A NumPy character array representing the lines of text.</dd>
+<dt><strong><code>min_v_split</code></strong> :&ensp;<code>int</code></dt>
+<dd>The minimum number of contiguous space columns required for a split.</dd>
+<dt><strong><code>min_len</code></strong> :&ensp;<code>int</code></dt>
+<dd>Optional. The minimum length of non-space content required for a
+valid split. Defaults to 5.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[int]</code></dt>
+<dd>A list of indexes representing the middlemost columns of contiguous
+space columns. Always includes 0 as the first element and the subarray length
+as the final element.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; lines = ['aaaa       bbbbb    ccc   dddd',
+...          'aaa          bbb    cc    ddd ',
+...          'aaaaaa             cccc       ']
+&gt;&gt;&gt; char_arr = np.array([list(line) for line in lines])
+&gt;&gt;&gt; vertical_split_idxs(char_arr, min_v_split=2, min_len=2)
+[0, 8, 17, 24, 30]
+</code></pre></div>
+</dd>
+<dt id="utilities.utils.vstr_confidence_tiebreak"><code class="name flex">
+<span>def <span class="ident">vstr_confidence_tiebreak</span></span>(<span>value1: str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>, value2: str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>) ‑> str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Select the vStr argument with the highest confidence.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>value1</code></strong> :&ensp;<code>str | vStr</code></dt>
+<dd>first value to compare</dd>
+<dt><strong><code>value2</code></strong> :&ensp;<code>str | vStr</code></dt>
+<dd>second value to compare</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str | vStr</code></dt>
+<dd>The value with the highest confidence if both are vStrs.
+If only one is a vStr, return the vStr. If both are vStrs of equal
+confidence OR neither value is a vStr, return the value having
+the greatest length.</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="utilities.utils.FileContentsEntry"><code class="flex name class">
+<span>class <span class="ident">FileContentsEntry</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A typed dict for entries in a pdf_extractor.py function output.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>lines</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>a list containing all lines of extracted text.</dd>
+<dt><strong><code>src_docs</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>a list, one per line in lines, detailing
+the PDF of origin for each line.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.dict</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.utils.FileContentsEntry.lines"><code class="name">var <span class="ident">lines</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.utils.FileContentsEntry.src_docs"><code class="name">var <span class="ident">src_docs</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.utils.KeyDeduper"><code class="flex name class">
+<span>class <span class="ident">KeyDeduper</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a reference used to deduplicate keys in a dict comprehension.</p></div>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.utils.KeyDeduper.clear"><code class="name flex">
+<span>def <span class="ident">clear</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Call to reinitialize deduping during nested comprehensions.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>always returns True to allow resets in outer loop conditionals.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.utils.LineStart"><code class="flex name class">
+<span>class <span class="ident">LineStart</span></span>
+<span>(</span><span>offset: int, startswith: str | tuple[str, ...], strict: bool = True, truth_target: bool = True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Line start tuple. Used with multiline_check_start to define
+which line indexes should start with which strings.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>offset</code></strong> :&ensp;<code>int</code></dt>
+<dd>line index in list of lines to check</dd>
+<dt><strong><code>line_start</code></strong> :&ensp;<code>str</code></dt>
+<dd>string to check for at start of line</dd>
+<dt><strong><code>strict</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, line must start with line_start exactly.
+If False, case is ignored and indent must be &gt;= line_start.
+Default is True.</dd>
+<dt><strong><code>truth_target</code></strong> :&ensp;<code>bool</code></dt>
+<dd>True when line must match line_start. False
+when line must NOT match line_start. Default is True.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.utils.LineStart.offset"><code class="name">var <span class="ident">offset</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+<dt id="utilities.utils.LineStart.startswith"><code class="name">var <span class="ident">startswith</span> : str | tuple[str, ...]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="utilities.utils.LineStart.strict"><code class="name">var <span class="ident">strict</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+<dt id="utilities.utils.LineStart.truth_target"><code class="name">var <span class="ident">truth_target</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 3</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="utilities" href="index.html">utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="utilities.utils.as_date" href="#utilities.utils.as_date">as_date</a></code></li>
+<li><code><a title="utilities.utils.as_name" href="#utilities.utils.as_name">as_name</a></code></li>
+<li><code><a title="utilities.utils.as_phone" href="#utilities.utils.as_phone">as_phone</a></code></li>
+<li><code><a title="utilities.utils.as_time" href="#utilities.utils.as_time">as_time</a></code></li>
+<li><code><a title="utilities.utils.check_indent" href="#utilities.utils.check_indent">check_indent</a></code></li>
+<li><code><a title="utilities.utils.check_start" href="#utilities.utils.check_start">check_start</a></code></li>
+<li><code><a title="utilities.utils.close_log" href="#utilities.utils.close_log">close_log</a></code></li>
+<li><code><a title="utilities.utils.columns" href="#utilities.utils.columns">columns</a></code></li>
+<li><code><a title="utilities.utils.condense_to_headings" href="#utilities.utils.condense_to_headings">condense_to_headings</a></code></li>
+<li><code><a title="utilities.utils.contiguous_ints" href="#utilities.utils.contiguous_ints">contiguous_ints</a></code></li>
+<li><code><a title="utilities.utils.deduped_key" href="#utilities.utils.deduped_key">deduped_key</a></code></li>
+<li><code><a title="utilities.utils.dictify_dict_list" href="#utilities.utils.dictify_dict_list">dictify_dict_list</a></code></li>
+<li><code><a title="utilities.utils.dq_field_colon_ranges" href="#utilities.utils.dq_field_colon_ranges">dq_field_colon_ranges</a></code></li>
+<li><code><a title="utilities.utils.exec_on_exit" href="#utilities.utils.exec_on_exit">exec_on_exit</a></code></li>
+<li><code><a title="utilities.utils.extract_numerics" href="#utilities.utils.extract_numerics">extract_numerics</a></code></li>
+<li><code><a title="utilities.utils.find_page_breaks" href="#utilities.utils.find_page_breaks">find_page_breaks</a></code></li>
+<li><code><a title="utilities.utils.first_field_colon_idx" href="#utilities.utils.first_field_colon_idx">first_field_colon_idx</a></code></li>
+<li><code><a title="utilities.utils.flatten_list_nest" href="#utilities.utils.flatten_list_nest">flatten_list_nest</a></code></li>
+<li><code><a title="utilities.utils.has_time" href="#utilities.utils.has_time">has_time</a></code></li>
+<li><code><a title="utilities.utils.is_date" href="#utilities.utils.is_date">is_date</a></code></li>
+<li><code><a title="utilities.utils.key_value_split" href="#utilities.utils.key_value_split">key_value_split</a></code></li>
+<li><code><a title="utilities.utils.key_value_strings" href="#utilities.utils.key_value_strings">key_value_strings</a></code></li>
+<li><code><a title="utilities.utils.last_field_colon_idx" href="#utilities.utils.last_field_colon_idx">last_field_colon_idx</a></code></li>
+<li><code><a title="utilities.utils.lindent" href="#utilities.utils.lindent">lindent</a></code></li>
+<li><code><a title="utilities.utils.line_splits" href="#utilities.utils.line_splits">line_splits</a></code></li>
+<li><code><a title="utilities.utils.line_startswith_any" href="#utilities.utils.line_startswith_any">line_startswith_any</a></code></li>
+<li><code><a title="utilities.utils.lstripped_char_array" href="#utilities.utils.lstripped_char_array">lstripped_char_array</a></code></li>
+<li><code><a title="utilities.utils.match_ratio" href="#utilities.utils.match_ratio">match_ratio</a></code></li>
+<li><code><a title="utilities.utils.most_freq_element" href="#utilities.utils.most_freq_element">most_freq_element</a></code></li>
+<li><code><a title="utilities.utils.multiline_check_start" href="#utilities.utils.multiline_check_start">multiline_check_start</a></code></li>
+<li><code><a title="utilities.utils.pbar" href="#utilities.utils.pbar">pbar</a></code></li>
+<li><code><a title="utilities.utils.pbprint" href="#utilities.utils.pbprint">pbprint</a></code></li>
+<li><code><a title="utilities.utils.set_log_path" href="#utilities.utils.set_log_path">set_log_path</a></code></li>
+<li><code><a title="utilities.utils.split_unlikely_fields" href="#utilities.utils.split_unlikely_fields">split_unlikely_fields</a></code></li>
+<li><code><a title="utilities.utils.strtobool" href="#utilities.utils.strtobool">strtobool</a></code></li>
+<li><code><a title="utilities.utils.transpose_lists" href="#utilities.utils.transpose_lists">transpose_lists</a></code></li>
+<li><code><a title="utilities.utils.trim_leading_spaces" href="#utilities.utils.trim_leading_spaces">trim_leading_spaces</a></code></li>
+<li><code><a title="utilities.utils.trim_vertical_spaces" href="#utilities.utils.trim_vertical_spaces">trim_vertical_spaces</a></code></li>
+<li><code><a title="utilities.utils.tuple_w_next" href="#utilities.utils.tuple_w_next">tuple_w_next</a></code></li>
+<li><code><a title="utilities.utils.us_state_abbr" href="#utilities.utils.us_state_abbr">us_state_abbr</a></code></li>
+<li><code><a title="utilities.utils.vertical_split_idxs" href="#utilities.utils.vertical_split_idxs">vertical_split_idxs</a></code></li>
+<li><code><a title="utilities.utils.vstr_confidence_tiebreak" href="#utilities.utils.vstr_confidence_tiebreak">vstr_confidence_tiebreak</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="utilities.utils.FileContentsEntry" href="#utilities.utils.FileContentsEntry">FileContentsEntry</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.utils.FileContentsEntry.lines" href="#utilities.utils.FileContentsEntry.lines">lines</a></code></li>
+<li><code><a title="utilities.utils.FileContentsEntry.src_docs" href="#utilities.utils.FileContentsEntry.src_docs">src_docs</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.utils.KeyDeduper" href="#utilities.utils.KeyDeduper">KeyDeduper</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.utils.KeyDeduper.clear" href="#utilities.utils.KeyDeduper.clear">clear</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.utils.LineStart" href="#utilities.utils.LineStart">LineStart</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.utils.LineStart.offset" href="#utilities.utils.LineStart.offset">offset</a></code></li>
+<li><code><a title="utilities.utils.LineStart.startswith" href="#utilities.utils.LineStart.startswith">startswith</a></code></li>
+<li><code><a title="utilities.utils.LineStart.strict" href="#utilities.utils.LineStart.strict">strict</a></code></li>
+<li><code><a title="utilities.utils.LineStart.truth_target" href="#utilities.utils.LineStart.truth_target">truth_target</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

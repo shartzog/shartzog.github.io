@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>utilities.managed_fields API documentation</title>
+<meta name="description" content="FieldManager and ManagedField class and related utilities. See specs/_bases/_fields.py
+for examples of well commented, globally applicable …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/mono-blue.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:60vw;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}body{background-color:#f2faff}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+<link rel="icon" href="../titleico.png" type="image/x-icon"/>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>utilities.managed_fields</code></h1>
+</header>
+<section id="section-intro">
+<p>FieldManager and ManagedField class and related utilities. See specs/_bases/_fields.py
+for examples of well commented, globally applicable ManagedField and ContextRule definitions.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="utilities.managed_fields.ContextRule"><code class="flex name class">
+<span>class <span class="ident">ContextRule</span></span>
+<span>(</span><span>title: ForwardRef('str'), controller_keys: ForwardRef('list[str]'), patterns: ForwardRef('list[re.Pattern]'), applied_context: ForwardRef('Sequence[str]'), is_active: ForwardRef('Callable[[KeyGroups], Any]'), candidate_filter: ForwardRef('Callable[[KeyGroups, Any], KeyGroups]') = &lt;function ContextRule.&lt;lambda&gt;&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Conditionally modify the preferred point of origin (context) and/or
+manipulate the list of candidate values for all standard keys matched
+by a list of regular expressions. See FieldManager._apply_context_rules()
+for implementation. See specs/_bases/_fields.py for examples of well
+commented, globally applicable ContextRules that reduce DB/CSV and
+PDF/DB/CSV summaries. These global context rules are available from
+the specs subpackage, i.e.:
+<code>import specs
+specs.CSV_DB_CONTEXT_RULE
+# context rule for CSV/DB summaries</code></p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>title</code></strong> :&ensp;<code>str</code></dt>
+<dd>a descriptive name used for logging and maintainability purposes.</dd>
+<dt><strong><code>controller_keys</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>A list of standard keys whose standard_key_groups entries
+will determine if the rule is activated.</dd>
+<dt><strong><code>patterns</code></strong> :&ensp;<code>list[re.Pattern]</code></dt>
+<dd>A list of regular expressions that determine the set of
+standard keys who are subject to the rule's actions.</dd>
+<dt><strong><code>applied_context</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>the new context_priority value for matched keys if the
+supplied <code>is_active</code> function returns <code>True</code> (boolean type only).</dd>
+<dt><strong><code>is_active</code></strong> :&ensp;<code>Callable[[KeyGroups], Any]</code></dt>
+<dd>A function that takes the subset of the
+FieldManager's standard_key_groups that matches the rule's controller_keys and
+determines if the rule is in effect (bool) or an alternative input for a custom
+<code>candidate_filter</code> in advanced applications.</dd>
+<dt><strong><code>candidate_filter</code></strong> :&ensp;<code>Callable[[KeyGroups, Any], KeyGroups]</code></dt>
+<dd>A function that takes the
+subset of the FieldManager's standard_key_groups that matches the rule's keys and
+the result from the <code>is_active</code> func and returns the subset of the FieldManager's
+standard_key_groups that are eligible to appear in the output. Optional. Defaults
+to a null operation (i.e. lambda x, _: x).</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="utilities.managed_fields.ContextRule.applied_context"><code class="name">var <span class="ident">applied_context</span> : collections.abc.Sequence[str]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 3</p></div>
+</dd>
+<dt id="utilities.managed_fields.ContextRule.candidate_filter"><code class="name">var <span class="ident">candidate_filter</span> : collections.abc.Callable[[dict[str, dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]], typing.Any], dict[str, dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]]]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 5</p></div>
+</dd>
+<dt id="utilities.managed_fields.ContextRule.controller_keys"><code class="name">var <span class="ident">controller_keys</span> : list[str]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="utilities.managed_fields.ContextRule.is_active"><code class="name">var <span class="ident">is_active</span> : collections.abc.Callable[[dict[str, dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]]], typing.Any]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 4</p></div>
+</dd>
+<dt id="utilities.managed_fields.ContextRule.patterns"><code class="name">var <span class="ident">patterns</span> : list[re.Pattern]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+<dt id="utilities.managed_fields.ContextRule.title"><code class="name">var <span class="ident">title</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.managed_fields.FieldManager"><code class="flex name class">
+<span>class <span class="ident">FieldManager</span></span>
+<span>(</span><span>managed_fields: dict[str, <a title="utilities.managed_fields.ManagedField" href="#utilities.managed_fields.ManagedField">ManagedField</a>], standard_keys: list[str], context_rules: Sequence[<a title="utilities.managed_fields.ContextRule" href="#utilities.managed_fields.ContextRule">ContextRule</a>] = (), context_sep: str = '|', output_dir: str | None = None, patient_id: str = 'Unknown', raw_summary: dict[str, vStr] = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Apply the settings defined in the ManagedField objects to the data in a flattened
+summary dictionary from the output of a TableTransformer instance.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>managed_fields</code></strong> :&ensp;<code>dict[str, <a title="utilities.managed_fields.ManagedField" href="#utilities.managed_fields.ManagedField">ManagedField</a>]</code></dt>
+<dd>A dictionary mapping keys to ManagedField
+objects.</dd>
+<dt><strong><code>standard_keys</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>A list of standard keys used in the data typically
+defined in a summary_spec (see specs/summary_specs.py and table_transformer.py).</dd>
+<dt><strong><code>context_rules</code></strong> :&ensp;<code>Sequence[<a title="utilities.managed_fields.ContextRule" href="#utilities.managed_fields.ContextRule">ContextRule</a>]</code></dt>
+<dd>A list of context rules to apply to the data.
+ContextRules allow for conditional modification of the preferred point of origin
+(context) and/or manipulation of the candidate values for a standard key subset.</dd>
+<dt><strong><code>context_sep</code></strong> :&ensp;<code>str</code></dt>
+<dd>A string used to separate keys and their context.
+Defaults to "|". Example key: "schedule.startTime|CSV|0".</dd>
+<dt><strong><code>output_dir</code></strong> :&ensp;<code>str | None</code></dt>
+<dd>An optional file path prefix (end in "/" to target a folder)
+If supplied, <code>f"{output_dir}{patient_id}_managed_fields.json"</code> will be created
+after calling the <code>reduce()</code> method.</dd>
+<dt><strong><code>patient_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>an identifier for the patient being processed. Used in debug
+output filenames and logging. Defaults to 'Unknown'.</dd>
+<dt><strong><code>raw_summary</code></strong> :&ensp;<code>dict[str, vStr]</code></dt>
+<dd>A dict containing raw summary data for one patient.
+Defaults to an empty dict to facilitate templating (see <code>__call__()</code> docstring)</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>standard_key_groups</code></strong> :&ensp;<code>KeyGroups</code></dt>
+<dd>A mapping between standard keys and groups of
+corresponding context bearing candidate key value pairs. Has form
+<code>{'&lt;standard key&gt;': {'&lt;standard key&gt;&lt;sep&gt;&lt;context&gt;': '&lt;value&gt;', ...}, ...}</code></dd>
+<dt><strong><code>context_groups</code></strong> :&ensp;<code>dict[str, KeyGroups]</code></dt>
+<dd>The inverse of standard_key_groups
+(kind of). Groups raw data by context. Initialized as a defaultdict(dict). Used
+in list and grouped element merge operations. See <code>_GROUPED_ELEMENTS</code>. Has form
+<code>{'&lt;parent&gt;': {'&lt;context&gt;': {'&lt;final element&gt;': '&lt;value&gt;', ...}, ...}, ...}</code>.</dd>
+<dt><strong><code>context_group_priorities</code></strong> :&ensp;<code>dict[str, list[str]]</code></dt>
+<dd>Records the _group_context of the
+first candidate selected for a standard_key in a context group to ensure that
+the same context is prioritized for subsequent group members.</dd>
+<dt><strong><code>list_manager</code></strong> :&ensp;<code>dict[str, list[tuple[int, int]]]</code></dt>
+<dd>init==False. A dictionary used to
+track the output list indexes of "array type" standard keys.</dd>
+<dt><strong><code>output</code></strong> :&ensp;<code>dict[str, vStr]</code></dt>
+<dd>init==False. A dictionary containing the reduced output.
+Empty until the reduce() method is called.</dd>
+</dl>
+<p>During post intialization, the supplied raw_summary (dict[str, vStr]) is compiled into
+standard_key_groups (dict[str, dict[str, vStr]]) where the keys of raw_summary appear
+as subkeys within standard_key_groups with standard_keys members as parent keys. E.g.,
+raw_summary entries:
+<code>{
+"schedule.diagnosis|PDF.Anesthesia Record.Case Summary|0": "Right hip displacement",
+"schedule.diagnosis|PDF.Operative Note|7": "Displacement of right hip",
+}</code>
+would be compiled into standard_key_groups entries:
+<code>{
+"schedule.diagnosis": {
+"schedule.diagnosis|PDF.Anesthesia Record.Case Summary|0": "Right hip displacement",
+"schedule.diagnosis|PDF.Operative Note|7": "Displacement of right hip",
+}
+}</code>
+The same is true, generally speaking, for array type keys with the additional step of
+replacing the wildcard card in the standard key definition with the proper list index
+using the list_manager dictionary. E.g., raw_summary entries:
+<code>{
+"patient_info.insurance[0].company|PDF.Anesthesia Record.Active Insurance|0": "Aetna",
+"patient_info.insurance[0].company|PDF.Anesthesia Record.Active Insurance|1": "BCBS",
+"patient_info.insurance[1].company|PDF.Anesthesia Record.Active Insurance|0": "MDCR",
+}</code>
+would be compiled into standard_key_groups entries:
+<code>{
+"patient_info.insurance[0].company": {
+"patient_info.insurance[0].company|PDF.Anesthesia Record.Active Insurance|0": "Aetna",
+},
+"patient_info.insurance[1].company": {
+"patient_info.insurance[0].company|PDF.Anesthesia Record.Active Insurance|1": "BCBS",
+},
+"patient_info.insurance[2].company": {
+"patient_info.insurance[1].company|PDF.Anesthesia Record.Active Insurance|0": "MDCR",
+},
+}</code>
+by virtue of their combined list and table indexes (0, 0), (0, 1), and (1, 0) respectively.</p>
+<p>The reduce() method iterates over each standard field in standard_key_groups, selecting the
+proper final standard key value from the list of candidates according to the ManagedField
+definition. If the field is not managed and present in standard_keys, the default
+ManagedField will be applied (selects the most frequent value in the list of candidates).</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.managed_fields.FieldManager.context_group_priorities"><code class="name">var <span class="ident">context_group_priorities</span> : dict[str, list[str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.FieldManager.context_groups"><code class="name">var <span class="ident">context_groups</span> : dict[str, dict[str, dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.FieldManager.context_rules"><code class="name">var <span class="ident">context_rules</span> : collections.abc.Sequence[<a title="utilities.managed_fields.ContextRule" href="#utilities.managed_fields.ContextRule">ContextRule</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.FieldManager.context_sep"><code class="name">var <span class="ident">context_sep</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.FieldManager.list_manager"><code class="name">var <span class="ident">list_manager</span> : dict[str, list[tuple[int, int]]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.FieldManager.managed_fields"><code class="name">var <span class="ident">managed_fields</span> : dict[str, <a title="utilities.managed_fields.ManagedField" href="#utilities.managed_fields.ManagedField">ManagedField</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.FieldManager.output"><code class="name">var <span class="ident">output</span> : dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.FieldManager.output_dir"><code class="name">var <span class="ident">output_dir</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.FieldManager.patient_id"><code class="name">var <span class="ident">patient_id</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.FieldManager.raw_summary"><code class="name">var <span class="ident">raw_summary</span> : dict[str, <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.FieldManager.standard_key_groups"><code class="name">var <span class="ident">standard_key_groups</span> : dict[str, dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.FieldManager.standard_keys"><code class="name">var <span class="ident">standard_keys</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.managed_fields.FieldManager.expand_dependencies"><code class="name flex">
+<span>def <span class="ident">expand_dependencies</span></span>(<span>self, this_field: <a title="utilities.managed_fields.ManagedField" href="#utilities.managed_fields.ManagedField">ManagedField</a>) ‑> collections.abc.Sequence[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Allow a 'non-list' field to depend on all values collected for a
+list field.</p>
+<p>If a non-list field depends upon a list type field, replace the original
+wildcarded list key reference supplied in its dependencies with the list
+of indexed keys for which we actually collected data.</p>
+<h2 id="example">Example</h2>
+<p>Given a raw_summary containing data for three anesthesia providers,
+and a standard field "schedule.surgeon" with dependency
+"schedule.anesthesiaStaff[*].provider", expand the wildcarded list
+dependency into entries for the three provider values collected and
+return:
+<code>[
+"schedule.anesthesiaStaff[0].provider",
+"schedule.anesthesiaStaff[1].provider",
+"schedule.anesthesiaStaff[2].provider",
+]</code></p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>this_field</code></strong> :&ensp;<code><a title="utilities.managed_fields.ManagedField" href="#utilities.managed_fields.ManagedField">ManagedField</a></code></dt>
+<dd>the managed field to process</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[str]</code></dt>
+<dd>return the original dependencies if the supplied field
+is itself a list field. otherwise, replace all wildcarded list
+type dependency references with the list of indexed keys
+generated by the dependency's collected values in
+_build_standard_key_groups().</dd>
+</dl></div>
+</dd>
+<dt id="utilities.managed_fields.FieldManager.reduce"><code class="name flex">
+<span>def <span class="ident">reduce</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reduces self.standard_key_groups by applying the settings defined in
+self.managed_fields.</p>
+<p>This method iterates over each standard field in self.standard_key_groups.
+If the field is not managed and present in self.standard_keys, the default
+ManagedField will be applied (selects the most frequent value in the list
+of candidates). If the field is managed, its dependencies are recursively
+reduced and a final value is generated according to the preprocess and
+xform functions defined in its ManagedField definition.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_input</code></strong> :&ensp;<code>KeyGroups | None</code></dt>
+<dd>The input dictionary to reduce. If None,
+the method uses the standard_key_groups attribute.</dd>
+<dt><strong><code>_recursing_for</code></strong> :&ensp;<code>list[str]</code></dt>
+<dd>A list of standard keys that are being
+recursively reduced due to their presence as a dependency in a
+different standard key's ManagedField definition. Used to avoid
+infinite recursion.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>The reduced dictionary.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="utilities.managed_fields.ManagedField"><code class="flex name class">
+<span>class <span class="ident">ManagedField</span></span>
+<span>(</span><span>standard_key: str, context_priority: Sequence[str] = ('CSV', 'PDF', 'DB'), xform: Callable[[str | vStr], str | vStr] = &lt;function ManagedField.&lt;lambda&gt;&gt;, generated: bool = False, dependencies: Sequence[str] = (), preprocess: Callable[[str | vStr, dict[str, str | vStr]], str | vStr] = &lt;function ManagedField.&lt;lambda&gt;&gt;, reducer: Callable[[Sequence[str | vStr]], str | vStr] = &lt;function most_freq_element&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Standardize, recombine, generate, and prioritize extracted data based
+on point of origin, current value, and pre-defined dependencies.</p>
+<p>Useful for establishing enums, rejecting bad inputs, and accepting
+postprocedure data over preprocedure data, among other use cases. Use the
+<code>transform_utils.standardize_field_value()</code> function for establishing enums.
+Implemented at the client and facility level of specs/client_specs.py.
+Global definitions for the ClaimMaker UI use case are available as members
+of the specs subpackage, i.e.:
+<code>import specs
+specs.BASE_MANAGED_FIELDS
+# baseline field definitions</code></p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>standard_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>a key from a summary_specs entry</dd>
+<dt><strong><code>context_priority</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>A list used to prioritize the value
+selected from a list of vStr candidates based on vStr.ctx and/or
+point of origin provided in a summary key. Default is <code>("CSV", "PDF", "DB")</code>.</dd>
+<dt><strong><code>xform</code></strong> :&ensp;<code>Callable[[str | vStr], str | vStr]</code></dt>
+<dd>transform to apply to produce
+a standard output from the provided input, if required. Defaults to
+a null operation (i.e. <code>lambda x: x</code>) to allow context only operations.</dd>
+<dt><strong><code>generated</code></strong> :&ensp;<code>bool</code></dt>
+<dd>if true, calculate a value for this key from its
+depedencies and add it to the summary output even if the key is absent
+in the original summary provided to the FieldManager.</dd>
+<dt><strong><code>dependencies</code></strong> :&ensp;<code>Sequence[str]</code></dt>
+<dd>list of standard field names that will be used
+to augment or construct the managed output</dd>
+<dt><strong><code>preprocess</code></strong> :&ensp;<code>Callable[[vStr, dict[str, vStr]], vStr]</code></dt>
+<dd>takes raw value and
+the dict of dependency values as input. preps raw value for xform.
+defaults to a null operation (i.e. <code>lambda x, _: x</code>).</dd>
+<dt><strong><code>reducer</code></strong> :&ensp;<code>Callable[[Sequence[vStr]], vStr]</code></dt>
+<dd>takes a list of candidate
+vStr values as input and returns the final output for this field.
+Defaults to <code>utils.most_freq_element</code>.</dd>
+</dl></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="utilities.managed_fields.ManagedField.context_priority"><code class="name">var <span class="ident">context_priority</span> : collections.abc.Sequence[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.ManagedField.dependencies"><code class="name">var <span class="ident">dependencies</span> : collections.abc.Sequence[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.ManagedField.generated"><code class="name">var <span class="ident">generated</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.ManagedField.standard_key"><code class="name">var <span class="ident">standard_key</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="utilities.managed_fields.ManagedField.clone"><code class="name flex">
+<span>def <span class="ident">clone</span></span>(<span>self, list_idx: str) ‑> <a title="utilities.managed_fields.ManagedField" href="#utilities.managed_fields.ManagedField">ManagedField</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Clone this instance after replacing '*' with the supplied list_idx
+in standard_key and all dependencies.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>list_idx</code></strong> :&ensp;<code>str</code></dt>
+<dd>an integer string e.g. "1"</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="utilities.managed_fields.ManagedField" href="#utilities.managed_fields.ManagedField">ManagedField</a></code></dt>
+<dd>a new ManagedFields instance</dd>
+</dl></div>
+</dd>
+<dt id="utilities.managed_fields.ManagedField.preprocess"><code class="name flex">
+<span>def <span class="ident">preprocess</span></span>(<span>x, _) ‑> collections.abc.Callable[[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>, dict[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]], str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="utilities.managed_fields.ManagedField.reduce"><code class="name flex">
+<span>def <span class="ident">reduce</span></span>(<span>self, candidates: dict[str, str | vStr]) ‑> tuple[str, str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Call self.reducer and return the key and value of the selected candidate.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>candidates</code></strong></dt>
+<dd>dictionary of candidate keys and values</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[str, str | vStr]</code></dt>
+<dd>the selected candidate key and value</dd>
+</dl></div>
+</dd>
+<dt id="utilities.managed_fields.ManagedField.reducer"><code class="name flex">
+<span>def <span class="ident">reducer</span></span>(<span>check_lists, tiebreak_func=&lt;function vstr_confidence_tiebreak&gt;, xform: collections.abc.Callable[[typing.Any], typing.Union[str, <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>, typing.Any]] = utilities.v_str.vStr) ‑> collections.abc.Callable[[collections.abc.Sequence[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]], str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the most frequent element from a list of lists.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>check_lists</code></strong> :&ensp;<code>list[list[Any]]</code></dt>
+<dd>A list of lists containing elements to check.</dd>
+<dt><strong><code>tiebreak_func</code></strong> :&ensp;<code>Callable[[Any, Any], Any]</code></dt>
+<dd>A function to break ties between
+elements with the same frequency. Default is <code>vstr_confidence_tiebreak</code>.</dd>
+<dt><strong><code>xform</code></strong> :&ensp;<code>Callable[[Any], str | vStr | Any]</code></dt>
+<dd>A transformation function applied
+to each element. Defaults to <code>vStr</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Any</code></dt>
+<dd>The most frequent element after applying the transformation and tiebreak
+functions.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; check_lists = [[&quot;a&quot;, &quot;b&quot;, &quot;a&quot;], [&quot;a&quot;, &quot;c&quot;, &quot;b&quot;, &quot;b&quot;]]
+&gt;&gt;&gt; tiebreak_func = lambda *args: sorted(args)[0]
+&gt;&gt;&gt; xform = str.upper
+&gt;&gt;&gt; most_freq_element(check_lists, tiebreak_func, xform)
+'A'
+&gt;&gt;&gt; tiebreak_func = lambda *args: sorted(args)[-1]
+&gt;&gt;&gt; most_freq_element(check_lists, tiebreak_func, xform)
+'B'
+</code></pre></div>
+</dd>
+<dt id="utilities.managed_fields.ManagedField.xform"><code class="name flex">
+<span>def <span class="ident">xform</span></span>(<span>x) ‑> collections.abc.Callable[[str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>], str | <a title="utilities.v_str.vStr" href="v_str.html#utilities.v_str.vStr">vStr</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<a href="../index.html"><h3><img src="titleico.png" width="90" height="90" onerror="this.src='../titleico.png';" /> PDF Extractor </h3></a>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="utilities" href="index.html">utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="utilities.managed_fields.ContextRule" href="#utilities.managed_fields.ContextRule">ContextRule</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.managed_fields.ContextRule.applied_context" href="#utilities.managed_fields.ContextRule.applied_context">applied_context</a></code></li>
+<li><code><a title="utilities.managed_fields.ContextRule.candidate_filter" href="#utilities.managed_fields.ContextRule.candidate_filter">candidate_filter</a></code></li>
+<li><code><a title="utilities.managed_fields.ContextRule.controller_keys" href="#utilities.managed_fields.ContextRule.controller_keys">controller_keys</a></code></li>
+<li><code><a title="utilities.managed_fields.ContextRule.is_active" href="#utilities.managed_fields.ContextRule.is_active">is_active</a></code></li>
+<li><code><a title="utilities.managed_fields.ContextRule.patterns" href="#utilities.managed_fields.ContextRule.patterns">patterns</a></code></li>
+<li><code><a title="utilities.managed_fields.ContextRule.title" href="#utilities.managed_fields.ContextRule.title">title</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.managed_fields.FieldManager" href="#utilities.managed_fields.FieldManager">FieldManager</a></code></h4>
+<ul class="">
+<li><code><a title="utilities.managed_fields.FieldManager.context_group_priorities" href="#utilities.managed_fields.FieldManager.context_group_priorities">context_group_priorities</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.context_groups" href="#utilities.managed_fields.FieldManager.context_groups">context_groups</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.context_rules" href="#utilities.managed_fields.FieldManager.context_rules">context_rules</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.context_sep" href="#utilities.managed_fields.FieldManager.context_sep">context_sep</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.expand_dependencies" href="#utilities.managed_fields.FieldManager.expand_dependencies">expand_dependencies</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.list_manager" href="#utilities.managed_fields.FieldManager.list_manager">list_manager</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.managed_fields" href="#utilities.managed_fields.FieldManager.managed_fields">managed_fields</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.output" href="#utilities.managed_fields.FieldManager.output">output</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.output_dir" href="#utilities.managed_fields.FieldManager.output_dir">output_dir</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.patient_id" href="#utilities.managed_fields.FieldManager.patient_id">patient_id</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.raw_summary" href="#utilities.managed_fields.FieldManager.raw_summary">raw_summary</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.reduce" href="#utilities.managed_fields.FieldManager.reduce">reduce</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.standard_key_groups" href="#utilities.managed_fields.FieldManager.standard_key_groups">standard_key_groups</a></code></li>
+<li><code><a title="utilities.managed_fields.FieldManager.standard_keys" href="#utilities.managed_fields.FieldManager.standard_keys">standard_keys</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="utilities.managed_fields.ManagedField" href="#utilities.managed_fields.ManagedField">ManagedField</a></code></h4>
+<ul class="two-column">
+<li><code><a title="utilities.managed_fields.ManagedField.clone" href="#utilities.managed_fields.ManagedField.clone">clone</a></code></li>
+<li><code><a title="utilities.managed_fields.ManagedField.context_priority" href="#utilities.managed_fields.ManagedField.context_priority">context_priority</a></code></li>
+<li><code><a title="utilities.managed_fields.ManagedField.dependencies" href="#utilities.managed_fields.ManagedField.dependencies">dependencies</a></code></li>
+<li><code><a title="utilities.managed_fields.ManagedField.generated" href="#utilities.managed_fields.ManagedField.generated">generated</a></code></li>
+<li><code><a title="utilities.managed_fields.ManagedField.preprocess" href="#utilities.managed_fields.ManagedField.preprocess">preprocess</a></code></li>
+<li><code><a title="utilities.managed_fields.ManagedField.reduce" href="#utilities.managed_fields.ManagedField.reduce">reduce</a></code></li>
+<li><code><a title="utilities.managed_fields.ManagedField.reducer" href="#utilities.managed_fields.ManagedField.reducer">reducer</a></code></li>
+<li><code><a title="utilities.managed_fields.ManagedField.standard_key" href="#utilities.managed_fields.ManagedField.standard_key">standard_key</a></code></li>
+<li><code><a title="utilities.managed_fields.ManagedField.xform" href="#utilities.managed_fields.ManagedField.xform">xform</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>
